@@ -20,10 +20,10 @@ const inter = Inter({
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-white text-black selection:bg-teal-300 dark:bg-black dark:text-white dark:selection:bg-fuchsia-600 dark:selection:text-white">
+      <body className="bg-white text-black">
         <Navbar />
         <Suspense>
-          <main>{children}</main>
+          <main className='mt-10 flex items-center'>{children}</main>
         </Suspense>
       </body>
     </html>
