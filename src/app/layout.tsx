@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className="bg-white text-black">
         <Navbar />
         <Suspense>
-          <main className='mt-10 flex items-center'>{children}</main>
+          <main className='mt-10 grid items-center'>{children}</main>
         </Suspense>
       </body>
     </html>

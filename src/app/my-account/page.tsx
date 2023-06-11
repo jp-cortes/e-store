@@ -2,10 +2,8 @@
 
 type Props = {}
 
-const MyAccount = (props: Props) => {
+export default function MyAccount(props: Props) {
   return (
     <div>MyAccount</div>
   )
 }
-
-export default MyAccount;

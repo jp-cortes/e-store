@@ -4,12 +4,12 @@ import { Cart } from "../Cart";
 
 type Props = {}
 
-export const Navbar = (props: Props) => {
+export function Navbar(props: Props) {
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full px-8 text-base'>
+    <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full px-8 text-base'>
       <ul className="flex items-center gap-8 ">
-        <li className='font-bold text-2xl'>
+        <li className='hidden md:block font-bold text-2xl'>
           <Link href='/'>E-store</Link>
         </li>
         <li>
@@ -23,7 +23,7 @@ export const Navbar = (props: Props) => {
           href='/categories'>Categories</Link>
         </li>
       </ul>
-      <ul className='flex item-center gap-3'>
+      <ul className='hidden md:flex item-center gap-3'>
         <li>
           <Link
           className='hover:underline underline-offset-4' 

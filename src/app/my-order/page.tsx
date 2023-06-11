@@ -1,10 +1,9 @@
 
 type Props = {}
 
-const MyOrder = (props: Props) => {
+export default function MyOrder(props: Props) {
   return (
     <div>MyOrder</div>
   )
 }
 
-export default MyOrder;

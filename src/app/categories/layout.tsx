@@ -5,11 +5,11 @@ import { Suspense } from 'react';
 const CategoriesLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Suspense>
-      <div className="flex w-auto">
-        <div className=" ml-7 ">
+      <div className="flex w-auto md:gap-3">
+        <div className="mt-8">
           <AllCategories />
         </div>
-        <div className="grid justify-center w-full bg-red-300 mx-auto">{children}</div>
+        <div className="w-full bg-red-300 ">{children}</div>
         
       </div>
     </Suspense>

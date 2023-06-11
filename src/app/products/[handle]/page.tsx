@@ -1,10 +1,9 @@
 
 type Props = {}
 
-const Product = (props: Props) => {
+export default function Product (props: Props) {
   return (
     <div>Product</div>
   )
 }
 
-export default Product;

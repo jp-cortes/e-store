@@ -72,9 +72,11 @@ const linksCategories = [
 
 const Categories = () => {
     return(
-        <div className='flex flex-start flex-col'>
+        <div className='md:flex md:flex-start md:flex-col md:mx-6 hidden'>
         {linksCategories.map((category) => (
-            <Link key={category.id} href={`categories/${category.name}`}>
+            <Link
+            className='mt-4 font-semibold capitalize' 
+            key={category.id} href={`categories/${category.name}`}>
                 {category.name}
             </Link>
         ))}
@@ -83,11 +85,11 @@ const Categories = () => {
 
 }
 
-export const AllCategories = () => {
+export function AllCategories() {
   return (
     <Suspense
       fallback={
-        <div className="col-span-2 hidden h-[400px] w-full flex-none py-4 pl-10 lg:block">
+        <div className="col-span-2 hidden h-full w-full flex-none py-4 pl-10 lg:block ">
           <div className={clsx(skeleton, activeAndTitles)} />
           <div className={clsx(skeleton, activeAndTitles)} />
           <div className={clsx(skeleton, items)} />

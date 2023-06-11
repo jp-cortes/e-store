@@ -1,7 +1,7 @@
 
 type Props = {}
 
-export const Footer = (props: Props) => {
+export function Footer(props: Props) {
   return (
     <div>Footer</div>
   )

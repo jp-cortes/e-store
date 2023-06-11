@@ -1,6 +1,6 @@
 type Props = {}
 
-export const Cart = (props: Props) => {
+export function Cart(props: Props) {
   return (
     <div>Cart</div>
   )
