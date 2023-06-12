@@ -1,4 +1,4 @@
-import GridHome from "@/components/GridHome";
+import GridHome from "../components/GridHome";
 
 
 export default function Home() {

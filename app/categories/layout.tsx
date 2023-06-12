@@ -2,7 +2,7 @@ import { AllCategories } from '../../components/AllCategories';
 
 import { Suspense } from 'react';
 
-const CategoriesLayout = ({ children }: { children: React.ReactNode }) => {
+const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <Suspense>
       <div className="flex w-auto md:gap-3">
@@ -17,4 +17,4 @@ const CategoriesLayout = ({ children }: { children: React.ReactNode }) => {
 }
 
 
-export default CategoriesLayout;
+export default ProductsLayout;

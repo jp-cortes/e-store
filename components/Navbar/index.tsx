@@ -15,12 +15,7 @@ export function Navbar(props: Props) {
         <li>
           <Link
           className=' hover:underline underline-offset-4'
-          href='/'>All Products</Link>
-        </li>
-        <li>
-          <Link
-          className=' hover:underline underline-offset-4'
-          href='/categories'>Categories</Link>
+          href='/categories'>All</Link>
         </li>
       </ul>
       <ul className='hidden md:flex item-center gap-3'>
