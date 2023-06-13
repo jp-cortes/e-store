@@ -16,7 +16,7 @@ export default async function Category(props: Props)  {
   
  return (
     <div className='grid lg:grid-cols-4 gap-4 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
-        {category.map((product) => (
+        {category.map((product: Product) => (
           <Card key={product.id} product={product}/>
         ))}
       

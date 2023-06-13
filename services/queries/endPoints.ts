@@ -1,16 +1,16 @@
-const {NEXT_PUBLIC_API_URL, NEXT_PUBLIC_API_VERSION} = process.env;
 
-const API = NEXT_PUBLIC_API_URL;
-const VERSION = NEXT_PUBLIC_API_VERSION;
+
+const API = process.env.NEXT_PUBLIC_API_URL;
+const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
 
  export const endPoints = {
   products:{
     allProducts: `${API}/api/${VERSION}/products`,
-    getProducts: (limit, offset) => `${API}/api/${VERSION}/products?limit=${limit}&offset=${offset}`,
+    getProducts: (limit: string, offset: string) => `${API}/api/${VERSION}/products?limit=${limit}&offset=${offset}`,
     postProducts: `${API}/api/${VERSION}/products/`,
-    getProduct: (id) => `${API}/api/${VERSION}/products/${id}`,
-    updateProducts: (id) => `${API}/api/${VERSION}/products/${id}`,
-    deleteProducts: (id) => `${API}/api/${VERSION}/products/${id}`
+    getProduct: (id: string) => `${API}/api/${VERSION}/products/${id}`,
+    updateProducts: (id: string) => `${API}/api/${VERSION}/products/${id}`,
+    deleteProducts: (id: string) => `${API}/api/${VERSION}/products/${id}`
   },
   customers:{
     getUsers: `${API}/api/${VERSION}/customers`,
@@ -22,10 +22,10 @@ const VERSION = NEXT_PUBLIC_API_VERSION;
   },
   categories:{
     getCategories: `${API}/api/${VERSION}/categories`,
-    productsByCategory: (id) => `${API}/api/${VERSION}/categories/${id}`,
+    productsByCategory: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
     postCategories: `${API}/api/${VERSION}/categories`,
-    getCategoriesProduct: (id) => `${API}/api/${VERSION}/categories/${id}`,
-    putCategories: (id) => `${API}/api/${VERSION}/categories/${id}`,
+    getCategoriesProduct: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
+    putCategories: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
   },
   files:{
     postFiles: `${API}/api/${VERSION}/files/upload`,

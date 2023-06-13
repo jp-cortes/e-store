@@ -1,6 +1,7 @@
 import { Navbar } from '../components/Navbar';
 import { ReactNode, Suspense } from 'react';
 import { Inter } from 'next/font/google'
+import { ShoppingCartProvider } from '../store/Cart';
 import './globals.css';
 
 
@@ -21,10 +22,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="bg-white text-black">
-        <Navbar />
-        <Suspense>
-          <main className='mt-10 grid items-center'>{children}</main>
-        </Suspense>
+        <ShoppingCartProvider>
+          <Navbar />
+          <Suspense>
+            <main className='mt-10 grid items-center'>{children}</main>
+          </Suspense>
+        </ShoppingCartProvider>
       </body>
     </html>
   );
