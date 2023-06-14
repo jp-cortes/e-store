@@ -9,7 +9,7 @@ const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="mt-8">
           <AllCategories />
         </div>
-        <div className="w-full bg-red-300 ">{children}</div>
+        <div className="w-full bg-white ">{children}</div>
         
       </div>
     </Suspense>

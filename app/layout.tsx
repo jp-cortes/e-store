@@ -1,8 +1,11 @@
-import { Navbar } from '../components/Navbar';
 import { ReactNode, Suspense } from 'react';
-import { Inter } from 'next/font/google'
+import { Navbar } from '../components/Navbar';
 import { ShoppingCartProvider } from '../store/Cart';
+import { Footer } from '../components/Footer';
+import { Inter } from 'next/font/google'
 import './globals.css';
+import { ProductDetail } from '../components/ProductDetail';
+
 
 
 export const metadata = {
@@ -24,9 +27,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       <body className="bg-white text-black">
         <ShoppingCartProvider>
           <Navbar />
+         
           <Suspense>
-            <main className='mt-10 grid items-center'>{children}</main>
+            <main className='mt-[68px] grid items-center'>{children}</main>
           </Suspense>
+          <Footer/>
         </ShoppingCartProvider>
       </body>
     </html>

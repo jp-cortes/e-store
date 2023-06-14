@@ -1,17 +1,16 @@
 'use client'
-import { useContext } from "react";
-import { ShoppingCartContext } from "../../store/Cart";
+import { useShoppingCart } from "../../store/Cart";
 import Link from "next/link";
-import Image from "next/image";
+import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 
 
 type Props = {}
 
 export function Navbar(props: Props) {
-  const { count }= useContext(ShoppingCartContext);
+  const { count: shoppingCartCount }= useShoppingCart();
 
   return (
-    <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full px-8 text-base'>
+    <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>
       <ul className="flex items-center gap-8 ">
         <li className='hidden md:block font-bold text-2xl'>
           <Link href='/'>E-store</Link>
@@ -40,13 +39,21 @@ export function Navbar(props: Props) {
         </li>
         <li className="relative">
              <button
+             onClick={() => {}}
               className="m-0"           
                >
-                <Image src='' width={28} height={28} alt='shopping-bag'/>
+                <ShoppingBagIcon  className="w-6 h-6"/>
               </button>
-              <div className="absolute top-2 right-[-8px] bg-green-800 font-semibold text-white w-4 h-4 rounded-full p-0 flex justify-center items-center">
-                {count}
+              {
+              shoppingCartCount > 0 && 
+              <div className="absolute top-0 right-[-8px] bg-green-800 font-semibold text-white w-5 h-5 rounded-full p-0 flex justify-center items-center">
+                {
+                shoppingCartCount > 9 ? 
+                <div className="absolute text-white right-[-2px]">9+</div> : 
+                shoppingCartCount 
+                }
               </div>
+              }
         </li>
       </ul>
       </nav>

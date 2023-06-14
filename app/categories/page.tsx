@@ -1,4 +1,5 @@
 import { Card } from "../../components/Card"
+import { ProductDetail } from "../../components/ProductDetail"
 import { getAllProducts } from "../../services"
 
 
