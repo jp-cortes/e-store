@@ -4,7 +4,6 @@
 import { useParams } from 'next/navigation'
 import { Card } from "../../../components/Card"
 import { getProductsByCategoryName } from '../../../services'
-import { ProductDetail } from '../../../components/ProductDetail'
 
 type Props = {}
 
@@ -21,7 +20,7 @@ export default async function Category(props: Props)  {
         {category.map((product: Product) => (
           <Card key={product.id} product={product}/>
         ))}
-      <ProductDetail/>
+
     </div>
   )
 }

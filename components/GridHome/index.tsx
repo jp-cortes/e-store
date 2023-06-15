@@ -3,21 +3,13 @@
 import Image from 'next/image';
 import { getProductsByCategoryName } from '../../services'
 import { AddToCartButton } from '../Card/AddToCartButton';
-import { useContext } from 'react';
-import { ProductDetailContext } from '../../store/Cart';
-import { ProductDetail } from '../ProductDetail';
+import Link from 'next/link';
+
 
 type Props = {}
 
 export async function GridHome({}: Props) {  
-  const { openProductdetail, setProductToShow } = useContext(ProductDetailContext);
 
-  function showProduct(productDetail: Product) {
-    console.log(productDetail);
-    setProductToShow(productDetail);
-    openProductdetail();
-
-  }
 
   const products = await getProductsByCategoryName('sports');
 
@@ -26,20 +18,19 @@ export async function GridHome({}: Props) {
     <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
      <div
      className='bg-white cursor-pointer md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative'>
-      <figure 
-       onClick={(e) => {
-        e.stopPropagation();
-        showProduct(products[0]);
-      }}
-         className="relative mb-2 w-full h-4/5">
+      <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[0].category.name}</span>
-            <Image 
+          
+        <Link href={`/products/${products[0].id}`}>
+          <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[0].image}
             alt={products[0].name} 
             width={640}
             height={480}
             />
+          </Link>
+
             <AddToCartButton product={products[0]}/>
       </figure>
         <div className="absolute bottom-[120px] right-3 flex items-center justify-center flex-col">
@@ -53,13 +44,9 @@ export async function GridHome({}: Props) {
     </div>
     <div
     className='bg-white cursor-pointer md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-3  rounded-lg relative'>
-        <figure 
-         onClick={(e) => {
-          e.stopPropagation();
-          showProduct(products[1]);
-        }}
-        className="relative mb-2 w-full h-4/5">
+        <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[1].category.name}</span>
+            <Link href={`/products/${products[1].id}`}>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[1].image} 
@@ -67,6 +54,8 @@ export async function GridHome({}: Props) {
             width={640}
             height={480}
             />
+            </Link>
+
             <AddToCartButton product={products[1]}/>
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
@@ -80,13 +69,9 @@ export async function GridHome({}: Props) {
     </div>
     <div
     className='bg-white cursor-pointer md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-5 rounded-lg relative'>
-        <figure 
-         onClick={(e) => {
-          e.stopPropagation();
-          showProduct(products[2]);
-        }}
-        className="relative mb-2 w-full h-4/5">
+        <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[2].category.name}</span>
+            <Link href={`/products/${products[2].id}`}>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[2].image} 
@@ -94,6 +79,8 @@ export async function GridHome({}: Props) {
             width={640}
             height={480}
             />
+            </Link>
+
             <AddToCartButton product={products[2]}/>
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
@@ -106,7 +93,6 @@ export async function GridHome({}: Props) {
         </div>
     </div>
     </div>
-    <ProductDetail/>
     </>
   )
 }

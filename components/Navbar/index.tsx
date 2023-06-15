@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
 
 
+
 type Props = {}
 
 export function Navbar(props: Props) {

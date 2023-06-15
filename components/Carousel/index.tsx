@@ -1,22 +1,12 @@
 'use client'
 
+import Link from 'next/link';
 import { getProductsByCategoryName } from '../../services';
-import { AddToCartButton } from '../Card/AddToCartButton';
-import { useContext } from 'react';
-import { ProductDetailContext } from '../../store/Cart';
 import Image from 'next/image';
-import { ProductDetail } from '../ProductDetail';
+
 
 export async function Carousel() {
-  const { openProductdetail, setProductToShow } = useContext(ProductDetailContext);
 
-  function showProduct(productDetail: Product) {
-    console.log(productDetail);
-    console.log('click');
-    setProductToShow(productDetail);
-    openProductdetail();
-
-  }
  
   const products = await getProductsByCategoryName('home');
 
@@ -28,20 +18,17 @@ export async function Carousel() {
       <div className="flex animate-[marquee_60s_linear_infinite]">
         {[...products].map((product) => (
      
-          <div
+          <Link
             key={product.id}
+            href={`/products/${product.id}`}
             className="relative h-[30vh] w-full flex-none md:w-1/3">
               <Image
-              onClick={() => showProduct(product)}
               alt={product.name}
               className="h-full object-contain"
               fill
               sizes="33vw"
               src={product.image}
               />
-              <div className='absolute top-0 right-[80px]'>
-              <AddToCartButton product={product}/>
-            </div>
               <span className='absolute bottom-[20px] left-[80px] bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{product.category.name}</span>
       
              
@@ -53,12 +40,12 @@ export async function Carousel() {
                 ${product.price}
               </div>
             </div>
-          </div>
+          </Link>
         
         ))}
       </div>
     </div>
-    <ProductDetail/>
+    
     </>
   );
 }

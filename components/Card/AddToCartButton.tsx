@@ -24,7 +24,7 @@ export function AddToCartButton({ product }: Props) {
     function  handleClick() {
         addToShoppingCart(product, quantity);
         setQuantity(quantity);
-
+        console.log('added to cart' )
       };
       
  return (

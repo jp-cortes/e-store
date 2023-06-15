@@ -1,6 +1,6 @@
 'use client'
 
-import { ReactNode, createContext, Dispatch, useContext, useReducer, useState, SetStateAction } from 'react';
+import { ReactNode, createContext, Dispatch, useContext, useReducer } from 'react';
 
 export type CartItemType = Product & { quantity: number, price: number};
 
@@ -14,13 +14,6 @@ export type CartAction = {
   quantity?: number;
 };
 
-export type ProductDetailState = {
-  productDetail : boolean;
-  openProductdetail: Function;
-  closeProductdetail: Function;
-  productToShow: object;  
-  setProductToShow: Dispatch<SetStateAction<Product>>;  
-};
 
 
 //ShoppingCart context
@@ -29,37 +22,20 @@ const ShoppingCartContext = createContext(defaultShoppingCartState);
 const ShoppingCartDispatchContext = createContext(
   (() => {}) as Dispatch<CartAction>
   );
-  const defaultProductDetailState = {} as ProductDetailState;
-export const ProductDetailContext = createContext(defaultProductDetailState);
+
 
 
 export function ShoppingCartProvider({ children }: { children: ReactNode }) {
   const [state, dispatch] = useReducer(ShoppingCartReducers, defaultShoppingCartState);
- 
- //product detail open/close
-  const [productDetail, setProductDetail] = useState(false);
-  const openProductdetail = () => setProductDetail(true);
-  const closeProductdetail = () => setProductDetail(false);
-
-  //product Datail  ShowProduct
-   const [productToShow, setProductToShow] = useState({});
 
    return(
-    <ProductDetailContext.Provider value={{
-      productDetail,
-       openProductdetail,
-        closeProductdetail,
-        productToShow,
-        setProductToShow
-        }}>
+   
         <ShoppingCartContext.Provider value={state}>
           <ShoppingCartDispatchContext.Provider value={dispatch}>
-           
             {children}
-           
           </ShoppingCartDispatchContext.Provider>
         </ShoppingCartContext.Provider>
-      </ProductDetailContext.Provider>
+     
     );
 }
 

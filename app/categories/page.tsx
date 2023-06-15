@@ -1,5 +1,4 @@
 import { Card } from "../../components/Card"
-import { ProductDetail } from "../../components/ProductDetail"
 import { getAllProducts } from "../../services"
 
 
@@ -12,7 +11,7 @@ export default async function Categories() {
   {products.map((product: Product) => (
             <Card key={product.id} product={product}/>
         ))}
-        <ProductDetail/>
+        
     </div>
   )
 }
