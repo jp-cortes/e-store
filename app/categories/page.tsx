@@ -12,6 +12,7 @@ export default async function Categories() {
   {products.map((product: Product) => (
             <Card key={product.id} product={product}/>
         ))}
+        <ProductDetail/>
     </div>
   )
 }

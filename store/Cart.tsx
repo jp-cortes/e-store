@@ -19,17 +19,18 @@ export type ProductDetailState = {
   openProductdetail: Function;
   closeProductdetail: Function;
   productToShow: object;  
-  // setProductToShow: SetStateAction<Product>;  
+  setProductToShow: Dispatch<SetStateAction<Product>>;  
 };
 
 
 //ShoppingCart context
-const defaultShoppingCartState = {} as CartState;
+const defaultShoppingCartState = {} as CartState
 const ShoppingCartContext = createContext(defaultShoppingCartState);
 const ShoppingCartDispatchContext = createContext(
   (() => {}) as Dispatch<CartAction>
   );
-const ProductDetailContext = createContext(defaultProductDetailState);
+  const defaultProductDetailState = {} as ProductDetailState;
+export const ProductDetailContext = createContext(defaultProductDetailState);
 
 
 export function ShoppingCartProvider({ children }: { children: ReactNode }) {
@@ -44,20 +45,21 @@ export function ShoppingCartProvider({ children }: { children: ReactNode }) {
    const [productToShow, setProductToShow] = useState({});
 
    return(
-        <ShoppingCartContext.Provider value={{
-          state,
-          // productDetail,
-          // openProductdetail,
-          // closeProductdetail,
-          // // productToShow, 
-          // // setProductToShow,
-          }}>
+    <ProductDetailContext.Provider value={{
+      productDetail,
+       openProductdetail,
+        closeProductdetail,
+        productToShow,
+        setProductToShow
+        }}>
+        <ShoppingCartContext.Provider value={state}>
           <ShoppingCartDispatchContext.Provider value={dispatch}>
            
             {children}
            
           </ShoppingCartDispatchContext.Provider>
         </ShoppingCartContext.Provider>
+      </ProductDetailContext.Provider>
     );
 }
 
@@ -162,10 +164,3 @@ export function useShoppingCartMutations() {
   };
 };
 
-export function useProductDetail() {
- const productDetails = useContext(ProductDetailContext);
-
- return {
-  productDetails,
- }
-}

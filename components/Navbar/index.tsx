@@ -8,6 +8,7 @@ type Props = {}
 
 export function Navbar(props: Props) {
   const { count: shoppingCartCount }= useShoppingCart();
+  console.log(shoppingCartCount)
 
   return (
     <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>

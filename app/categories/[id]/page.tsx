@@ -21,7 +21,7 @@ export default async function Category(props: Props)  {
         {category.map((product: Product) => (
           <Card key={product.id} product={product}/>
         ))}
-      
+      <ProductDetail/>
     </div>
   )
 }

@@ -6,9 +6,9 @@ import { ProductDetail } from "../components/ProductDetail";
 export default function Home() {
   return (
     <div className="bg-white px-6">
-       <ProductDetail/>
       <GridHome/>
       <Carousel/>
+      {/* <ProductDetail/> */}
     </div>
   )
 }
