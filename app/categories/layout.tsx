@@ -4,6 +4,7 @@ import { Suspense } from 'react';
 
 const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
+  
     <Suspense>
       <div className="flex w-auto md:gap-3">
         <div className="mt-8">
@@ -13,6 +14,7 @@ const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
         
       </div>
     </Suspense>
+    
   );
 }
 

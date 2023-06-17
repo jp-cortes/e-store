@@ -15,7 +15,7 @@ export async function GridHome({}: Props) {
 
   return (
     <>
-    <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
+    <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 md:px-4 gap-2">
      <div
      className='bg-white cursor-pointer md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative'>
       <figure className="relative mb-2 w-full h-4/5">

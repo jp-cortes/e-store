@@ -1,10 +1,11 @@
 'use client'
 import { useParams } from "next/navigation";
 import { getProductsById } from "../../../services";
-import Image from "next/image";
 import { AddToCartButton } from "../../../components/Card/AddToCartButton";
 import { Suspense } from "react";
 import { RelatedProducts } from "../../../components/RelatedProducts";
+import Image from "next/image";
+
 
 type Props = {}
 
@@ -14,6 +15,7 @@ export default async function Product (props: Props) {
 console.log(product)
   return (
     <>
+   
     <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
       <div className='bg-white  md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative px-4'>
 
@@ -51,6 +53,7 @@ console.log(product)
     <Suspense>
       <RelatedProducts categoryId={product.categoryId}/>
     </Suspense>
+    
     </>
   )
 }

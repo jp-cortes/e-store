@@ -2,7 +2,7 @@
 
 import { ReactNode, createContext, Dispatch, useContext, useReducer } from 'react';
 
-export type CartItemType = Product & { quantity: number, price: number};
+export type CartItemType = Product & { quantity: number };
 
 export type CartState = {
   [key: string]: CartItemType;

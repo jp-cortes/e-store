@@ -2,13 +2,16 @@
 import { useShoppingCart } from "../../store/Cart";
 import Link from "next/link";
 import { ShoppingBagIcon } from '@heroicons/react/24/outline'
+import { ShoppingCart } from "../Cart";
+import { useState } from "react";
 
 
 
 type Props = {}
 
 export function Navbar(props: Props) {
-  const { count: shoppingCartCount }= useShoppingCart();
+  const [showMenu, setShowMenu] = useState(false);
+  const { count: shoppingCartCount } = useShoppingCart();
   console.log(shoppingCartCount)
 
   return (
@@ -41,7 +44,7 @@ export function Navbar(props: Props) {
         </li>
         <li className="relative">
              <button
-             onClick={() => {}}
+             onClick={() => setShowMenu((prevState) => !prevState)}
               className="m-0"           
                >
                 <ShoppingBagIcon  className="w-6 h-6"/>
@@ -56,6 +59,7 @@ export function Navbar(props: Props) {
                 }
               </div>
               }
+              <ShoppingCart showMenu={showMenu} setShowMenu={setShowMenu}/>
         </li>
       </ul>
       </nav>
