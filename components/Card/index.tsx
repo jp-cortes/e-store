@@ -1,8 +1,6 @@
 'use client'
 
 
-import { useContext } from "react";
-import { AddToCartButton } from "./AddToCartButton";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -30,7 +28,7 @@ export function Card({ product, isDetailsPage }:Props) {
             alt={product.name} width={224} height={224} />
             </Link>
 
-            <AddToCartButton product={product} isDetailsPage={false}/>
+            
         </figure>
         <p className='flex justify-between px-4'>
             <span className='text-sm font-semibold capitalize'>{product.name}</span>

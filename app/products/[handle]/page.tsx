@@ -1,7 +1,7 @@
 'use client'
 import { useParams } from "next/navigation";
 import { getProductsById } from "../../../services";
-import { AddToCartButton } from "../../../components/Card/AddToCartButton";
+import { AddToCartButton } from "../../../components/AddToCartButton";
 import { Suspense } from "react";
 import { RelatedProducts } from "../../../components/RelatedProducts";
 import Image from "next/image";
@@ -12,7 +12,7 @@ type Props = {}
 export default async function Product (props: Props) {
   const params = useParams();
   const product = await getProductsById(params.handle);
-console.log(product)
+console.log(product, 'product detail');
   return (
     <>
    
@@ -44,7 +44,7 @@ console.log(product)
             {product.description}.
           </p>
           <div className='mt-10'>
-            <AddToCartButton product={product} isDetailsPage={true}/>
+            <AddToCartButton product={product} />
           </div>
         </div>
       </div>

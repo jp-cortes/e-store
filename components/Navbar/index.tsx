@@ -1,9 +1,9 @@
 'use client'
 import { useShoppingCart } from "../../store/Cart";
-import Link from "next/link";
-import { ShoppingBagIcon } from '@heroicons/react/24/outline'
+import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { ShoppingCart } from "../Cart";
 import { useState } from "react";
+import Link from "next/link";
 
 
 
@@ -12,7 +12,7 @@ type Props = {}
 export function Navbar(props: Props) {
   const [showMenu, setShowMenu] = useState(false);
   const { count: shoppingCartCount } = useShoppingCart();
-  console.log(shoppingCartCount)
+  console.log(shoppingCartCount, 'navbar')
 
   return (
     <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>

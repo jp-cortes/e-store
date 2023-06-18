@@ -1,5 +1,5 @@
 'use client'
-
+import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
@@ -13,30 +13,20 @@ type Props = {
 }
 
 export function ShoppingCart({ showMenu, setShowMenu }: Props) {
+ //context
   const { items, subTotal } = useShoppingCart();
   const { removeFromShoppingCart, addToShoppingCart } = useShoppingCartMutations();
 
+  //state
   const [quantity, setQuantity] = useState(1);
   
   
-  
-  function validate(quantity: number) {
-      let error = "";
-      if (quantity < 1) error = "Can't be blank";
-  
-      return error;
-    };
-
+//add product to shoppingCart
   function  handleClick(product: Product) {
       addToShoppingCart(product, quantity);
       setQuantity(quantity);
-      console.log('added to cart' );
     };
 
-    function handleChange ({ target }: React.ChangeEvent<HTMLInputElement>) {
-      setQuantity(parseInt(target.value, 10));
-    }
-console.log(items)
 
   return (
     <div className={`${showMenu ? 'flex' : 'hidden' } w-[360px] h-[calc(100vh-68px)] top-[68px] flex-col fixed right-0 border border-black rounded-lg bg-white z-30 transition-all`}>
@@ -48,46 +38,79 @@ console.log(items)
             <XMarkIcon className='h-6 w-6 text-black'></XMarkIcon>
             </button>
         </div>
-        <div className='w-full'>
-        ShoppingCart
+        {items.length ?
+          <>
+        <div className='w-full h-2/3 px-4 overflow-auto'>
+        
         {items.map((item) => (
-            <div className=' flex ' key={item.id}>
+            <div className='' key={item.id}>
+              <p className='mb-2'>{item.name}</p>
+              <div className='flex justify-between mb-3'>
               <Image src={item.image} width="50" height="50" alt={item.name} />
+              <p className='text-base'> € {(item.price * item.quantity).toFixed(2)}</p>
+              </div>
+              
+              <div className='flex  px-4'>
+
+              <p className='w-[250px] pl-3 border border-gray-500'>{`${item.quantity}`}</p>
               <button
-                className=''
+              className='w-8 text-xl border border-gray-500'
+              type='button'
+              onClick={() => removeFromShoppingCart(item)}
+              >
+                -
+              </button>
+              <button
+              className='w-8 text-xl border border-gray-500'
+              type='button'               
                 onClick={() => handleClick(item)}
                 >
                 +
               </button>
-              <input 
-              onChange={handleChange}
-              type='number'
-              defaultValue={`${item.quantity}`}
-              min={1}
-              />
-              <button
-              type='button'
-                className=''
-                onClick={() => removeFromShoppingCart(item)}
-                >
-                ❌
-              </button>
-              {/* <p> Price: € {(item.price * item.quantity).toFixed(2)}</p> */}
+              </div>
             </div> 
           ))}
           
-          {items.length === 0 ? 
-          <div className=''><span>Your Cart is currently empty</span></div> : 
+        </div>
+          <div className='px-4'>
+
           
+
+          
+          <div className='border-t-2 border-b-2 border-black mt-3 py-2'>
+              <div className='flex justify-between'>
+              <p>Subtotal</p>
+              <p>€ {(subTotal).toFixed(2)}</p>
+              </div>
+              <div className='flex justify-between'>
+              <p>Taxes</p>
+              <p>€ 0,00</p>
+              </div>
+              <div className='flex justify-between'>
+              <p>Shipping</p>
+              <p>Calculated at checkout</p>
+              </div>
+          
+          </div>
+          <div className='flex justify-between'>
+              <p>Total</p>
+              <p>€ {(subTotal).toFixed(2)}</p>
+              </div>
         <Link 
          href='/my-order'
-         className='flex justify-center w-52 p-4 rounded-xl bg-black text-white font-medium'>
+         className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           CHECKOUT
         </Link>
+        </div>
+          </> :
+           
+           <div className='mx-auto flex justify-center items-center flex-col'>
+            <ShoppingBagIcon className='w-6 h-6'/>
+            <span className='text-xl font-semibold'>Your Cart is currently empty</span>
+            </div> 
          
           
           }
-        </div>
     </div>
   )
 }
