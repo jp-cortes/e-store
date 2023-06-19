@@ -23,7 +23,7 @@ export function Card({ product, isDetailsPage }:Props) {
             
             <Link href={`/products/${product.id}`}>
             <Image
-            className='w-full h-full object-cover rounded-lg' 
+            className='w-auto h-auto object-cover rounded-lg' 
             src={product.image} 
             alt={product.name} width={224} height={224} />
             </Link>

@@ -3,7 +3,6 @@ import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Dispatch, SetStateAction, useState } from 'react';
 import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
-import Link from 'next/link';
 import Image from 'next/image';
 
 
@@ -96,11 +95,11 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
               <p>Total</p>
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
-        <Link 
-         href='/my-order'
+        <button 
+         onClick={() => console.log('payment')}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
-          CHECKOUT
-        </Link>
+          Pay with Stripe
+        </button>
         </div>
           </> :
            

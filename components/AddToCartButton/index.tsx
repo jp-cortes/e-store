@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import { useShoppingCartMutations } from "../../store/Cart";
 import { PlusIcon, ShoppingCartIcon } from '@heroicons/react/24/outline'
 
@@ -17,8 +17,9 @@ export function AddToCartButton({ product }: Props) {
     
     
 
-    function  handleClick(e) {
-      e.stopPropagation();
+    function  handleClick() {
+      // e.stopPropagation();
+      // e.isPropagationStopped()
         addToShoppingCart(product, quantity);
         setQuantity(quantity);
         console.log('added to cart' );
@@ -28,7 +29,8 @@ export function AddToCartButton({ product }: Props) {
     <>
    
     <button 
-    onClick={(e) => handleClick(e)}
+    type='button'
+    onClick={() => handleClick()}
     className='flex justify-around w-52 p-4 rounded-xl bg-green-500 text-white font-medium'
     >
       ADD TO CART

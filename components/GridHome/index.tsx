@@ -1,8 +1,7 @@
 'use client'
 
 import Image from 'next/image';
-import { getProductsByCategoryName } from '../../services'
-// import { AddToCartButton } from '../Card/AddToCartButton';
+import { getAllProducts } from '../../services'
 import Link from 'next/link';
 
 
@@ -11,7 +10,7 @@ type Props = {}
 export async function GridHome({}: Props) {  
 
 
-  const products = await getProductsByCategoryName('sports');
+  const products = await getAllProducts();
 
   return (
     <>
@@ -31,7 +30,6 @@ export async function GridHome({}: Props) {
             />
           </Link>
 
-            {/* <AddToCartButton product={products[0]} isDetailsPage={false}/> */}
       </figure>
         <div className="absolute bottom-[120px] right-3 flex items-center justify-center flex-col">
               <div className="inline-flex bg-white p-4 text-lg font-semibold text-black rounded-xl ">
@@ -56,7 +54,6 @@ export async function GridHome({}: Props) {
             />
             </Link>
 
-            {/* <AddToCartButton product={products[1]} isDetailsPage={false}/> */}
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
               <div className="inline-flex bg-white p-4 text-lg font-semibold text-black rounded-xl">
@@ -81,7 +78,7 @@ export async function GridHome({}: Props) {
             />
             </Link>
 
-            {/* <AddToCartButton product={products[2]} isDetailsPage={false}/> */}
+  
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
               <div className="inline-flex bg-white p-4 text-lg font-semibold text-black rounded-xl">
