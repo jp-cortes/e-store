@@ -4,7 +4,7 @@ import { getProductsByCategoryId } from "../../services";
 import { Card } from "../Card"
 
 type Props = {
-  categoryId: string;
+  categoryId: number;
 }
 
 export async function RelatedProducts({ categoryId }: Props) {

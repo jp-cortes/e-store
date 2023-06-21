@@ -3,14 +3,21 @@
 import Image from 'next/image';
 import { getAllProducts } from '../../services'
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 
 type Props = {}
 
 export async function GridHome({}: Props) {  
-
-
   const products = await getAllProducts();
+
+
+// useEffect(() => {
+// async function fetchData() {
+
+// }
+// },[])
+
 
   return (
     <>

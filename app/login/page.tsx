@@ -2,53 +2,47 @@
 import { FormEvent, useRef } from 'react';
 import { useRouter } from 'next/navigation';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
+import { loginUser } from '../../services';
 import Link from 'next/link';
 
 type Props = {}
 
 export default function Login(props: Props) {
-  const emailRef = useRef(null);
+const emailRef = useRef(null);
 const passwordRef = useRef(null);
 
 const router = useRouter();
 
-const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+async function handleSubmit (e: FormEvent<HTMLFormElement>) {
   e.preventDefault();
   // @ts-ignore: Object is possibly 'null'.
   const email = emailRef.current.value;
   // @ts-ignore: Object is possibly 'null'.
   const password = passwordRef.current.value;
 
-  // auth.logIn(email, password).then(() => {
-  //   router.push('/dashboard');
-  // },
-  // (error) => {
-  //   console.log('failed Login');
-  //   console.error(error);
-  //   auth.setError('Invalid user or pasword');
-  // }
-  
-  // )
-  console.log(email, password);// todo create login
+ try {
+  await loginUser(email, password);
+ } catch (error) {
+  console.log(error);
+ }
+  // console.log(email, password);// todo create login
 }
 return (
     
     
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div>
             <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">E-store</h1>
+          <div>
             <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-            <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
                 <label htmlFor="email-address" className="sr-only">
                   Email address
                 </label>
                 <input
-                  id="email-address"
                   name="email"
                   type="email"
                   autoComplete="email"
@@ -63,10 +57,8 @@ return (
                   Password
                 </label>
                 <input
-                  id="password"
                   name="password"
                   type="password"
-                  autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
@@ -103,6 +95,7 @@ return (
             </div>
           </form>
           <button
+          onClick={() => router.push('/sign-up')}
                 type="button"
                 className="group relative w-full flex justify-center py-2 px-4 border text-sm font-medium rounded-md bg-white text-green-500 border-green-500 hover:border-green-700  hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >

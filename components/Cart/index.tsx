@@ -2,8 +2,11 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
+import { CartItemType, useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
 import Image from 'next/image';
+import { getStripe } from '../../store/getStripe';
+import { getTokenFromCookies } from '../../services/cookies';
+import { useRouter } from 'next/router';
 
 
 type Props = {
@@ -18,13 +21,47 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
 
   //state
   const [quantity, setQuantity] = useState(1);
-  
+  // hook 
+  const router = useRouter();
   
 //add product to shoppingCart
   function  handleClick(product: Product) {
       addToShoppingCart(product, quantity);
       setQuantity(quantity);
     };
+
+    //this function checks if the user already login
+    // if true procced to pay else redirect to login page
+    async function handleValidation() {
+      const tokenFromCookies = getTokenFromCookies();
+      if (!tokenFromCookies) {
+        router.push('/login');
+      } else {
+        return await checkout();
+      }
+    }
+    async function checkout() {
+      
+      const stripe =  await getStripe();
+  
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
+        headers : {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(items),
+      });
+  
+      if(response.status === 500) return;
+  
+      const data = await response.json();
+     
+      
+    
+     const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+     console.warn(error);
+    }
+    
 
 
   return (
@@ -96,7 +133,7 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
         <button 
-         onClick={() => console.log('payment')}
+         onClick={handleValidation}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>

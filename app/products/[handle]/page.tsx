@@ -2,16 +2,24 @@
 import { useParams } from "next/navigation";
 import { getProductsById } from "../../../services";
 import { AddToCartButton } from "../../../components/AddToCartButton";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { RelatedProducts } from "../../../components/RelatedProducts";
 import Image from "next/image";
 
 
-type Props = {}
 
-export default async function Product (props: Props) {
+
+export default async function Product () {
   const params = useParams();
-  const product = await getProductsById(params.handle);
+  const [product, setProduct] = useState<Product>({} as Product);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getProductsById(params.handle);
+      return setProduct(response);
+    }
+    fetchData();
+  }, [params.handle])
 console.log(product, 'product detail');
   return (
     <>

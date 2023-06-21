@@ -1,3 +1,4 @@
+import { StringifyOptions } from "querystring";
 
 
 const API = process.env.NEXT_PUBLIC_API_URL;
@@ -15,10 +16,10 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   customers:{
     getUsers: `${API}/api/${VERSION}/customers`,
     postUsers: `${API}/api/${VERSION}/customers`,
+    profile: (id: number) => `${API}/api/${VERSION}/customers/${id}`
   },  
   users: {
-    login: `${API}/api/${VERSION}/auth/login`,
-    profile: `${API}/api/${VERSION}/auth/profile`
+    login: `${API}/api/${VERSION}/auth/login`
   },
   categories:{
     getCategories: `${API}/api/${VERSION}/categories`,
@@ -29,7 +30,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   },
   files:{
     postFiles: `${API}/api/${VERSION}/files/upload`,
-    getFiles: (fileName) => `${API}/api/${VERSION}/${fileName}`
+    // getFiles: (fileName) => `${API}/api/${VERSION}/${fileName}`
   }
   
 }
