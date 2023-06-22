@@ -1,7 +1,7 @@
 import { endPoints } from "./endPoints";
 
 export async function getCategories(): Promise<Category[]> {
-    const res = await fetch(`${endPoints.categories.getCategories}`);
+    const res = await fetch(`${endPoints.categories.getCategories}`, { cache: 'no-store' });
     const data = await res.json();
     return  data;
   }

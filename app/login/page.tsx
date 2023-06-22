@@ -22,6 +22,7 @@ async function handleSubmit (e: FormEvent<HTMLFormElement>) {
 
  try {
   await loginUser(email, password);
+  router.push('/');
  } catch (error) {
   console.log(error);
  }

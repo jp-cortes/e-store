@@ -27,16 +27,16 @@ export function Navbar(props: Props) {
         </li>
       </ul>
       <ul className='hidden md:flex item-center gap-3 relative'>
-        <li>
+        {/* <li>
           <Link
           className='hover:underline underline-offset-4' 
           href='/my-orders'>My Orders</Link>
-        </li>
+        </li> 
         <li>
           <Link
           className='hover:underline underline-offset-4' 
           href='/my-account'>My Account</Link>
-        </li>
+        </li>*/}
         <li>
           <Link
           className='hover:underline underline-offset-4' 

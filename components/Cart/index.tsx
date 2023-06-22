@@ -2,11 +2,10 @@
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import { Dispatch, SetStateAction, useState } from 'react';
-import { CartItemType, useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
+import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
 import Image from 'next/image';
-import { getStripe } from '../../store/getStripe';
-import { getTokenFromCookies } from '../../services/cookies';
-import { useRouter } from 'next/router';
+import { validateToken } from '../../utils/cookies';
+import { useRouter } from 'next/navigation';
 
 
 type Props = {
@@ -31,37 +30,13 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
     };
 
     //this function checks if the user already login
-    // if true procced to pay else redirect to login page
-    async function handleValidation() {
-      const tokenFromCookies = getTokenFromCookies();
-      if (!tokenFromCookies) {
-        router.push('/login');
-      } else {
-        return await checkout();
-      }
+
+    function handleValidation() {
+      const tokenFromCookies = validateToken( router, '/login', '/my-order');
+      setShowMenu((prevState) => !prevState);
+      return tokenFromCookies;
     }
-    async function checkout() {
-      
-      const stripe =  await getStripe();
-  
-      const response = await fetch('/api/stripe', {
-        method: 'POST',
-        headers : {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(items),
-      });
-  
-      if(response.status === 500) return;
-  
-      const data = await response.json();
-     
-      
-    
-     const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-     console.warn(error);
-    }
-    
+   
 
 
   return (
@@ -109,10 +84,6 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
           
         </div>
           <div className='px-4'>
-
-          
-
-          
           <div className='border-t-2 border-b-2 border-black mt-3 py-2'>
               <div className='flex justify-between'>
               <p>Subtotal</p>
@@ -135,7 +106,7 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
         <button 
          onClick={handleValidation}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
-          Pay with Stripe
+          Proceed to Checkout
         </button>
         </div>
           </> :

@@ -22,4 +22,8 @@ declare global {
         }
 
     type Products = Product[];
+    
+    type Ctx = {
+        req: NextApiRequest;
+        };
 }
