@@ -15,13 +15,13 @@ export function Card({ product, isDetailsPage }:Props) {
 
   return (
    <>
-    <div className='bg-white cursor-pointer w-56 h-60 rounded-lg mx-auto'>
-        <figure className="relative mb-2 w-full h-4/5">
-           {isDetailsPage ? <></> : <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>
+    <div className='bg-white cursor-pointer w-56 h-60 rounded-lg mx-auto border-b-4 border-solid border-green-600 hover:border-red-500'>
+        <figure className="relative mb-2 w-full h-auto">
+           {isDetailsPage ? <></> : <span className='absolute bottom-2 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>
             {product.category.name}</span>
             }
             
-            <Link href={`/products/${product.id}`}>
+            <Link href={`/products/${product.id}-${product.name}`}>
             <Image
             className='w-auto h-auto object-cover rounded-lg' 
             src={product.image} 

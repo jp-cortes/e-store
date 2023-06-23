@@ -1,14 +1,17 @@
-import { getTokenFromCookies } from "../../utils/cookies";
+import Cookie  from 'js-cookie';
 import { endPoints } from "./endPoints";
 
-export async function getCustomerbyId(id: number) {
-const tokenFromCookies = getTokenFromCookies();
-if (!tokenFromCookies) {
-    throw new Error('Token not found in cookies');
-  }
+
+export async function getCustomerbyId(id: string) {
+  const token = Cookie.get('token');
+  // const userId = Cookie.get('userId');
+  // if (!token && !userId) {
+  //   return router.push('/login');
+  // }
     // Set the Authorization header with the token
+
     const headers = {
-        Authorization: `Bearer ${tokenFromCookies}`
+        Authorization: `Bearer ${token}`
       };
       
 const response = await fetch(`${endPoints.customers.profile(id)}`, {

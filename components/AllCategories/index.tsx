@@ -1,12 +1,20 @@
-import { Suspense } from 'react';
+'use client'
+import { Suspense, useState, useEffect } from 'react';
 import { getCategories } from '../../services';
-import clsx from 'clsx';
 import Link from 'next/link';
 
 
 
 async function Categories() {
-  const categories = await getCategories();
+  const [categories, setCategories] = useState<Category[]>([] as Category[])
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const response = await getCategories();
+      return setCategories(response);
+    }
+fetchCategories();
+  }, []);
 
   // console.log(categories)
   

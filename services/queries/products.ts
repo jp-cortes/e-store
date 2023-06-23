@@ -6,7 +6,7 @@ export async function getAllProducts(): Promise<Products> {
     return  data;
   }
 
-export async function getProductsById(id: string): Promise<Products> {
+export async function getProductsById(id: string): Promise<Product> {
     const res = await fetch(`${endPoints.products.getProduct(id)}`, { cache: 'no-store' });
     const data = await res.json();
     return  data;

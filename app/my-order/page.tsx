@@ -11,7 +11,7 @@ import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 
 
 
-export default async function MyOrder() {
+export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
     const { removeFromShoppingCart, addToShoppingCart } = useShoppingCartMutations();

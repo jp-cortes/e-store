@@ -16,7 +16,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   customers:{
     getUsers: `${API}/api/${VERSION}/customers`,
     postUsers: `${API}/api/${VERSION}/customers`,
-    profile: (id: number) => `${API}/api/${VERSION}/customers/${id}`
+    profile: (id: string) => `${API}/api/${VERSION}/customers/${id}`
   },  
   users: {
     login: `${API}/api/${VERSION}/auth/login`

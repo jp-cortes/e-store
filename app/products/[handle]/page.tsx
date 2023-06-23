@@ -12,15 +12,17 @@ import Image from "next/image";
 export default async function Product () {
   const params = useParams();
   const [product, setProduct] = useState<Product>({} as Product);
-
+  const productID = params.handle.split("-")[0]; //get the genre code
+  
+  console.log(productID)
   useEffect(() => {
     async function fetchData() {
-      const response = await getProductsById(params.handle);
+      const response = await getProductsById(productID);
       return setProduct(response);
     }
     fetchData();
-  }, [params.handle])
-console.log(product, 'product detail');
+  }, [params.handle]);
+
   return (
     <>
    

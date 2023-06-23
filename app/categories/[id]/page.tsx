@@ -4,14 +4,21 @@
 import { useParams } from 'next/navigation'
 import { Card } from "../../../components/Card"
 import { getProductsByCategoryName } from '../../../services'
-import { Suspense } from 'react'
+import { Suspense, useEffect, useState } from 'react'
 
 type Props = {}
 
 export default async function Category(props: Props)  {
+  const [category, setCategory] = useState<Products>([] as Products);
   const params = useParams();
-  const category = await getProductsByCategoryName(`${params.id}`);
-
+  
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getProductsByCategoryName(`${params.id}`);
+      return setCategory(response);
+    }
+    fetchData();
+  }, [params.id]);
 
 
   
