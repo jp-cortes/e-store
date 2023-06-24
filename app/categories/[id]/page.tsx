@@ -3,7 +3,7 @@
 
 import { useParams } from 'next/navigation'
 import { Card } from "../../../components/Card"
-import { getProductsByCategoryName } from '../../../services'
+import { getProductsByCategoryId } from '../../../services'
 import { Suspense, useEffect, useState } from 'react'
 
 type Props = {}
@@ -11,14 +11,15 @@ type Props = {}
 export default async function Category(props: Props)  {
   const [category, setCategory] = useState<Products>([] as Products);
   const params = useParams();
+  const productID = params.handle.split("-")[0]; //get the genre code
   
   useEffect(() => {
     async function fetchData() {
-      const response = await getProductsByCategoryName(`${params.id}`);
+      const response = await getProductsByCategoryId(`${productID}`);
       return setCategory(response);
     }
     fetchData();
-  }, [params.id]);
+  }, [productID]);
 
 
   

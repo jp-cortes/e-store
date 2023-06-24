@@ -24,7 +24,7 @@ fetchCategories();
         {categories.map((category: Category) => (
             <Link 
             className='mt-4 font-semibold capitalize'
-            key={category.id} href={`/categories/${category.name}`}>
+            key={category.id} href={`/categories/${category.id}-${category.name}`}>
                   {category.name}
               </Link>
           

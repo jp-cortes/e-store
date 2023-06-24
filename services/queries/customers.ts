@@ -2,13 +2,9 @@ import Cookie  from 'js-cookie';
 import { endPoints } from "./endPoints";
 
 
-export async function getCustomerbyId(id: string) {
+export async function getCustomerbyId(id: string): Promise<Customer> {
   const token = Cookie.get('token');
-  // const userId = Cookie.get('userId');
-  // if (!token && !userId) {
-  //   return router.push('/login');
-  // }
-    // Set the Authorization header with the token
+    //Set the Authorization header with the token
 
     const headers = {
         Authorization: `Bearer ${token}`

@@ -26,4 +26,14 @@ declare global {
     type Ctx = {
         req: NextApiRequest;
         };
+
+    type Customer = {
+    id: number;
+    name: string;
+    lastName: string;
+    phone: string;
+    avatar: string;
+    createdAt: string;
+    userId: number;
+  }
 }
