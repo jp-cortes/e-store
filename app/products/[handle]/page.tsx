@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { getProductsById } from "../../../services";
 import { AddToCartButton } from "../../../components/AddToCartButton";
-import { Suspense, useEffect, useState } from "react";
+import { Suspense } from "react";
 import { RelatedProducts } from "../../../components/RelatedProducts";
 import Image from "next/image";
 
@@ -11,18 +11,10 @@ import Image from "next/image";
 
 export default async function Product () {
   const params = useParams();
-  const [product, setProduct] = useState<Product>({} as Product);
   const productID = params.handle.split("-")[0]; //get the genre code
   
-  console.log(productID)
-  useEffect(() => {
-    async function fetchData() {
-      const response = await getProductsById(productID);
-      return setProduct(response);
-    }
-    fetchData();
-  }, [params.handle]);
-
+  const dynamicData = await getProductsById(productID);
+  
   return (
     <>
    
@@ -33,35 +25,35 @@ export default async function Product () {
       <figure className="relative mt-5 mb-2w-full h-4/5">
         <Image
         className='w-full h-full object-cover rounded-lg' 
-        src={product.image}
+        src={dynamicData.image}
         width={640}
         height={480}
-        alt={product.name}
+        alt={dynamicData.name}
            />
       </figure>
       <div className="absolute bottom-[120px] right-5 flex items-center justify-center flex-col">
               <div className="inline-flex bg-white p-4 text-lg font-semibold text-black rounded-xl ">
-                {product.name}
+                {dynamicData.name}
               </div>
               <div className="inline-flex bg-white px-2 text-lg mt-2 font-semibold text-black rounded-lg">
-                ${product.price}
+                ${dynamicData.price}
               </div>
           </div>
       </div>
       <div className='bg-white md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-5  rounded-lg relative mt-7'>
         <div className='flex flex-col items-center relative mt-10 px-2'>
           <p className='text-justify text-xl'>
-            {product.description}.
+            {dynamicData.description}.
           </p>
           <div className='mt-10'>
-            <AddToCartButton product={product} />
+            <AddToCartButton product={dynamicData} />
           </div>
         </div>
       </div>
 
     </div>
     <Suspense>
-      <RelatedProducts categoryId={product.categoryId}/>
+      <RelatedProducts categoryId={dynamicData.categoryId}/>
     </Suspense>
     
     </>

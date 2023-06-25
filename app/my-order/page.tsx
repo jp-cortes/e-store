@@ -62,9 +62,9 @@ export default  function MyOrder() {
   return (
     <div className='mx-auto'>
       <div className='w-full flex-1 px-4 overflow-auto relative'>
-      <Link href='/my-orders' className='absolute left-0'>
+      {/* <Link href='/my-orders' className='absolute left-0'>
           <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
-        </Link>
+        </Link> */}
         <h1 className='text-center mb-8 font-semibold'>My Order</h1>
         {items.map((item) => (
             <div className='' key={item.id}>

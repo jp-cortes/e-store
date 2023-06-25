@@ -8,14 +8,14 @@ import { getAllProducts } from "../../services"
 
 
 export default async function Categories() {
-  const products = await getAllProducts();
+  const dynamicData = await getAllProducts();
   
   return (
     
     <div className='grid lg:grid-cols-3 gap-4 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
       <Suspense>
 
-        {products.map((product: Product) => (
+        {dynamicData.map((product: Product) => (
           <Card key={product.id} product={product} isDetailsPage={false}/>
           ))}
         

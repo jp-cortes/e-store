@@ -22,7 +22,7 @@ async function handleSubmit (e: FormEvent<HTMLFormElement>) {
 
  try {
   await loginUser(email, password);
-  router.push('/');
+  router.push('/my-account');
  } catch (error) {
   console.log(error);
  }
@@ -77,7 +77,7 @@ return (
               </div>
 
               <div className="text-sm">
-                <Link href="/reset" className="font-medium text-green-700 hover:text-green-600">
+                <Link href="/reset-password" className="font-medium text-green-700 hover:text-green-600">
                   Forgot your password?
                 </Link>
               </div>

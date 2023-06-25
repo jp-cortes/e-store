@@ -11,16 +11,9 @@ type Props = {}
 export default async function Category(props: Props)  {
   const [category, setCategory] = useState<Products>([] as Products);
   const params = useParams();
-  const productID = params.handle.split("-")[0]; //get the genre code
-  
-  useEffect(() => {
-    async function fetchData() {
-      const response = await getProductsByCategoryId(`${productID}`);
-      return setCategory(response);
-    }
-    fetchData();
-  }, [productID]);
-
+  const productID = params.id.split("-")[0]; //get the genre code
+    
+  const dynamicData = await getProductsByCategoryId(`${productID}`);
 
   
  return (
@@ -28,7 +21,7 @@ export default async function Category(props: Props)  {
     <div className='grid lg:grid-cols-3 gap-4 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
       <Suspense>
 
-        {category.map((product: Product) => (
+        {dynamicData.map((product: Product) => (
           <Card key={product.id} product={product} isDetailsPage={false}/>
           ))}
       </Suspense>

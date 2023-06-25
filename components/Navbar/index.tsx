@@ -31,17 +31,17 @@ export function Navbar(props: Props) {
           <Link
           className='hover:underline underline-offset-4' 
           href='/my-orders'>My Orders</Link>
-        </li> 
+        </li> */}
         <li>
           <Link
           className='hover:underline underline-offset-4' 
           href='/my-account'>My Account</Link>
-        </li>*/}
-        <li>
+        </li>
+        {/* <li>
           <Link
           className='hover:underline underline-offset-4' 
           href='/login'>Sign in</Link>
-        </li>
+        </li> */}
         <li className="relative">
              <button
              onClick={() => setShowMenu((prevState) => !prevState)}

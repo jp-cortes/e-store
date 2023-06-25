@@ -6,10 +6,12 @@ import Link from 'next/link';
 import { useEffect } from 'react';
 
 
-type Props = {}
+type Props = {
+  products: Products
+}
 
-export async function GridHome({}: Props) {  
-  const products = await getAllProducts();
+export async function GridHome({ products }: Props) {  
+  const dynamicData = await getAllProducts();
 
 
 // useEffect(() => {
