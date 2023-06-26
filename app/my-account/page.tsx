@@ -2,52 +2,83 @@
 'use client'
 import Cookie  from 'js-cookie';
 import { useRouter } from "next/navigation";
-import { getCustomerbyId } from "../../services/queries/customers";
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { UpdateCustomer, getCustomerbyId } from "../../services";
+import { ChangeEvent, FormEvent, useState } from "react";
 import Image from 'next/image';
 
 
+
 export default async function MyAccount() {
-  const [user, setUser] = useState({} as Customer);
-  const [updateProfile, setUpdateProfile] = useState(false);
-  const [name, setName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+//states
+  const [updateProfile, setUpdateProfile] = useState(false);// handle the visivility of the form taht update  user info
+  const [name, setName] = useState('');//user name
+  const [lastName, setLastName] = useState('');//user lastName
+  const [phoneNumber, setPhoneNumber] = useState('');// user phone
+  const [file, setFile] = useState<Blob | string>('');// user image or avatar
 
-
+//cookies
   const userId = Cookie.get('userId');
   const token = Cookie.get('token');
   const router = useRouter();
 
- 
+  // if there is no token will re direct to login page
+  if(!token) {
+    return router.push('/login');
+  }
 
-  useEffect(() => { 
-  async function fetchData() {
-  const dynamicData = await getCustomerbyId(`${userId}`);
-  return setUser(dynamicData);
-}
-fetchData();
-}, []);
-
-if(!token) {
-  return router.push('/login');
-}
-
+  // render the user info
+  const user = await getCustomerbyId(`${userId}`);
+  
+  // handle user log out 
  function handleLogout() {
         //delete the token stored in cookies
       // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
       document.cookie='token=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
       document.cookie='userId=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
-      // then will retun the user to the login page
-     return location.reload();   
+      
+     return location.reload();// then will reload retun the user to the login page
  }
 
- function handleSubmit(e: FormEvent<HTMLFormElement>) {
-  e.preventDefault()
-  console.log('update profile');
- }
+ 
 
-  console.log(user, ' user ')
+ async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+      e.preventDefault();
+    const updatedUser = {
+        name: name || user?.name,
+        lastName: lastName || user?.lastName,
+        phoneNumber: phoneNumber || user?.phone,
+        avatar: user?.avatar,
+    }
+    
+    
+    try {   
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", "e_store");
+      if(!data) {
+        //if data is not an empty object
+        //mean if there is a new image will be updated
+        const response = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}`, {
+          method: 'POST',
+          body: data
+        });
+        
+        const dataFromCloud = await response.json();
+        console.log(dataFromCloud, 'uploaded image');
+    
+      const { url } = dataFromCloud;
+      updatedUser.avatar  = url;
+    
+    }
+    //  if there is no new image will be the same by default
+    await UpdateCustomer(`${userId}`, updatedUser)// Todo review logic of updated user
+      // location.reload();//reload the page if the product is updated
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+}
  
 
   return (
@@ -66,7 +97,10 @@ if(!token) {
         <div className=' gap-4'>
           <figure className='my-5'>
             <Image className='rounded-full'
-            src={user.avatar} width={100} height={100} alt='user-avatar'/>
+            src={user.avatar} 
+            width={80}
+            height={80}
+            alt='user-avatar'/>
           </figure>
           <div className=''>
             <p className='my-5 font-light text-gray-700 capitalize'><b>Name: </b>{user.name}</p>
@@ -81,19 +115,17 @@ if(!token) {
         </div>
       </div>
 
-      {updateProfile && 
-      <div className='relative md:col-start-2 md:col-end-3 justify-self-center'>
-        
-
       
+      <div className={`${updateProfile ? 'grid' : 'hidden' } relative md:col-start-2 md:col-end-3 justify-self-center`}>
+   
         <form
         className=''
         onSubmit={handleSubmit}>
-          <figure className='my-5'>
-            <Image className='rounded-full'
-             src={user.avatar} width={100} height={100} alt='user-avatar'/>
-          </figure>
           <div className='flex flex-col '>
+          <label htmlFor='avatar'>Avatar</label>
+         <input className='my-4' type='file' placeholder='Upload a Picture' name='avatar'
+         onChange={(e: ChangeEvent<HTMLInputElement>) =>  setFile(e.target.files[0])}
+         />
             <label htmlFor='name'>Name</label>
             <input name='name' className='my-4 w-40 border-2 border-gray-600 pl-2 py-2 rounded-lg font-light text-black focus:outline-emerald-500 focus:outline-2'
             onChange={(e: ChangeEvent<HTMLInputElement>) => setName(e.target.value)} 
@@ -111,17 +143,18 @@ if(!token) {
           </div>
          <div 
          className='flex'>
+           <button className='w-32 p-2 bg-red-500 mx-4 rounded-md text-white font-semibold'
+           onClick={() => setUpdateProfile((prevState) => !prevState)}
+           type='button'
+           >Cancel</button>
+         
          <button
          className='w-32 p-2 bg-green-400 mx-4 rounded-md font-semibold'
           type='submit'
           >Edit</button>
-          <button className='w-32 p-2 bg-red-500 mx-4 rounded-md text-white font-semibold'
-          onClick={() => setUpdateProfile((prevState) => !prevState)}
-          type='button'
-          >Cancel</button>
          </div>
         </form>
-      </div>}
+      </div>
 
     </div>
     

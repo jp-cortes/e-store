@@ -1,5 +1,3 @@
-'use client'
-import { useParams } from "next/navigation";
 import { getProductsById } from "../../../services";
 import { AddToCartButton } from "../../../components/AddToCartButton";
 import { Suspense } from "react";
@@ -9,9 +7,9 @@ import Image from "next/image";
 
 
 
-export default async function Product () {
-  const params = useParams();
-  const productID = params.handle.split("-")[0]; //get the genre code
+export default async function Product ({ params: { handle } } : { params: { handle: string }}) {
+
+  const productID = handle.split("-")[0]; //get the id from params
   
   const dynamicData = await getProductsById(productID);
   
@@ -27,7 +25,7 @@ export default async function Product () {
         className='w-full h-full object-cover rounded-lg' 
         src={dynamicData.image}
         width={640}
-        height={480}
+        height={400}
         alt={dynamicData.name}
            />
       </figure>

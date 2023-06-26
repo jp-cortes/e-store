@@ -3,18 +3,24 @@
 import { FormEvent, useRef, useState } from "react";
 import { sendRecoveryEmail } from "../../services";
 import { useRouter } from "next/navigation";
-import { EnvelopeIcon } from "@heroicons/react/24/outline";
 
-export default function ResetPassword() {
-  const [emailSent, setEmailSent] = useState(false);
-  const emailRef = useRef(null);
+export default function RecoveryPassword() {
+  //state
+  const [passwordChanged, setPasswordChanged] = useState(false);
+  const [error, setError] = useState(false);
+  
+  //hooks
+  const passwordRef = useRef(null);
+  const VerifyPasswordRef = useRef(null);
 
   const router = useRouter();
 
   async function handleSubmit (e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     // @ts-ignore: Object is possibly 'null'.
-    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+     // @ts-ignore: Object is possibly 'null'.
+    const password2 = VerifyPasswordRef.current.value;
 
   //  try {
   //   await sendRecoveryEmail(email);
@@ -22,9 +28,18 @@ export default function ResetPassword() {
   //  } catch (error) {
   //   console.log(error);
   //  }
-    setEmailSent(true);
-    console.log(email, 'email sent');
-    router.refresh()
+
+
+  if(password === password2) {
+
+
+  setPasswordChanged(true);
+  setTimeout(() => {
+    router.push('/login');
+  },2000) 
+  } else {
+    setError(true);
+  }
 
   }
   return (
@@ -36,41 +51,56 @@ export default function ResetPassword() {
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
-              <div className={`${emailSent ? 'hidden' : 'block'}`}>
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
+              <div>
+                <label htmlFor="password" className="sr-only">
+                  Password
                 </label>
                 <input
-                  name="email"
-                  type="email"
-                  autoComplete="email"
+                  name="password"
+                  type="password"
+                  autoComplete="password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                  ref={emailRef}
+                  placeholder="New password"
+                  ref={passwordRef}
+                />
+              </div>
+              <div>
+                <label htmlFor="verify-password" className="sr-only">
+                  Verify Password
+                </label>
+                <input
+                  name="verify-password"
+                  type="password"
+                  autoComplete="password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Verify password"
+                  ref={VerifyPasswordRef}
                 />
               </div>
              
             </div>
 
 
-            <div className={`${emailSent ? 'hidden' : 'block'}`}>
+            <div>
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Send Email
+                Update Password
               </button>
             </div>
           </form>
-          <div className={`${emailSent ? 'grid' : 'hidden'} w-32 h-32 rounded-full bg-gray-200 mx-auto place-content-center`}>
-          <EnvelopeIcon className=" h-20 w-20"/>
-          </div>
           {
-          emailSent 
+          passwordChanged 
           && <p className="text-center text-lg font-semibold text-green-700 animate-pulse">
-            Email Sent successfully! <br/> Please Verify your inbox or spam folder
-            </p>
+            Password updated successfully! Please Login to your account</p>
+            }
+          {
+          error 
+          && <p className="text-center text-lg font-semibold text-red-700 animate-pulse">
+            Paswords do not match! Please try again</p>
             }
      </div>
       </div>

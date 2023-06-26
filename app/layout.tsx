@@ -1,7 +1,6 @@
 import { ReactNode, Suspense } from 'react';
 import { Navbar } from '../components/Navbar';
 import { ShoppingCartProvider } from '../store/Cart';
-import { Footer } from '../components/Footer';
 import { Inter } from 'next/font/google'
 import './globals.css';
 
@@ -31,7 +30,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <Suspense>
             <main className='mt-[68px] grid items-center'>{children}</main>
           </Suspense>
-          <Footer/>
+      
          </ShoppingCartProvider>
         
       </body>

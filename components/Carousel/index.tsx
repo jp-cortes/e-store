@@ -1,16 +1,15 @@
 'use client'
 
 import Link from 'next/link';
-import { getProductsByCategoryName } from '../../services';
+import { getProductsByCategoryId, getProductsByCategoryName } from '../../services';
 import Image from 'next/image';
 
 
 export async function Carousel() {
 
  
-  const products = await getProductsByCategoryName('home');
+  const products = await getProductsByCategoryId('10');
 
-  if (!products?.length) return null;
 
   return (
     <>
@@ -29,7 +28,7 @@ export async function Carousel() {
               sizes="33vw"
               src={product.image}
               />
-              <span className='absolute bottom-[20px] left-[80px] bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{product.category.name}</span>
+              {/* <span className='absolute bottom-[20px] left-[80px] bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{product.category.name}</span> */}
       
              
             <div className="absolute bottom-4 right-0 flex items-center justify-center flex-col">

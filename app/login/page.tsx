@@ -5,9 +5,9 @@ import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
 import Link from 'next/link';
 
-type Props = {}
 
-export default function Login(props: Props) {
+
+export default function Login() {
 const emailRef = useRef(null);
 const passwordRef = useRef(null);
 

@@ -57,7 +57,7 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
             <div className='' key={item.id}>
               <p className='mb-2'>{item.name}</p>
               <div className='flex justify-between mb-3'>
-              <Image src={item.image} width="50" height="50" alt={item.name} />
+              <Image src={item.image} width={60} height={60} alt={item.name} />
               <p className='text-base'> € {(item.price * item.quantity).toFixed(2)}</p>
               </div>
               

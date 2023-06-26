@@ -36,4 +36,5 @@ declare global {
     createdAt: string;
     userId: number;
   }
+   
 }

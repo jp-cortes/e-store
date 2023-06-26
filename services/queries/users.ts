@@ -30,4 +30,23 @@ export async function loginUser(email: string, password: string) {
       return data;
 }
 
- 
+
+export async function sendRecoveryEmail(email: string) {
+  
+    const response = await fetch(`${endPoints.users.resetPassword}`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+      
+        //make sure to serialize your JSON body
+        body: JSON.stringify({
+          email: email,
+        })
+      })
+      const data = await response.json();
+      return data;
+}
+
+

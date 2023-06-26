@@ -1,9 +1,8 @@
 'use client'
 
 import Image from 'next/image';
-import { getAllProducts } from '../../services'
 import Link from 'next/link';
-import { useEffect } from 'react';
+
 
 
 type Props = {
@@ -11,14 +10,6 @@ type Props = {
 }
 
 export async function GridHome({ products }: Props) {  
-  const dynamicData = await getAllProducts();
-
-
-// useEffect(() => {
-// async function fetchData() {
-
-// }
-// },[])
 
 
   return (
