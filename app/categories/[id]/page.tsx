@@ -15,6 +15,7 @@ export default async function Category({ params: { id } } : { params: { id: stri
   
  return (
   
+   <>
     <div className='grid lg:grid-cols-3 gap-4 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
       <Suspense>
 
@@ -22,8 +23,9 @@ export default async function Category({ params: { id } } : { params: { id: stri
           <Card key={product.id} product={product} isDetailsPage={false}/>
           ))}
       </Suspense>
-        <Footer/>
     </div>
+   
+   </>
   )
 }
 

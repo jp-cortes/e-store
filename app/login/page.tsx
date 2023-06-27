@@ -4,6 +4,7 @@ import { useRouter } from 'next/navigation';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 
@@ -30,7 +31,8 @@ async function handleSubmit (e: FormEvent<HTMLFormElement>) {
 }
 return (
     
-    
+<div className='grid grid-cols-1 md:grid-cols-2'>
+   <Image src='' width='100' height='100' alt=''/>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
             <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">E-store</h1>
@@ -103,29 +105,11 @@ return (
               
                 Sign Up
               </button>
-                  {/* {auth.error ? 
-                <div className='pt-4 pb-4 mb-4 flex justify-center bg-red-300 rounded'>
-                  <span className='font-bold'>
-                    Login failed! {auth.error}
-                    </span>
-                </div> : null
-                  } */}
+              
      </div>
       </div>
+ </div>
     
     
   )
 }
-
-
-
-
-
-// export default function Login(props: Props) {
-
-//   return (
-    
-    
-      
-//   )
-// }

@@ -23,7 +23,7 @@ export function Navbar(props: Props) {
         <li>
           <Link
           className=' hover:underline underline-offset-4'
-          href='/categories'>All</Link>
+          href='/categories'>All Products</Link>
         </li>
       </ul>
       <ul className='hidden md:flex item-center gap-3 relative'>
@@ -34,7 +34,7 @@ export function Navbar(props: Props) {
         </li> */}
         <li>
           <Link
-          className='hover:underline underline-offset-4' 
+          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:underline underline-offset-4' 
           href='/my-account'>My Account</Link>
         </li>
         {/* <li>

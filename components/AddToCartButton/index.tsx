@@ -31,7 +31,7 @@ export function AddToCartButton({ product }: Props) {
     <button 
     type='button'
     onClick={() => handleClick()}
-    className='flex justify-around w-52 p-4 rounded-xl bg-green-500 text-white font-medium'
+    className='flex justify-around w-52 p-4 rounded-xl bg-green-700 text-white font-medium'
     >
       ADD TO CART
     <ShoppingCartIcon className="w-6 h-6"/>

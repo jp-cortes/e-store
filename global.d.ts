@@ -36,5 +36,18 @@ declare global {
     createdAt: string;
     userId: number;
   }
+
+
+  type NewCustomer = {
+    name: string;
+    lastName: string;
+    phone: string;
+    avatar: string;
+    user: {
+      email: string;
+      password: string;
+      
+    }
+  }
    
 }

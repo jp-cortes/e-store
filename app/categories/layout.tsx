@@ -1,6 +1,7 @@
 import { AllCategories } from '../../components/AllCategories';
 
 import { Suspense } from 'react';
+import { Footer } from '../../components/Footer';
 
 const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -13,6 +14,9 @@ const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
         <div className="w-full bg-white ">{children}</div>
         
       </div>
+      <Suspense>
+        <Footer/>
+      </Suspense>
     </Suspense>
     
   );
