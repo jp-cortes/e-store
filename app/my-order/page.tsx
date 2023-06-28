@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
+import { Navbar } from '../../components/Navbar';
 
 
 
@@ -60,11 +61,13 @@ export default  function MyOrder() {
     if(items.length === 0) return router.push('/categories');
 
   return (
+    <>
+        <Navbar />
     <div className='mx-auto'>
       <div className='w-full flex-1 px-4 overflow-auto relative'>
-      {/* <Link href='/my-orders' className='absolute left-0'>
+      <Link href='/my-orders' className='absolute left-0'>
           <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
-        </Link> */}
+        </Link>
         <h1 className='text-center mb-8 font-semibold'>My Order</h1>
         {items.map((item) => (
             <div className='' key={item.id}>
@@ -114,6 +117,7 @@ export default  function MyOrder() {
         </button>
         </div>
     </div>
+    </>
   )
 }
 

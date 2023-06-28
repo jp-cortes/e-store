@@ -1,8 +1,6 @@
 'use client'
 import { useShoppingCart } from "../../store/Cart";
-import { ShoppingBagIcon } from '@heroicons/react/24/outline';
-import { ShoppingCart } from "../Cart";
-import { useState } from "react";
+import { ShoppingCartModal } from "../Cart";
 import Link from "next/link";
 
 
@@ -10,7 +8,6 @@ import Link from "next/link";
 type Props = {}
 
 export function Navbar(props: Props) {
-  const [showMenu, setShowMenu] = useState(false);
   const { count: shoppingCartCount } = useShoppingCart();
   console.log(shoppingCartCount, 'navbar')
 
@@ -34,7 +31,7 @@ export function Navbar(props: Props) {
         </li> */}
         <li>
           <Link
-          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:underline underline-offset-4' 
+          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
           href='/my-account'>My Account</Link>
         </li>
         {/* <li>
@@ -43,12 +40,12 @@ export function Navbar(props: Props) {
           href='/login'>Sign in</Link>
         </li> */}
         <li className="relative">
-             <button
+             {/* <button
              onClick={() => setShowMenu((prevState) => !prevState)}
               className="m-0"           
                >
                 <ShoppingBagIcon  className="w-6 h-6"/>
-              </button>
+              </button> */}
               {
               shoppingCartCount > 0 && 
               <div className="absolute top-0 right-[-8px] bg-green-800 font-semibold text-white w-5 h-5 rounded-full p-0 flex justify-center items-center">
@@ -59,7 +56,7 @@ export function Navbar(props: Props) {
                 }
               </div>
               }
-              <ShoppingCart showMenu={showMenu} setShowMenu={setShowMenu}/>
+              <ShoppingCartModal/>
         </li>
       </ul>
       </nav>

@@ -3,6 +3,7 @@ import { Carousel } from "../components/Carousel";
 import { GridHome } from "../components/GridHome";
 import { getAllProducts } from "../services";
 import { Footer } from "../components/Footer";
+import { Navbar } from "../components/Navbar";
 
 
 
@@ -13,7 +14,8 @@ export default async function Home() {
 
 
   return (
-
+        <>
+      <Navbar />
       <Suspense>
       <GridHome products={products}/>
       <Carousel/>
@@ -21,6 +23,7 @@ export default async function Home() {
         <Footer/>
       </Suspense>
     </Suspense>
+        </>
   
   )
 }

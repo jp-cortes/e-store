@@ -1,19 +1,16 @@
 'use client'
+
+import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { validateToken } from '../../utils/cookies';
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
-import { Dispatch, SetStateAction, useState } from 'react';
-import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
+import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
-import { validateToken } from '../../utils/cookies';
-import { useRouter } from 'next/navigation';
 
 
-type Props = {
-  showMenu: boolean;
-  setShowMenu: Dispatch<SetStateAction<boolean>>
-}
-
-export function ShoppingCart({ showMenu, setShowMenu }: Props) {
+export function ShoppingCart() {
  //context
   const { items, subTotal } = useShoppingCart();
   const { removeFromShoppingCart, addToShoppingCart } = useShoppingCartMutations();
@@ -33,25 +30,25 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
 
     function handleValidation() {
       const tokenFromCookies = validateToken( router, '/login', '/my-order');
-      setShowMenu((prevState) => !prevState);
       return tokenFromCookies;
     }
    
 
 
   return (
-    <div className={`${showMenu ? 'flex' : 'hidden' } w-[360px] h-[calc(100vh-68px)] top-[68px] flex-col fixed right-0 border border-black rounded-lg bg-white z-30 transition-all`}>
+ 
+    <div className={`w-[360px] h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white z-30 `}>
         <div className='flex justify-between items-center p-6'>
             <h2 className='font-medium text-xl'>Shopping Cart</h2>
-            <button
-            onClick={() => setShowMenu((prevState) => !prevState)}
-            >
+               <Dialog.Close asChild>
+               <button>
             <XMarkIcon className='h-6 w-6 text-black'></XMarkIcon>
             </button>
+               </Dialog.Close>
         </div>
         {items.length ?
           <>
-        <div className='w-full h-2/3 px-4 overflow-auto'>
+        <div className='w-full h-[60%] px-4 overflow-auto'>
         
         {items.map((item) => (
             <div className='' key={item.id}>
@@ -83,7 +80,7 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
           ))}
           
         </div>
-          <div className='px-4'>
+          <div className='px-4 h-1/3'>
           <div className='border-t-2 border-b-2 border-black mt-3 py-2'>
               <div className='flex justify-between'>
               <p>Subtotal</p>
@@ -113,7 +110,7 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
            
            <div className='mx-auto flex justify-center items-center flex-col'>
             <ShoppingBagIcon className='w-6 h-6'/>
-            <span className='text-xl font-semibold'>Your Cart is currently empty</span>
+            <span className='text-xl font-semibold'>Your Cart empty</span>
             </div> 
          
           
@@ -122,3 +119,21 @@ export function ShoppingCart({ showMenu, setShowMenu }: Props) {
   )
 }
 
+
+export function ShoppingCartModal() {
+
+  return (
+    <Dialog.Root>
+      <Dialog.Trigger asChild>
+        <button className=" inline-flex items-center justify-center rounded-full bg-white">
+          <ShoppingBagIcon className="w-6 h-6" />
+        </button>
+      </Dialog.Trigger>
+      <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0" />
+      <Dialog.Content className="data-[state=open]:animate-fadeIn fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px]">
+        <ShoppingCart />
+      </Dialog.Content>
+    </Dialog.Root>
+  
+  );
+  }

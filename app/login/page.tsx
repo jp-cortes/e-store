@@ -5,6 +5,7 @@ import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
 import Link from 'next/link';
 import Image from 'next/image';
+import loginBanner from '../../public/login_banner.jpg';
 
 
 
@@ -31,9 +32,15 @@ async function handleSubmit (e: FormEvent<HTMLFormElement>) {
 }
 return (
     
-<div className='grid grid-cols-1 md:grid-cols-2'>
-   <Image src='' width='100' height='100' alt=''/>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+<div className='relative grid h-auto grid-cols-1 mt-[-68px] md:grid-cols-2 '>
+  <Link href='/' className='hidden md:block absolute top-4 left-4 text-2xl text-white font-semibold hover:underline underline-offset-4'>E-store</Link>
+  <div className='hidden w-full md:block md:col-start-1 md:col-end-2 '>
+   <Image 
+   className='w-full h-[100vh]'
+   src={loginBanner} quality={100} width={800} height={800}  alt='banner'/>
+
+  </div>
+      <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 md:col-start-2 md:col-end-3">
         <div className="max-w-md w-full space-y-8">
             <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">E-store</h1>
           <div>
@@ -97,14 +104,16 @@ return (
               </button>
             </div>
           </form>
-          <button
-          onClick={() => router.push('/sign-up')}
-                type="button"
-                className="group relative w-full flex justify-center py-2 px-4 border text-sm font-medium rounded-md bg-white text-green-500 border-green-500 hover:border-green-700  hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          <div className='inline-flex w-full justify-center items-center'>
+            <p>Don&apos;t have an account?</p>
+            <Link
+          href='/sign-up'
+          className=" py-2 px-4  font-medium  text-green-500  hover:text-green-700 hover:underline underline-offset-4"
               >
               
-                Sign Up
-              </button>
+                Sign up
+              </Link>
+            </div>
               
      </div>
       </div>

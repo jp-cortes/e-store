@@ -2,10 +2,12 @@ import { AllCategories } from '../../components/AllCategories';
 
 import { Suspense } from 'react';
 import { Footer } from '../../components/Footer';
+import { Navbar } from '../../components/Navbar';
 
 const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-  
+  <>
+      <Navbar />
     <Suspense>
       <div className="flex w-auto md:gap-3">
         <div className="mt-8">
@@ -19,6 +21,7 @@ const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
       </Suspense>
     </Suspense>
     
+  </>
   );
 }
 

@@ -17,9 +17,7 @@ export function Card({ product, isDetailsPage }:Props) {
    <>
     <div className='bg-white cursor-pointer w-56 h-60 rounded-lg mx-auto mb-5 hover:border-b-4 hover:border-solid hover:border-green-600  transition-colors duration-500'>
         <figure className="relative mb-2 w-full h-auto">
-           {/* {isDetailsPage ? <></> : <span className='absolute bottom-2 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>
-            {product.category.name}</span>
-            } */}
+         
             
             <Link href={`/products/${product.id}-${product.name}`}>
             <Image

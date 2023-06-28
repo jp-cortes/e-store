@@ -13,11 +13,13 @@ async function Categories() {
   return(
     <div className='md:flex md:flex-start md:flex-col md:mx-6 '>
           <h2 className='font-semibold capitalize text-2xl '>Categories</h2>
-        <ul>
+        <ul className='grid justify-center gap-2'>
         {categories.map((category: Category) => (
-           <li key={category.id}>
+           <li key={category.id}
+           className='mt-4 font-semibold capitalize'
+           >
              <Link 
-            className='mt-4 font-semibold capitalize focus:bg-green-700 focus:py-1 focus:text-white'
+             className='px-3 py-3 border-white border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
              href={`/categories/${category.id}-${category.name}`}>
                   {category.name}
               </Link>

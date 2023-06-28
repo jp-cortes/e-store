@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { UpdateCustomer, getCustomerbyId } from "../../services";
 import { ChangeEvent, FormEvent, useState } from "react";
 import Image from 'next/image';
+import { Navbar } from '../../components/Navbar';
 
 
 
@@ -82,12 +83,13 @@ export default async function MyAccount() {
  
 
   return (
- 
+ <>
+    <Navbar />
     <div className='relative grid grid-col-1 md:grid-cols-2'>
         <button
         className=' absolute right-4 w-32 p-2 bg-green-700 text-white font font-semibold rounded-md'
-          onClick={handleLogout}
-          type='button'
+        onClick={handleLogout}
+        type='button'
           >Log out</button>
           
       <h1 className='text-2xl font-semibold text-center'>Account</h1>
@@ -158,5 +160,6 @@ export default async function MyAccount() {
 
     </div>
     
+  </>
   )
 }

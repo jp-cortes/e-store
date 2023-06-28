@@ -2,6 +2,7 @@ import { getProductsById } from "../../../services";
 import { AddToCartButton } from "../../../components/AddToCartButton";
 import { Suspense } from "react";
 import { RelatedProducts } from "../../../components/RelatedProducts";
+import { Navbar } from "../../../components/Navbar";
 import Image from "next/image";
 
 
@@ -15,7 +16,7 @@ export default async function Product ({ params: { handle } } : { params: { hand
   
   return (
     <>
-   
+       <Navbar />
     <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
       <div className='bg-white  md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative px-4'>
 
