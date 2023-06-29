@@ -55,7 +55,7 @@ export async function createCustomer(newCustomer: NewCustomer) {
       
     }
   } = newCustomer;
-  
+   console.log(newCustomer,'new customer')
   const response = await fetch(`${endPoints.customers.postUsers}`, {
       method: 'POST',
       headers: {
@@ -77,15 +77,6 @@ export async function createCustomer(newCustomer: NewCustomer) {
       })
     })
     const data = await response.json();
-    const token = data.token;
-    const userId = data.user.id;
-    // Cookie.set('token', token, { expires: 5 })
-    //  Save the token in a cookie with the expiration date
-    const expirationDate = new Date();
-    expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour
-    document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/;`;
-    document.cookie = `userId=${userId}; expires=${expirationDate.toUTCString()}; path=/;`;
-    // localStorage.setItem('E-store-V1-CustomerId', JSON.stringify(data.user.id));//pending to check
-   
+   console.log(data, 'data')
     return data;
 }

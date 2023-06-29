@@ -1,30 +1,37 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { FormEvent, useRef } from "react";
-import { createCustomer } from "../../services/queries/customers";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from "react-hook-form";
+import { ErrorText } from "../../components/ErrorText";
+import { SignupValues, signUpValuesSchema } from "../../utils/schemas/customer";
 import Image from "next/image";
 import loginBanner from '../../public/login_banner.jpg';
 import Link from "next/link";
+import { createCustomer } from "../../services/queries/customers";
 
 
-type Props = {}
-
- export default function SignUp(props: Props) {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  
+export default function SignUp() {
   const router = useRouter();
+
+  const { 
+     register,
+     handleSubmit,
+     formState: { errors, isSubmitting } } = useForm<SignupValues>({
+    resolver: zodResolver(signUpValuesSchema)
+  })
   
-  async function handleSubmit (e: FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    // @ts-ignore: Object is possibly 'null'.
-    const email = emailRef.current.value;
-    // @ts-ignore: Object is possibly 'null'.
-    const password = passwordRef.current.value;
-  
-   try {
-    // await createCustomer();
-    router.push('/my-account');
+  async function handleForm (newUser:NewCustomer) {
+    
+    
+    try {
+      console.log('here we go')
+      await createCustomer(newUser);
+      console.log(newUser)
+      await new Promise((resolve) => setTimeout(resolve,5000));
+      
+      console.log('done')
+    router.push('/login');
+
    } catch (error) {
     console.log(error);
    }
@@ -59,13 +66,13 @@ type Props = {}
               Create your account
             </h2>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit((data) => handleForm(data))}>
             <div className="grid gap-2 rounded-md shadow-sm -space-y-px">
               <div className="flex gap-2">
                 <label htmlFor="name" className="sr-only">
                   Name
                 </label>
-                <input
+                <input {...register('name')}
                   name="name"
                   type="text"
                   autoComplete="name"
@@ -74,24 +81,26 @@ type Props = {}
                   placeholder="Name"
                 
                 />
-                <label htmlFor="lastname" className="sr-only">
+                <ErrorText>{errors.name?.message}</ErrorText>
+                <label htmlFor="lastName" className="sr-only">
                   Lastname
                 </label>
-                <input
-                  name="lastname"
+                <input {...register('lastName')}
+                  name="lastName"
                   type="text"
-                  autoComplete="lastname"
+                  autoComplete="lastName"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Lastname"
                   
                 />
+                <ErrorText>{errors.lastName?.message}</ErrorText>
               </div>
               <div>
                 <label htmlFor="phone" className="sr-only">
                   Phonenumber
                 </label>
-                <input
+                <input {...register('phone')}
                   name="phone"
                   type="number"
                   autoComplete="phonenumber"
@@ -100,62 +109,57 @@ type Props = {}
                   placeholder="PhoneNumber"
                   
                 />
+                <ErrorText>{errors.phone?.message}</ErrorText>
               </div>
               <div>
-                <label htmlFor="avatar" className="sr-only">
-                  Avatar
-                </label>
-                <input
-                  name="avatar"
-                  type="file"
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                />
-              </div>
-              <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="user.email" className="sr-only">
                   Email address
                 </label>
-                <input
-                  name="email"
+                <input {...register('user.email')}
+                  name="user.email"
                   type="email"
                   autoComplete="email"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
                 />
+                <ErrorText>{errors.user?.email?.message}</ErrorText>
               </div>
               <div>
-                <label htmlFor="password" className="sr-only">
+                <label htmlFor="user.password" className="sr-only">
                   Password
                 </label>
-                <input
-                  name="password"
+                <input {...register('user.password')}
+                  name="user.password"
                   type="password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
                   
                 />
+                <ErrorText>{errors.user?.password?.message}</ErrorText>
               </div>
               <div>
-                <label htmlFor="confirm-password" className="sr-only">
+                <label htmlFor="user.confirmPassword" className="sr-only">
                   Confirm Password
                 </label>
-                <input
-                  name="confirm-password"
+                <input {...register('user.confirmPassword')}
+                  name="user.confirmPassword"
                   type="password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Confirm Password"
                   
                 />
+                <ErrorText>{errors.user?.confirmPassword?.message}</ErrorText>
               </div>
             </div>
 
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50"
+                disabled={isSubmitting}
               >
                 Sign up
               </button>

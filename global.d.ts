@@ -42,7 +42,7 @@ declare global {
     name: string;
     lastName: string;
     phone: string;
-    avatar: string;
+    avatar?: string;
     user: {
       email: string;
       password: string;
