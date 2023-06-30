@@ -6,10 +6,10 @@ export function validateToken(router: AppRouterInstance, route: string, route2: 
     const token = Cookie.get('token');
   
     if(!token) {
-      console.log('no token');
+      // console.log('no token');
       return router.push(route);
     } else {
-      console.log('there is token');
+      // console.log('there is token');
       return router.push(route2);
     }
   }

@@ -38,8 +38,7 @@ export function ShoppingCart() {
   return (
  
     <div className={`w-[360px] h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white z-30 `}>
-        <div className='flex justify-between items-center p-6'>
-            <h2 className='font-medium text-xl'>Shopping Cart</h2>
+        <div className='flex justify-end items-center p-6'>
                <Dialog.Close asChild>
                <button>
             <XMarkIcon className='h-6 w-6 text-black'></XMarkIcon>
@@ -108,9 +107,9 @@ export function ShoppingCart() {
         </div>
           </> :
            
-           <div className='mx-auto flex justify-center items-center flex-col'>
+           <div className='mx-auto flex justify-center items-center flex-col gap-8'>
             <ShoppingBagIcon className='w-6 h-6'/>
-            <span className='text-xl font-semibold'>Your Cart empty</span>
+            <span className='text-xl font-semibold'>Your Cart is empty</span>
             </div> 
          
           
@@ -130,7 +129,7 @@ export function ShoppingCartModal() {
         </button>
       </Dialog.Trigger>
       <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0" />
-      <Dialog.Content className="data-[state=open]:animate-fadeIn fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px]">
+      <Dialog.Content className="data-[state=open] fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px] duration-500">
         <ShoppingCart />
       </Dialog.Content>
     </Dialog.Root>

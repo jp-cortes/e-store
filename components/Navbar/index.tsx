@@ -23,7 +23,7 @@ export function Navbar() {
           href='/categories'>All Products</Link>
         </li>
       </ul>
-      <ul className='hidden md:flex item-center gap-3 relative'>
+      <ul className='flex item-center gap-3 relative'>
         <li>
           <Link
           className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 

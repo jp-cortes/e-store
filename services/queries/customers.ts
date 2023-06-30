@@ -1,5 +1,6 @@
 import Cookie  from 'js-cookie';
 import { endPoints } from "./endPoints";
+import { UpdateValues } from '../../utils/schemas/customer';
 
 
 export async function getCustomerbyId(id: string): Promise<Customer> {
@@ -19,11 +20,14 @@ const response = await fetch(`${endPoints.customers.profile(id)}`, {
 }
 
 
-export async function UpdateCustomer(id: string, updatedUser: Partial<Customer>) {
+export async function UpdateCustomer(id: string, updatedUser: Customer | UpdateValues) {
   const token = Cookie.get('token');
-    //Set the Authorization header with the token
-
+  const { name, lastName, phone, avatar } = updatedUser;
+    
+  //Set the Authorization header with the token
     const headers = {
+      'Accept': 'application/json',
+        'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
       };
 
@@ -34,14 +38,17 @@ export async function UpdateCustomer(id: string, updatedUser: Partial<Customer>)
   
     //make sure to serialize your JSON body
     body: JSON.stringify({
-      updatedUser
+      name: name,
+      lastName: lastName,
+      phone: phone,
+      avatar: avatar
     })
   } 
   );
   const data = await response.json();
-  // console.log(data);
+  // console.log(data, 'is updated');
  return data;
-}
+}//working!!!
  
 export async function createCustomer(newCustomer: NewCustomer) {
   const {
@@ -55,7 +62,7 @@ export async function createCustomer(newCustomer: NewCustomer) {
       
     }
   } = newCustomer;
-   console.log(newCustomer,'new customer')
+  //  console.log(newCustomer,'new customer')
   const response = await fetch(`${endPoints.customers.postUsers}`, {
       method: 'POST',
       headers: {
@@ -77,6 +84,6 @@ export async function createCustomer(newCustomer: NewCustomer) {
       })
     })
     const data = await response.json();
-   console.log(data, 'data')
+  //  console.log(data, 'data')
     return data;
 }

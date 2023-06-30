@@ -25,6 +25,7 @@ async function handleSubmit (e: FormEvent<HTMLFormElement>) {
  try {
   await loginUser(email, password);
   router.push('/my-account');
+  // await new Promise((resolve) => setTimeout(resolve,5000));
  } catch (error) {
   console.log(error);
  }
@@ -40,7 +41,7 @@ return (
    src={loginBanner} quality={100} width={800} height={800}  alt='banner'/>
 
   </div>
-      <div className="h-full flex items-center justify-center px-4 sm:px-6 lg:px-8 md:col-start-2 md:col-end-3">
+      <div className="mt-[100px] md:mt-0 h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
             <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">E-store</h1>
           <div>
@@ -95,7 +96,7 @@ return (
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50"
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-green-500 group-hover:text-green-400" aria-hidden="true" />

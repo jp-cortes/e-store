@@ -1,7 +1,8 @@
 import { type } from "os"
 
 declare global {
-
+  // var location: Location;
+ 
      type Category = {
             id: number;
             name: string;

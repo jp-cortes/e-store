@@ -1,8 +1,11 @@
+
 import { z } from 'zod';
 
  export type SignupValues = z.infer<typeof signUpValuesSchema>
  export type UpdateValues = z.infer<typeof updateValuesSchema>
-
+  type AvatarFileList = any
+ 
+ 
 
 export const signUpValuesSchema = z.object({
     name: z.string().min(3).max(20),
@@ -24,6 +27,6 @@ export const updateValuesSchema = z.object({
     name: z.string().min(3).max(20),
     lastName: z.string().min(4).max(20),
     phone: z.string().min(1).max(30),
-    avatar: z.instanceof(File),
+    avatar: z.instanceof(FileList),
   });
   

@@ -24,12 +24,11 @@ export default function SignUp() {
     
     
     try {
-      console.log('here we go')
       await createCustomer(newUser);
       console.log(newUser)
       await new Promise((resolve) => setTimeout(resolve,5000));
       
-      console.log('done')
+      // console.log('done')
     router.push('/login');
 
    } catch (error) {
@@ -56,7 +55,7 @@ export default function SignUp() {
           alt="banner"
         />
       </div>
-      <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="mt-[100px] md:mt-0  h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">
             E-store

@@ -15,6 +15,10 @@ const nextConfig = {
             protocol: 'https',
             hostname: 'cloudflare-ipfs.com',
           },
+          {
+            protocol: 'http',
+            hostname: 'res.cloudinary.com',
+          },
         ],
       },
 }

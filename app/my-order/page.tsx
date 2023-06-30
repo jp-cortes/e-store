@@ -111,7 +111,7 @@ export default  function MyOrder() {
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
         <button 
-         onClick={() => {}}
+         onClick={() => console.log('Payment!')}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>
