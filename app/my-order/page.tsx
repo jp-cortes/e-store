@@ -35,19 +35,20 @@ export default  function MyOrder() {
       const response = await fetch('/api/stripe', {
         method: 'POST',
         headers : {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify(items),
       });
   
       if(response.status === 500) return;
-  
-      const data = await response.json();
+  console.log(response)
+    //   const data = await response.json();
      
       
     
-     const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-     console.warn(error);
+    //  const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+    //  console.warn(error);
     }
 
     
@@ -111,7 +112,7 @@ export default  function MyOrder() {
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
         <button 
-         onClick={() => console.log('Payment!')}
+         onClick={handleCheckout}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>

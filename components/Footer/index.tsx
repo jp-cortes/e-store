@@ -31,7 +31,7 @@ export function Footer(props: Props) {
                   </li>
                   <li  className="py-3 md:py-0 md:pb-4">
                     <Link
-                      href='/about'
+                      href='/'
                       className="text-gray-100 transition duration-150 ease-in-out hover:text-gray-300 "
                     >
                       About
@@ -39,10 +39,18 @@ export function Footer(props: Props) {
                   </li>
                   <li  className="py-3 md:py-0 md:pb-4">
                     <Link
-                      href='/questions'
+                      href='/'
                       className="text-gray-100 transition duration-150 ease-in-out hover:text-gray-300 "
                     >
                       FAQ
+                    </Link>
+                  </li>
+                  <li  className="py-3 md:py-0 md:pb-4">
+                    <Link
+                      href='/'
+                      className="text-gray-100 transition duration-150 ease-in-out hover:text-gray-300 "
+                    >
+                      I want my own E-store
                     </Link>
                   </li>
               

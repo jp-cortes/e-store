@@ -9,4 +9,4 @@ const getStripe = () => {
     }
     return stripePromise
 }
-export { getStripe }
+export { getStripe };

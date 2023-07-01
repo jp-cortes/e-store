@@ -2,12 +2,14 @@
 import { useShoppingCart } from "../../store/Cart";
 import { ShoppingCartModal } from "../Cart";
 import Link from "next/link";
+import Cookie  from 'js-cookie';
 
 
 
 
 
 export function Navbar() {
+  const token = Cookie.get('token');
   const { count: shoppingCartCount } = useShoppingCart();
  
 
@@ -25,9 +27,13 @@ export function Navbar() {
       </ul>
       <ul className='flex item-center gap-3 relative'>
         <li>
+          { token ? <Link
+          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
+          href='/my-account'>My Account</Link> :
           <Link
           className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
-          href='/my-account'>My Account</Link>
+          href='/login'>Login</Link>
+          }
         </li>
         <li className="relative">
               {

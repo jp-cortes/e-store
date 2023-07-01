@@ -1,8 +1,17 @@
-const stripe = require('stripe')(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY);
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
+import Stripe from 'stripe';
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
+// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
+  apiVersion: "2022-11-15",
+  typescript: true,
+})
+
+
+export default async function POST(req: NextApiRequest, res: NextApiResponse) {
+
     // console.log(req.body)
     try {
         const params = {
@@ -12,8 +21,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             payment_method_types: ['card'],
             billing_address_collection: 'auto',
             shipping_options: [
-                { shipping_rate: 'shr_1MlAawHdG9PE3RLIORXL8Y4g' },
-                { shipping_rate: 'shr_1MlAdnHdG9PE3RLIHx1bLgXi' },
+                { shipping_rate: 'shr_1NOzfyJbIYxoAzg0uK6X3swk' },
+                { shipping_rate: 'shr_1NOzibJbIYxoAzg0JUW5FLC1' },
             ],
             line_items: req.body.map((items: { name: string; image: string; price: number; quantity: number; }) => {
              let amount = Math.ceil(items.price)
@@ -39,13 +48,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           }
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
-      res.status(200).json(session);
+      res.status
+      res.json();
       // console.log(session, 'session')
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
-  } else {
-    res.setHeader('Allow', 'POST');
-    res.status(405).end('Method Not Allowed');
-  }
+res.status
 }
