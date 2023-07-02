@@ -1,7 +1,7 @@
 
 'use client'
 
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 import { Navbar } from '../../components/Navbar';
 import { getCustomerbyId } from "../../services";
 import Image from 'next/image';
@@ -12,7 +12,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 
 
 export default async function MyAccount() {
-  const router = useRouter();
+ 
 
 
 //cookies
@@ -21,7 +21,7 @@ export default async function MyAccount() {
 
  // if there is no token will re direct to login page
  if(!token) {
-  return router.push('/login');
+  return redirect('/login');
 }
  
   // render the user info

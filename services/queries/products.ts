@@ -8,7 +8,7 @@ export async function getAllProducts(): Promise<Products> {
   }
 
 export async function getProductsById(id: string): Promise<Product> {
-    const res = await fetch(`${endPoints.products.getProduct(id)}`, { cache: 'no-store' });
+    const res = await fetch(`${endPoints.products.getProduct(id)}`);
     const data = await res.json();
     return  data;
   }

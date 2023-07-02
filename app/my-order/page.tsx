@@ -43,12 +43,12 @@ export default  function MyOrder() {
   
       if(response.status === 500) return;
   console.log(response)
-    //   const data = await response.json();
+      const data = await response.json();
      
       
     
-    //  const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-    //  console.warn(error);
+     const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+     console.warn(error);
     }
 
     
