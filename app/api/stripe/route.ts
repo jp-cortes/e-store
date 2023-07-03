@@ -2,12 +2,12 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from 'stripe';
 
-// const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2022-11-15",
-  typescript: true,
-})
+// const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
+//   apiVersion: "2022-11-15",
+//   typescript: true,
+// })
 
 
 export async function POST(req: NextApiRequest, res: NextApiResponse) {
