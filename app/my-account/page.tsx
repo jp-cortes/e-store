@@ -19,15 +19,15 @@ export default async function MyAccount() {
   const userId = Cookie.get('userId');
   const token = Cookie.get('token');
 
- // if there is no token will re direct to login page
- if(!token) {
-  return redirect('/login');
-}
- 
+  
   // render the user info
   const user = await getCustomerbyId(`${userId}`);
   
-
+  // if there is no token will re direct to login page
+  if(!user) {
+   return redirect('/login');
+ }
+  
 
   // handle user log out 
   function handleLogout() {
