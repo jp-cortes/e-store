@@ -1,7 +1,6 @@
 
 'use client'
 
-import { redirect } from "next/navigation";
 import { Navbar } from '../../components/Navbar';
 import { getCustomerbyId } from "../../services";
 import Image from 'next/image';
@@ -14,19 +13,12 @@ import * as Dialog from '@radix-ui/react-dialog';
 export default async function MyAccount() {
  
 
-
 //cookies
   const userId = Cookie.get('userId');
-  const token = Cookie.get('token');
-
   
   // render the user info
   const user = await getCustomerbyId(`${userId}`);
   
-  // if there is no token will re direct to login page
-  if(!user) {
-   return redirect('/login');
- }
   
 
   // handle user log out 
@@ -52,11 +44,11 @@ export default async function MyAccount() {
       <h1 className='text-2xl font-semibold text-center'>Account</h1>
 
       <div className=' my-8 mx-auto'>
-      <h2 className='font-normal capitalize'>Hi, {user.name}</h2>
+      <h2 className='font-normal capitalize'>Hi, {user?.name}</h2>
         <div className=' gap-4'>
-          { user.avatar ? <figure className='my-5'>
+          { user?.avatar ? <figure className='my-5'>
             <Image className='rounded-full'
-            src={user.avatar} 
+            src={user?.avatar} 
             width={80}
             height={80}
             alt='user-avatar'/>
@@ -83,7 +75,7 @@ export default async function MyAccount() {
       <Dialog.Content className="data-[state=open] w-full  translate-y-[-90%] rounded-[6px] md:col-start-1 md:col-end-2">
         
       <div className='bg-white  rounded-xl p-2 md:p-5'>
-   
+    
        <UpdateAccount user={user}/>
 
       </div>

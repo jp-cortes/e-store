@@ -10,8 +10,6 @@ import { UpdateCustomer } from '../../services';
 
 export default function UpdateAccount({ user }: { user: Customer}) {
  
-// const avatarRef = useRef(null);
-  // const [file, setFile] = useState<Blob | string>('');// user image or avatar
 
   const { 
     register,
@@ -24,7 +22,7 @@ export default function UpdateAccount({ user }: { user: Customer}) {
 
  async function handleUpdate(updatedUser: Customer | UpdateValues) {
 
-const file = updatedUser.avatar[0];
+const file: File | string = updatedUser.avatar[0];
     try {   
       const data = new FormData();
       data.append("file", file);
@@ -69,10 +67,9 @@ const file = updatedUser.avatar[0];
          <input 
          {...register('avatar')}
          className='my-4' type='file' placeholder='Upload a Picture' name='avatar'
-      
-        //  ref={avatarRef}
+    
          />
-         <ErrorText>{errors.avatar?.message}</ErrorText>
+         {/* <ErrorText>{errors.avatar?.message}</ErrorText> */}
             <div className='my-4 '>
             <label className="sr-only" htmlFor='name'>Name</label>
             <input {...register('name')}

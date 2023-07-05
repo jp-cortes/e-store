@@ -8,7 +8,7 @@ import Image from 'next/image';
 export async function Carousel() {
 
  
-  const products = await getProductsByCategoryId('10');
+  const products = await getProductsByCategoryId('9');
 
 
   return (
