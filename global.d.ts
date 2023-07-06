@@ -50,5 +50,19 @@ declare global {
       
     }
   }
-   
+  
+  type PaypalButton = {
+    currency: string;
+    showSpinner: boolean
+  };
+  
+  type ResumeOrder = {
+  id: number;
+  status: string;
+  paid: boolean;
+  customerId: number;
+  createdAt: string;
+  customer: Customer;
+  
+}
 }

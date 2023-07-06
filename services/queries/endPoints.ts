@@ -30,9 +30,12 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     getCategoriesProduct: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
     putCategories: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
   },
+  orders: {
+    createOrder: `${API}/api/${VERSION}/orders`,
+    myOrders: (id: string) => `${API}/api/${VERSION}/profile/my-orders/${id}`
+  },
   files:{
     postFiles: `${API}/api/${VERSION}/files/upload`,
-    // getFiles: (fileName) => `${API}/api/${VERSION}/${fileName}`
   }
   
 }

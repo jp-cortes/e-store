@@ -2,12 +2,17 @@
 
 import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
 import { getStripe } from '../../store/getStripe';
-import { useState } from 'react';
-import Image from 'next/image';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { Navbar } from '../../components/Navbar';
+import {  
+   PayPalScriptProvider,
+   PayPalButtons,
+   usePayPalScriptReducer } from "@paypal/react-paypal-js";
+import Link from 'next/link';
+import Image from 'next/image';
+import { createOrder } from '../../services';
 
 
 
@@ -23,12 +28,12 @@ export default  function MyOrder() {
  const router = useRouter();   
 
   //add product to shoppingCart
-    function  handleClick(product: Product) {
+    function  addItemInShoppingCart(product: Product) {
         addToShoppingCart(product, quantity);
         setQuantity(quantity);
       };
 
-    async function handleCheckout() {
+    async function handleCheckoutStripe() {
       
       const stripe =  await getStripe();
   
@@ -59,6 +64,71 @@ export default  function MyOrder() {
     //     "amount": 5
     //   }
     
+      //paypal
+  // This values are the props in the UI
+const amount = `${subTotal}`;
+const currency = "EUR";
+const style = {"layout":"vertical"};
+
+async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
+  try {
+    await createOrder(orderData);
+      
+      router.push(`/my-orders`);
+    
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+    
+    const ButtonWrapper = ({ currency, showSpinner }: PaypalButton) => {
+      // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
+      // This is the main reason to wrap the PayPalButtons in a new component
+      const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+    
+      useEffect(() => {
+          dispatch({
+              type: "resetOptions",
+              value: {
+                  ...options,
+                  currency: currency,
+              },
+          });
+      }, [currency, showSpinner]);
+    
+    
+      return (<>
+              { (showSpinner && isPending) && <div className="spinner" /> }
+              <PayPalButtons
+                  style={{ layout: "vertical" }}
+                  disabled={false}
+                  forceReRender={[amount, currency, style]}
+                  fundingSource={undefined}
+                  createOrder={async (data, actions) => {
+                      const orderId = await actions.order
+                      .create({
+                        purchase_units: [
+                          {
+                            amount: {
+                              currency_code: currency,
+                              value: amount,
+                            },
+                          },
+                        ],
+                      });
+                    return orderId;
+                  }}
+                  onApprove={async function ():Promise<void> {
+                     await createOrderPayPal({ paid: true, status: 'on the way'});
+                     //todo clear shopping cart
+                  }}
+              />
+          </>
+      );
+    }
+
+
     if(items.length === 0) return router.push('/categories');
 
   return (
@@ -91,7 +161,7 @@ export default  function MyOrder() {
               <button
               className='w-8 text-xl border border-gray-500'
               type='button'               
-                onClick={() => handleClick(item)}
+                onClick={() => addItemInShoppingCart(item)}
                 >
                 +
               </button>
@@ -111,11 +181,27 @@ export default  function MyOrder() {
               <p>Total</p>
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
+        <div className='flex flex-col justify-between items-center'>
         <button 
-         onClick={handleCheckout}
+         onClick={handleCheckoutStripe}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>
+        <PayPalScriptProvider
+                options={{
+                    'clientId': `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`,
+                    components: "buttons",
+                    currency: "EUR",
+                    "disable-funding": "credit,card,p24",
+                  }}
+                  >
+				<ButtonWrapper
+                    currency={currency}
+                    showSpinner={false}
+                />
+			</PayPalScriptProvider>
+
+        </div>
         </div>
     </div>
     </>

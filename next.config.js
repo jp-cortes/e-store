@@ -49,6 +49,28 @@ const nextConfig = {
             destination: '/my-account', // Matched parameters can be used in the destination
             permanent: false,
           },
+          {
+            source: '/sign-up',
+            has: [
+              {
+                type: 'cookie',
+                key: 'token',
+              },
+            ],
+            destination: '/my-account', // Matched parameters can be used in the destination
+            permanent: false,
+          },
+          {
+            source: '/my-orders',
+            missing: [
+              {
+                type: 'cookie',
+                key: 'token',
+              },
+            ],
+            destination: '/login', // Matched parameters can be used in the destination
+            permanent: false,
+          },
         ]
       },
 }

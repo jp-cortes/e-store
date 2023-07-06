@@ -9,7 +9,7 @@ export type CartState = {
 };
 
 export type CartAction = {
-  type: "add" | "remove";
+  type: "add" | "remove" | "reset";
   item: Product;
   quantity?: number;
 };
@@ -88,6 +88,9 @@ function ShoppingCartReducers(
       return newShoppingCartItems;
     }
 
+
+    // case "reset": { return defaultShoppingCartState }
+
     default: {
       throw new Error(`Unhandled action type: ${type}`);
     }
@@ -133,10 +136,14 @@ export function useShoppingCartMutations() {
       item: product,
     });
 
+  // const resetShoppingCart = () =>
+  //   dispatch({ type: "reset" });
+
   return {
     dispatch,
     addToShoppingCart,
     removeFromShoppingCart,
+    // resetShoppingCart,
   };
 };
 

@@ -17,7 +17,6 @@ const response = await fetch(`${endPoints.customers.profile(id)}`, {
   headers: headers
 });
 const data = await response.json();
-console.log(data.status, ' profile')
 return data;
 
 }
@@ -51,7 +50,7 @@ export async function UpdateCustomer(id: string, updatedUser: Customer | UpdateV
   const data = await response.json();
   // console.log(data, 'is updated');
  return data;
-}//working!!!
+}
  
 export async function createCustomer(newCustomer: NewCustomer) {
   const {
