@@ -20,8 +20,12 @@ import { createOrder } from '../../services';
 export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
-    const { removeFromShoppingCart, addToShoppingCart } = useShoppingCartMutations();
-//state
+    const { 
+       removeFromShoppingCart,
+       addToShoppingCart,
+       clearShoppingCart } = useShoppingCartMutations();
+
+       //state
     const [quantity, setQuantity] = useState(1);
     
  //hook
@@ -34,26 +38,26 @@ export default  function MyOrder() {
       };
 
     async function handleCheckoutStripe() {
-      
-      const stripe =  await getStripe();
+     
+  // //     const stripe =  await getStripe();
   
-      const response = await fetch('/api/stripe', {
-        method: 'POST',
-        headers : {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(items),
-      });
+  // //     const response = await fetch('/api/stripe', {
+  // //       method: 'POST',
+  // //       headers : {
+  // //         'Accept': 'application/json',
+  // //         'Content-Type': 'application/json'
+  // //       },
+  // //       body: JSON.stringify(items),
+  // //     });
   
-      if(response.status === 500) return;
-  console.log(response)
-      const data = await response.json();
+  // //     if(response.status === 500) return;
+  // // console.log(response)
+  // //     const data = await response.json();
      
       
     
-     const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-     console.warn(error);
+  //    const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
+  //    console.warn(error);
     }
 
     
@@ -72,8 +76,8 @@ const style = {"layout":"vertical"};
 
 async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
   try {
-    await createOrder(orderData);
-      
+    // await createOrder(orderData);
+      console.log(orderData)
       router.push(`/my-orders`);
     
   } catch (error) {
@@ -82,9 +86,8 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
 
 }
     
-    const ButtonWrapper = ({ currency, showSpinner }: PaypalButton) => {
+    function ButtonWrapper({ currency, showSpinner }: PaypalButton) {
       // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-      // This is the main reason to wrap the PayPalButtons in a new component
       const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
     
       useEffect(() => {
@@ -121,7 +124,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                   }}
                   onApprove={async function ():Promise<void> {
                      await createOrderPayPal({ paid: true, status: 'on the way'});
-                     //todo clear shopping cart
+                           clearShoppingCart();
                   }}
               />
           </>
@@ -129,7 +132,6 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
     }
 
 
-    if(items.length === 0) return router.push('/categories');
 
   return (
     <>
@@ -140,6 +142,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
           <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
         </Link>
         <h1 className='text-center mb-8 font-semibold'>My Order</h1>
+ 
         {items.map((item) => (
             <div className='' key={item.id}>
               <p className='mb-2'>{item.name}</p>
@@ -170,6 +173,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
           ))}
           
         </div>
+        {items.length === 0 ? <h3 className='text-center mt-10'>You have no Orders</h3> :
           <div className='px-4'>
           <div className='border-t-2 border-b-2 border-black mt-3 py-2'>
               <div className='flex justify-between'>
@@ -202,7 +206,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
 			</PayPalScriptProvider>
 
         </div>
-        </div>
+        </div>}
     </div>
     </>
   )

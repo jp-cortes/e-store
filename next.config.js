@@ -71,6 +71,22 @@ const nextConfig = {
             destination: '/login', // Matched parameters can be used in the destination
             permanent: false,
           },
+          {
+            source: '/my-account',
+            has: [
+              {
+                type: 'cookie',
+                key: 'token',
+              },
+              {
+                type: 'cookie',
+                key: 'userId',
+                value: '1'
+              },
+            ],
+            destination: '/dasboard', // Matched parameters can be used in the destination
+            permanent: false,
+          },
         ]
       },
 }

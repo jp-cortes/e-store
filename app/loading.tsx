@@ -1,15 +1,22 @@
-import Image from "next/image";
+'use client'
+import { ThreeDots } from "react-loader-spinner";
 
 export default function Loading() {
-    // You can add any UI inside Loading, including a Skeleton.
-    return (
-      <div className='w-full h-full grid place-content-center'>
-        <div>
-           Loading...
-          <figure>
-            <Image src='' width={200} height={200} alt='loader'/>
-          </figure>
-          </div>
+  // You can add any UI inside Loading, including a Skeleton.
+  return (
+    <div className="w-full h-full grid place-content-center">
+      <div>
+        <ThreeDots
+          height="80"
+          width="80"
+          radius="9"
+          color="#4fa94d"
+          ariaLabel="three-dots-loading"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
       </div>
-    )
-  }
+    </div>
+  );
+}
