@@ -65,4 +65,16 @@ declare global {
   customer: Customer;
   
 }
+ type ChartData = {
+  datasets: [
+    {
+    label: string;
+    data: {};
+    borderWidth: number;
+    backgroundColor: string[];
+  }
+]
+ }
+
+
 }

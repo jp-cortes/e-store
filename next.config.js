@@ -87,6 +87,38 @@ const nextConfig = {
             destination: '/dasboard', // Matched parameters can be used in the destination
             permanent: false,
           },
+          {
+            source: '/dashboard',
+            missing: [
+              {
+                type: 'cookie',
+                key: 'token',
+              },
+              {
+                type: 'cookie',
+                key: 'userId',
+                value: '1'
+              },
+            ],
+            destination: '/my-account', // Matched parameters can be used in the destination
+            permanent: false,
+          },
+          {
+            source: '/dashboard/products',
+            missing: [
+              {
+                type: 'cookie',
+                key: 'token',
+              },
+              {
+                type: 'cookie',
+                key: 'userId',
+                value: '1'
+              },
+            ],
+            destination: '/my-account', // Matched parameters can be used in the destination
+            permanent: false,
+          },
         ]
       },
 }
