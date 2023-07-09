@@ -10,13 +10,10 @@ export type CartState = {
 
 export type CartAction = {
   type: "add" | "remove" | "clear";
-  item?: Product | any;
+  item: Product;
   quantity?: number;
 };
 
-export type ClearShoppingCart = {
-  type: "clear";
-};
 
 
 
@@ -141,7 +138,7 @@ export function useShoppingCartMutations() {
     });
 
   const clearShoppingCart = () =>
-    dispatch({ type: "clear" });
+    dispatch({ type: "clear", item: null });
 
   return {
     dispatch,

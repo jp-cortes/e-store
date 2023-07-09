@@ -76,5 +76,11 @@ declare global {
 ]
  }
 
+ type Cart = {
+  quantity: number;
+  total: number;
+  products: Product[];
+};
+
 
 }

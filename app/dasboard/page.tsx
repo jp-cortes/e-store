@@ -1,16 +1,16 @@
 // 'use client'
-import { getCategories, getProductsByPage } from '../../services';
+import { getAllProducts, getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default async function Dasboard() {
-  const categoryNames = await getCategories();
-  const productsByPage = await getProductsByPage(20, 2)
+  const allProducts = await getAllProducts();
+  const productsByPage = await getProductsByPage(20, 2);
 
-  const categoryCount = categoryNames.map((category) => category.name);
+  const categoryCount = allProducts.map((product) => product.category.name);
  
-  const countOcurrences = (array: any[]) => array.reduce((prev, current) => ((prev[current] = ++prev[current] || 1), prev), {});
+  const countOcurrences = (array: string[]) => array.reduce((prev, current) => ((prev[current] = ++prev[current] || 1), prev), {});
  
  const chartData = {
    datasets: [
