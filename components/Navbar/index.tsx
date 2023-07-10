@@ -3,6 +3,7 @@ import { useShoppingCart } from "../../store/Cart";
 import { ShoppingCartModal } from "../Cart";
 import Link from "next/link";
 import Cookie  from 'js-cookie';
+import { MenuUserlogedIn } from "../MenuUser";
 
 
 
@@ -41,9 +42,7 @@ export function Navbar() {
               <ShoppingCartModal/>
         </li>
         <li>
-          { token ? <Link
-          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
-          href='/my-account'>My Account</Link> :
+          { token ? <MenuUserlogedIn/> :
           <Link
           className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
           href='/login'>Login</Link>

@@ -4,6 +4,7 @@ import { CheckCircleIcon,  XCircleIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getAllProducts } from '../../../services'
+import { NavbarDashboard } from '../../../components/NavbarDashboard'
 
 
 export default  async function ProductsDashboard() {
@@ -11,6 +12,8 @@ export default  async function ProductsDashboard() {
     const products = await getAllProducts();
 
   return (
+    <>
+    <NavbarDashboard/>
     <div className='w-full'>
          <div className="lg:flex lg:items-center lg:justify-between mb-8">
         <div className="flex-1 min-w-0">
@@ -98,6 +101,7 @@ export default  async function ProductsDashboard() {
         </div>
       </div>
     </div>
+    </>
   )
 }
 

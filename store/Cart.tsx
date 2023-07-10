@@ -138,7 +138,7 @@ export function useShoppingCartMutations() {
     });
 
   const clearShoppingCart = () =>
-    dispatch({ type: "clear", item: null });
+    dispatch({ type: "clear"});
 
   return {
     dispatch,

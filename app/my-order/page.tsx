@@ -38,7 +38,7 @@ export default  function MyOrder() {
       };
 
     async function handleCheckoutStripe() {
-     
+      clearShoppingCart()
   // //     const stripe =  await getStripe();
   
   // //     const response = await fetch('/api/stripe', {

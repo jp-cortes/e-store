@@ -19,28 +19,12 @@ export default async function MyAccount() {
   // render the user info
   const user = await getCustomerbyId(`${userId}`);
   
-  
-
-  // handle user log out 
-  function handleLogout() {
-    //delete the token stored in cookies
-  // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
-  document.cookie='token=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
-  document.cookie='userId=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
-  
- return location.reload();// then will reload retun the user to the login page
-}
 
   return (
  <>
     <Navbar />
     <div className='relative grid grid-col-1 place-content-center '>
-        <button
-        className=' absolute top-14 right-4 w-20 md:w-32 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md'
-        onClick={handleLogout}
-        type='button'
-          >Log out</button>
-          
+                
       <h1 className='text-2xl font-semibold text-center'>Account</h1>
 
       <div className=' my-8 mx-auto'>

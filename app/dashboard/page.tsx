@@ -3,6 +3,7 @@ import { getAllProducts, getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import Image from 'next/image';
 import Link from 'next/link';
+import { NavbarDashboard } from '../../components/NavbarDashboard';
 
 export default async function Dasboard() {
   const allProducts = await getAllProducts();
@@ -24,6 +25,8 @@ export default async function Dasboard() {
  }
 
   return (
+    <>
+    <NavbarDashboard/>
     <div>
         <Chart chartData={chartData}/>
         <Link href='/'>
@@ -83,5 +86,6 @@ export default async function Dasboard() {
                   </tbody>
                 </table>
     </div>
+    </>
   )
 }
