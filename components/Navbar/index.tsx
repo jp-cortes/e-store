@@ -1,9 +1,10 @@
 'use client'
-import { useShoppingCart } from "../../store/Cart";
+
 import { ShoppingCartModal } from "../Cart";
 import Link from "next/link";
 import Cookie  from 'js-cookie';
 import { MenuUserlogedIn } from "../MenuUser";
+import { useShoppingCart } from "../../store/Cart";
 
 
 

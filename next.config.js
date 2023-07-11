@@ -84,7 +84,7 @@ const nextConfig = {
                 value: '1'
               },
             ],
-            destination: '/dasboard', // Matched parameters can be used in the destination
+            destination: '/dashboard', // Matched parameters can be used in the destination
             permanent: false,
           },
           {
@@ -100,7 +100,7 @@ const nextConfig = {
                 value: '1'
               },
             ],
-            destination: '/my-account', // Matched parameters can be used in the destination
+            destination: '/login', // Matched parameters can be used in the destination
             permanent: false,
           },
           {
@@ -116,7 +116,7 @@ const nextConfig = {
                 value: '1'
               },
             ],
-            destination: '/my-account', // Matched parameters can be used in the destination
+            destination: '/login', // Matched parameters can be used in the destination
             permanent: false,
           },
         ]

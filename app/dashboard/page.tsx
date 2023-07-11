@@ -6,10 +6,10 @@ import Link from 'next/link';
 import { NavbarDashboard } from '../../components/NavbarDashboard';
 
 export default async function Dasboard() {
-  const allProducts = await getAllProducts();
   const productsByPage = await getProductsByPage(20, 2);
+  
 
-  const categoryCount = allProducts.map((product) => product.category.name);
+  const categoryCount = productsByPage.map((product) => product.category.name);
  
   const countOcurrences = (array: string[]) => array.reduce((prev, current) => ((prev[current] = ++prev[current] || 1), prev), {});
  
