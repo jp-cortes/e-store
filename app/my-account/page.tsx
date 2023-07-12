@@ -4,7 +4,7 @@
 import { Navbar } from '../../components/Navbar';
 import { getCustomerbyId } from "../../services";
 import Image from 'next/image';
-import UpdateAccount from '../../components/UpdateAccount';
+import { UpdateUserInfo } from '../../components/Forms';
 import Cookie  from 'js-cookie';
 import * as Dialog from '@radix-ui/react-dialog';
 
@@ -60,7 +60,7 @@ export default async function MyAccount() {
         
       <div className='bg-white  rounded-xl p-2 md:p-5'>
     
-       <UpdateAccount user={user}/>
+       <UpdateUserInfo user={user}/>
 
       </div>
       </Dialog.Content>

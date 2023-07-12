@@ -1,7 +1,7 @@
 import { type } from "os"
 
 declare global {
-  // var location: Location;
+  
  
      type Category = {
             id: number;
@@ -22,12 +22,11 @@ declare global {
             category: Category;
         }
 
+   
+
     type Products = Product[];
     
-    type Ctx = {
-        req: NextApiRequest;
-        };
-
+    
     type Customer = {
     id: number;
     name: string;

@@ -3,12 +3,12 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { UpdateValues, updateValuesSchema } from '../../utils/schemas/customer';
-import { ErrorText } from '../../components/ErrorText';
+import { ErrorText } from '../ErrorText';
 import * as Dialog from '@radix-ui/react-dialog';
 import { UpdateCustomer } from '../../services';
 
 
-export default function UpdateAccount({ user }: { user: Customer}) {
+export function UpdateUserInfo({ user }: { user: Customer}) {
  
 
   const { 
@@ -36,9 +36,7 @@ const file: File | string = updatedUser.avatar[0];
         });
         
         const dataFromCloud = await response.json();
-        // console.log(dataFromCloud, 'uploaded image');
-        // console.log(updatedUser, 'update');
-    
+ 
       const { url }: { url: string} = dataFromCloud;
       updatedUser.avatar  =`${url}`;
 
@@ -67,9 +65,9 @@ const file: File | string = updatedUser.avatar[0];
          <input 
          {...register('avatar')}
          className='my-4' type='file' placeholder='Upload a Picture' name='avatar'
-    
          />
-         {/* <ErrorText>{errors.avatar?.message}</ErrorText> */}
+          {/* <ErrorText>{errors.avatar?.message}</ErrorText> */}
+
             <div className='my-4 '>
             <label className="sr-only" htmlFor='name'>Name</label>
             <input {...register('name')}

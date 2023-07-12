@@ -1,55 +1,79 @@
 'use client'
 
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { FormEvent, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CreateProductValues, createProductValuesSchema } from "../../utils/schemas/Products";
+import { ErrorText } from "../ErrorText";
+import { createProduct } from "../../services/queries/products";
+import * as Dialog from '@radix-ui/react-dialog';
 
-type Props = {
-    product: Product;
-}
 
-export default function FormProduct({ product }: Props) {
-    const formRef = useRef(null);
-    const router = useRouter();
+export function FormCreateProduct() {
     
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-        const formData = new FormData(formRef.current);
-
-        const data = {
-            title: formData.get('title'),
-            price: formData.get('price'),
-            description: formData.get('description'),
-            categoryId: formData.get('category'),
-            image: formData.get('image')
-        };
-
-        
-       
-
+    const { 
+      register,
+      handleSubmit,
+      formState: { errors, isSubmitting } } = useForm<CreateProductValues>({
+     resolver: zodResolver(createProductValuesSchema)
+    })
+  
+    
+    async function handleUpdate(newProduct: CreateProductValues){
+      
+            const file: File | string = newProduct.image[0];
+                try {   
+                  const data = new FormData();
+                  data.append("file", file);
+                  data.append("upload_preset", "e_store");
+                  if(data !== null) {
+                    // if data is not an empty object
+                    // mean if there is a new image will be updated
+                    const response = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}`, {
+                      method: 'POST',
+                      body: data
+                    });
+                    
+                    const dataFromCloud = await response.json();
+             
+                  const { url }: { url: string} = dataFromCloud;
+                  newProduct.image  =`${url}`;
+            
+                  
+                } 
+               await createProduct(newProduct)
+            
+                await new Promise((resolve) => setTimeout(resolve,5000));
+            
+                location.reload();//reload the page if the product is updated
+                console.log('done');
+              } catch (error) {
+                console.log(error);
+              }
+            
     }
         
   
     return (
-      <form ref={formRef} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit((data) => handleUpdate(data))}>
         <div className="overflow-hidden">
           <div className="px-4 py-5 bg-white sm:p-6">
             <div className="grid grid-cols-6 gap-6">
               <div className="col-span-6 sm:col-span-3">
                 <label
-                  htmlFor="title"
+                  htmlFor="name"
                   className="block text-sm font-medium text-gray-700"
                 >
-                  Title
+                  Name
                 </label>
                 <input
-                defaultValue={product.name}
+                {...register('name')}
                   required
                   type="text"
-                  name="title"
+                  name="name"
                   id="title"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
+                <ErrorText>{errors.name?.message}</ErrorText>
               </div>
               <div className="col-span-6 sm:col-span-3">
                 <label
@@ -59,7 +83,7 @@ export default function FormProduct({ product }: Props) {
                   Price
                 </label>
                 <input
-                defaultValue={product.price}
+                {...register('price')}
                 min={1}
                   required
                   type="number"
@@ -67,29 +91,34 @@ export default function FormProduct({ product }: Props) {
                   id="price"
                   className="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
+                <ErrorText>{errors.price?.message}</ErrorText>
               </div>
               <div className="col-span-6">
                 <label
-                  htmlFor="category"
+                  htmlFor="categoryId"
                   className="block text-sm font-medium text-gray-700"
                 >
                   Category
                 </label>
                 <select
+                {...register('categoryId')}
                   required
-                  id="category"
-                  name="category"
-                  defaultValue={product.category}
-                  autoComplete="category-name"
+                  name="categoryId"
+                  autoComplete="categoryId"
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 >
+                    <ErrorText>{errors.categoryId?.message}</ErrorText>
                   
                   {/* <option value="">--select--</option> */}
                   <option value="1">Automotive</option>
-                  <option value="2">Electronics</option>
-                  <option value="3">Furniture</option>
-                  <option value="4">Toys</option>
-                  <option value="5">Others</option>
+                  <option value="2">Sports</option>
+                  <option value="3">Health</option>
+                  <option value="4">Computers</option>
+                  <option value="5">Games</option>
+                  <option value="6">Furniture</option>
+                  <option value="7">Industrial</option>
+                  <option value="8">Home</option>
+                  <option value="9">Beauty</option>
                 </select>
               </div>
   
@@ -101,19 +130,20 @@ export default function FormProduct({ product }: Props) {
                   Description
                 </label>
                 <textarea
-                defaultValue={product.description}
+                {...register('description')}
                   required
                   name="description"
                   id="description"
                   autoComplete="description"
-                  rows="3"
+                  rows={3}
                   className="form-textarea mt-1 block w-full focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md"
                 />
+                <ErrorText>{errors.description?.message}</ErrorText>
               </div>
               <div className="col-span-6">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">
-                    Cover photo
+                    Product Image
                   </label>
                   <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-md">
                     <div className="space-y-1 text-center">
@@ -138,18 +168,19 @@ export default function FormProduct({ product }: Props) {
                         >
                           <span>Upload a file</span>
                           <input
-                          defaultValue={product.image}
+                          {...register('image')}
                             required
                             id="image"
                             name="image"
                             type="file"
                             className="sr-only"
                           />
+                          {/* <ErrorText>{errors.image?.message}</ErrorText> */}
                         </label>
                         <p className="pl-1">or drag and drop</p>
                       </div>
                       <p className="text-xs text-gray-500">
-                        PNG, JPG, GIF up to 10MB
+                        PNG, JPG, GIF up to 5MB
                       </p>
                     </div>
                   </div>
@@ -158,18 +189,21 @@ export default function FormProduct({ product }: Props) {
             </div>
           </div>
           <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
-          {product && <Link
-              href="/dashboard/products"
-              className="inline-flex justify-center py-2 px-4 mr-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700"
-            >
+          <Dialog.Close asChild>
+          <button
+          disabled={isSubmitting}
+          className="inline-flex justify-center py-2 px-4 mr-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-500 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 disabled:opacity-70"
+          >
               Cancel
-            </Link>}
+            </button>
+          </Dialog.Close>
             
             <button
+            disabled={isSubmitting}
               type="submit"
-              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-70"
             >
-              Save
+              Create
             </button>
             
           </div>
