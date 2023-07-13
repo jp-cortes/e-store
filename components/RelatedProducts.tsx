@@ -1,7 +1,7 @@
 'use client'
 
-import { getProductsByCategoryId } from "../../services";
-import { Card } from "../Card"
+import { getProductsByCategoryId } from "../services";
+import { Card } from "./Card"
 
 type Props = {
   categoryId: number;

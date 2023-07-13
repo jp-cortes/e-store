@@ -1,7 +1,7 @@
 
 'use client'
 
-import { Navbar } from '../../components/Navbar';
+import { Navbar } from '../../components';
 import { getCustomerbyId } from "../../services";
 import Image from 'next/image';
 import { UpdateUserInfo } from '../../components/Forms';

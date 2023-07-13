@@ -1,9 +1,9 @@
 'use client'
 
-import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
+import { useShoppingCart, useShoppingCartMutations } from '../store/Cart';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { validateToken } from '../../utils/cookies';
+import { validateToken } from '../utils/cookies';
 import { ShoppingBagIcon } from '@heroicons/react/24/outline';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import * as Dialog from '@radix-ui/react-dialog';

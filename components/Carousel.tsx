@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link';
-import { getProductsByCategoryId, getProductsByCategoryName } from '../../services';
+import { getProductsByCategoryId, getProductsByCategoryName } from '../services';
 import Image from 'next/image';
 
 

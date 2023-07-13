@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react";
-import { useShoppingCartMutations } from "../../store/Cart";
+import { useShoppingCartMutations } from "../store/Cart";
 import { ShoppingCartIcon } from '@heroicons/react/24/outline'
 
 type Props = {

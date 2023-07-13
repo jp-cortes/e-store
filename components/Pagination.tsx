@@ -10,7 +10,7 @@ type Props = {
     setPage: SetStateAction;
 }
 
-export default function Pagination({
+export function Pagination({
     offSet, 
     setOffSet,
     PRODUCTS_LIMIT,

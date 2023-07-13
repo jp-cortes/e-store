@@ -1,8 +1,8 @@
 import { getProductsById } from "../../../services";
-import { AddToCartButton } from "../../../components/AddToCartButton";
+import { AddToCartButton } from "../../../components";
 import { Suspense } from "react";
-import { RelatedProducts } from "../../../components/RelatedProducts";
-import { Navbar } from "../../../components/Navbar";
+import { RelatedProducts } from "../../../components";
+import { Navbar } from "../../../components";
 import Image from "next/image";
 
 

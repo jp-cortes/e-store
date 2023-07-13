@@ -1,9 +1,9 @@
 import { Suspense } from "react";
-import { Carousel } from "../components/Carousel";
-import { GridHome } from "../components/GridHome";
+import { Carousel } from "../components";
+import { GridHome } from "../components";
+import { Footer } from "../components";
+import { Navbar } from "../components";
 import { getAllProducts } from "../services";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
 
 
 

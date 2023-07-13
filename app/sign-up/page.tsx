@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
-import { ErrorText } from "../../components/ErrorText";
+import { ErrorText } from "../../components";
 import { SignupValues, signUpValuesSchema } from "../../utils/schemas/customer";
 import Image from "next/image";
 import loginBanner from '../../public/login_banner.jpg';

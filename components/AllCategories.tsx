@@ -1,6 +1,6 @@
 
 import { Suspense } from 'react';
-import { getCategories } from '../../services';
+import { getCategories } from '../services';
 
 import Link from 'next/link';
 

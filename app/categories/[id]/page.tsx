@@ -1,6 +1,5 @@
  
-import { Card } from "../../../components/Card"
-import { Footer } from "../../../components/Footer";
+import { Card } from "../../../components"
 import { getProductsByCategoryId } from '../../../services'
 import { Suspense } from 'react'
 

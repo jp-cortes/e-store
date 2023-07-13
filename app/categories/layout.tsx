@@ -1,8 +1,8 @@
 import { AllCategories } from '../../components/AllCategories';
 
 import { Suspense } from 'react';
-import { Footer } from '../../components/Footer';
-import { Navbar } from '../../components/Navbar';
+import { Footer } from '../../components';
+import { Navbar } from '../../components';
 
 const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
   return (

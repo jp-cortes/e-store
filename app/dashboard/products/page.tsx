@@ -2,11 +2,11 @@
 
 import { CheckCircleIcon,  XCircleIcon } from '@heroicons/react/24/outline';
 import { getAllProducts } from '../../../services';
-import { NavbarDashboard } from '../../../components/NavbarDashboard';
-import * as Dialog from '@radix-ui/react-dialog';
+import { NavbarDashboard } from '../../../components';
+import { FormCreateProduct } from '../../../components/Forms';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FormCreateProduct } from '../../../components/Forms';
+import * as Dialog from '@radix-ui/react-dialog';
 
 
 export default  async function ProductsDashboard() {
@@ -22,7 +22,7 @@ export default  async function ProductsDashboard() {
           <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">List of Products</h2>
         </div>
         <Dialog.Root>
-          <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0 grid grid-cols-1 place-content-center" />
+          <Dialog.Overlay className="bg-background/80 data-[state=open] fixed z-20 top-0 inset-0 grid grid-cols-1 place-content-center" />
           <Dialog.Content className="data-[state=open] w-full  translate-y-[10%] rounded-[6px] md:col-start-1 md:col-end-2">
         
           <div className='bg-white  rounded-xl p-2 md:p-5'>

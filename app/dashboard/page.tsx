@@ -1,9 +1,9 @@
 // 'use client'
-import { getAllProducts, getProductsByPage } from '../../services';
+import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import Image from 'next/image';
 import Link from 'next/link';
-import { NavbarDashboard } from '../../components/NavbarDashboard';
+import { NavbarDashboard } from '../../components';
 
 export default async function Dasboard() {
   const productsByPage = await getProductsByPage(20, 2);

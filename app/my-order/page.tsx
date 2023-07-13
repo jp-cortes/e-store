@@ -1,18 +1,18 @@
 'use client'
 
 import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
-import { getStripe } from '../../store/getStripe';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-import { Navbar } from '../../components/Navbar';
+import { Navbar } from '../../components';
 import {  
-   PayPalScriptProvider,
-   PayPalButtons,
-   usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import Link from 'next/link';
-import Image from 'next/image';
+  PayPalScriptProvider,
+  PayPalButtons,
+  usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { createOrder } from '../../services';
+import { getStripe } from '../../store/getStripe';
+import Link from 'next/link'; 
+import Image from 'next/image';
 
 
 
