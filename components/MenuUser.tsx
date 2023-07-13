@@ -1,4 +1,5 @@
 'use client'
+import Cookie from 'js-cookie';
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/24/outline';
@@ -8,10 +9,9 @@ export function MenuUserlogedIn() {
 
 // handle user log out 
 function handleLogout() {
-    //delete the token stored in cookies
-  // Set to "Thu, 01 Jan 1970 00:00:00 GMT"
-  document.cookie='token=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
-  document.cookie='userId=deleted;' + "path=/; expires=" + new Date(0).toUTCString();
+
+  Cookie.remove('token');
+  Cookie.remove('userId');
   
  location.reload();// then will reload retun the user to the login page
 }

@@ -4,6 +4,7 @@ import { AllCategories } from "./AllCategories";
 import { Card } from "./Card";
 import { Carousel } from "./Carousel";
 import { ShoppingCart } from "./Cart";
+import { DeleteProduct } from './DeleteProduct'
 import { ErrorText } from "./ErrorText";
 import { Footer } from "./Footer";
 import { GridHome } from "./GridHome";
@@ -21,6 +22,7 @@ import { RelatedProducts } from "./RelatedProducts";
     Card,
     Carousel,
     ShoppingCart,
+    DeleteProduct,
     ErrorText,
     Footer,
     GridHome,

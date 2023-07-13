@@ -11,7 +11,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     postProducts: `${API}/api/${VERSION}/products/`,
     getProduct: (id: string) => `${API}/api/${VERSION}/products/${id}`,
     updateProducts: (id: string) => `${API}/api/${VERSION}/products/${id}`,
-    deleteProducts: (id: string) => `${API}/api/${VERSION}/products/${id}`
+    deleteProducts: (id: number) => `${API}/api/${VERSION}/products/${id}`
   },
   customers:{
     getUsers: `${API}/api/${VERSION}/customers`,

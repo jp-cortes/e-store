@@ -80,3 +80,23 @@ export async function updateProduct(id: string, updateProduct: UpdateProductValu
     const data = await res.json();
     return  data;
   }
+
+export async function deleteProduct(id: number): Promise<void | null> {
+  const token = Cookie.get('token');
+  //Set the Authorization header with the token
+  if(!token) return null;
+
+  const headers = {
+    'Accept': 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`
+    };
+    const res = await fetch(`${endPoints.products.deleteProducts(id)}`,
+    {
+      method: 'DELETE',
+      headers: headers
+    } 
+    );
+    const data = await res.json();
+    return  data;
+  }

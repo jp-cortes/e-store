@@ -1,29 +1,35 @@
 'use client'
-import { FormEvent, useRef } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm } from "react-hook-form";
+import { ErrorText } from "../../components";
 import { useRouter } from 'next/navigation';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
 import Link from 'next/link';
 import Image from 'next/image';
 import loginBanner from '../../public/login_banner.jpg';
+import { LoginValues, loginValuesSchema } from '../../utils/schemas/customer';
 
 
 
 export default function Login() {
-const emailRef = useRef(null);
-const passwordRef = useRef(null);
+  const { 
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting } } = useForm<LoginValues>({
+   resolver: zodResolver(loginValuesSchema)
+ })
+
 
 const router = useRouter();
 
-async function handleSubmit (e: FormEvent<HTMLFormElement>) {
-  e.preventDefault();
-  // @ts-ignore: Object is possibly 'null'.
-  const email = emailRef.current.value;
-  // @ts-ignore: Object is possibly 'null'.
-  const password = passwordRef.current.value;
-
+async function handleLogin (data: LoginValues ) {
+const { email, password} = data;  
  try {
   await loginUser(email, password);
+
+  await new Promise((resolve) => setTimeout(resolve,5000));
+
   router.push('/my-account');
   // await new Promise((resolve) => setTimeout(resolve,5000));
  } catch (error) {
@@ -47,34 +53,38 @@ return (
           <div>
             <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">Sign in to your account</h2>
           </div>
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          <form className="mt-8 space-y-6" onSubmit={handleSubmit((data) => handleLogin(data))}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>
-                <label htmlFor="email-address" className="sr-only">
+                <label htmlFor="email" className="sr-only">
                   Email address
                 </label>
                 <input
+                {...register('email')}
                   name="email"
                   type="email"
                   autoComplete="email"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Email address"
-                  ref={emailRef}
+                  placeholder="email@example"
+                
                 />
+                <ErrorText>{errors.email?.message}</ErrorText>
               </div>
               <div>
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
                 <input
+                {...register('password')}
                   name="password"
                   type="password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Password"
-                  ref={passwordRef}
+               
                 />
+                <ErrorText>{errors.password?.message}</ErrorText>
               </div>
             </div>
 
@@ -97,6 +107,7 @@ return (
               <button
                 type="submit"
                 className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50"
+                disabled={isSubmitting}
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                   <LockClosedIcon className="h-5 w-5 text-green-500 group-hover:text-green-400" aria-hidden="true" />

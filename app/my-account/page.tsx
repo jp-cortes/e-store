@@ -1,11 +1,11 @@
 
 'use client'
 
+import Cookie  from 'js-cookie';
 import { Navbar } from '../../components';
 import { getCustomerbyId } from "../../services";
-import Image from 'next/image';
 import { UpdateUserInfo } from '../../components/Forms';
-import Cookie  from 'js-cookie';
+import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
 
 

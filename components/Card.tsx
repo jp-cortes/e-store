@@ -30,7 +30,7 @@ export function Card({ product, isDetailsPage }:Props) {
         </figure>
         <p className='flex justify-between px-4'>
             <span className='text-sm font-semibold capitalize'>{product.name}</span>
-            <span className='text-lg font-medium'>${product.price}</span>
+            <span className='text-lg font-medium'>€{product.price}</span>
         </p>
     </div>
   

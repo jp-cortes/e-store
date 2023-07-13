@@ -1,4 +1,4 @@
-
+import Cookie from "js-cookie";
 import { endPoints } from "./endPoints";
 
 export async function loginUser(email: string, password: string) {
@@ -19,14 +19,10 @@ export async function loginUser(email: string, password: string) {
       const data = await response.json();
       const token = data.token;
       const userId = data.user.id;
-      // Cookie.set('token', token, { expires: 5 })
-      //  Save the token in a cookie with the expiration date
-      const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 60 * 60 * 1000); // 1 hour
-      document.cookie = `token=${token}; expires=${expirationDate.toUTCString()}; path=/;`;
-      document.cookie = `userId=${userId}; expires=${expirationDate.toUTCString()}; path=/;`;
       
-
+      Cookie.set('token', token, { expires: 5 })
+      Cookie.set('userId', userId, { expires: 5 })
+    
       return data;
 }
 

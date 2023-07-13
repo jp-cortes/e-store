@@ -2,6 +2,7 @@
 
 import { z } from 'zod';
 
+ export type LoginValues = z.infer<typeof loginValuesSchema>
  export type SignupValues = z.infer<typeof signUpValuesSchema>
  export type UpdateValues = z.infer<typeof updateValuesSchema>
  
@@ -9,7 +10,10 @@ import { z } from 'zod';
  const MAX_FILE_SIZE = 500000;
  const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png", "image/webp"];
  
- 
+ export const loginValuesSchema = z.object({
+  email: z.string().email(),
+  password: z.string().min(6).max(50)
+ })
 
 export const signUpValuesSchema = z.object({
     name: z.string().min(3).max(20),
