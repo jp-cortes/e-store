@@ -28,14 +28,14 @@ const { email, password} = data;
  try {
   await loginUser(email, password);
 
-  await new Promise((resolve) => setTimeout(resolve,5000));
-
+  
   router.push('/my-account');
-  // await new Promise((resolve) => setTimeout(resolve,5000));
+  await new Promise((resolve) => setTimeout(resolve,5000));
+  
  } catch (error) {
   console.log(error);
  }
-  // console.log(email, password);// todo create login
+
 }
 return (
     

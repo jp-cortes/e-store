@@ -28,12 +28,10 @@ function handleLogout() {
               <li>
                 <NavigationMenu.Link asChild>
                   <Link
-                    href="/my-account"
                     className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
+                    href="/my-account"
                   >
-                    <div className=" mb-[5px] font-medium leading-[1.2]">
                       My account
-                    </div>
                   </Link>
                 </NavigationMenu.Link>
               </li>
@@ -43,17 +41,19 @@ function handleLogout() {
                     href="/my-orders"
                     className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
                   >
-                    <div className=" mb-[5px] font-medium leading-[1.2]">
+                   
                     My orders
-                    </div>
+            
                   </Link>
                 </NavigationMenu.Link>
               </li>
-              <button
-        className='w-20 md:w-24 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md'
+            <li>
+            <button
+        className='w-20 md:w-24 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md inline-block'
         onClick={handleLogout}
         type='button'
           >Log out</button>
+            </li>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>

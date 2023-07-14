@@ -18,16 +18,16 @@ export function Pagination({
     setPage,
 }: Props) {
 const PAGES = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-const plusPage = (p) => {        
+function plusPage(p: number) {        
         if(page !== p) {
             setPage(p);
         }
         
 }
-const nextPage = () => {        
+function nextPage() {        
         setPage(page + 1);
 }
-const previousPage = () => {
+function previousPage() {
     if(page >= 1) {
         setPage(page - 1);
     }
@@ -93,7 +93,7 @@ useEffect(() => {
 </div>
   )
 }
-const Pages = ({pageNumber, callBack }) => {
+function Pages({pageNumber, callBack }) {
     return (
         <button onClick={callBack}
         className="focus:bg-amber-600 relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0 ">

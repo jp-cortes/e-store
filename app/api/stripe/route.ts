@@ -1,55 +1,63 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import Stripe from 'stripe';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY ?? "", {
-  apiVersion: "2022-11-15",
+const key = process.env.STRIPE_SECRET_KEY ?? '';
+
+const stripe = new Stripe(key, {
+  apiVersion: '2022-11-15',
   typescript: true,
 })
 
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-
-  console.log(req.body)
+export async function POST(req: NextRequest) {
+const body = await req.json();
+  console.log(body)
     try {
-        const params = {
+      if(body.length > 0){
+    // Create Checkout Sessions from body params.
+    const session = await stripe.checkout.sessions.create({
             
-            submit_type: 'pay',
-            mode: 'payment',
-            payment_method_types: ['card'],
-            billing_address_collection: 'auto',
-            shipping_options: [
-                { shipping_rate: 'shr_1NOzfyJbIYxoAzg0uK6X3swk' },
-                { shipping_rate: 'shr_1NOzibJbIYxoAzg0JUW5FLC1' },
-            ],
-            line_items: req.body.map((items: { name: string; image: string; price: number; quantity: number; }) => {
-             let amount = Math.ceil(items.price)
-                // console.log('img',items.quantity)
-                return {
-                    price_data: {
-                    currency: 'eur',
-                    product_data: {
-                        name: items.name,
-                        images: [items.image],
-                    },
-                    unit_amount: amount * 100,
-                },
-                adjustable_quantity: {
-                    enabled: true,
-                    minimum: 1
-                }, 
-                quantity: items.quantity,
-                }
-            }),
-            success_url: `${req.headers}/success`,
-            cancel_url: `${req.headers}/canceled`,
+      submit_type: 'pay',
+      mode: 'payment',
+      payment_method_types: ['card'],
+      billing_address_collection: 'auto',
+      shipping_options: [
+          { shipping_rate: 'shr_1NOzfyJbIYxoAzg0uK6X3swk' },
+          { shipping_rate: 'shr_1NOzibJbIYxoAzg0JUW5FLC1' },
+      ],
+      invoice_creation: {
+        enabled: true,
+      },
+      line_items: body.map((items: { name: string; image: string; price: number; quantity: number; }) => {
+       let amount = Math.ceil(items.price)
+    
+          return {
+              price_data: {
+              currency: 'eur',
+              product_data: {
+                  name: items.name,
+                  images: [items.image],
+              },
+              unit_amount: amount * 100,
+          },
+          adjustable_quantity: {
+              enabled: true,
+              minimum: 1
+          }, 
+          quantity: items.quantity,
           }
-      // Create Checkout Sessions from body params.
-      const session = await stripe.checkout.sessions.create(params);
-      res.status(200).json(session);
-      // console.log(session, 'session')
-    } catch (err) {
-      res.status(err.statusCode || 500).json(err.message);
+      }),
+      success_url: `${req.headers.get('origin')}/my-orders`,
+      cancel_url: `${req.headers.get('origin')}/my-order`,
+    });
+    return NextResponse.json({ session });
+   
+      } else {
+        return NextResponse.json({ message: 'No data found'})
+      }
+     
+    } catch (err: any) {
+      return NextResponse.json(err.message);
     }
  
 }

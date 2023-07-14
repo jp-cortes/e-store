@@ -11,7 +11,7 @@ async function Categories() {
   const categories = await getCategories();
 
   return(
-    <div className='md:flex md:flex-start md:flex-col md:mx-6 '>
+    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 '>
           <h2 className='font-semibold capitalize text-2xl '>Categories</h2>
         <ul className='grid justify-center gap-2'>
         {categories.map((category: Category) => (

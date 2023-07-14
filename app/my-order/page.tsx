@@ -38,26 +38,28 @@ export default  function MyOrder() {
       };
 
     async function handleCheckoutStripe() {
-      clearShoppingCart()
-  // //     const stripe =  await getStripe();
+
+      const stripe =  await getStripe();
   
-  // //     const response = await fetch('/api/stripe', {
-  // //       method: 'POST',
-  // //       headers : {
-  // //         'Accept': 'application/json',
-  // //         'Content-Type': 'application/json'
-  // //       },
-  // //       body: JSON.stringify(items),
-  // //     });
+      const response = await fetch('/api/stripe', {
+        method: 'POST',
+        headers : {
+          'Content-Type': 'application/json'
+        },
+        cache: 'no-cache',
+        body: JSON.stringify(items),
+      });
   
-  // //     if(response.status === 500) return;
-  // // console.log(response)
-  // //     const data = await response.json();
-     
+      if(response.status === 500) return;
+ 
+      const data = await response.json();
+     if(data.session){
+      await stripe?.redirectToCheckout({ sessionId: data.session.id });
+
+     }
       
     
-  //    const { error } = await stripe.redirectToCheckout({ sessionId: data.id });
-  //    console.warn(error);
+    
     }
 
     
@@ -124,7 +126,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                   }}
                   onApprove={async function ():Promise<void> {
                      await createOrderPayPal({ paid: true, status: 'on the way'});
-                           clearShoppingCart();
+                          //  clearShoppingCart();
                   }}
               />
           </>
@@ -151,10 +153,10 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
               <p className='text-base'> € {(item.price * item.quantity).toFixed(2)}</p>
               </div>
               
-              <div className='flex  px-4'>
-
-              <p className='w-[250px] pl-3 border border-gray-500'>{`${item.quantity}`}</p>
-              <button
+              <div className='flex justify-between px-4'>
+                <p className=''>Quantity:</p>
+              <p className='font-semibold'>{`${item.quantity}`}</p>
+              {/* <button
               className='w-8 text-xl border border-gray-500'
               type='button'
               onClick={() => removeFromShoppingCart(item)}
@@ -167,7 +169,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                 onClick={() => addItemInShoppingCart(item)}
                 >
                 +
-              </button>
+              </button> */}
               </div>
             </div> 
           ))}
@@ -185,12 +187,17 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
               <p>Total</p>
               <p>€ {(subTotal).toFixed(2)}</p>
               </div>
-        <div className='flex flex-col justify-between items-center'>
+        <div className='flex flex-col justify-between items-center z-0'>
         <button 
          onClick={handleCheckoutStripe}
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>
+        <div className='w-full flex items-center justify-center my-6'>
+        <div className='h-[2px] w-6 bg-black'/>
+         <p className='mx-5 text-xl'>or</p>
+         <div className='h-[2px] w-6 bg-black'/>
+        </div>
         <PayPalScriptProvider
                 options={{
                     'clientId': `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`,

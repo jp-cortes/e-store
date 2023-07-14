@@ -76,10 +76,6 @@ const nextConfig = {
             has: [
               {
                 type: 'cookie',
-                key: 'token',
-              },
-              {
-                type: 'cookie',
                 key: 'userId',
                 value: '1'
               },
@@ -92,15 +88,11 @@ const nextConfig = {
             missing: [
               {
                 type: 'cookie',
-                key: 'token',
-              },
-              {
-                type: 'cookie',
                 key: 'userId',
                 value: '1'
               },
             ],
-            destination: '/login', // Matched parameters can be used in the destination
+            destination: '/', // Matched parameters can be used in the destination
             permanent: false,
           },
           {
@@ -108,15 +100,11 @@ const nextConfig = {
             missing: [
               {
                 type: 'cookie',
-                key: 'token',
-              },
-              {
-                type: 'cookie',
                 key: 'userId',
                 value: '1'
               },
             ],
-            destination: '/login', // Matched parameters can be used in the destination
+            destination: '/', // Matched parameters can be used in the destination
             permanent: false,
           },
         ]

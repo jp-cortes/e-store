@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { NavbarDashboard } from '../../components';
 
 export default async function Dasboard() {
+  
   const productsByPage = await getProductsByPage(20, 2);
   
 
@@ -28,8 +29,11 @@ export default async function Dasboard() {
     <>
       <NavbarDashboard />
       <div>
-        <Chart chartData={chartData} />
-        <Link href="/"></Link>
+        <div>
+          <Chart chartData={chartData} />
+
+        </div>
+       
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
