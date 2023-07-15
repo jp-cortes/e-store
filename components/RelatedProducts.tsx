@@ -12,7 +12,7 @@ export async function RelatedProducts({ categoryId }: Props) {
     
 
   return (
-    <div className='grid'>
+    <div className='mt-10 grid'>
             <h2 className='font-medium text-xl mx-auto'>Related Products</h2>
 
         <div className='grid lg:grid-cols-4 gap-1 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>

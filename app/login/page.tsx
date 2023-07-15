@@ -1,7 +1,7 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
-import { ErrorText } from "../../components";
+import { ErrorText, MenuMobile } from "../../components";
 import { useRouter } from 'next/navigation';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
@@ -39,7 +39,11 @@ const { email, password} = data;
 }
 return (
     
+<>
 <div className='relative grid h-auto grid-cols-1 mt-[-68px] md:grid-cols-2 '>
+  <div className='absolute top-4 left-4'>
+  <MenuMobile/>
+  </div>
   <Link href='/' className='hidden md:block absolute top-4 left-4 text-2xl text-white font-semibold hover:underline underline-offset-4'>E-store</Link>
   <div className='hidden w-full md:block md:col-start-1 md:col-end-2 '>
    <Image 
@@ -106,7 +110,7 @@ return (
             <div>
               <button
                 type="submit"
-                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 <span className="absolute left-0 inset-y-0 flex items-center pl-3">
@@ -130,6 +134,7 @@ return (
      </div>
       </div>
  </div>
+</>
     
     
   )

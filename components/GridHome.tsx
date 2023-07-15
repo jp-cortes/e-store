@@ -14,13 +14,13 @@ export async function GridHome({ products }: Props) {
 
   return (
     <>
-    <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 md:px-4 gap-2">
+    <div className="bg-white grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 md:px-4 gap-2 px-2">
      <div
      className='bg-white cursor-pointer md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative'>
       <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[0].category.name}</span>
           
-        <Link href={`/products/${products[0].id}-${products[0].name}`}>
+        <Link href={`/products/${products[0].id}-${products[0].name}`} passHref>
           <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[0].image}
@@ -44,7 +44,7 @@ export async function GridHome({ products }: Props) {
     className='bg-white cursor-pointer md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-3  rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[1].category.name}</span>
-            <Link href={`/products/${products[1].id}-${products[1].name}`}>
+            <Link href={`/products/${products[1].id}-${products[1].name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[1].image} 
@@ -68,7 +68,7 @@ export async function GridHome({ products }: Props) {
     className='bg-white cursor-pointer md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-5 rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{products[2].category.name}</span>
-            <Link href={`/products/${products[2].id}-${products[2].name}`}>
+            <Link href={`/products/${products[2].id}-${products[2].name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={products[2].image} 

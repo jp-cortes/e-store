@@ -2,7 +2,7 @@
 import { useRouter } from "next/navigation";
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
-import { ErrorText } from "../../components";
+import { ErrorText, MenuMobile } from "../../components";
 import { SignupValues, signUpValuesSchema } from "../../utils/schemas/customer";
 import Image from "next/image";
 import loginBanner from '../../public/login_banner.jpg';
@@ -39,6 +39,9 @@ export default function SignUp() {
   }
   return (
     <div className="relative mt-[-68px] grid grid-cols-1 md:grid-cols-2">
+      <div className='absolute top-4 left-4'>
+  <MenuMobile/>
+  </div>
       <Link
         href="/"
         className="hidden md:block absolute top-4 left-4 text-2xl text-white font-semibold hover:underline underline-offset-4"
@@ -157,7 +160,7 @@ export default function SignUp() {
             <div>
               <button
                 type="submit"
-                className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50"
+                className="relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-700 hover:bg-green-600 disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 Sign up

@@ -13,6 +13,9 @@ export default async function Categories() {
   return (
     
     <div className='grid lg:grid-cols-3 gap-4 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
+      
+      <h2 className='text-center my-8 font-semibold text-2xl block md:hidden lg:hidden'>All Products</h2>
+      
       <Suspense>
 
         {products.map((product: Product) => (

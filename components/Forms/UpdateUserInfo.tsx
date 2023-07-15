@@ -102,14 +102,14 @@ const file: File | string = updatedUser.avatar[0];
          <Dialog.Close asChild>
            <button 
            disabled={isSubmitting}
-           className='w-32 p-2 bg-red-500 mx-4 rounded-md text-white font-semibold disabled:opacity-50'
+           className='w-32 p-2 bg-red-500 mx-4 rounded-md text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
            type='button'
            >Cancel</button>
            </Dialog.Close>
          <button
          disabled={isSubmitting}
           type='submit'
-         className='w-32 p-2 bg-green-400 mx-4 rounded-md font-semibold disabled:opacity-50'
+         className='w-32 p-2 bg-green-400 mx-4 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
           >Edit</button>
          </div>
         </form>

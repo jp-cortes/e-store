@@ -138,9 +138,9 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
   return (
     <>
         <Navbar />
-    <div className='mx-auto'>
+    <div className='mx-auto z-0'>
       <div className='w-full flex-1 px-4 overflow-auto relative'>
-      <Link href='/my-orders' className='absolute left-0'>
+      <Link href='/my-orders' passHref className='absolute left-0'>
           <ChevronLeftIcon className='h-6 w-6 text-black cursor-pointer' />
         </Link>
         <h1 className='text-center mb-8 font-semibold'>My Order</h1>

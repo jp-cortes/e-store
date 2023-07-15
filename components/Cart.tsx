@@ -37,8 +37,9 @@ export function ShoppingCart() {
 
   return (
  
-    <div className={`w-[360px] h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white z-30 `}>
-        <div className='flex justify-end items-center p-6'>
+    <div className='w-[300px] md:w-[360px] lg:w-[360px] h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white '>
+        <div className='flex justify-between items-center p-6 border-b-2 mb-2'>
+               <h3 className='font-semibold'>Cart</h3>
                <Dialog.Close asChild>
                <button>
             <XMarkIcon className='h-6 w-6 text-black'></XMarkIcon>
@@ -79,7 +80,7 @@ export function ShoppingCart() {
           ))}
           
         </div>
-          <div className='px-4 h-1/3'>
+          <div className='px-4 pb-3 h-1/3'>
           <div className='border-t-2 border-b-2 border-black mt-3 py-2'>
               <div className='flex justify-between'>
               <p>Subtotal</p>
@@ -107,7 +108,7 @@ export function ShoppingCart() {
         </div>
           </> :
            
-           <div className='mx-auto flex justify-center items-center flex-col gap-8'>
+           <div className='mx-auto flex justify-center items-center flex-col gap-8 pt-52'>
             <ShoppingBagIcon className='w-6 h-6'/>
             <span className='text-xl font-semibold'>Your Cart is empty</span>
             </div> 
@@ -128,8 +129,8 @@ export function ShoppingCartModal() {
           <ShoppingBagIcon className="w-6 h-6" />
         </button>
       </Dialog.Trigger>
-      <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0" />
-      <Dialog.Content className="data-[state=open] fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px] duration-500">
+      <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0 z-20" />
+      <Dialog.Content className="data-[state=open] fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px] duration-500 z-20">
         <ShoppingCart />
       </Dialog.Content>
     </Dialog.Root>

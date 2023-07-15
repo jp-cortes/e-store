@@ -31,9 +31,8 @@ function handleLogout() {
                     href="/dashboard"
                     className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
                   >
-                    <div className=" mb-[5px] font-medium leading-[1.2]">
                       Dashboard
-                    </div>
+                    
                   </Link>
                 </NavigationMenu.Link>
               </li>
@@ -43,17 +42,19 @@ function handleLogout() {
                     href="/dashboard/products"
                     className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
                   >
-                    <div className=" mb-[5px] font-medium leading-[1.2]">
                     Products
-                    </div>
+                    
                   </Link>
                 </NavigationMenu.Link>
               </li>
-              <button
+             <li>
+             <button
         className='w-20 md:w-24 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md'
         onClick={handleLogout}
         type='button'
-          >Log out</button>
+          >Log out
+          </button>
+             </li>
             </ul>
           </NavigationMenu.Content>
         </NavigationMenu.Item>

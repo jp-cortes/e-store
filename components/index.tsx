@@ -9,6 +9,7 @@ import { ErrorText } from "./ErrorText";
 import { Footer } from "./Footer";
 import { GridHome } from "./GridHome";
 import { MenuDashboard } from "./MenuDashboard";
+import { MenuMobile } from './MenuMobile'
 import { MenuUserlogedIn } from "./MenuUser";
 import { Navbar } from "./Navbar";
 import { NavbarDashboard } from "./NavbarDashboard";
@@ -27,6 +28,7 @@ import { RelatedProducts } from "./RelatedProducts";
     Footer,
     GridHome,
     MenuDashboard,
+    MenuMobile,
     MenuUserlogedIn,
     Navbar,
     NavbarDashboard,
