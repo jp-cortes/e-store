@@ -1,18 +1,17 @@
-// 'use client'
-import { getProductsByPage } from '../../services';
+'use client'
+// import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
+import { NavbarDashboard, Pagination } from '../../components';
 import Image from 'next/image';
-import Link from 'next/link';
-import { NavbarDashboard } from '../../components';
+import { useFetch } from '../../hooks/usePagination';
 
 export default async function Dasboard() {
-  
-  const productsByPage = await getProductsByPage(20, 2);
+  const { data, PRODUCTS_LIMIT, offSet, setOffSet, page, setPage } = useFetch(); 
   
 
-  const categoryCount = productsByPage.map((product) => product.category.name);
+  const categoryCount = data.map((product) => product.category.name);
  
-  const countOcurrences = (array: any[]) => array.reduce((prev: { [x: string]: number; }, current: string | number) => ((prev[current] = ++prev[current] || 1), prev), {});
+  const countOcurrences = (array: string[]) => array.reduce((prev: { [x: string]: number; }, current: string | number) => ((prev[current] = ++prev[current] || 1), prev), {});
  
  const chartData = {
    datasets: [
@@ -33,25 +32,25 @@ export default async function Dasboard() {
           <Chart chartData={chartData} />
 
         </div>
-       
-        <table className="min-w-full divide-y divide-gray-200">
+     
+        <table className="w-min-[400px] md:w-full lg:min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Name
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Price
               </th>
@@ -61,16 +60,10 @@ export default async function Dasboard() {
               >
                 Id
               </th>
-              <th scope="col" className="relative px-6 py-3">
-                <span className="sr-only">Edit</span>
-              </th>
-              <th scope="col" className="relative px-6 py-3">
-                <span className="sr-only">Delete</span>
-              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {productsByPage.map((product) => (
+            {data.map((product) => (
               <tr key={`Product-item-${product.id}`}>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -108,6 +101,13 @@ export default async function Dasboard() {
             ))}
           </tbody>
         </table>
+        <Pagination
+                    offSet={offSet}
+                    setOffSet={setOffSet}
+                    PRODUCTS_LIMIT={PRODUCTS_LIMIT}
+                    setPage={setPage}
+                    page={page}
+                    />
       </div>
     </>
   );
