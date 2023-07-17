@@ -15,8 +15,8 @@ export default async function MyOrders() {
    <Navbar/>
     <div className='grid place-content-center'>
 
-      <div className='relative w-full'>
-      <Link href='/my-order' className='absolute right-0 top-1.5'>
+      <div className='relative w-80'>
+      <Link passHref href='/my-order' className='absolute right-0 top-1.5'>
           <ChevronRightIcon className='h-6 w-6 text-black cursor-pointer' />
         </Link>
           <h1 className='text-center text-2xl font-semibold mb-5'>My Orders</h1>

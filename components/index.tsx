@@ -13,7 +13,6 @@ import { MenuMobile } from './MenuMobile'
 import { MenuUserlogedIn } from "./MenuUser";
 import { Navbar } from "./Navbar";
 import { NavbarDashboard } from "./NavbarDashboard";
-import { Pagination } from "./Pagination";
 import { RelatedProducts } from "./RelatedProducts";
 
  export {
@@ -32,6 +31,5 @@ import { RelatedProducts } from "./RelatedProducts";
     MenuUserlogedIn,
     Navbar,
     NavbarDashboard,
-    Pagination,
     RelatedProducts,
  }

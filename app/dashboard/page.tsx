@@ -1,14 +1,12 @@
 'use client'
-// import { getProductsByPage } from '../../services';
+import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
-import { NavbarDashboard, Pagination } from '../../components';
+import { NavbarDashboard } from '../../components';
 import Image from 'next/image';
-import { useFetch } from '../../hooks/usePagination';
 
 export default async function Dasboard() {
-  const { data, PRODUCTS_LIMIT, offSet, setOffSet, page, setPage } = useFetch(); 
   
-
+  const data = await getProductsByPage(80,1)
   const categoryCount = data.map((product) => product.category.name);
  
   const countOcurrences = (array: string[]) => array.reduce((prev: { [x: string]: number; }, current: string | number) => ((prev[current] = ++prev[current] || 1), prev), {});
@@ -28,35 +26,35 @@ export default async function Dasboard() {
     <>
       <NavbarDashboard />
       <div>
-        <div>
+        <div className='mx-auto w-[450px] lg:w-[800px]'>
           <Chart chartData={chartData} />
 
         </div>
      
-        <table className="w-min-[400px] md:w-full lg:min-w-full divide-y divide-gray-200">
+        <table className="w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th
                 scope="col"
-                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="lg:w-[22%] w-[110px] md:w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Name
               </th>
               <th
                 scope="col"
-                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[110px] md:w-1/3 lg:w-[22%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                className="w-[100px] md:w-[500px] lg:w-[400px] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="hidden md:inline-block lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Price
               </th>
               <th
                 scope="col"
-                className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Id
               </th>
@@ -65,7 +63,7 @@ export default async function Dasboard() {
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((product) => (
               <tr key={`Product-item-${product.id}`}>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="lg:w-[22%]  w-[110px] md:w-1/3 px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <Image
@@ -83,7 +81,7 @@ export default async function Dasboard() {
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-900 capitalize">
                     {product.category.name}
                   </div>
@@ -91,23 +89,16 @@ export default async function Dasboard() {
                     Category Id: {`${product.category.id}`}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="hidden md:inline-block lg:w-[22%]  px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   € {product.price}
                   </span>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{`${product.id}`}</td>
+                <td className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-4 whitespace-nowrap text-sm text-gray-500">{`${product.id}`}</td>
               </tr>
             ))}
           </tbody>
         </table>
-        <Pagination
-                    offSet={offSet}
-                    setOffSet={setOffSet}
-                    PRODUCTS_LIMIT={PRODUCTS_LIMIT}
-                    setPage={setPage}
-                    page={page}
-                    />
       </div>
     </>
   );

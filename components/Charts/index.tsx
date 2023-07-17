@@ -19,12 +19,11 @@ export function Chart({ chartData }: Props) {
           plugins: {
             title: {
                 display: true,
-                text: "Category",
+                text: "Categories",
                 font: {size: 20},
               },
               legend: {
-                display: true,
-                position: "right",
+                display: false
               },
           },
         }}
