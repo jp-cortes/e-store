@@ -8,6 +8,7 @@ import { DeleteProduct } from './DeleteProduct'
 import { ErrorText } from "./ErrorText";
 import { Footer } from "./Footer";
 import { GridHome } from "./GridHome";
+import { CardDashboard } from './CardDashboard';
 import { MenuDashboard } from "./MenuDashboard";
 import { MenuMobile } from './MenuMobile'
 import { MenuUserlogedIn } from "./MenuUser";
@@ -26,6 +27,7 @@ import { RelatedProducts } from "./RelatedProducts";
     ErrorText,
     Footer,
     GridHome,
+    CardDashboard,
     MenuDashboard,
     MenuMobile,
     MenuUserlogedIn,

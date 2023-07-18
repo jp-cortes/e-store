@@ -5,6 +5,7 @@ import { getAllProducts } from '../../../services';
 import { NavbarDashboard } from '../../../components';
 import { FormCreateProduct } from '../../../components/Forms';
 import { DeleteProduct } from '../../../components';
+import { CardDashboard } from '../../../components';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -33,7 +34,7 @@ export default  async function ProductsDashboard() {
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200">
+                <table className=" hidden md:block lg:block min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
                       <th
@@ -117,6 +118,29 @@ export default  async function ProductsDashboard() {
                     ))}
                   </tbody>
                 </table>
+                  <>
+                  
+                <div className='md:hidden lg:hidden flex flex-wrap justify-around'>
+          {products.map((product) => (
+           <>
+            <CardDashboard key={product.id} product={product}/>
+            <div className='w-[280px] flex justify-between content-center'>
+          
+          <Link
+            href={`/dashboard/edit/${product.id}`}
+            className="text-indigo-600 hover:text-indigo-900"
+          >
+            Edit
+          </Link>
+        
+        <p className=" relative text-sm font-medium">
+          <DeleteProduct product={product} />
+        </p>
+</div>
+           </>
+          ))}
+        </div>
+                  </>
               </div>
             </div>
           </div>

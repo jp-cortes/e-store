@@ -2,6 +2,7 @@
 import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import { NavbarDashboard } from '../../components';
+import { CardDashboard } from '../../components';
 import Image from 'next/image';
 
 export default async function Dasboard() {
@@ -25,13 +26,13 @@ export default async function Dasboard() {
   return (
     <>
       <NavbarDashboard />
-      <div>
+      <div className='flex flex-col'>
         <div className='mx-auto w-[450px] lg:w-[800px]'>
           <Chart chartData={chartData} />
 
         </div>
      
-        <table className="w-full divide-y divide-gray-200">
+        <table className="hidden md:block lg:block w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th
@@ -48,7 +49,7 @@ export default async function Dasboard() {
               </th>
               <th
                 scope="col"
-                className="hidden md:inline-block lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Price
               </th>
@@ -89,7 +90,7 @@ export default async function Dasboard() {
                     Category Id: {`${product.category.id}`}
                   </div>
                 </td>
-                <td className="hidden md:inline-block lg:w-[22%]  px-6 py-4 whitespace-nowrap">
+                <td className=" lg:w-[22%]  px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   € {product.price}
                   </span>
@@ -99,6 +100,12 @@ export default async function Dasboard() {
             ))}
           </tbody>
         </table>
+
+        <div className='md:hidden lg:hidden flex flex-wrap justify-around'>
+          {data.map((product) => (
+            <CardDashboard key={product.id} product={product}/>
+          ))}
+        </div>
       </div>
     </>
   );
