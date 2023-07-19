@@ -137,14 +137,13 @@ export function useShoppingCartMutations() {
       item: product,
     });
 
-  const clearShoppingCart = () =>
-    dispatch({ type: "clear"});
+  // const clearShoppingCart = () =>
+  //   dispatch({ type: "clear"});
 
   return {
     dispatch,
     addToShoppingCart,
     removeFromShoppingCart,
-    clearShoppingCart,
   };
 };
 

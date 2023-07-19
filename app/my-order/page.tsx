@@ -90,7 +90,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                   currency: currency,
               },
           });
-      }, [currency, showSpinner]);
+      }, [currency, dispatch, options, showSpinner]);
     
     
       return (<>

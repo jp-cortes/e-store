@@ -18,6 +18,7 @@ export async function Carousel() {
         {[...products].map((product) => (
      
           <Link
+          passHref
             key={product.id}
             href={`/products/${product.id}-${product.name}`}
             className="relative h-[30vh] w-full flex-none md:w-1/3">
@@ -28,7 +29,6 @@ export async function Carousel() {
               sizes="33vw"
               src={product.image}
               />
-              {/* <span className='absolute bottom-[20px] left-[80px] bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{product.category.name}</span> */}
       
              
             <div className="absolute bottom-4 right-0 flex items-center justify-center flex-col">

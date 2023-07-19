@@ -1,9 +1,9 @@
 'use client'
 import { Navbar } from "../../components"
-import Cookie  from 'js-cookie';
 import { getOrdersByCustomer } from "../../services";
-import Link from "next/link";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
+import Cookie  from 'js-cookie';
+import Link from "next/link";
 
 
 export default async function MyOrders() {
