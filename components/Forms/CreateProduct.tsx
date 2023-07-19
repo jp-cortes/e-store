@@ -56,9 +56,10 @@ export function FormCreateProduct() {
   
     return (
       <Dialog.Root>
-        <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0 grid grid-cols-4 place-content-center " />
         <Dialog.Portal>
-           <Dialog.Content className="data-[state=open] w-[300px] md:w-[700px] lg:w-full  translate-y-[10%] translate-x-[5%] rounded-[6px] col-start-2 col-end-4 z-20">
+        <Dialog.Overlay className="bg-background/80 data-[state=open] fixed inset-0  z-10" />
+   
+           <Dialog.Content className="data-[state=open] fixed top-[50%] left-[50%]  w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  rounded-[6px] z-10">
           <div className="bg-white  rounded-xl p-2">
             <form onSubmit={handleSubmit((data) => handleUpdate(data))}>
               <div className="overflow-hidden">

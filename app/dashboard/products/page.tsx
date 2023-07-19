@@ -30,7 +30,7 @@ export default  async function ProductsDashboard() {
           <FormCreateProduct />
         </div>
 
-        <div className="flex flex-col">
+        <div className="grid justify-center w-full">
           <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
@@ -97,7 +97,7 @@ export default  async function ProductsDashboard() {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                          €{product.price}
+                            €{product.price}
                           </span>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -118,31 +118,27 @@ export default  async function ProductsDashboard() {
                     ))}
                   </tbody>
                 </table>
-                  <>
-                  
-                <div className='md:hidden lg:hidden flex flex-wrap justify-around'>
-          {products.map((product) => (
-           <>
-            <CardDashboard key={product.id} product={product}/>
-            <div className='w-[280px] flex justify-between content-center'>
-          
-          <Link
-            href={`/dashboard/edit/${product.id}`}
-            className="text-indigo-600 hover:text-indigo-900"
-          >
-            Edit
-          </Link>
-        
-        <p className=" relative text-sm font-medium">
-          <DeleteProduct product={product} />
-        </p>
-</div>
-           </>
-          ))}
-        </div>
-                  </>
               </div>
             </div>
+          </div>
+          <div className="md:hidden lg:hidden flex flex-wrap justify-around">
+            {products.map((product) => (
+              <>
+                <CardDashboard key={product.id} product={product} />
+                <div className="w-[280px] flex justify-between content-center">
+                  <Link
+                    href={`/dashboard/edit/${product.id}`}
+                    className="text-indigo-600 hover:text-indigo-900"
+                  >
+                    Edit
+                  </Link>
+
+                  <p className=" relative text-sm font-medium">
+                    <DeleteProduct product={product} />
+                  </p>
+                </div>
+              </>
+            ))}
           </div>
         </div>
       </div>

@@ -36,6 +36,7 @@ export async function createOrder(orderData: { paid: boolean, status: string}) {
 
 export async function getOrdersByCustomer(id: string): Promise<ResumeOrder[]> {
 
+   try {
     const token = Cookie.get('token');
     //Set the Authorization header with the token
   
@@ -50,6 +51,9 @@ export async function getOrdersByCustomer(id: string): Promise<ResumeOrder[]> {
   const data = await response.json();
   // console.log(data, ' all orders')
   return data;
+   } catch (error) {
+    console.log(error, 'get orders')
+   }
   
   }
   

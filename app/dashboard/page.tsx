@@ -26,36 +26,36 @@ export default async function Dasboard() {
   return (
     <>
       <NavbarDashboard />
-      <div className='flex flex-col'>
-        <div className='mx-auto w-[450px] lg:w-[800px]'>
+      <div className='grid justify-center w-full'>
+        <div className='self-center w-[450px] lg:w-full'>
           <Chart chartData={chartData} />
 
         </div>
      
-        <table className="hidden md:block lg:block w-full divide-y divide-gray-200">
+        <table className="hidden md:block lg:block min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
               <th
                 scope="col"
-                className="lg:w-[22%] w-[110px] md:w-1/3 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Name
               </th>
               <th
                 scope="col"
-                className="w-[110px] md:w-1/3 lg:w-[22%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                className="lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Price
               </th>
               <th
                 scope="col"
-                className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
               >
                 Id
               </th>
@@ -64,7 +64,7 @@ export default async function Dasboard() {
           <tbody className="bg-white divide-y divide-gray-200">
             {data.map((product) => (
               <tr key={`Product-item-${product.id}`}>
-                <td className="lg:w-[22%]  w-[110px] md:w-1/3 px-6 py-4 whitespace-nowrap">
+                <td className="w-[25%]  px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <Image
@@ -82,7 +82,7 @@ export default async function Dasboard() {
                     </div>
                   </div>
                 </td>
-                <td className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-4 whitespace-nowrap">
+                <td className="w-[25%]  px-6 py-4 whitespace-nowrap">
                   <div className="text-sm text-gray-900 capitalize">
                     {product.category.name}
                   </div>
@@ -90,23 +90,23 @@ export default async function Dasboard() {
                     Category Id: {`${product.category.id}`}
                   </div>
                 </td>
-                <td className=" lg:w-[22%]  px-6 py-4 whitespace-nowrap">
+                <td className="w-[25%]  px-6 py-4 whitespace-nowrap">
                   <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                   € {product.price}
                   </span>
                 </td>
-                <td className="w-[110px] md:w-1/3 lg:w-[22%]  px-6 py-4 whitespace-nowrap text-sm text-gray-500">{`${product.id}`}</td>
+                <td className="w-[25%]  px-6 py-4 whitespace-nowrap text-sm text-gray-500">{`${product.id}`}</td>
               </tr>
             ))}
           </tbody>
         </table>
 
+      </div>
         <div className='md:hidden lg:hidden flex flex-wrap justify-around'>
           {data.map((product) => (
             <CardDashboard key={product.id} product={product}/>
           ))}
         </div>
-      </div>
     </>
   );
 }

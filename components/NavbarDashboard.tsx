@@ -15,7 +15,7 @@ export function NavbarDashboard() {
     <header>
       <nav className=' bg-white flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>
       <ul className="flex items-center gap-8 ">
-        <li className='hidden md:block font-bold text-2xl'>
+        <li className='font-bold text-2xl'>
           <Link href='/dashboard'>E-store</Link>
         </li>
       </ul>

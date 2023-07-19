@@ -1,7 +1,7 @@
 'use client'
 
-import { useShoppingCart, useShoppingCartMutations } from '../../store/Cart';
-import { useEffect, useState } from 'react';
+import { useShoppingCart } from '../../store/Cart';
+import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { Navbar } from '../../components';
@@ -20,23 +20,13 @@ import Image from 'next/image';
 export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
-    const { 
-       removeFromShoppingCart,
-       addToShoppingCart,
-       clearShoppingCart } = useShoppingCartMutations();
-
-       //state
-    const [quantity, setQuantity] = useState(1);
+ 
+   
     
  //hook
  const router = useRouter();   
 
-  //add product to shoppingCart
-    function  addItemInShoppingCart(product: Product) {
-        addToShoppingCart(product, quantity);
-        setQuantity(quantity);
-      };
-
+  
     async function handleCheckoutStripe() {
 
       const stripe =  await getStripe();
@@ -126,7 +116,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                   }}
                   onApprove={async function ():Promise<void> {
                      await createOrderPayPal({ paid: true, status: 'on the way'});
-                          //  clearShoppingCart();
+                         
                   }}
               />
           </>
@@ -156,20 +146,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
               <div className='flex justify-between px-4'>
                 <p className=''>Quantity:</p>
               <p className='font-semibold'>{`${item.quantity}`}</p>
-              {/* <button
-              className='w-8 text-xl border border-gray-500'
-              type='button'
-              onClick={() => removeFromShoppingCart(item)}
-              >
-                -
-              </button>
-              <button
-              className='w-8 text-xl border border-gray-500'
-              type='button'               
-                onClick={() => addItemInShoppingCart(item)}
-                >
-                +
-              </button> */}
+              
               </div>
             </div> 
           ))}
