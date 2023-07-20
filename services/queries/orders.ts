@@ -4,8 +4,8 @@ import { endPoints } from "./endPoints";
 
 
 
-export async function createOrder(orderData: { paid: boolean, status: string}) {
-  const { paid, status }= orderData
+export async function createOrder(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
+  const { paid, status, paymentMethod,shippingAddress }= orderData
   
     const token = Cookie.get('token');
     
@@ -24,7 +24,9 @@ export async function createOrder(orderData: { paid: boolean, status: string}) {
     //make sure to serialize your JSON body
     body: JSON.stringify({
         paid, 
-        status
+        status,
+        paymentMethod,
+        shippingAddress
     })
   } 
   );

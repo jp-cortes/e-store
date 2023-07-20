@@ -21,13 +21,11 @@ export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
  
-   
-    
  //hook
  const router = useRouter();   
 
   
-    async function handleCheckoutStripe() {
+    async function handleCheckoutStripe(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
 
       const stripe =  await getStripe();
   
@@ -44,6 +42,7 @@ export default  function MyOrder() {
  
       const data = await response.json();
      if(data.session){
+      await createOrder(orderData)
       await stripe?.redirectToCheckout({ sessionId: data.session.id });
 
      }
@@ -66,9 +65,9 @@ const amount = `${subTotal}`;
 const currency = "EUR";
 const style = {"layout":"vertical"};
 
-async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
+async function createOrderPayPal(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
   try {
-    // await createOrder(orderData);
+    await createOrder(orderData);
       console.log(orderData)
       router.push(`/my-orders`);
     
@@ -90,7 +89,8 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                   currency: currency,
               },
           });
-      }, [currency, dispatch, options, showSpinner]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [currency, showSpinner]);
     
     
       return (<>
@@ -115,7 +115,14 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
                     return orderId;
                   }}
                   onApprove={async function ():Promise<void> {
-                     await createOrderPayPal({ paid: true, status: 'on the way'});
+                     await createOrderPayPal(
+                      { 
+                        paid: true,
+                        status: 'on the way',
+                        paymentMethod: 'paypal',
+                        shippingAddress: 'Check your paypal Account for details',
+                      }
+                      );
                          
                   }}
               />
@@ -166,7 +173,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string}) {
               </div>
         <div className='flex flex-col justify-between items-center z-0'>
         <button 
-         onClick={handleCheckoutStripe}
+         onClick={() => {}}//todo create a small form add shippingAddress, paymentMethod stripe
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>

@@ -25,6 +25,8 @@ export default async function MyOrders() {
           className='border-2 rounded-lg mt-1 w-60 px-2'>
             <p className='font-medium'>Paid: <span className='capitalize font-normal'>{`${order.paid}`}</span></p>
             <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.status}</span></p>
+            <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.paymentMethod}</span></p>
+            <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.shippingAddress}</span></p>
             <p className='font-medium'>Date: <span className='capitalize font-normal'>{(order.createdAt).slice(0,10)}</span></p>
           </div>
         ))}

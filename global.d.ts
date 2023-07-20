@@ -59,6 +59,8 @@ declare global {
   id: number;
   status: string;
   paid: boolean;
+  paymentMethod: string;
+  shippingAddress: string | null;
   customerId: number;
   createdAt: string;
   customer: Customer;
