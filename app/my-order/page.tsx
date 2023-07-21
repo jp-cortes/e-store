@@ -9,7 +9,7 @@ import {
   PayPalScriptProvider,
   PayPalButtons,
   usePayPalScriptReducer } from "@paypal/react-paypal-js";
-import { createOrder } from '../../services';
+import { addItemsToOrder, createOrder } from '../../services';
 import { getStripe } from '../../store/getStripe';
 import Link from 'next/link'; 
 import Image from 'next/image';
@@ -25,7 +25,7 @@ export default  function MyOrder() {
  const router = useRouter();   
 
   
-    async function handleCheckoutStripe(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
+async function handleCheckoutStripe() {
 
       const stripe =  await getStripe();
   
@@ -41,23 +41,29 @@ export default  function MyOrder() {
       if(response.status === 500) return;
  
       const data = await response.json();
+      
      if(data.session){
-      await createOrder(orderData)
+      const order = await createOrder({ 
+        paid: true,
+        status: 'on the way'
+      });
+
+    //this will add the products to  the order
+    //making the relation N:N in the data base
+      items.forEach((item) => 
+      addItemsToOrder({
+        orderId: order.id, 
+        productId: item.id, 
+        amount: item.quantity  
+      })
+      );
+
       await stripe?.redirectToCheckout({ sessionId: data.session.id });
 
      }
       
-    
-    
     }
 
-    
-    // /orders/add-item //endpoint
-    // {
-    //     "orderId": 1,
-    //     "productId": 3,
-    //     "amount": 5
-    //   }
     
       //paypal
   // This values are the props in the UI
@@ -65,10 +71,20 @@ const amount = `${subTotal}`;
 const currency = "EUR";
 const style = {"layout":"vertical"};
 
-async function createOrderPayPal(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
+async function createOrderPayPal(orderData: { paid: boolean, status: string }) {
   try {
-    await createOrder(orderData);
-      console.log(orderData)
+  const order = await createOrder(orderData);
+
+  //this will add the products to  the order
+  //making the relation N:N in the data base
+  items.forEach((item) => 
+    addItemsToOrder({
+      orderId: order.id, 
+      productId: item.id, 
+      amount: item.quantity  
+    })
+    )
+
       router.push(`/my-orders`);
     
   } catch (error) {
@@ -118,9 +134,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string, pay
                      await createOrderPayPal(
                       { 
                         paid: true,
-                        status: 'on the way',
-                        paymentMethod: 'paypal',
-                        shippingAddress: 'Check your paypal Account for details',
+                        status: 'on the way'
                       }
                       );
                          
@@ -173,7 +187,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string, pay
               </div>
         <div className='flex flex-col justify-between items-center z-0'>
         <button 
-         onClick={() => {}}//todo create a small form add shippingAddress, paymentMethod stripe
+         onClick={handleCheckoutStripe}//todo create a small form add shippingAddress, paymentMethod stripe
          className='flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6'>
           Pay with Stripe
         </button>

@@ -13,20 +13,19 @@ export default async function MyOrders() {
   return (
    <>
    <Navbar/>
-    <div className='grid place-content-center'>
+    <div className='grid text-center justify-center overflow-y-auto h-auto'>
 
       <div className='relative w-80'>
       <Link passHref href='/my-order' className='absolute right-0 top-1.5'>
           <ChevronRightIcon className='h-6 w-6 text-black cursor-pointer' />
         </Link>
-          <h1 className='text-center text-2xl font-semibold mb-5'>My Orders</h1>
+          <h1 className=' text-2xl font-semibold mb-5'>My Orders</h1>
         {allMyOrders.map((order) => (
           <div key={order.id}
           className='border-2 rounded-lg mt-1 w-60 px-2'>
             <p className='font-medium'>Paid: <span className='capitalize font-normal'>{`${order.paid}`}</span></p>
             <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.status}</span></p>
-            <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.paymentMethod}</span></p>
-            <p className='font-medium'>Current status: <span className='capitalize font-normal'>{order.shippingAddress}</span></p>
+            <Link href={`/orders/${order.id}`} passHref><span className='capitalize font-medium text-blue-400'>details</span></Link>
             <p className='font-medium'>Date: <span className='capitalize font-normal'>{(order.createdAt).slice(0,10)}</span></p>
           </div>
         ))}

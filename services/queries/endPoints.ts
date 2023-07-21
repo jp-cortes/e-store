@@ -32,6 +32,8 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   },
   orders: {
     createOrder: `${API}/api/${VERSION}/orders`,
+    addItem: `${API}/api/${VERSION}/orders/add-item`,
+    order: (id: string) => `${API}/api/${VERSION}/orders/${id}`,
     myOrders: (id: string) => `${API}/api/${VERSION}/profile/my-orders/${id}`
   },
   files:{

@@ -11,7 +11,7 @@ const stripe = new Stripe(key, {
 
 export async function POST(req: NextRequest) {
 const body = await req.json();
-  console.log(body)
+  
     try {
       if(body.length > 0){
     // Create Checkout Sessions from body params.

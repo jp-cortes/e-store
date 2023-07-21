@@ -36,18 +36,17 @@ declare global {
     createdAt: string;
     userId: number;
   }
-
+ type User = {
+  email: string;
+  password: string; 
+}
 
   type NewCustomer = {
     name: string;
     lastName: string;
     phone: string;
     avatar?: string;
-    user: {
-      email: string;
-      password: string;
-      
-    }
+    user: User;
   }
   
   type PaypalButton = {
@@ -59,8 +58,6 @@ declare global {
   id: number;
   status: string;
   paid: boolean;
-  paymentMethod: string;
-  shippingAddress: string | null;
   customerId: number;
   createdAt: string;
   customer: Customer;
@@ -83,5 +80,34 @@ declare global {
   products: Product[];
 };
 
+type OrderProduct = {
+  id: number;
+  amount: number;
+  createdAt: string;
+  orderId: number;
+  productId: number;
+}
+
+type ProductOrder = {
+  id: number;
+  name: string;
+  description: string;
+  image: string;
+  price: string;
+  categoryId: number;
+  createdAt: string;
+  OrderProduct: OrderProduct;
+}
+
+
+type OrderDetail = {
+  id: number;
+  status: string;
+  paid: boolean;
+  createdAt: string;
+  customerId: number;
+  customer: NewCustomer;
+  items: ProductOrder[]
+}
 
 }

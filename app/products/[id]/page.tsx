@@ -35,7 +35,7 @@ export default async function Product ({ params: { id } } : { params: { id: stri
                 {product.name}
               </div>
               <div className="inline-flex bg-white px-2 text-lg mt-2 font-semibold text-black rounded-lg">
-                ${product.price}
+              € {product.price}
               </div>
           </div>
       </div>

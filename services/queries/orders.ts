@@ -4,8 +4,8 @@ import { endPoints } from "./endPoints";
 
 
 
-export async function createOrder(orderData: { paid: boolean, status: string, paymentMethod: string, shippingAddress: string }) {
-  const { paid, status, paymentMethod,shippingAddress }= orderData
+export async function createOrder(orderData: { paid: boolean, status: string }) {
+  const { paid, status }= orderData
   
     const token = Cookie.get('token');
     
@@ -24,9 +24,7 @@ export async function createOrder(orderData: { paid: boolean, status: string, pa
     //make sure to serialize your JSON body
     body: JSON.stringify({
         paid, 
-        status,
-        paymentMethod,
-        shippingAddress
+        status
     })
   } 
   );
@@ -36,6 +34,63 @@ export async function createOrder(orderData: { paid: boolean, status: string, pa
 }
 
 
+export async function addItemsToOrder(item: { orderId: number, productId: number, amount: number }) {
+  const { orderId, productId, amount }= item;
+
+    const token = Cookie.get('token');
+    
+  //Set the Authorization header with the token
+    const headers = {
+      'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      };
+
+  const response = await fetch(`${endPoints.orders.addItem}`, 
+  {
+    method: 'POST',
+    headers: headers,
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+      orderId,
+      productId,
+      amount
+    })
+  } 
+  );
+  const data = await response.json();
+  // console.log(data, 'is updated');
+ return data;
+}
+
+
+export async function getOrdersById(id: string): Promise<OrderDetail> {
+
+  
+    const token = Cookie.get('token');
+    //Set the Authorization header with the token
+  
+    const headers = {
+         'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      };
+      
+  const response = await fetch(`${endPoints.orders.order(id)}`, {
+    method: 'GET',
+    cache: 'no-store',
+    headers: headers
+  });
+  const data = await response.json();
+  
+ return data;
+  
+ 
+  
+  }
+
+  
 export async function getOrdersByCustomer(id: string): Promise<ResumeOrder[]> {
 
   
