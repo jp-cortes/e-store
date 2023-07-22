@@ -14,9 +14,9 @@ export function Card({ product, isDetailsPage }:Props) {
 
 
   return (
-   <>
-    <div className='bg-white cursor-pointer w-56 h-60 rounded-lg mx-auto mb-5 hover:border-b-4 hover:border-solid hover:border-green-600  transition-colors duration-500'>
-        <figure className="relative mb-2 w-full h-auto">
+   <div className='mx-auto mb-5 w-60 rounded-lg hover:border-b-4 hover:border-solid hover:border-green-600 transition-colors duration-500 cursor-pointer shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] bg-white'>
+    <div className='w-56 h-60 '>
+        <figure className="m-2 w-full h-auto">
          
             
             <Link passHref href={`/products/${product.id}-${product.name}`}>
@@ -34,7 +34,7 @@ export function Card({ product, isDetailsPage }:Props) {
         </p>
     </div>
   
-   </>
+   </div>
   
   )
 }

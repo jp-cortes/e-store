@@ -79,7 +79,7 @@ export async function getOrdersById(id: string): Promise<OrderDetail> {
       
   const response = await fetch(`${endPoints.orders.order(id)}`, {
     method: 'GET',
-    cache: 'no-store',
+    // cache: 'no-store',
     headers: headers
   });
   const data = await response.json();

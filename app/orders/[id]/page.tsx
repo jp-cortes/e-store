@@ -16,14 +16,14 @@ export default async function OrderDetail({ params: { id } } : { params: { id: s
       <NavbarDashboard />
       <div className='relative grid justify-center overflow-y-auto'>
         
-        <h2 className="text-2xl ml-8 my-7">Order Detail</h2>
+        <h2 className="text-2xl text-center ml-8 my-7">Order Detail</h2>
         <div className='w-full h-auto'>
         {order.items.map((item) => (
           <div 
-          className='bg-gray-200 flex flex-col justify-center border-2 rounded-lg mt-1 p-3'
+          className='flex flex-col justify-center border-2 rounded-lg mt-1 p-3 shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] bg-white'
           key={item.id}>
             <div className='flex justify-between content-center'>
-              <figure>
+              <figure className='mr-2'>
                 <Image src={item.image} width={60} height={60} alt={item.name} />
               </figure>
               <p className=''>{item.name}</p>
