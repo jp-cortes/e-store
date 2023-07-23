@@ -24,7 +24,7 @@ export default  function MyOrder() {
  //hook
  const router = useRouter();   
 
-  
+  //payment with stripe
 async function handleCheckoutStripe() {
 
       const stripe =  await getStripe();
@@ -71,6 +71,7 @@ const amount = `${subTotal}`;
 const currency = "EUR";
 const style = {"layout":"vertical"};
 
+//payment with paypal
 async function createOrderPayPal(orderData: { paid: boolean, status: string }) {
   try {
   const order = await createOrder(orderData);
@@ -92,7 +93,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string }) {
   }
 
 }
-    
+  //button wrapper paypal  
     function ButtonWrapper({ currency, showSpinner }: PaypalButton) {
       // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
       const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
@@ -196,7 +197,8 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string }) {
             <div className="flex flex-col justify-between items-center z-0">
               <button
                 onClick={handleCheckoutStripe} //todo create a small form add shippingAddress, paymentMethod stripe
-                className="flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6"
+                className="flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6 disabled:opacity-50 disabled:cursor-not-allowed"
+                // disabled={}
               >
                 Pay with Stripe
               </button>
