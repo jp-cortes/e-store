@@ -1,28 +1,24 @@
 
 'use client'
 
-import Cookie  from 'js-cookie';
 import { Navbar } from '../../components';
 import { getCustomerbyId } from "../../services";
 import { UpdateUserInfo } from '../../components/Forms';
 import Image from 'next/image';
 import * as Dialog from '@radix-ui/react-dialog';
+import { Suspense } from 'react';
 
 
 
 export default async function MyAccount() {
  
-
-//cookies
-  const userId = Cookie.get('userId');
-  
-  // render the user info
-  const user = await getCustomerbyId(`${userId}`);
+  const user: Customer = await getCustomerbyId();
   
 
   return (
  <>
     <Navbar />
+    <Suspense>
     <div className='relative grid grid-col-1 place-content-center '>
                 
       <h1 className='text-2xl font-semibold text-center'>Account</h1>
@@ -38,12 +34,12 @@ export default async function MyAccount() {
             alt='user-avatar'/>
           </figure> : 
           <div className='bg-purple-600 w-[80px] h-[80px] rounded-full flex justify-center items-center my-5'>
-            <p className='text-3xl text-white capitalize'>{(user.name).slice(0,1)}</p>
+            <p className='text-3xl text-white capitalize'>{(user?.name)?.slice(0,1)}</p>
             </div>}
           <div className=''>
-            <p className='my-5 font-light text-gray-700 capitalize'><b>Name: </b>{user.name}</p>
-            <p className='my-5 font-light text-gray-700 capitalize'><b>Lastname: </b>{user.lastName}</p>
-            <p className='my-5 font-light text-gray-700 capitalize'><b>Phone number: </b>{user.phone}</p>
+            <p className='my-5 font-light text-gray-700 capitalize'><b>Name: </b>{user?.name}</p>
+            <p className='my-5 font-light text-gray-700 capitalize'><b>Lastname: </b>{user?.lastName}</p>
+            <p className='my-5 font-light text-gray-700 capitalize'><b>Phone number: </b>{user?.phone}</p>
           </div>
         
         </div>
@@ -68,7 +64,7 @@ export default async function MyAccount() {
 
 
     </div>
-    
+    </Suspense>
   </>
   )
 }

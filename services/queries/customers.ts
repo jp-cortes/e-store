@@ -1,23 +1,34 @@
 import Cookie  from 'js-cookie';
+
+
 import { endPoints } from "./endPoints";
 import { UpdateValues } from '../../utils/schemas/customer';
 
 
-export async function getCustomerbyId(id: string): Promise<Customer> {
+export async function getCustomerbyId() {
 
+  const id = Cookie.get('userId') as string
   const token = Cookie.get('token');
-  //Set the Authorization header with the token
+  
+if(id && token) {
 
+  //Set the Authorization header with the token
+  
   const headers = {
       Authorization: `Bearer ${token}`
     };
     
-const response = await fetch(`${endPoints.customers.profile(id)}`, {
+  const response = await fetch(`${endPoints.customers.profile(id)}`, {
   method: 'GET',
+  cache: 'no-cache',
   headers: headers
-});
-const data = await response.json();
-return data;
+  });
+  
+  const data = await response.json();
+  return data;
+} 
+
+
 
 }
 

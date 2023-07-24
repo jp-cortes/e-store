@@ -91,10 +91,13 @@ export async function getOrdersById(id: string): Promise<OrderDetail> {
   }
 
   
-export async function getOrdersByCustomer(id: string): Promise<ResumeOrder[]> {
+export async function getOrdersByCustomer() {
 
   
+  const id =  Cookie.get('userId') as string;
     const token = Cookie.get('token');
+    
+    if(id && token) {
     //Set the Authorization header with the token
   
     const headers = {
@@ -103,12 +106,13 @@ export async function getOrdersByCustomer(id: string): Promise<ResumeOrder[]> {
       
   const response = await fetch(`${endPoints.orders.myOrders(id)}`, {
     method: 'GET',
+    cache: 'no-cache',
     headers: headers
   });
   const data = await response.json();
   // console.log(data, ' all orders')
   return data;
-  
+}
   
   }
   
