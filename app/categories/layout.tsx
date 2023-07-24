@@ -1,10 +1,10 @@
-import { AllCategories } from '../../components/AllCategories';
 
 import { Suspense } from 'react';
 import { Footer } from '../../components';
 import { Navbar } from '../../components';
+import { AllCategories } from '../../components/AllCategories';
 
-const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
+export default function ProductsLayout({ children }: { children: React.ReactNode }) {
   return (
   <>
       <Navbar />
@@ -26,4 +26,3 @@ const ProductsLayout = ({ children }: { children: React.ReactNode }) => {
 }
 
 
-export default ProductsLayout;

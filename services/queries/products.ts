@@ -3,19 +3,25 @@ import { endPoints } from "./endPoints";
 import { CreateProductValues, UpdateProductValues } from '../../utils/schemas/Products';
 
 export async function getAllProducts(): Promise<Products> {
-    const res = await fetch(`${endPoints.products.allProducts}`);
+    const res = await fetch(`${endPoints.products.allProducts}`, 
+    { cache: 'no-cache'}
+    );
     const data = await res.json();
     return  data;
   }
 
 export async function getProductsByPage(limit: number, offset: number): Promise<Products> {
-    const res = await fetch(`${endPoints.products.getProducts(limit, offset)}`);
+    const res = await fetch(`${endPoints.products.getProducts(limit, offset)}`, 
+    { cache: 'no-cache'}
+    );
     const data = await res.json();
     return  data;
   }
 
 export async function getProductsById(id: string): Promise<Product> {
-    const res = await fetch(`${endPoints.products.getProduct(id)}`);
+    const res = await fetch(`${endPoints.products.getProduct(id)}`, 
+    { cache: 'no-cache'}
+    );
     const data = await res.json();
     return  data;
   }

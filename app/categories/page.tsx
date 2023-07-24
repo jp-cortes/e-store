@@ -1,4 +1,4 @@
-
+'use client'
 import { Suspense } from "react";
 import { Card } from "../../components"
 import { getAllProducts } from "../../services"
@@ -9,6 +9,8 @@ import { getAllProducts } from "../../services"
 
 export default async function Categories() {
   const products = await getAllProducts();
+
+  if(!products) return null;
   
   return (
     
@@ -18,7 +20,7 @@ export default async function Categories() {
       
       <Suspense>
 
-        {products.map((product: Product) => (
+        {products?.map((product: Product) => (
           <Card key={product.id} product={product} isDetailsPage={false}/>
           ))}
         
