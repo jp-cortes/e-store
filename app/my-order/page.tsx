@@ -18,7 +18,7 @@ export default  function MyOrder() {
     const router = useRouter();
     
 
-  if(items.length === 0){
+  if(!items){
     router.push(`/my-orders`);
   }
 
