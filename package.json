@@ -27,7 +27,6 @@
     "@types/react-dom": "18.2.4",
     "@types/react-redux": "^7.1.25",
     "chart.js": "^4.3.0",
-    "client-only": "^0.0.1",
     "eslint": "8.42.0",
     "eslint-config-next": "^12.0.4",
     "js-cookie": "^3.0.5",

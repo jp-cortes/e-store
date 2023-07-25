@@ -10,9 +10,10 @@ import {
   PayPalButtons,
   usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { addItemsToOrder, createOrder } from '../../services';
-import { getStripe } from '../../store/getStripe';
+
 import Link from 'next/link'; 
 import Image from 'next/image';
+import { ButtonStripe } from '../../components/ButtonStripe';
 
 
 
@@ -24,45 +25,6 @@ export default  function MyOrder() {
  //hook
  const router = useRouter();   
 
-  //payment with stripe
-async function handleCheckoutStripe() {
-
-      const stripe =  await getStripe();
-  
-      const response = await fetch('/api/stripe', {
-        method: 'POST',
-        headers : {
-          'Content-Type': 'application/json'
-        },
-        cache: 'no-cache',
-        body: JSON.stringify(items),
-      });
-  
-      if(response.status === 500) return;
- 
-      const data = await response.json();
-      
-     if(data.session){
-      const order = await createOrder({ 
-        paid: true,
-        status: 'on the way'
-      });
-
-    //this will add the products to  the order
-    //making the relation N:N in the data base
-      items.forEach((item) => 
-      addItemsToOrder({
-        orderId: order.id, 
-        productId: item.id, 
-        amount: item.quantity  
-      })
-      );
-
-      await stripe?.redirectToCheckout({ sessionId: data.session.id });
-
-     }
-      
-    }
 
     
       //paypal
@@ -195,13 +157,7 @@ async function createOrderPayPal(orderData: { paid: boolean, status: string }) {
               <p>€ {subTotal.toFixed(2)}</p>
             </div>
             <div className="flex flex-col justify-between items-center z-0">
-              <button
-                onClick={handleCheckoutStripe} //todo create a small form add shippingAddress, paymentMethod stripe
-                className="flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6 disabled:opacity-50 disabled:cursor-not-allowed"
-                // disabled={}
-              >
-                Pay with Stripe
-              </button>
+              <ButtonStripe items={items}/>
               <div className="w-full flex items-center justify-center my-6">
                 <div className="h-[2px] w-6 bg-black" />
                 <p className="mx-5 text-xl">or</p>
