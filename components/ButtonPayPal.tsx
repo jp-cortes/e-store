@@ -5,6 +5,7 @@ import {
     usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { addItemsToOrder, createOrder } from '../services';
 import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 type Props = {
     items: CartItemType[];
@@ -13,7 +14,7 @@ type Props = {
 
  export async function ButtonPayPal({ items, subTotal }: Props) {
 
-
+  const router = useRouter();
     
  //paypal
 // This values are the props in the UI
@@ -36,7 +37,7 @@ addItemsToOrder({
 })
 )
 
-// router.push('/my-orders)
+router.push('/my-orders')
 
 } catch (error) {
 console.log(error);

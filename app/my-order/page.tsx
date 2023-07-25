@@ -7,7 +7,6 @@ import { ButtonStripe } from '../../components/ButtonStripe';
 import Link from 'next/link'; 
 import Image from 'next/image';
 import { ButtonPayPal } from '../../components/ButtonPayPal';
-import { useRouter } from 'next/navigation';
 
 
 
@@ -15,13 +14,10 @@ export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
 
-    const router = useRouter();
+   
     
 
-  if(!items){
-    router.push(`/my-orders`);
-  }
-
+  
   return (
     <>
       <Navbar />
