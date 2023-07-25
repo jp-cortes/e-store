@@ -36,7 +36,7 @@ addItemsToOrder({
 })
 )
 
-
+// router.push('/my-orders)
 
 } catch (error) {
 console.log(error);
@@ -88,7 +88,7 @@ function ButtonWrapper({ currency, showSpinner }: PaypalButton) {
                    status: 'on the way'
                  }
                  );
-                   location.reload() 
+            
              }}
          />
      </>
