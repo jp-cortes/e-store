@@ -1,7 +1,16 @@
 import { type } from "os"
 
 declare global {
-  
+  type CartItemType = Product & { quantity: number, price: number};
+
+ type CartState = {
+  [key: string]: CartItemType;
+};
+ type CartAction = {
+  type: "add" | "remove" | "clear";
+  item: Product;
+  quantity?: number;
+};
  
      type Category = {
             id: number;
