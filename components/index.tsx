@@ -1,6 +1,8 @@
 import { Chart } from "./Charts";
 import { AddToCartButton } from "./AddToCartButton";
 import { AllCategories } from "./AllCategories";
+import { ButtonPayPal } from './ButtonPayPal';
+import { ButtonStripe } from './ButtonStripe';
 import { Card } from "./Card";
 import { Carousel } from "./Carousel";
 import { ShoppingCart } from "./Cart";
@@ -20,6 +22,8 @@ import { RelatedProducts } from "./RelatedProducts";
     Chart,
     AddToCartButton,
     AllCategories,
+    ButtonPayPal,
+    ButtonStripe,
     Card,
     Carousel,
     ShoppingCart,

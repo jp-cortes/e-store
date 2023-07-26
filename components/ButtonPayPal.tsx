@@ -1,4 +1,4 @@
-'uss client'
+'use client'
 import {  
     PayPalScriptProvider,
     PayPalButtons,

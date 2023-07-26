@@ -35,7 +35,7 @@ const nextConfig = {
                 key: 'token',
               },
             ],
-            destination: '/login', // Matched parameters can be used in the destination
+            destination: '/login', // no token redirec to /login
             permanent: false,
           },
           {
@@ -46,7 +46,7 @@ const nextConfig = {
                 key: 'token',
               },
             ],
-            destination: '/my-account', // Matched parameters can be used in the destination
+            destination: '/my-account', // with token redirect to /my-account
             permanent: false,
           },
           {
@@ -57,7 +57,7 @@ const nextConfig = {
                 key: 'token',
               },
             ],
-            destination: '/my-account', // Matched parameters can be used in the destination
+            destination: '/my-account', // with token redirect to /my-account
             permanent: false,
           },
           {
@@ -68,7 +68,7 @@ const nextConfig = {
                 key: 'token',
               },
             ],
-            destination: '/login', // Matched parameters can be used in the destination
+            destination: '/login', // no token redirect to /login
             permanent: false,
           },
           {
@@ -76,23 +76,22 @@ const nextConfig = {
             has: [
               {
                 type: 'cookie',
-                key: 'userId',
-                value: '1'
+                key: 'userRole',
+                value: 'admin'
               },
             ],
-            destination: '/dashboard', // Matched parameters can be used in the destination
-            permanent: false,
+            destination: '/dashboard', // userRole is admin redirect to dashboard
           },
           {
             source: '/dashboard',
             missing: [
               {
                 type: 'cookie',
-                key: 'userId',
-                value: '1'
+                key: 'userRole',
+                value: 'admin'
               },
             ],
-            destination: '/', // Matched parameters can be used in the destination
+            destination: '/', // userRole is not admin redirect to /home
             permanent: false,
           },
           {
@@ -100,11 +99,11 @@ const nextConfig = {
             missing: [
               {
                 type: 'cookie',
-                key: 'userId',
-                value: '1'
+                key: 'userRole',
+                value: 'admin'
               },
             ],
-            destination: '/', // Matched parameters can be used in the destination
+            destination: '/', // userRole is not admin redirect to /home
             permanent: false,
           },
         ]

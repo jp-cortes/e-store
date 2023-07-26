@@ -3,10 +3,10 @@
 import { useShoppingCart } from '../../store/Cart';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
 import { Navbar } from '../../components';
-import { ButtonStripe } from '../../components/ButtonStripe';
+import { ButtonStripe } from '../../components';
+import { ButtonPayPal } from '../../components';
 import Link from 'next/link'; 
 import Image from 'next/image';
-import { ButtonPayPal } from '../../components/ButtonPayPal';
 
 
 

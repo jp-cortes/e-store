@@ -28,8 +28,8 @@ const { email, password} = data;
  try {
   await loginUser(email, password);
 
-  
   router.push('/my-account');
+  
   await new Promise((resolve) => setTimeout(resolve,5000));
   
  } catch (error) {

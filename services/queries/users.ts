@@ -19,9 +19,11 @@ export async function loginUser(email: string, password: string) {
       const data = await response.json();
       const token = data.token;
       const userId = data.user.id;
+      const userRole = data.user.role;
       
       Cookie.set('token', token, { expires: 5 })
       Cookie.set('userId', userId, { expires: 5 })
+      Cookie.set('userRole', userRole, { expires: 5 })
     
       return data;
 }
