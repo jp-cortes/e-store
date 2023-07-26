@@ -81,6 +81,7 @@ const nextConfig = {
               },
             ],
             destination: '/dashboard', // userRole is admin redirect to dashboard
+            permanent: false,
           },
           {
             source: '/dashboard',
