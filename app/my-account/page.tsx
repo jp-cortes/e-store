@@ -14,7 +14,6 @@ export default async function MyAccount() {
  
   const user: Customer = await getCustomerbyId();
   
-
   return (
  <>
     <Navbar />

@@ -55,17 +55,17 @@ const categories = [
         </DropdownMenu.Trigger>
         <DropdownMenu.Portal>
           <DropdownMenu.Content className="absolute top-2 left-[-28px] w-[120px] sm:w-auto z-20 rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] bg-white">
-            <ul className="flex flex-col w-full list-none gap-2">
-              <li className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
-                <DropdownMenu.Item>
+            <div className="flex flex-col w-full list-none gap-2">
+              
+                <DropdownMenu.Item className='focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize'>
                   <Link href="/">Home</Link>
                 </DropdownMenu.Item>
-              </li>
-              <li className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
-                <DropdownMenu.Item>
+              
+            
+                <DropdownMenu.Item  className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
                   <Link href="/categories">All Products</Link>
                 </DropdownMenu.Item>
-              </li>
+              
               <DropdownMenu.Sub>
                 <DropdownMenu.SubTrigger>
                   <div className="flex content-center gap-2 pl-2">
@@ -80,21 +80,21 @@ const categories = [
                     alignOffset={-5}
                   >
                     {categories.map((category) => (
-                      <li className="list-none" key={category.id}>
-                          <Link passHref
+                
+                        <DropdownMenu.Item key={category.id}>
+                          <Link
                             className="w-full hover:bg-purple-100  rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize"
                             href={`/categories/${category.id}-${category.name}`}
                           >
-                        <DropdownMenu.Item>
                             {category.name}
-                        </DropdownMenu.Item>
                           </Link>
-                      </li>
+                        </DropdownMenu.Item>
+                     
                     ))}
                   </DropdownMenu.SubContent>
                 </DropdownMenu.Portal>
               </DropdownMenu.Sub>
-            </ul>
+            </div>
           </DropdownMenu.Content>
         </DropdownMenu.Portal>
       </DropdownMenu.Root>

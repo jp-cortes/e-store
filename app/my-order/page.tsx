@@ -52,7 +52,7 @@ export default  function MyOrder() {
           ))}
         </div>
         {items.length === 0 ? (
-          <h3 className="text-center mt-10">You have no Orders</h3>
+          <h3 className="text-center mt-[50%]">There is not pending Order</h3>
         ) : (
           <div className="px-4">
             <div className="border-t-2 border-b-2 border-black mt-3 py-2">

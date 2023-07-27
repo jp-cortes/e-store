@@ -18,14 +18,14 @@ if(id && token) {
       Authorization: `Bearer ${token}`
     };
     
-  const response = await fetch(`${endPoints.customers.profile(id)}`, {
+  const response = await fetch(`${endPoints.users.profile(id)}`, {
   method: 'GET',
   cache: 'no-cache',
   headers: headers
   });
   
-  const data = await response.json();
-  return data;
+  const { customer } = await response.json();
+  return customer;
 } 
 
 

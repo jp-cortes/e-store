@@ -21,9 +21,11 @@ export async function loginUser(email: string, password: string) {
       const userId = data.user.id;
       const userRole = data.user.role;
       
-      Cookie.set('token', token, { expires: 5 })
-      Cookie.set('userId', userId, { expires: 5 })
-      Cookie.set('userRole', userRole, { expires: 5 })
+      //cookies
+      const in30Minutes = 1/48
+      Cookie.set('token', token, { expires: in30Minutes })
+      Cookie.set('userId', userId, { expires: in30Minutes })
+      Cookie.set('userRole', userRole, { expires: in30Minutes })
     
       return data;
 }
