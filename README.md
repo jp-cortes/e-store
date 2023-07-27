@@ -69,6 +69,7 @@ You might be able to create your own user or you can test the application with t
 * Email: demouser@mail.com
 * Password: 123456789
 ## Admin:
+* Not yet available
 * Email: demoadmin@mail.com
 * Password: Admin123
 
