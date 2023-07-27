@@ -3,7 +3,7 @@
 Welcome to E-Store, an E-Commerce Web application built with Next.js and powered by a **PostgreSQL** database. This project provides a great user experience, where products are categorized, and users can navigate through a variety of features, including a shopping cart, payment options with Stripe and PayPal, and order tracking.
 
 # Project Repository
-The source code for E-Store can be found at https://github.com/jp-cortes/express-rest-api.
+The Backend source code can be found at https://github.com/jp-cortes/express-rest-api.
 
 # Features
 * User authentication.
