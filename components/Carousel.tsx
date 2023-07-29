@@ -35,9 +35,6 @@ export async function Carousel() {
               <div className="w-32 inline-flex bg-orange-200 p-4 text-lg font-semibold text-black rounded-xl capitalize justify-center">
                 {category.name}
               </div>
-              <div className="inline-flex bg-white px-2 text-lg mt-2 font-semibold text-black rounded-lg">
-                
-              </div>
             </div>
           </Link>
         
