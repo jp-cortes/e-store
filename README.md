@@ -66,7 +66,7 @@ To run the development server, use the following command:
 # Credentials
 You might be able to create your own user or you can test the application with the following credentials
 ## Customer: 
-* Email: demouser@mail.com
+* Email: demouser01@mail.com
 * Password: 123456789
 ## Admin:
 * Not yet available
