@@ -25,6 +25,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   },
   categories:{
     getCategories: `${API}/api/${VERSION}/categories`,
+    getCategory: (id: string) =>`${API}/api/${VERSION}/categories/${id}`,
     productsByCategory: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
     postCategories: `${API}/api/${VERSION}/categories`,
     getCategoriesProduct: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
