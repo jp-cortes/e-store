@@ -47,7 +47,7 @@ export default function RecoveryPassword() {
         <div className="max-w-md w-full space-y-8">
             <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">E-store</h1>
           <div>
-            <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">Forgot your password?</h2>
+            <h2 className="mt-6 text-center text-xl font-extrabold text-gray-900">Change your password</h2>
           </div>
           <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">

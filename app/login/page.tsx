@@ -5,10 +5,11 @@ import { ErrorText, MenuMobile } from "../../components";
 import { useRouter } from 'next/navigation';
 import { LockClosedIcon } from '@heroicons/react/24/solid';
 import { loginUser } from '../../services';
+import { LoginValues, loginValuesSchema } from '../../utils/schemas/customer';
+import Swal from 'sweetalert2';
 import Link from 'next/link';
 import Image from 'next/image';
 import loginBanner from '../../public/login_banner.jpg';
-import { LoginValues, loginValuesSchema } from '../../utils/schemas/customer';
 
 
 
@@ -33,7 +34,11 @@ const { email, password} = data;
   await new Promise((resolve) => setTimeout(resolve,5000));
   
  } catch (error) {
-  console.log(error);
+  Swal.fire({
+    icon: 'error',
+    title: 'Oops... Something went wrong!',
+    text: 'Wrong email or password'
+  })
  }
 
 }

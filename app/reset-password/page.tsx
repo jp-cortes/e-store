@@ -4,6 +4,7 @@ import { FormEvent, useRef, useState } from "react";
 import { sendRecoveryEmail } from "../../services";
 import { useRouter } from "next/navigation";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
+import Swal from 'sweetalert2';
 
 export default function ResetPassword() {
   const [emailSent, setEmailSent] = useState(false);
@@ -16,15 +17,19 @@ export default function ResetPassword() {
     // @ts-ignore: Object is possibly 'null'.
     const email = emailRef.current.value;
 
-  //  try {
-  //   await sendRecoveryEmail(email);
-    
-  //  } catch (error) {
-  //   console.log(error);
-  //  }
+   try {
+    await sendRecoveryEmail(email);
     setEmailSent(true);
-    console.log(email, 'email sent');
-    router.refresh()
+    router.push('/login')
+   } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops... Something went wrong!',
+      text: 'Try again'
+    })
+   }
+    
+  
 
   }
   return (

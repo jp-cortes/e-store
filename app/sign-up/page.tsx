@@ -4,10 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
 import { ErrorText, MenuMobile } from "../../components";
 import { SignupValues, signUpValuesSchema } from "../../utils/schemas/customer";
+import { createCustomer } from "../../services/queries/customers";
+import Swal from 'sweetalert2'
 import Image from "next/image";
 import loginBanner from '../../public/login_banner.jpg';
 import Link from "next/link";
-import { createCustomer } from "../../services/queries/customers";
 
 
 export default function SignUp() {
@@ -28,11 +29,20 @@ export default function SignUp() {
       console.log(newUser)
       await new Promise((resolve) => setTimeout(resolve,5000));
       
-      // console.log('done')
+      Swal.fire(
+        'Account have been created successfully!',
+        'Login now to start shopping',
+        'success'
+      )
+
     router.push('/login');
 
    } catch (error) {
-    console.log(error);
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops... Something went wrong!',
+      text: 'Please review your info and try again'
+    })
    }
 
 
