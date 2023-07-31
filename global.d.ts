@@ -119,4 +119,9 @@ type OrderDetail = {
   items: ProductOrder[]
 }
 
+type ResetPassword = {
+  token: string;
+  newPassword: string;
+}
+
 }

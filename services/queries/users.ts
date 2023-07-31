@@ -33,7 +33,7 @@ export async function loginUser(email: string, password: string) {
 
 export async function sendRecoveryEmail(email: string) {
   
-    const response = await fetch(`${endPoints.users.resetPassword}`, {
+    const response = await fetch(`${endPoints.users.sendRecoveryEmail}`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -50,3 +50,23 @@ export async function sendRecoveryEmail(email: string) {
 }
 
 
+export async function updateUserPassword(userInfo: ResetPassword) {
+  const { newPassword, token } = userInfo;
+  //  console.log(newCustomer,'new customer')
+  const response = await fetch(`${endPoints.users.resetUserPassword}`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+    
+      //make sure to serialize your JSON body
+      body: JSON.stringify({
+        token,
+        newPassword
+      })
+    })
+    const data = await response.json();
+  //  console.log(data, 'data')
+    return data;
+}

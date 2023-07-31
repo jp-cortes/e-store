@@ -4,6 +4,8 @@ import { z } from 'zod';
  export type LoginValues = z.infer<typeof loginValuesSchema>
  export type SignupValues = z.infer<typeof signUpValuesSchema>
  export type UpdateValues = z.infer<typeof updateValuesSchema>
+ export type RecoveryEmailValue = z.infer<typeof recoveryEmailSchema>
+ export type ResetPasswordValue = z.infer<typeof resetPasswordSchema>
  
 
  const MAX_FILE_SIZE = 500000;
@@ -41,5 +43,20 @@ export const updateValuesSchema = z.object({
       (files) => ACCEPTED_IMAGE_TYPES.includes(files?.[0]?.type),
       ".jpg, .jpeg, .png and .webp files are accepted."
     )
+  });
+
+  export const recoveryEmailSchema = z.object({
+    email: z.string().email()
+  })
+ 
+  export const resetPasswordSchema = z.object({
+
+      password: z.string().min(8).max(50),
+      confirmPassword: z.string()
+   
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Password do not match',
+    path: ['confirmPassword'],
   });
   

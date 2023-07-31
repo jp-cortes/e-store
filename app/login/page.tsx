@@ -37,7 +37,8 @@ const { email, password} = data;
   Swal.fire({
     icon: 'error',
     title: 'Oops... Something went wrong!',
-    text: 'Wrong email or password'
+    text: 'Wrong email or password',
+    confirmButtonColor: '#EB1D36'
   })
  }
 
@@ -106,7 +107,7 @@ return (
               </div>
 
               <div className="text-sm">
-                <Link href="/reset-password" className="font-medium text-green-700 hover:text-green-600">
+                <Link href="/forgot-password" className="font-medium text-green-700 hover:text-green-600">
                   Forgot your password?
                 </Link>
               </div>

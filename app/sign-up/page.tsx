@@ -4,11 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from "react-hook-form";
 import { ErrorText, MenuMobile } from "../../components";
 import { SignupValues, signUpValuesSchema } from "../../utils/schemas/customer";
-import { createCustomer } from "../../services/queries/customers";
-import Swal from 'sweetalert2'
+import { createCustomer } from "../../services";
 import Image from "next/image";
-import loginBanner from '../../public/login_banner.jpg';
 import Link from "next/link";
+import loginBanner from '../../public/login_banner.jpg';
+import Swal from 'sweetalert2'
 
 
 export default function SignUp() {
@@ -26,14 +26,14 @@ export default function SignUp() {
     
     try {
       await createCustomer(newUser);
-      console.log(newUser)
       await new Promise((resolve) => setTimeout(resolve,5000));
       
-      Swal.fire(
-        'Account have been created successfully!',
-        'Login now to start shopping',
-        'success'
-      )
+      Swal.fire({
+        title:'Account have been created successfully!',
+        text:'Login now to start shopping',
+        icon:'success',
+        confirmButtonColor: '#7BC74D'
+      })
 
     router.push('/login');
 
@@ -41,7 +41,8 @@ export default function SignUp() {
     Swal.fire({
       icon: 'error',
       title: 'Oops... Something went wrong!',
-      text: 'Please review your info and try again'
+      text: 'Please review your info and try again',
+      confirmButtonColor: '#EB1D36'
     })
    }
 

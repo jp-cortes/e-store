@@ -21,7 +21,8 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   users: {
     login: `${API}/api/${VERSION}/auth/login`,
     profile: (id: string) => `${API}/api/${VERSION}/users/${id}`,
-    resetPassword: `${API}/api/${VERSION}/auth/recovery`
+    sendRecoveryEmail: `${API}/api/${VERSION}/auth/recovery`,
+    resetUserPassword: `${API}/api/${VERSION}/auth/change-password`,
   },
   categories:{
     getCategories: `${API}/api/${VERSION}/categories`,

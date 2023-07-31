@@ -100,3 +100,4 @@ export async function createCustomer(newCustomer: NewCustomer) {
   //  console.log(data, 'data')
     return data;
 }
+
