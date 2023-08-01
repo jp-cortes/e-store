@@ -107,6 +107,30 @@ const nextConfig = {
             destination: '/', // userRole is not admin redirect to /home
             permanent: false,
           },
+          {
+            source: '/dashboard/orders',
+            missing: [
+              {
+                type: 'cookie',
+                key: 'userRole',
+                value: 'admin'
+              },
+            ],
+            destination: '/', // userRole is not admin redirect to /home
+            permanent: false,
+          },
+          {
+            source: '/dashboard/edit',
+            missing: [
+              {
+                type: 'cookie',
+                key: 'userRole',
+                value: 'admin'
+              },
+            ],
+            destination: '/', // userRole is not admin redirect to /home
+            permanent: false,
+          },
         ]
       },
 }
