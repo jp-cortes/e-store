@@ -14,9 +14,13 @@ import { CardDashboard } from './CardDashboard';
 import { MenuDashboard } from "./MenuDashboard";
 import { MenuMobile } from './MenuMobile'
 import { MenuUserlogedIn } from "./MenuUser";
+import { MobileProductsOverview } from './MobileProductsOverview';
+import { ModifyProductsMobile } from './ModifyProductsMobile';
 import { Navbar } from "./Navbar";
 import { NavbarDashboard } from "./NavbarDashboard";
 import { RelatedProducts } from "./RelatedProducts";
+import { TableProductsOverview } from './TableProductsOverview';
+import { TableModifyProducts } from './TableModifyProducts';
 
  export {
     Chart,
@@ -35,7 +39,11 @@ import { RelatedProducts } from "./RelatedProducts";
     MenuDashboard,
     MenuMobile,
     MenuUserlogedIn,
+    MobileProductsOverview,
+    ModifyProductsMobile,
     Navbar,
     NavbarDashboard,
     RelatedProducts,
+    TableProductsOverview,
+    TableModifyProducts,
  }
