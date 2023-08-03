@@ -101,3 +101,27 @@ export async function createCustomer(newCustomer: NewCustomer) {
     return data;
 }
 
+export async function getAllCustomers() {
+ try {
+  const token = Cookie.get('token');
+  //Set the Authorization header with the token
+    const headers = {
+      'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      };
+
+  const response = await fetch(`${endPoints.customers.allCutomers}`, 
+  {
+    method: 'GET',
+    headers: headers,
+  } 
+  );
+  const data = await response.json();
+ return data;
+ } catch (error) {
+  console.log(error);
+  throw new Error('unauthorized')
+ }
+}
+

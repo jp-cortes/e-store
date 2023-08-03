@@ -3,6 +3,11 @@ type Props = {}
 
 export default function Orders({}: Props) {
   return (
-    <div>Orders</div>
+    <div>
+      <h1>Orders</h1>
+      <div className=''>
+        <p>To do searchbarch component</p>
+      </div>
+    </div>
   )
 }

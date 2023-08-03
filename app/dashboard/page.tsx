@@ -2,8 +2,6 @@
 import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import { MobileProductsOverview, NavbarDashboard, TableProductsOverview } from '../../components';
-import { CardDashboard } from '../../components';
-import Image from 'next/image';
 
 export default async function Dasboard() {
   

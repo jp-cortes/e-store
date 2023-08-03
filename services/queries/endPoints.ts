@@ -14,7 +14,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     deleteProducts: (id: number) => `${API}/api/${VERSION}/products/${id}`
   },
   customers:{
-    getUsers: `${API}/api/${VERSION}/customers`,
+    allCutomers: `${API}/api/${VERSION}/customers`,
     postUsers: `${API}/api/${VERSION}/customers`,
     patchUser: (id: string) => `${API}/api/${VERSION}/customers/${id}`
   },  
@@ -33,6 +33,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     putCategories: (id: string) => `${API}/api/${VERSION}/categories/${id}`,
   },
   orders: {
+    allOrders: `${API}/api/${VERSION}/orders`,
     createOrder: `${API}/api/${VERSION}/orders`,
     addItem: `${API}/api/${VERSION}/orders/add-item`,
     order: (id: string) => `${API}/api/${VERSION}/orders/${id}`,

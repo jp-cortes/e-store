@@ -48,6 +48,17 @@ function handleLogout() {
                   </Link>
                 </NavigationMenu.Link>
               </li>
+              <li>
+                <NavigationMenu.Link asChild>
+                  <Link
+                    href="/dashboard/orders"
+                    className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
+                  >
+                    Orders
+                    
+                  </Link>
+                </NavigationMenu.Link>
+              </li>
              <li>
              <button
         className='w-20 md:w-24 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md'

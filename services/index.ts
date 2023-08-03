@@ -1,8 +1,8 @@
 import { getAllProducts, getProductsById, getProductsByPage } from "./queries/products";
 import { getCategories, getCategoryById, getProductsByCategoryId } from "./queries/categories";
 import { loginUser, sendRecoveryEmail, updateUserPassword  } from "./queries/users";
-import { getCustomerbyId, UpdateCustomer, createCustomer } from "./queries/customers";
-import { createOrder, getOrdersByCustomer, getOrdersById, addItemsToOrder } from "./queries/orders";
+import { getAllCustomers, getCustomerbyId, UpdateCustomer, createCustomer } from "./queries/customers";
+import { getOrders, createOrder, getOrdersByCustomer, getOrdersById, addItemsToOrder } from "./queries/orders";
 
 export {
     getAllProducts,
@@ -13,10 +13,12 @@ export {
     getProductsByCategoryId,
     loginUser,
     sendRecoveryEmail,
+    getAllCustomers,
     getCustomerbyId, 
     UpdateCustomer,
     createCustomer, 
     updateUserPassword,
+    getOrders,
     createOrder, 
     getOrdersByCustomer,
     getOrdersById,
