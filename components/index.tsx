@@ -21,6 +21,7 @@ import { NavbarDashboard } from "./NavbarDashboard";
 import { RelatedProducts } from "./RelatedProducts";
 import { TableProductsOverview } from './TableProductsOverview';
 import { TableModifyProducts } from './TableModifyProducts';
+import { TableModifyOrders } from './TableModifyOrders';
 
  export {
     Chart,
@@ -46,4 +47,5 @@ import { TableModifyProducts } from './TableModifyProducts';
     RelatedProducts,
     TableProductsOverview,
     TableModifyProducts,
+    TableModifyOrders,
  }
