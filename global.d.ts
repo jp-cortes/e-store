@@ -119,6 +119,15 @@ type OrderDetail = {
   items: ProductOrder[]
 }
 
+type OrderDetailDashboard = {
+  id: number;
+  status: string;
+  paid: boolean;
+  createdAt: string;
+  customer: Customer;
+  items: Products;
+}
+
 type ResetPassword = {
   token: string;
   newPassword: string;

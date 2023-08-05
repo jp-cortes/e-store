@@ -1,15 +1,18 @@
-import { TableModifyOrders } from "../../../components"
+'use client'
+import { NavbarDashboard, TableModifyOrders } from "../../../components"
 
 
-type Props = {}
 
-export default function Orders({}: Props) {
+export default async function Orders() {
   return (
-    <div>
-      <h1>Orders</h1>
-      <div className=''>
-      <TableModifyOrders/>
+    <>
+    <NavbarDashboard />
+    <div className='w-full text-center'>
+      <h1 className='text-xl font-semibold'>Orders</h1>
+      <div className='grid justify-center w-full mt-10'>
+        <TableModifyOrders/>
       </div>
-  </div>
+    </div>
+    </>
   )
 }

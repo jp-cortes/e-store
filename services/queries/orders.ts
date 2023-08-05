@@ -6,28 +6,27 @@ import { endPoints } from "./endPoints";
 
 export async function getOrders() {
 
-   try {
     const token = Cookie.get('token');
     //Set the Authorization header with the token
-      const headers = {
-        'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`
-        };
-  
-    const response = await fetch(`${endPoints.orders.allOrders}`, 
-    {
-      method: 'POST',
-      headers: headers,
-    } 
-    );
-    const data = await response.json();
+      if(token) {
+        const headers = {
+          'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${token}`
+          };
+    
+      const response = await fetch(`${endPoints.orders.allOrders}`, 
+      {
+        method: 'GET',
+        headers: headers,
+        cache: 'no-cache',
+      } 
+      );
+      const data = await response.json();
+     console.log(data, 'dataa')
+     return data;
+      }
    
-   return data;
-   } catch (error) {
-    console.log(error)
-    throw new Error('unauthorized')
-   }
 }
 
 export async function createOrder(orderData: { paid: boolean, status: string }) {
