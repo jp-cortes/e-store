@@ -4,9 +4,9 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { UpdateProductValues, updateProductValuesSchema } from "../../utils/schemas/Products";
-import Link from "next/link";
 import { ErrorText } from "../ErrorText";
 import { updateProduct } from "../../services/queries/products";
+import Link from "next/link";
 
 type Props = {
     product: Product;

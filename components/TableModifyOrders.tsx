@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { getOrders } from "../services"
+import Link from "next/link";
 
 
 export async function TableModifyOrders() {
@@ -190,9 +191,9 @@ export async function TableModifyOrders() {
                 </td>
                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                   <div className="flex items-center gap-x-6">
-                    <button className="text-gray-500 transition-colors duration-200   hover:text-indigo-500 focus:outline-none">
+                    <Link href={`/dashboard/orders/${order.id}`} className="text-gray-500 transition-colors duration-200   hover:text-indigo-500 focus:outline-none">
                       Update
-                    </button>
+                    </Link>
 
                     <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
                       Details
