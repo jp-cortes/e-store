@@ -1,12 +1,13 @@
+'use client'
 import Image from "next/image"
-import { getOrders } from "../services"
-import Link from "next/link";
+import { OrderDetailsHover } from "./OrderDetailsHover";
 
+type Props = {
+  orders: OrderDetailDashboard[]; 
+}
 
-export async function TableModifyOrders() {
+export async function TableModifyOrders({ orders }: Props) {
 
-    const orders = await getOrders();
-    console.log(orders)
 
   return (
     <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -96,7 +97,7 @@ export async function TableModifyOrders() {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200 ">
-            {orders?.map((order: OrderDetailDashboard) => (
+            {orders?.map((order) => (
               <tr key={order.id}>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center gap-x-3">
@@ -191,13 +192,13 @@ export async function TableModifyOrders() {
                 </td>
                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                   <div className="flex items-center gap-x-6">
-                    <Link href={`/dashboard/orders/${order.id}`} className="text-gray-500 transition-colors duration-200   hover:text-indigo-500 focus:outline-none">
-                      Update
-                    </Link>
-
-                    <button className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none">
-                      Details
+                    <button 
+                    onClick={() => console.log('click')}
+                    className="text-gray-500 transition-colors duration-200   hover:text-indigo-500 focus:outline-none">
+                      Update status
                     </button>
+
+                    <OrderDetailsHover order={order}/>
                   </div>
                 </td>
               </tr>

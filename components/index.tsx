@@ -18,6 +18,7 @@ import { MobileProductsOverview } from './MobileProductsOverview';
 import { ModifyProductsMobile } from './ModifyProductsMobile';
 import { Navbar } from "./Navbar";
 import { NavbarDashboard } from "./NavbarDashboard";
+import { OrderDetailsHover } from './OrderDetailsHover';
 import { RelatedProducts } from "./RelatedProducts";
 import { TableProductsOverview } from './TableProductsOverview';
 import { TableModifyProducts } from './TableModifyProducts';
@@ -44,6 +45,7 @@ import { TableModifyOrders } from './TableModifyOrders';
     ModifyProductsMobile,
     Navbar,
     NavbarDashboard,
+    OrderDetailsHover,
     RelatedProducts,
     TableProductsOverview,
     TableModifyProducts,
