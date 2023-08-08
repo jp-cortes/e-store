@@ -96,7 +96,7 @@ export async function TableModifyOrders({ orders }: Props) {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200 ">
+          <tbody className="bg-white dark:bg-gray-900  divide-y divide-gray-200 ">
             {orders?.map((order) => (
               <tr key={order.id}>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">

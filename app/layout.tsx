@@ -2,6 +2,8 @@ import { ReactNode, Suspense } from 'react';
 import { ShoppingCartProvider } from '../store/Cart';
 import { Inter } from 'next/font/google'
 import './globals.css';
+import '@radix-ui/themes/styles.css';
+import { Theme, Flex, Text, Button } from '@radix-ui/themes';
 
 
 
@@ -21,15 +23,16 @@ const inter = Inter({
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="bg-white text-black">
-       
+      <body className="">
+       <Theme appearance='light'>
+     
          <ShoppingCartProvider>
           <Suspense>
             <main className='mt-[68px] grid items-center'>{children}</main>
           </Suspense>
       
          </ShoppingCartProvider>
-        
+         </Theme>
       </body>
     </html>
   );

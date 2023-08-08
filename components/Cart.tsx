@@ -36,7 +36,7 @@ export function ShoppingCart() {
 
 
   return (
-    <div className="w-[300px] md:w-[360px] lg:w-[360px] h-[95vh]  lg:h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white ">
+    <div className="w-[300px] md:w-[360px] lg:w-[360px] h-[95vh]  lg:h-[100vh] flex-col fixed right-0 border border-black rounded-lg bg-white dark:bg-gray-900 ">
       <div className="flex justify-between items-center p-6 border-b-2 mb-2">
         <h3 className="font-semibold">Cart</h3>
         <Dialog.Close asChild>

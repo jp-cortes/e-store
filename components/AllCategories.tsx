@@ -19,7 +19,7 @@ async function Categories() {
            className='mt-4 font-semibold capitalize'
            >
              <Link 
-             className='px-3 py-3 border-white border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
+             className='px-3 py-3 border-white dark:border-gray-900 border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
              href={`/categories/${category.id}-${category.name}`}>
                   {category.name}
               </Link>
