@@ -17,7 +17,7 @@ export default async function Product ({ params: { id } } : { params: { id: stri
   return (
     <>
        <Navbar />
-    <div className="bg-white dark:bg-gray-900  grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
+    <div className="bg-white   grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
       <div className='bg-white   md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative px-4'>
 
       <h1 className='text-2xl font-semibold self-center mt-7'>Product Details</h1>

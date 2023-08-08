@@ -13,7 +13,7 @@ export default function ProductsLayout({ children }: { children: React.ReactNode
         <div className="mt-8">
           <AllCategories />
         </div>
-        <div className="w-full bg-white dark:bg-gray-900  ">{children}</div>
+        <div className="w-full bg-white ">{children}</div>
         
       </div>
       <Suspense>
