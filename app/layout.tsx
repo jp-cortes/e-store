@@ -24,7 +24,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html lang="en" className={inter.variable}>
       <body className="">
-       <Theme appearance='light'>
+       <Theme >
      
          <ShoppingCartProvider>
           <Suspense>

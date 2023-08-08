@@ -17,7 +17,7 @@ export function Navbar() {
 
   return (
     <header>
-      <nav className='bg-white dark:bg-gray-900  flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>
+      <nav className='bg-white  flex justify-between items-center fixed z-10 top-0 w-full h-[68px] px-8 text-base'>
       <MenuMobile/>
       <ul className="gap-8 hidden md:flex items-center">
         <li className='font-bold text-2xl'>
