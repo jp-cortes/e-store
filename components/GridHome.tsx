@@ -41,7 +41,7 @@ const category3 = await getCategoryById('3')
     className=' cursor-pointer md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-3  rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{category2.name}</span>
-            <Link href={`/catefories/${category2.id}-${category2.name}`} passHref>
+            <Link href={`/catetories/${category2.id}-${category2.name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={category2.image} 
