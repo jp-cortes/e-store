@@ -57,10 +57,10 @@ export function FormCreateProduct() {
     return (
       <Dialog.Root>
         <Dialog.Portal>
-        <Dialog.Overlay className="bg-background/80 dark:bg-gray-900 data-[state=open] fixed inset-0  z-10" />
+        <Dialog.Overlay className="bg-background/80 data-[state=open] fixed inset-0  z-10" />
    
            <Dialog.Content className="data-[state=open] fixed top-[50%] left-[50%]  w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  rounded-[6px] z-10">
-          <div className="bg-white dark:bg-gray-900  rounded-xl p-2">
+          <div className="bg-white rounded-xl p-2">
             <form onSubmit={handleSubmit((data) => handleUpdate(data))}>
               <div className="overflow-hidden">
                 <div className="px-4 py-5 bg-white sm:p-6">

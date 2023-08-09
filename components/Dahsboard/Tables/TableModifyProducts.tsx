@@ -1,4 +1,4 @@
-import { DeleteProduct } from './';
+import { DeleteProduct } from '../..';
 import Image from 'next/image';
 import Link from 'next/link';
 

@@ -10,10 +10,12 @@ export default async function EditProduct({ params: { id } } : { params: { id: s
 
   return (
     <>
-        <NavbarDashboard/>
-        <h1 className='text-2xl ml-8 my-7'>Update Product</h1>
-        <FormUpdateProduct product={product}/>
+      <NavbarDashboard />
+      <div>
+        <h1 className="text-2xl ml-8 my-7">Update Product</h1>
+        <FormUpdateProduct product={product} />
+      </div>
     </>
-  )
+  );
 }
 

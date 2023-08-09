@@ -9,18 +9,16 @@ import { Navbar } from "../components";
 
 
 export default async function Home() {
-  
   return (
-        <>
+    <>
       <Navbar />
       <Suspense>
-      <GridHome />
-      <Carousel/>
-      <Suspense>
-        <Footer/>
+        <GridHome />
+        <Carousel />
+        <Suspense>
+          <Footer />
+        </Suspense>
       </Suspense>
-    </Suspense>
-        </>
-  
-  )
+    </>
+  );
 }

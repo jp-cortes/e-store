@@ -2,6 +2,7 @@
 import * as HoverCard from '@radix-ui/react-hover-card';
 import Link from 'next/link';
 import Image from 'next/image';
+import { DefaultAvatar } from '../';
 
 type Props = {
     order: OrderDetailDashboard;
@@ -23,19 +24,26 @@ export function OrderDetailsHover({ order }: Props) {
         sideOffset={5}
       >
         <div className="flex flex-col gap-[7px]">
-          <Image
+          {order.customer.avatar ? (
+          <figure>
+            <Image
           width={60}
           height={60}
             className="block h-[60px] w-[60px] rounded-full"
             src={order.customer.avatar}
             alt={order.customer.name}
           />
+          </figure>
+          ):
+          (<DefaultAvatar userName={order.customer.name} bgColor='bg-red-400'/>)
+          }
           <div className="flex flex-col gap-[15px]">
             <div>
-              <div className="text-black m-0 text-[15px] font-medium leading-[1.5]">{order.customer.name}</div>
-              <div className="text-black m-0 text-[15px] leading-[1.5]">Date:{" "}{order.createdAt.slice(0, 10)}</div>
+              <div className="text-black m-0 text-[15px] font-medium leading-[1.5] capitalize">{order.customer.name}</div>
+              <div className="text-black m-0 text-[15px] leading-[1.5]"><b>Date:</b>{" "}{order.createdAt.slice(0, 10)}</div>
             </div>
             <div className="flex flex-col justify-center content-center m-0 gap-2">
+              <h3 className='font-medium mt-2'>Products:</h3>
               {order.items.map((item) => (
                 <p key={item.id}
                 className='text-[15px] leading-[1.5]'

@@ -1,7 +1,7 @@
 'use client'
 
 import { XCircleIcon } from '@heroicons/react/24/outline';
-import { deleteProduct } from '../services/queries/products';
+import { deleteProduct } from '../../services/queries/products';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
 type Props = {

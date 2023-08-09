@@ -1,6 +1,7 @@
 'use client'
 import Image from "next/image"
-import { OrderDetailsHover } from "./OrderDetailsHover";
+import { OrderDetailsHover } from "../OrderDetailsHover";
+import { DefaultAvatar } from "../../DefaultAvatar";
 
 type Props = {
   orders: OrderDetailDashboard[]; 
@@ -171,11 +172,7 @@ export async function TableModifyOrders({ orders }: Props) {
                         alt="avatar"
                       />
                     ) : (
-                      <div className="bg-red-600 w-8 h-8 rounded-full flex justify-center items-center my-5">
-                        <p className="text-2xl text-white capitalize">
-                          {order.customer?.name?.slice(0, 1)}
-                        </p>
-                      </div>
+                      <DefaultAvatar userName={order.customer?.name} bgColor='bg-red-400'/>
                     )}
                     <div className="flex gap-2">
                       <p className="text-sm font-medium text-gray-600 capitalize">

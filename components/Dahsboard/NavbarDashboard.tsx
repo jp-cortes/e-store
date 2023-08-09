@@ -1,7 +1,7 @@
 'use client'
 import Link from "next/link";
 import Cookie  from 'js-cookie';
-import { MenuDashboard } from "./MenuDashboard";
+import { MenuDashboard } from "./";
 
 
 

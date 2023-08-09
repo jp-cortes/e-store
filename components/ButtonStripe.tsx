@@ -49,12 +49,11 @@ async function handleCheckoutStripe() {
 
   return (
     <button
-    onClick={handleCheckoutStripe}
-    className="flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6 disabled:opacity-50 disabled:cursor-not-allowed"
-   
-  >
-    Pay with Stripe
-  </button>
-  )
+      onClick={handleCheckoutStripe}
+      className="flex justify-center w-52 px-4 py-2 rounded-xl bg-black text-white font-medium mx-auto my-6 disabled:opacity-50 disabled:cursor-not-allowed"
+    >
+      Pay with Stripe
+    </button>
+  );
 }
 

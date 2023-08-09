@@ -66,13 +66,13 @@ export default  function MyOrder() {
               <p>€ {subTotal.toFixed(2)}</p>
             </div>
             <div className="flex flex-col justify-between items-center z-0">
-              <ButtonStripe items={items}/>
+              <ButtonStripe items={items} />
               <div className="w-full flex items-center justify-center my-6">
                 <div className="h-[2px] w-6 bg-black" />
                 <p className="mx-5 text-xl">or</p>
                 <div className="h-[2px] w-6 bg-black" />
               </div>
-            <ButtonPayPal items={items} subTotal={subTotal} />
+              <ButtonPayPal items={items} subTotal={subTotal} />
             </div>
           </div>
         )}
