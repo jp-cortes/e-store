@@ -43,7 +43,7 @@ export function TableModifyProducts({ products }: Props) {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-white dark:bg-gray-900  divide-y divide-gray-200">
+                  <tbody className="bg-white  divide-y divide-gray-200">
                     {products?.map((product) => (
                       <tr key={`Product-item-${product.id}`}>
                         <td className="px-6 py-4 whitespace-nowrap">
