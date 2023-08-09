@@ -4,7 +4,7 @@ import { NavbarDashboard } from "../../../../components"
 
 
 export default function SingleOrder({ params: { order } } : { params: { order: string }}) {
-  console.log(order, 'oder id')
+  // console.log(order, 'order id')
   return (
     <>
     <NavbarDashboard/>

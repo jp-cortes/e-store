@@ -2,6 +2,7 @@
 import { getProductsByPage } from '../../services';
 import { Chart } from '../../components/Charts';
 import { MobileProductsOverview, NavbarDashboard, TableProductsOverview } from '../../components';
+import { Suspense } from 'react';
 
 export default async function Dasboard() {
   
@@ -29,11 +30,16 @@ export default async function Dasboard() {
           <Chart chartData={chartData} />
 
         </div>
-     
+     <Suspense>
+
         <TableProductsOverview data={data}/>
+     </Suspense>
 
       </div>
+      <Suspense>
+
       <MobileProductsOverview data={data}/>
+      </Suspense>
     </>
   );
 }

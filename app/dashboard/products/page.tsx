@@ -4,6 +4,7 @@
 import { getAllProducts } from '../../../services';
 import { ModifyProductsMobile, NavbarDashboard, TableModifyProducts } from '../../../components';
 import { FormCreateProduct } from '../../../components/Forms';
+import { Suspense } from 'react';
 
 export default async function ProductsDashboard() {
 
@@ -26,11 +27,16 @@ export default async function ProductsDashboard() {
         <div className="grid justify-center w-full">
             <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+              <Suspense>
+
                 <TableModifyProducts products={products}/>
+              </Suspense>
               </div>
             </div>
-          
-          <ModifyProductsMobile products={products}/>
+          <Suspense>
+
+            <ModifyProductsMobile products={products}/>
+          </Suspense>
         </div>
       </div>
     </>

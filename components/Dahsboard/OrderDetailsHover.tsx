@@ -29,13 +29,13 @@ export function OrderDetailsHover({ order }: Props) {
             <Image
           width={60}
           height={60}
-            className="block h-[60px] w-[60px] rounded-full"
+            className="block h-auto w-auto rounded-full"
             src={order.customer.avatar}
             alt={order.customer.name}
           />
           </figure>
           ):
-          (<DefaultAvatar userName={order.customer.name} bgColor='bg-red-400'/>)
+          (<DefaultAvatar userName={order?.customer?.name} bgColor='bg-red-400'/>)
           }
           <div className="flex flex-col gap-[15px]">
             <div>
@@ -54,7 +54,7 @@ export function OrderDetailsHover({ order }: Props) {
               <div className="flex gap-[5px]">
               </div>
               <div className="flex gap-[5px]">
-                <Link href={`/dashboard/orders/${order.id}`} className="text-black m-0 text-[15px] font-medium leading-[1.5]">Full details</Link>
+                <Link href={`/dashboard/orders/${order.id}`} className="text-green-700 m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
               </div>
             </div>
           </div>

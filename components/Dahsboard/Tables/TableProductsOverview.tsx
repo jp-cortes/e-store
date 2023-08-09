@@ -43,7 +43,7 @@ export function TableProductsOverview({ data }: Props) {
                   <div className="flex items-center">
                     <div className="flex-shrink-0 h-10 w-10">
                       <Image
-                        className="h-10 w-10  rounded-full"
+                        className="h-auto w-auto  rounded-full"
                         width={40}
                         height={40}
                         src={product.image}

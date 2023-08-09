@@ -11,8 +11,6 @@ export async function TableModifyOrders({ orders }: Props) {
 
 
   return (
-    <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-      <div className="overflow-hidden border border-gray-200  md:rounded-lg">
         <table className="min-w-full divide-y divide-gray-200 ">
           <thead className="bg-gray-50 ">
             <tr>
@@ -167,12 +165,12 @@ export async function TableModifyOrders({ orders }: Props) {
                       <Image
                         width={32}
                         height={32}
-                        className="object-cover w-8 h-8 rounded-full"
+                        className="object-cover w-auto h-auto rounded-full"
                         src={order?.customer?.avatar}
                         alt="avatar"
                       />
                     ) : (
-                      <DefaultAvatar userName={order.customer?.name} bgColor='bg-red-400'/>
+                      <DefaultAvatar userName={order?.customer?.name} bgColor='bg-red-400'/>
                     )}
                     <div className="flex gap-2">
                       <p className="text-sm font-medium text-gray-600 capitalize">
@@ -202,7 +200,6 @@ export async function TableModifyOrders({ orders }: Props) {
             ))}
           </tbody>
         </table>
-      </div>
-    </div>
+      
   );
 }

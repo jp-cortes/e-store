@@ -23,7 +23,7 @@ export async function getOrders() {
       } 
       );
       const data = await response.json();
-     console.log(data, 'dataa')
+    //  console.log(data, 'dataa')
      return data;
       }
    
