@@ -8,7 +8,7 @@ import { getOrders } from "../../../services";
 export default async function Orders() {
 
   
-  const orders: OrderDetailDashboard[] = await getOrders();
+  const orders: OrderDetail[] = await getOrders();
 
   return (
     <>

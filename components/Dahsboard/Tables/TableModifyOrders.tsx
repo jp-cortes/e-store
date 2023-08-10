@@ -4,7 +4,7 @@ import { OrderDetailsHover } from "../OrderDetailsHover";
 import { DefaultAvatar } from "../../DefaultAvatar";
 
 type Props = {
-  orders: OrderDetailDashboard[]; 
+  orders: OrderDetail[]; 
 }
 
 export async function TableModifyOrders({ orders }: Props) {
