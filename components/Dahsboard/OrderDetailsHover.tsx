@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { DefaultAvatar } from '../';
 
 type Props = {
-    order: OrderDetailDashboard;
+    order: OrderDetail;
 }
 
 export function OrderDetailsHover({ order }: Props) {

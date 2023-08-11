@@ -105,7 +105,7 @@ export async function TableModifyOrders({ orders }: Props) {
                       className="text-blue-500 border-gray-300 rounded dark:ring-offset-gray-900 dark:border-gray-700"
                     />
 
-                    <span>#{order.id}</span>
+                    <span># {order.id}</span>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
