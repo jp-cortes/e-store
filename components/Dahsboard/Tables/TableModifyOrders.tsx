@@ -11,7 +11,7 @@ export async function TableModifyOrders({ orders }: Props) {
 
 
   return (
-        <table className="min-w-full divide-y divide-gray-200 ">
+        <table className="min-w-full divide-y divide-gray-200 hidden lg:block">
           <thead className="bg-gray-50 ">
             <tr>
               <th
@@ -95,10 +95,10 @@ export async function TableModifyOrders({ orders }: Props) {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white   divide-y divide-gray-200 ">
+          <tbody className="bg-white divide-y divide-gray-200 ">
             {orders?.map((order) => (
               <tr key={order.id}>
-                <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+                <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center gap-x-3">
                     <input
                       type="checkbox"

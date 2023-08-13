@@ -9,7 +9,7 @@ type Props = {
 export function ModifyProductsMobile({ products }: Props) {
   return (
     
-    <div className="md:hidden lg:hidden flex flex-wrap justify-around">
+    <div className="md:hidden lg:hidden flex flex-col justify-center">
             {products.map((product) => (
               <>
                 <CardDashboard key={product.id} product={product} />

@@ -1,5 +1,6 @@
 import { DeleteProduct } from './DeleteProduct';
 import { CardDashboard } from "./CardDashboard";
+import { CardOrders } from './CardOrders';
 import { MenuDashboard } from "./MenuDashboard";
 import { MobileProductsOverview } from "./MobileProductsOverview";
 import { ModifyProductsMobile } from "./ModifyProductsMobile";
@@ -12,6 +13,7 @@ import { TableModifyOrders } from "./Tables/TableModifyOrders";
 export {
   DeleteProduct,
   CardDashboard,
+  CardOrders,
   MenuDashboard,
   MobileProductsOverview,
   ModifyProductsMobile,
