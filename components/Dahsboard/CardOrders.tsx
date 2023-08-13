@@ -9,7 +9,7 @@ type Props = {
 export async function CardOrders({ orders }: Props) {
   return (
  <div className='lg:hidden flex flex-wrap justify-around'>
- {orders.map((order) => (
+ {orders?.map((order) => (
        <div  key={order.id} className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-green-100'>
        <div className="flex justify-between content-center">
            <p className="text-xs font-medium text-gray-900 uppercase">
