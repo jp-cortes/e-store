@@ -4,11 +4,14 @@ import { endPoints } from "./endPoints";
 
 
 
-export async function getOrders() {
+export async function getOrders(): Promise<OrderDetail[]> {
 
-    const token = Cookie.get('token');
+  
+      const token = Cookie.get('token');
+      if(!token) {
+        throw new Error('Token not found');
+      }
     //Set the Authorization header with the token
-      if(token) {
         const headers = {
           'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -25,7 +28,8 @@ export async function getOrders() {
       const data = await response.json();
     //  console.log(data, 'dataa')
      return data;
-      }
+   
+    
    
 }
 
@@ -93,9 +97,11 @@ export async function addItemsToOrder(item: { orderId: number, productId: number
 export async function getOrdersById(id: string): Promise<OrderDetail> {
 
   
-    const token = Cookie.get('token');
+    const token =  Cookie.get('token');
     //Set the Authorization header with the token
-  
+    if(!token) {
+      throw new Error('Token not found');
+    }
     const headers = {
          'Accept': 'application/json',
         'Content-Type': 'application/json',

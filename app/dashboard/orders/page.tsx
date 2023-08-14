@@ -10,7 +10,7 @@ export default async function Orders() {
 
   
   const orders: OrderDetail[] = await getOrders();
-
+console.log(orders, 'orders')
   return (
     <>
     <NavbarDashboard />
