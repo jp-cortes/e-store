@@ -1,19 +1,16 @@
-'use client'
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
-import { DefaultAvatar, NavbarDashboard } from "../../../components"
-import { getOrdersById } from "../../../services"
+import { DefaultAvatar } from "./DefaultAvatar";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function OrderDetail({ params: { id } } : { params: { id: string }}) {
-   
-    const order = await getOrdersById(id) as OrderDetail;
-   
+type Props = {
+    order: OrderDetail;
+    goBackTo: string;
+}
 
-
+export async function InvoiceDetails({ order, goBackTo }: Props) {
   return (
     <>
-      <NavbarDashboard />
       <div className='grid'>
     <h1 className='text-2xl ml-8 my-7 justify-self-center font-semibold'>Order Details</h1>
     <div className='flex flex-col justify-center content-center md:flex-row lg:flex-row lg:gap-8'>
@@ -87,12 +84,13 @@ export default async function OrderDetail({ params: { id } } : { params: { id: s
         </div>
     </div>
     <div className="flex justify-center flex-initial w-full mt-5">
-          <Link passHref href="/dashboard/orders" className="">
+          <Link passHref href={goBackTo} className="">
             <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
           </Link>
           <h3>Back</h3>
     </div>
     </div>
     </>
-  );
+  )
 }
+

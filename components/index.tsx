@@ -10,6 +10,7 @@ import { ShoppingCart } from "./Cart";
 import { ErrorText } from "./ErrorText";
 import { Footer } from "./Footer";
 import { GridHome } from "./GridHome";
+import { InvoiceDetails } from "./InvoiceDetails";
 import { MenuMobile } from './MenuMobile'
 import { MenuUserlogedIn } from "./MenuUser";
 import { Navbar } from "./Navbar";
@@ -42,6 +43,7 @@ import {
     ErrorText,
     Footer,
     GridHome,
+    InvoiceDetails,
     CardDashboard,
     MenuDashboard,
     MenuMobile,
