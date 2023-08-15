@@ -5,12 +5,11 @@ import { endPoints } from "./endPoints";
 import { UpdateValues } from '../../utils/schemas/customer';
 
 
-export async function getCustomerbyId() {
+export async function getCustomerbyId(): Promise<Customer | undefined> {
 
-  const id = Cookie.get('userId') as string
+  try {
+    const id = Cookie.get('userId') as string
   const token = Cookie.get('token');
-  
-if(id && token) {
 
   //Set the Authorization header with the token
   
@@ -26,11 +25,14 @@ if(id && token) {
   
   const { customer } = await response.json();
   return customer;
-} 
-
-
-
+  } catch (error) {
+    console.log('did not work')
+  }
 }
+
+
+
+
 
 
 export async function UpdateCustomer(id: string, updatedUser: Customer | UpdateValues) {

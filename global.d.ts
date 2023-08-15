@@ -98,6 +98,7 @@ type OrderProduct = {
 }
 
 type ProductOrder = {
+  quantity: string;
   id: number;
   name: string;
   description: string;
@@ -115,7 +116,7 @@ type OrderDetail = {
   paid: boolean;
   createdAt: string;
   customerId: number;
-  customer: Customer;
+  customer: NewCustomer;
   items: ProductOrder[]
 }
 

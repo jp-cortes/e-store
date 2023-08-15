@@ -13,7 +13,7 @@ import Image from 'next/image';
 
 export default async function MyAccount() {
  
-  const user: Customer = await getCustomerbyId();
+  const user = await getCustomerbyId() as Customer;
   
   return (
     <>

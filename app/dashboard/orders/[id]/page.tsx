@@ -9,15 +9,8 @@ import Link from "next/link";
 
 
 export default async function SingleOrder({ params: { id } } : { params: { id: string }}) {
-  const order = await getOrdersById(id);
+  const order = await getOrdersById(id) as OrderDetail;
 
-  // id: number;
-  // status: string;
-  // paid: boolean;
-  // createdAt: string;
-  // customerId: number;
-  // customer: Customer;
-  // items: ProductOrder[]
 
   return (
     <>
@@ -51,8 +44,8 @@ export default async function SingleOrder({ params: { id } } : { params: { id: s
                     ) : (
                       <DefaultAvatar userName={order?.customer?.name} bgColor='bg-red-400'/>
                     )}
-                    <p className='font-medium'>useremail:</p>
-                    <p className='font-normal'>email</p>
+                    <p className='font-medium'>User email:</p>
+                    <p className='font-normal'>{order.customer.user.email}</p>
                     <p className='font-medium'>User full name:</p>
                     <p className="font-normal capitalize">{order.customer.name}{" "}{order.customer.lastName}</p>
       </div>
@@ -86,6 +79,13 @@ export default async function SingleOrder({ params: { id } } : { params: { id: s
             </>
         ))}
       </div>
+      <div className="h-[2px] w-full bg-black" />
+        <div className='flex justify-between'>
+          <p className='font-medium'>Total:</p>
+        <p>€ {" "}{
+          order.items.map((item) => parseInt(item.price) * item.OrderProduct.amount).reduce((a:number, b: number) => a + b, 0)
+          }</p>
+        </div>
     </div>
     <div className="flex justify-center flex-initial w-full mt-5">
           <Link passHref href="/dashboard/orders" className="">
