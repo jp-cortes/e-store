@@ -2,6 +2,7 @@
 import Image from "next/image"
 import { OrderDetailsHover } from "../OrderDetailsHover";
 import { DefaultAvatar } from "../../DefaultAvatar";
+import { CheckIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   orders: OrderDetail[]; 
@@ -102,13 +103,13 @@ export async function TableModifyOrders({ orders }: Props) {
                   <div className="inline-flex items-center gap-x-3">
                     <input
                       type="checkbox"
-                      className="text-blue-500 border-gray-300 rounded dark:ring-offset-gray-900 dark:border-gray-700"
+                      className="text-blue-500 border-gray-300 rounded "
                     />
 
                     <span># {order.id}</span>
                   </div>
                 </td>
-                <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
                   {order.createdAt.slice(0, 10)}
                 </td>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
@@ -119,43 +120,14 @@ export async function TableModifyOrders({ orders }: Props) {
                         : "text-rose-500 bg-rose-100/60"
                     } inline-flex items-center px-3 py-1 rounded-full gap-x-2`}
                   >
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 3L4.5 8.5L2 6"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-
                     <p className="text-sm font-normal">{`${order.paid}`}</p>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 ">
-                    <svg
-                      width="12"
-                      height="12"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10 3L4.5 8.5L2 6"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-
+                    
+                    <CheckIcon className='w-3 h-3' />
+                    
                     <p className="text-sm font-normal">{order.status}</p>
                   </div>
                 </td>
@@ -173,27 +145,27 @@ export async function TableModifyOrders({ orders }: Props) {
                       <DefaultAvatar userName={order?.customer?.name} bgColor='bg-red-400'/>
                     )}
                     <div className="flex gap-2">
-                      <p className="text-sm font-medium text-gray-600 capitalize">
+                      <p className="text-sm font-medium text-gray-700 capitalize">
                         {order.customer.name}
                       </p>
-                      <p className="text-sm font-medium text-gray-600 capitalize">
+                      <p className="text-sm font-medium text-gray-700 capitalize">
                         {order.customer.lastName}
                       </p>
                     </div>
                   </div>
                 </td>
-                <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
+                <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
                   {order.items[0].name}...
                 </td>
                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                   <div className="flex items-center gap-x-6">
+                    <OrderDetailsHover order={order}/>
+
                     <button 
                     onClick={() => console.log('click')}
-                    className="text-gray-500 transition-colors duration-200   hover:text-indigo-500 focus:outline-none">
+                    className="bg-transparent border-2 border-solid p-1 font-semibold rounded-md border-green-600 text-green-600 transition-colors duration-200   hover:text-white hover:bg-green-600 focus:outline-none">
                       Update status
                     </button>
-
-                    <OrderDetailsHover order={order}/>
                   </div>
                 </td>
               </tr>

@@ -2,7 +2,7 @@ import { getAllProducts, getProductsById, getProductsByPage } from "./queries/pr
 import { getCategories, getCategoryById, getProductsByCategoryId } from "./queries/categories";
 import { loginUser, sendRecoveryEmail, updateUserPassword  } from "./queries/users";
 import { getAllCustomers, getCustomerbyId, UpdateCustomer, createCustomer } from "./queries/customers";
-import { getOrders, createOrder, getOrdersByCustomer, getOrdersById, addItemsToOrder } from "./queries/orders";
+import { getOrders, createOrder, getOrdersByCustomer, updateOrderStatus, getOrdersById, addItemsToOrder } from "./queries/orders";
 
 export {
     getAllProducts,
@@ -21,6 +21,7 @@ export {
     getOrders,
     createOrder, 
     getOrdersByCustomer,
+    updateOrderStatus,
     getOrdersById,
     addItemsToOrder
 }

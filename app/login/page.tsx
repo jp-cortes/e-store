@@ -45,7 +45,7 @@ const { email, password} = data;
 }
 return (
   <>
-    <div className="relative grid h-auto grid-cols-1 mt-[-68px] md:grid-cols-2 ">
+    <div className="relative grid h-auto grid-cols-1 md:mt-[-68px] lg:mt-[-68px] md:grid-cols-2 overflow-y-hidden">
       <div className="absolute top-4 left-4">
         <MenuMobile />
       </div>
@@ -61,11 +61,11 @@ return (
           src={loginBanner}
           quality={100}
           width={800}
-          height={800}
+          height={1000}
           alt="banner"
         />
       </div>
-      <div className="mt-[100px] md:mt-0 h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="mt-[60px] md:mt-0 lg:mt-[50px] h-full flex items-center justify-center px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
           <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">
             E-store

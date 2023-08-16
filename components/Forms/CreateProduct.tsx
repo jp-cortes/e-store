@@ -46,7 +46,7 @@ export function FormCreateProduct() {
                 await new Promise((resolve) => setTimeout(resolve,5000));
             
                 location.reload();//reload the page if the product is updated
-                console.log('done');
+                
               } catch (error) {
                 console.log(error);
               }

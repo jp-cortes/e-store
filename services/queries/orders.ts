@@ -65,6 +65,38 @@ export async function createOrder(orderData: { paid: boolean, status: string }) 
  return data;
 }
 
+export async function updateOrderStatus(orderStatus: { status: string }): Promise<ResumeOrder | undefined> {
+  const { status }= orderStatus;
+  try {
+    
+    const token = Cookie.get('token');
+    
+  //Set the Authorization header with the token
+    const headers = {
+      'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      };
+
+  const response = await fetch(`${endPoints.orders.createOrder}`, 
+  {
+    method: 'PATCH',
+    headers: headers,
+  
+    //make sure to serialize your JSON body
+    body: JSON.stringify({
+        status
+    })
+  } 
+  );
+  const data = await response.json();
+  //  console.log(data, 'dataa')
+   return data;
+  } catch (error) {
+    
+    console.error(error);
+  }
+}
 
 export async function addItemsToOrder(item: { orderId: number, productId: number, amount: number }) {
   const { orderId, productId, amount }= item;
@@ -118,7 +150,7 @@ export async function getOrdersById(id: string): Promise<OrderDetail | void> {
   
  return data;
    } catch (error) {
-    console.error(error);
+    console.error(error, 'error');
    }
   
   }

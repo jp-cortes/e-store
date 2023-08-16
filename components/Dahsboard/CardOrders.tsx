@@ -16,7 +16,7 @@ export async function CardOrders({ orders }: Props) {
                Invoice:
            </p>
            <p className="text-sm font-medium text-gray-500">
-               {order.id}
+              # {" "} {order.id}
            </p>
        </div>
        <div className="flex justify-between content-center">
@@ -43,6 +43,7 @@ export async function CardOrders({ orders }: Props) {
            {`${order.paid}`}
            </p>
        </div>
+       <div className='h-[2px] w-full bg-green-300'/>
        <div className="h-16 w-16 mx-auto mb-4">
        {order.customer.avatar ? (
                          <Image
@@ -60,7 +61,7 @@ export async function CardOrders({ orders }: Props) {
          <p className='text-xs font-medium text-gray-900 uppercase'>
              Customer name:
          </p>
-           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 capitalize">
                {order.customer.name}
            </span>
        </div>
@@ -68,13 +69,13 @@ export async function CardOrders({ orders }: Props) {
          <p className='text-xs font-medium text-gray-900 uppercase'>
              Customer lastname:
          </p>
-           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 capitalize">
                {order.customer.lastName}
            </span>
        </div>
        <div className="flex gap-[5px]">
                 <Link href={`/dashboard/orders/${order.id}`} className="text-green-700 m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
-              </div>
+      </div>
     
    </div>
  ))}

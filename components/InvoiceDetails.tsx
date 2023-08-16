@@ -11,9 +11,9 @@ type Props = {
 export async function InvoiceDetails({ order, goBackTo }: Props) {
   return (
     <>
-      <div className='grid'>
+      <div className='grid justify-center border-3 border-red-700'>
     <h1 className='text-2xl ml-8 my-7 justify-self-center font-semibold'>Order Details</h1>
-    <div className='flex flex-col justify-center content-center md:flex-row lg:flex-row lg:gap-8'>
+    <div className='flex flex-col justify-center content-center lg:gap-8'>
       <div className='flex flex-col justify-center content-center'>
         <p className="font-medium capitalize">Order #:{" "}<span className='font-normal'>{order.id}</span></p>
         <p className="font-medium">

@@ -48,7 +48,7 @@ export function TableModifyProducts({ products }: Props) {
                       <tr key={`Product-item-${product.id}`}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
-                            <div className="flex-shrink-0 h-10 w-10">
+                            <div className="flex-shrink-0 h-auto w-auto">
                               <Image
                                 className="h-auto w-auto rounded-full"
                                 width={40}

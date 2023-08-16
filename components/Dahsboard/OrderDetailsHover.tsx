@@ -13,7 +13,7 @@ export function OrderDetailsHover({ order }: Props) {
     <HoverCard.Root>
     <HoverCard.Trigger asChild>
       <button
-        className="text-blue-500 transition-colors duration-200 hover:text-indigo-500 focus:outline-none"
+        className="font-semibold text-indigo-500 transition-colors duration-200 hover:text-blue-400 focus:outline-none"
       >
         Details
       </button>

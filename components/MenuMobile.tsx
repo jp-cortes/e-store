@@ -48,7 +48,7 @@ const categories = [
   ]
 
   return (
-    <div className=" flex md:hidden">
+    <div className=" flex md:hidden lg:hidden">
       <DropdownMenu.Root>
         <DropdownMenu.Trigger className="flex select-none justify-between gap-[2px] rounded-lg p-1 text-[15px] font-medium leading-none outline-none z-10">
           <Bars3BottomLeftIcon className="w-6 h-6" />
