@@ -65,8 +65,8 @@ export async function createOrder(orderData: { paid: boolean, status: string }) 
  return data;
 }
 
-export async function updateOrderStatus(orderStatus: { status: string }): Promise<ResumeOrder | undefined> {
-  const { status }= orderStatus;
+export async function updateOrderStatus(orderStatus: { id: number, status: string }): Promise<ResumeOrder | undefined> {
+  const { status, id }= orderStatus;
   try {
     
     const token = Cookie.get('token');
@@ -78,10 +78,11 @@ export async function updateOrderStatus(orderStatus: { status: string }): Promis
         Authorization: `Bearer ${token}`
       };
 
-  const response = await fetch(`${endPoints.orders.createOrder}`, 
+  const response = await fetch(`${endPoints.orders.updateOrder(id)}`, 
   {
     method: 'PATCH',
     headers: headers,
+    cache: 'no-cache',
   
     //make sure to serialize your JSON body
     body: JSON.stringify({
@@ -90,7 +91,6 @@ export async function updateOrderStatus(orderStatus: { status: string }): Promis
   } 
   );
   const data = await response.json();
-  //  console.log(data, 'dataa')
    return data;
   } catch (error) {
     

@@ -3,6 +3,7 @@ import Image from "next/image"
 import { OrderDetailsHover } from "../OrderDetailsHover";
 import { DefaultAvatar } from "../../DefaultAvatar";
 import { CheckIcon } from "@heroicons/react/24/outline";
+import { UpdateOrderStatus } from "../../Forms";
 
 type Props = {
   orders: OrderDetail[]; 
@@ -135,9 +136,9 @@ export async function TableModifyOrders({ orders }: Props) {
                   <div className="flex items-center gap-x-2">
                     {order.customer.avatar ? (
                       <Image
+                      className="object-cover w-auto h-auto rounded-full"
                         width={32}
                         height={32}
-                        className="object-cover w-auto h-auto rounded-full"
                         src={order?.customer?.avatar}
                         alt="avatar"
                       />
@@ -161,11 +162,8 @@ export async function TableModifyOrders({ orders }: Props) {
                   <div className="flex items-center gap-x-6">
                     <OrderDetailsHover order={order}/>
 
-                    <button 
-                    onClick={() => console.log('click')}
-                    className="bg-transparent border-2 border-solid p-1 font-semibold rounded-md border-green-600 text-green-600 transition-colors duration-200   hover:text-white hover:bg-green-600 focus:outline-none">
-                      Update status
-                    </button>
+                    
+                    <UpdateOrderStatus order={order}/>
                   </div>
                 </td>
               </tr>
