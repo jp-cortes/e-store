@@ -10,7 +10,11 @@ type Props = {
 }
 
 export async function TableModifyOrders({ orders }: Props) {
-
+const currentStatus = {
+  onTheWay: "on the way",
+  delivered: "delivered",
+  canceled: "canceled"
+}
 
   return (
         <table className="min-w-full divide-y divide-gray-200 hidden lg:block">
@@ -21,12 +25,8 @@ export async function TableModifyOrders({ orders }: Props) {
                 className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
               >
                 <div className="flex items-center gap-x-3">
-                  <input
-                    type="checkbox"
-                    className="text-blue-500 border-gray-300 rounded "
-                  />
                   <button className="flex items-center gap-x-2">
-                    <span>Invoice</span>
+                    <span>Order</span>
 
                     <svg
                       className="h-3"
@@ -102,11 +102,6 @@ export async function TableModifyOrders({ orders }: Props) {
               <tr key={order.id}>
                 <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center gap-x-3">
-                    <input
-                      type="checkbox"
-                      className="text-blue-500 border-gray-300 rounded "
-                    />
-
                     <span># {order.id}</span>
                   </div>
                 </td>
@@ -125,7 +120,10 @@ export async function TableModifyOrders({ orders }: Props) {
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                  <div className="inline-flex items-center px-3 py-1 rounded-full gap-x-2 text-yellow-500 bg-yellow-100/60 ">
+                  <div className={`${order.status === currentStatus.onTheWay && 'text-yellow-500 bg-yellow-100/60'}
+                   ${order.status === currentStatus.delivered && 'text-green-500 bg-green-100/60'} 
+                   ${order.status === currentStatus.canceled && 'text-red-500 bg-red-100/60'}
+                   inline-flex items-center px-3 py-1 rounded-full gap-x-2`}>
                     
                     <CheckIcon className='w-3 h-3' />
                     

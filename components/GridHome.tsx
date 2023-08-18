@@ -8,9 +8,9 @@ import { getCategoryById } from '../services';
 
 
 export async function GridHome() {  
-const category1 = await getCategoryById('1')
-const category2 = await getCategoryById('2')
-const category3 = await getCategoryById('3')
+const featured = await getCategoryById('1');
+const newBrands = await getCategoryById('2');
+const promotions = await getCategoryById('3');
 
   return (
     <>
@@ -18,13 +18,13 @@ const category3 = await getCategoryById('3')
      <div
      className=' cursor-pointer md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative'>
       <figure className="relative mb-2 w-full h-4/5">
-            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{category1.name}</span>
+            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{featured.name}</span>
           
-        <Link href={`/categories/${category1.id}-${category1.name}`} passHref>
+        <Link href={`/categories/${featured.id}-${featured.name}`} passHref>
           <Image 
             className='w-full h-full object-cover rounded-lg' 
-            src={category1.image}
-            alt={category1.name} 
+            src={featured.image}
+            alt={featured.name} 
             width={640}
             height={480}
             />
@@ -40,12 +40,12 @@ const category3 = await getCategoryById('3')
     <div
     className=' cursor-pointer md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-3  rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
-            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{category2.name}</span>
-            <Link href={`/categories/${category2.id}-${category2.name}`} passHref>
+            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{newBrands.name}</span>
+            <Link href={`/categories/${newBrands.id}-${newBrands.name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
-            src={category2.image} 
-            alt={category2.name} 
+            src={newBrands.image} 
+            alt={newBrands.name} 
             width={640}
             height={480}
             />
@@ -61,12 +61,12 @@ const category3 = await getCategoryById('3')
     <div
     className=' cursor-pointer md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-5 rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
-            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{category3.name}</span>
-            <Link href={`/categories/${category3.id}-${category3.name}`} passHref>
+            <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{promotions.name}</span>
+            <Link href={`/categories/${promotions.id}-${promotions.name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
-            src={category3.image} 
-            alt={category3.name} 
+            src={promotions.image} 
+            alt={promotions.name} 
             width={640}
             height={480}
             />

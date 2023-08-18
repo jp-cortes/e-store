@@ -9,7 +9,7 @@ type Props = {
   isDetailsPage: boolean;
 }
 
-export function Card({ product, isDetailsPage }:Props) {
+export function Card({ product }:Props) {
   
 
 
@@ -21,6 +21,7 @@ export function Card({ product, isDetailsPage }:Props) {
             
             <Link passHref href={`/products/${product.id}-${product.name}`}>
             <Image
+            loading='lazy'
             className='w-auto h-auto object-cover rounded-lg' 
             src={product.image} 
             alt={product.name} width={224} height={224} />
