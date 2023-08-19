@@ -39,7 +39,7 @@ export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
           Make changes to the order here. Click Update when you&apos;re done.
         </Dialog.Description>
         <form onSubmit={handleSubmit((data) => handleUpdate(data))} 
-        className="mb-[15px] flex items-center gap-5">
+        className="bg-lightGreen mb-[15px] flex items-center gap-5">
           <label className="w-[90px] text-right text-[15px]" htmlFor="orderStatus">
             Status
           </label>

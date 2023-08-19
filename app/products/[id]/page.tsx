@@ -16,8 +16,8 @@ export default async function Product ({ params: { id } } : { params: { id: stri
   return (
     <>
       <Navbar />
-      <div className="bg-white   grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
-        <div className="bg-white   md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative px-4">
+      <div className="bg-lightGreen   grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 gap-2">
+        <div className="bg-lightGreen   md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative px-4">
           <h1 className="text-2xl font-semibold self-center mt-7">
             Product Details
           </h1>
@@ -31,15 +31,15 @@ export default async function Product ({ params: { id } } : { params: { id: stri
             />
           </figure>
           <div className="absolute bottom-[120px] right-5 flex items-center justify-center flex-col">
-            <div className="inline-flex bg-white p-4 text-lg font-semibold text-black rounded-xl ">
+            <div className="inline-flex bg-lightGreen p-4 text-lg font-semibold text-black rounded-xl ">
               {product.name}
             </div>
-            <div className="inline-flex bg-white px-2 text-lg mt-2 font-semibold text-black rounded-lg">
+            <div className="inline-flex bg-lightGreen px-2 text-lg mt-2 font-semibold text-black rounded-lg">
               € {product.price}
             </div>
           </div>
         </div>
-        <div className="bg-white md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-5  rounded-lg relative mt-7">
+        <div className="bg-lightGreen md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-5  rounded-lg relative mt-7">
           <div className="flex flex-col items-center relative mt-10 px-2">
             <p className="text-justify text-xl">{product.description}.</p>
             <div className="mt-10">

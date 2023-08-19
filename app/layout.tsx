@@ -23,7 +23,7 @@ const inter = Inter({
 export default async function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className="">
+      <body className="bg-lightGreen">
        <Theme >
      
          <ShoppingCartProvider>

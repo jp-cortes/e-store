@@ -60,10 +60,10 @@ export function FormCreateProduct() {
         <Dialog.Overlay className="bg-background/80 data-[state=open] fixed inset-0  z-10" />
    
            <Dialog.Content className="data-[state=open] fixed top-[50%] left-[50%]  w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%]  rounded-[6px] z-10">
-          <div className="bg-white rounded-xl p-2">
+          <div className="bg-lightGreen rounded-xl p-2">
             <form onSubmit={handleSubmit((data) => handleUpdate(data))}>
               <div className="overflow-hidden">
-                <div className="px-4 py-5 bg-white sm:p-6">
+                <div className="px-4 py-5 bg-lightGreen sm:p-6">
                   <div className="grid grid-cols-6 gap-6">
                     <div className="col-span-6 sm:col-span-3">
                       <label
@@ -112,7 +112,7 @@ export function FormCreateProduct() {
                         required
                         name="categoryId"
                         autoComplete="categoryId"
-                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                        className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-lightGreen rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                       >
                         <ErrorText>{errors.categoryId?.message}</ErrorText>
 
@@ -171,7 +171,7 @@ export function FormCreateProduct() {
                             <div className="flex text-sm text-gray-600">
                               <label
                                 htmlFor="image"
-                                className="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
+                                className="relative cursor-pointer bg-lightGreen rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500"
                               >
                                 <span>Upload a file</span>
                                 <input

@@ -26,7 +26,7 @@ export default async function MyOrders() {
                 <h3 className="text-center mt-10">You have no Orders</h3>
                 <Link
                   href="/categories"
-                  className="bg-white text-center mt-10 p-2 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white"
+                  className="bg-lightGreen text-center mt-10 p-2 border-2 border-green-600 text-green-600 rounded-lg hover:bg-green-600 hover:text-white"
                 >
                   Start shopping!
                 </Link>
