@@ -1,6 +1,6 @@
 'use client'
 import { Suspense } from "react";
-import { DefaultAvatar, InvoiceDetails, NavbarDashboard } from "../../../../components"
+import { InvoiceDetails, Navbar } from "../../../../components"
 import { getOrdersById } from "../../../../services"
 
 export default async function OrderDetail({ params: { id } } : { params: { id: string }}) {
@@ -11,7 +11,7 @@ export default async function OrderDetail({ params: { id } } : { params: { id: s
 
   return (
     <>
-      <NavbarDashboard />
+      <Navbar />
       <Suspense>
       <InvoiceDetails order={order} goBackTo='/my-orders'/>
       </Suspense>

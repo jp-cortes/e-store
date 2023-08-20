@@ -11,15 +11,15 @@ async function Categories() {
   const categories = await getCategories();
 
   return(
-    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 border-r-2 border-green-300'>
-          <h2 className='font-semibold capitalize text-2xl '>Categories</h2>
+    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 border-r-2 border-borderGreen'>
+          <h2 className='font-semibold capitalize text-2xl mr-4'>Categories</h2>
         <ul className='grid justify-center gap-2'>
         {categories.map((category: Category) => (
            <li key={category.id}
            className='mt-4 font-semibold capitalize'
            >
              <Link 
-             className='px-3 py-3 border-white border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
+             className='px-3 py-3 border-transparent border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
              href={`/categories/${category.id}-${category.name}`}>
                   {category.name}
               </Link>

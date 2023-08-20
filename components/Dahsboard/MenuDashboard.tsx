@@ -19,7 +19,7 @@ function handleLogout() {
 
   return (
     <NavigationMenu.Root className="relative w-[100px] flex justify-center items-center">
-      <NavigationMenu.List className="flex justify-center items-center w-6 h-6 list-none rounded-full bg-white m-0 p-1">
+      <NavigationMenu.List className="flex justify-center items-center w-6 h-6 list-none rounded-full bg-lightGreen m-0 p-1">
         <NavigationMenu.Item>
           <NavigationMenu.Trigger className="flex select-none justify-between gap-[2px] rounded-lg p-1 text-[15px] font-medium leading-none outline-none z-10">
             <UserIcon className='w-6 h-6'/>
@@ -61,7 +61,7 @@ function handleLogout() {
               </li>
              <li>
              <button
-        className='w-20 md:w-24 px-1 md:p-2 bg-green-400 text-white font font-semibold rounded-md'
+        className='w-20 md:w-24 px-1 md:p-2 bg-buttonGreen hover:bg-hoverGreen text-white font font-semibold rounded-md'
         onClick={handleLogout}
         type='button'
           >Log out
@@ -73,7 +73,7 @@ function handleLogout() {
       </NavigationMenu.List>
 
       <div className="perspective-[2000px] absolute top-full left-0 flex w-full justify-center">
-        <NavigationMenu.Viewport className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]" />
+        <NavigationMenu.Viewport className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-lightGreen transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]" />
       </div>
     </NavigationMenu.Root>
   );

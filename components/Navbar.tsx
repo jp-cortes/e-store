@@ -48,7 +48,7 @@ export function Navbar() {
         <li>
           { token ? <MenuUserlogedIn/> :
           <Link
-          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
+          className='bg-buttonGreen rounded-lg p-2 text-white font-semibold hover:bg-hoverGreen' 
           href='/login'>Login</Link>
           }
         </li>

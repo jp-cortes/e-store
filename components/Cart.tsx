@@ -126,7 +126,7 @@ export function ShoppingCartModal() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <button className=" inline-flex items-center justify-center rounded-full bg-white">
+        <button className=" inline-flex items-center justify-center rounded-full bg-lightGreen ">
           <ShoppingBagIcon className="w-6 h-6" />
         </button>
       </Dialog.Trigger>

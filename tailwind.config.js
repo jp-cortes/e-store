@@ -8,7 +8,11 @@ module.exports = {
     extend: {
       colors: {
         background: "hsl(var(--background))",
-        lightGreen: "#F3FDE8"
+        lightGreen: "#F3FDE8",
+        borderGreen: '#C2D8C8',
+        buttonGreen: '#00677F',
+        hoverGreen: '#98C1B2'
+        
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
