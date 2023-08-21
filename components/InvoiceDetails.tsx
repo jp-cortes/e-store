@@ -1,7 +1,13 @@
+'use client'
 import { ChevronLeftIcon } from "@heroicons/react/24/solid";
 import { DefaultAvatar } from "./DefaultAvatar";
 import Image from "next/image";
 import Link from "next/link";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import { Item } from "@radix-ui/react-dropdown-menu";
+import { useRef } from "react";
+
 
 type Props = {
     order: OrderDetail;
@@ -9,6 +15,26 @@ type Props = {
 }
 
 export async function InvoiceDetails({ order, goBackTo }: Props) {
+
+  const pdfRef = useRef<HTMLDivElement | undefined>();
+
+  function downloadPdf() {
+    // const input = pdfRef.current;
+    // html2canvas(input).then((canvas: HTMLCanvasElement) => {
+    //   const imgData = canvas.toDataURL(order.items)
+    //   const pdf = new jsPDF('p', 'mm', 'a4', true);
+    //   const pdfWidth = pdf.internal.pageSize.getWidth();
+    //   const pdfHeight = pdf.internal.pageSize.getHeight();
+    //   const imgWidth = canvas.width;
+    //   const imgHeight = canvas.height;
+    //   const ratio = Math.min(pdfWidth / imgWidth, pdfHeight /  imgHeight);
+    //   const imgX = (pdfWidth - imgWidth * ratio);
+    //   const imgY = 30;
+    //   pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+    //   pdf.save('invoice.pdf')
+    // })
+  }
+
   return (
     <>
       <div className='grid justify-center border-3 border-red-700'>
@@ -90,7 +116,16 @@ export async function InvoiceDetails({ order, goBackTo }: Props) {
           <h3>Back</h3>
     </div>
     </div>
+    <div>
+    <button 
+        className='w-24  p-1 md:p-2 lg:p-2 bg-buttonGreen hover:bg-hoverGreen text-white font-semibold rounded-md inline-block m-1'
+        onClick={downloadPdf}>Download Pdf</button>
+      </div>
     </>
   )
+}
+
+function item(value: ProductOrder, index: number, array: ProductOrder[]): void {
+  throw new Error("Function not implemented.");
 }
 
