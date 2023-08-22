@@ -49,7 +49,7 @@ export default async function MyOrders() {
                   </p>
                   <Link href={`/my-orders/invoice/${order.id}`} passHref>
                     <span className="capitalize font-medium text-blue-400 hover:text-red-400 hover:underline">
-                      details
+                      Invoice
                     </span>
                   </Link>
                   <p className="font-medium">

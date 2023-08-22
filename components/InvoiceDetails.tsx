@@ -16,28 +16,30 @@ type Props = {
 
 export async function InvoiceDetails({ order, goBackTo }: Props) {
 
-  const pdfRef = useRef<HTMLDivElement | undefined>();
+  const pdfRef = useRef<HTMLDivElement | null>(null);
 
   function downloadPdf() {
-    // const input = pdfRef.current;
-    // html2canvas(input).then((canvas: HTMLCanvasElement) => {
+    const input = pdfRef.current as HTMLDivElement;
+    html2canvas(input).then(() => {
     //   const imgData = canvas.toDataURL(order.items)
-    //   const pdf = new jsPDF('p', 'mm', 'a4', true);
-    //   const pdfWidth = pdf.internal.pageSize.getWidth();
-    //   const pdfHeight = pdf.internal.pageSize.getHeight();
+      const pdf = new jsPDF('p', 'mm', 'a4', true);
+      pdf.internal.pageSize.getWidth();
+      pdf.internal.pageSize.getHeight();
+      // const pdfWidth = pdf.internal.pageSize.getWidth();
+      // const pdfHeight = pdf.internal.pageSize.getHeight();
     //   const imgWidth = canvas.width;
     //   const imgHeight = canvas.height;
     //   const ratio = Math.min(pdfWidth / imgWidth, pdfHeight /  imgHeight);
     //   const imgX = (pdfWidth - imgWidth * ratio);
     //   const imgY = 30;
-    //   pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
-    //   pdf.save('invoice.pdf')
-    // })
+      // pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+      pdf.save('invoice.pdf')
+    })
   }
 
   return (
     <>
-      <div className='grid justify-center border-3 border-red-700'>
+      <div className='grid justify-center border-3 border-red-700' ref={pdfRef}>
     <h1 className='text-2xl ml-8 my-7 justify-self-center font-semibold'>Order Details</h1>
     <div className='flex flex-col justify-center content-center lg:gap-8'>
       <div className='flex flex-col justify-center content-center'>
