@@ -2,7 +2,7 @@
 'use client'
 import { NavbarDashboard } from "../../../../components"
 import { getOrdersById } from "../../../../services";
-import { InvoiceDetails } from "../../../../components";
+import { OrderDetails } from "../../../../components";
 import { Suspense } from "react";
 
 
@@ -15,7 +15,7 @@ console.log(order, 'order id')
     <>
     <NavbarDashboard/>
     <Suspense>
-    <InvoiceDetails order={order} goBackTo='/dashboard/orders'/>
+    <OrderDetails order={order} goBackTo='/dashboard/orders'/>
 
     </Suspense>
     </>
