@@ -48,12 +48,13 @@ export default async function MyOrders() {
                     </span>
                   </p>
                   <Link href={`/my-orders/order/${order.id}`} passHref>
-                    <span className="capitalize font-medium text-blue-400 hover:text-red-400 hover:underline">
+                    <span className="capitalize font-medium text-blue-400 mx-3 hover:text-red-400 hover:underline">
                       Details
                     </span>
                   </Link>
+                  
                   <Link href={`/my-orders/invoice/${order.id}`} passHref>
-                    <span className="capitalize font-medium text-blue-400 hover:text-red-400 hover:underline">
+                    <span className="capitalize font-medium text-blue-400 mx-3 hover:text-red-400 hover:underline">
                       Invoice
                     </span>
                   </Link>

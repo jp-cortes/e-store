@@ -129,7 +129,7 @@ export async function addItemsToOrder(item: { orderId: number, productId: number
 }
 
 
-export async function getOrdersById(id: string): Promise<OrderDetail | void> {
+export async function getOrdersById(id: string): Promise<OrderDetail | undefined> {
 
   
    try {
