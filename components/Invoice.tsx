@@ -78,24 +78,22 @@ export function Invoice({ order }: Props) {
             </div>
             {order.items.map((item) => (
               <div key={item.id}>
-                <>
-                </>
                 <div className="flex justify-between content-center">
-                  <p className="font-medium capitalize">{item.name}</p>
-                  <p className="font-medium">
+                  <p className="font-medium capitalize w-[25%] text-start">{item.name}</p>
+                  <p className="font-medium w-[25%] text-start">
                       {item.OrderProduct.amount}
                   </p>
-                  <p className="font-medium">
+                  <p className="font-medium w-[25%] text-start">
                       € {item.price}
                   </p>
-                  <p className="font-medium">
+                  <p className="font-medium w-[25%] text-start">
                       € {(Number(item.price) * item.OrderProduct.amount)}
                   </p>
                 </div>
+                <div className="h-[1px] w-full bg-black" />
               </div>
             ))}
           </div>
-          <div className="h-[1px] w-full bg-black" />
           <div className="flex justify-between">
             <p className="font-medium">Total:</p>
             <p>
