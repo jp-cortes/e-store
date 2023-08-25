@@ -46,7 +46,7 @@ export function Invoice({ order }: Props) {
         <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold">
           E-store
         </h1>
-        <div className="flex flex-wrap justify-center content-center lg:gap-8">
+        <div className="flex flex-wrap justify-center content-center lg:gap-4">
           <div className="flex flex-col justify-start flex-start">
             <p className="font-medium capitalize">
               Invoice #: <span className="font-normal">{order.id}</span>
@@ -68,13 +68,13 @@ export function Invoice({ order }: Props) {
               {order.customer.name} {order.customer.lastName}
             </p>
           </div>
-          <div className="flex flex-col w-full justify-center content-center mt-1 p-3">
+          <div className="flex flex-col w-full justify-center content-center mt-1 px-8 mx-8">
             <h3 className='font-semibold text-xl'>Items:</h3> <br />
             <div className='flex justify-between'>
-                <p className='font-semibold inline-flex mx-2'>Item Description</p>
-                <p className='font-semibold inline-flex mx-2'>Quantity</p>
-                <p className='font-semibold inline-flex mx-2'>Price</p>
-                <p className='font-semibold inline-flex mx-2'>Total</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%]'>Item Description</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%]'>Quantity</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%]'>Price</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%]'>Total</p>
             </div>
             {order.items.map((item) => (
               <div key={item.id}>
@@ -90,11 +90,11 @@ export function Invoice({ order }: Props) {
                       € {(Number(item.price) * item.OrderProduct.amount)}
                   </p>
                 </div>
-                <div className="h-[1px] w-full bg-black" />
+                <div className="h-[1px] w-full mt-2 bg-black" />
               </div>
             ))}
           </div>
-          <div className="flex justify-between">
+          <div className="flex gap-2">
             <p className="font-medium">Total:</p>
             <p>
               €{" "}
