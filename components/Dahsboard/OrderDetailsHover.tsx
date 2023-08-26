@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { DefaultAvatar } from '../';
 
 type Props = {
-    order: OrderDetail;
+    order: Partial<OrderDetail>;
 }
 
 export function OrderDetailsHover({ order }: Props) {
@@ -24,14 +24,14 @@ export function OrderDetailsHover({ order }: Props) {
         sideOffset={5}
       >
         <div className="flex flex-col gap-[7px]">
-          {order.customer.avatar ? (
+          {order?.customer?.avatar ? (
           <figure>
             <Image
           width={60}
           height={60}
             className="block h-auto w-auto rounded-full"
-            src={order.customer.avatar}
-            alt={order.customer.name}
+            src={order?.customer.avatar}
+            alt={order?.customer.name}
           />
           </figure>
           ):
@@ -39,12 +39,12 @@ export function OrderDetailsHover({ order }: Props) {
           }
           <div className="flex flex-col gap-[15px]">
             <div>
-              <div className="text-black m-0 text-[15px] font-medium leading-[1.5] capitalize">{order.customer.name}</div>
-              <div className="text-black m-0 text-[15px] leading-[1.5]"><b>Date:</b>{" "}{order.createdAt.slice(0, 10)}</div>
+              <div className="text-black m-0 text-[15px] font-medium leading-[1.5] capitalize">{order?.customer?.name}</div>
+              <div className="text-black m-0 text-[15px] leading-[1.5]"><b>Date:</b>{" "}{order?.createdAt?.slice(0, 10)}</div>
             </div>
             <div className="flex flex-col justify-center content-center m-0 gap-2">
               <h3 className='font-medium mt-2'>Products:</h3>
-              {order.items.map((item) => (
+              {order?.items?.map((item) => (
                 <p key={item.id}
                 className='text-[15px] leading-[1.5]'
                 >{item.name}</p>
@@ -54,7 +54,7 @@ export function OrderDetailsHover({ order }: Props) {
               <div className="flex gap-[5px]">
               </div>
               <div className="flex gap-[5px]">
-                <Link href={`/dashboard/orders/${order.id}`} className="text-green-700 m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
+                <Link href={`/dashboard/orders/${order?.id}`} className="text-green-700 m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
               </div>
             </div>
           </div>

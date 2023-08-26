@@ -1,5 +1,5 @@
 'use client'
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { NavbarDashboard, TableModifyOrders } from "../../../components"
 import { getOrders } from "../../../services";
 import { CardOrders } from "../../../components/Dahsboard";
@@ -7,10 +7,17 @@ import { CardOrders } from "../../../components/Dahsboard";
 
 
 export default async function Orders() {
-
+const [orders, setOrders] = useState<OrderDetail[] | undefined>([]);
   
-  const orders = await getOrders() as OrderDetail[]
-
+useEffect(() => {
+  async function renderOrders() {
+    const response = await getOrders();
+    return setOrders(response)
+  }
+  renderOrders()
+},[])
+  // const orders = await getOrders();
+// console.log(orders)
   return (
     <>
     <NavbarDashboard />

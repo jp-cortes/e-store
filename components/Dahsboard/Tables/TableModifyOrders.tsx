@@ -6,7 +6,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { UpdateOrderStatus } from "../../Forms";
 
 type Props = {
-  orders: OrderDetail[]; 
+  orders: OrderDetail[] | undefined; 
 }
 
 export async function TableModifyOrders({ orders }: Props) {
@@ -99,40 +99,40 @@ const currentStatus = {
           </thead>
           <tbody className="bg-white divide-y divide-gray-200 ">
             {orders?.map((order) => (
-              <tr key={order.id}>
+              <tr key={order?.id}>
                 <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center gap-x-3">
-                    <span># {order.id}</span>
+                    <span># {order?.id}</span>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
-                  {order.createdAt.slice(0, 10)}
+                  {order?.createdAt.slice(0, 10)}
                 </td>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div
                     className={`${
-                      order.paid
+                      order?.paid
                         ? "text-emerald-500 bg-emerald-100/60"
                         : "text-rose-500 bg-rose-100/60"
                     } inline-flex items-center px-3 py-1 rounded-full gap-x-2`}
                   >
-                    <p className="text-sm font-normal">{`${order.paid}`}</p>
+                    <p className="text-sm font-normal">{`${order?.paid}`}</p>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
-                  <div className={`${order.status === currentStatus.onTheWay && 'text-yellow-500 bg-yellow-100/60'}
-                   ${order.status === currentStatus.delivered && 'text-green-500 bg-green-100/60'} 
-                   ${order.status === currentStatus.canceled && 'text-red-500 bg-red-100/60'}
+                  <div className={`${order?.status === currentStatus.onTheWay && 'text-yellow-500 bg-yellow-100/60'}
+                   ${order?.status === currentStatus.delivered && 'text-green-500 bg-green-100/60'} 
+                   ${order?.status === currentStatus.canceled && 'text-red-500 bg-red-100/60'}
                    inline-flex items-center px-3 py-1 rounded-full gap-x-2`}>
                     
                     <CheckIcon className='w-3 h-3' />
                     
-                    <p className="text-sm font-normal">{order.status}</p>
+                    <p className="text-sm font-normal">{order?.status}</p>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-500  whitespace-nowrap">
                   <div className="flex items-center gap-x-2">
-                    {order.customer.avatar ? (
+                    {order?.customer.avatar ? (
                       <Image
                       className="object-cover w-auto h-auto rounded-full"
                         width={32}
@@ -145,16 +145,16 @@ const currentStatus = {
                     )}
                     <div className="flex gap-2">
                       <p className="text-sm font-medium text-gray-700 capitalize">
-                        {order.customer.name}
+                        {order?.customer.name}
                       </p>
                       <p className="text-sm font-medium text-gray-700 capitalize">
-                        {order.customer.lastName}
+                        {order?.customer.lastName}
                       </p>
                     </div>
                   </div>
                 </td>
                 <td className="px-4 py-4 text-sm text-gray-700  whitespace-nowrap">
-                  {order.items[0].name}...
+                  {order?.items[0].name}...
                 </td>
                 <td className="px-4 py-4 text-sm whitespace-nowrap">
                   <div className="flex items-center gap-x-6">

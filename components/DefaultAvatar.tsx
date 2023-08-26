@@ -1,7 +1,7 @@
 
 
 type Props = {
-  userName: string;
+  userName: string | undefined;
   bgColor: string;
 };
 

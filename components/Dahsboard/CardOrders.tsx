@@ -3,14 +3,14 @@ import { DefaultAvatar } from "../DefaultAvatar"
 import Link from "next/link";
 
 type Props = {
-    orders: OrderDetail[];
+    orders: OrderDetail[] | undefined;
 }
 
 export async function CardOrders({ orders }: Props) {
   return (
  <div className='lg:hidden flex flex-wrap justify-around'>
  {orders?.map((order) => (
-       <div  key={order.id} className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-green-100'>
+       <div  key={order.id} className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-white'>
        <div className="flex justify-between content-center">
            <p className="text-xs font-medium text-gray-900 uppercase">
                Invoice:
@@ -44,12 +44,12 @@ export async function CardOrders({ orders }: Props) {
            </p>
        </div>
        <div className='h-[2px] w-full bg-green-300'/>
-       <div className="h-16 w-16 mx-auto mb-4">
+       <div className="h-auto w-auto mx-auto mb-4">
        {order.customer.avatar ? (
                          <Image
                            width={32}
                            height={32}
-                           className="object-cover w-auto h-auto rounded-full"
+                           className="object-cover rounded-full my-5"
                            src={order?.customer?.avatar}
                            alt="avatar"
                          />

@@ -7,10 +7,10 @@ type Props = {
 
 export function CardDashboard({ product }: Props) {
   return (
-    <div className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-gray-100'>
+    <div className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-white'>
           <div className="h-auto w-auto mx-auto mb-4">
               <Image
-                  className="rounded-full"
+                  className="rounded-full h-auto w-auto"
                   width={64}
                   height={64}
                   src={product.image}
