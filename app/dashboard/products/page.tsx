@@ -7,9 +7,9 @@ import { FormCreateProduct } from '../../../components/Forms';
 import { Suspense } from 'react';
 
 export default async function ProductsDashboard() {
-
-    const products = await getAllProducts();
-
+  
+const products = await getAllProducts();
+// console.log(products)
   return (
     <>
       <NavbarDashboard />

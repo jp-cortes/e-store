@@ -49,7 +49,7 @@ export async function CardOrders({ orders }: Props) {
                          <Image
                            width={32}
                            height={32}
-                           className="object-cover rounded-full my-5"
+                           className="rounded-full my-5"
                            src={order?.customer?.avatar}
                            alt="avatar"
                          />

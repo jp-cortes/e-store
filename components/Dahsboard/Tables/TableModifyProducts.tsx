@@ -45,7 +45,7 @@ export function TableModifyProducts({ products }: Props) {
                   </thead>
                   <tbody className="bg-white  divide-y divide-gray-200">
                     {products?.map((product) => (
-                      <tr key={`Product-item-${product.id}`}>
+                      <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="flex-shrink-0 h-auto w-auto">
@@ -54,7 +54,7 @@ export function TableModifyProducts({ products }: Props) {
                                 width={40}
                                 height={40}
                                 src={product.image}
-                                alt=""
+                                alt={product.name}
                               />
                             </div>
                             <div className="ml-4">
