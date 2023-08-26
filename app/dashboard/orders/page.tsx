@@ -8,7 +8,7 @@ import { CardOrders } from "../../../components/Dahsboard";
 
 export default async function Orders() {
   const orders = await getOrders();
-console.log(orders, 'orders');
+// console.log(orders, 'orders');
   return (
     <>
     <NavbarDashboard />
