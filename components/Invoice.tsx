@@ -46,7 +46,7 @@ export function Invoice({ order }: Props) {
         <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold">
           E-store
         </h1>
-        <div className="flex flex-wrap justify-center content-center lg:gap-4">
+        <div className="flex flex-wrap justify-center content-center lg:gap-2">
           <div className="flex flex-col justify-start flex-start">
             <p className="font-medium capitalize">
               Invoice #: <span className="font-normal">{order.id}</span>

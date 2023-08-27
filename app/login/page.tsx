@@ -45,7 +45,7 @@ const { email, password} = data;
 }
 return (
   <>
-    <div className="relative grid h-auto grid-cols-1 md:mt-[-68px] lg:mt-[-68px] md:grid-cols-2 overflow-y-hidden">
+    <div className="relative grid h-auto grid-cols-1 mt-[-68px] md:grid-cols-2 md:overflow-y-hidden lg:overflow-y-hidden">
       <div className="absolute top-4 left-4">
         <MenuMobile />
       </div>

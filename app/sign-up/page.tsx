@@ -49,7 +49,7 @@ export default function SignUp() {
 
   }
   return (
-    <div className="relative h-auto mt-[-68px] grid grid-cols-1 md:grid-cols-2 overflow-y-hidden">
+    <div className="relative h-auto mt-[-68px] grid grid-cols-1 md:grid-cols-2 md:overflow-y-hidden lg:overflow-y-hidden">
       <div className='absolute top-4 left-4'>
   <MenuMobile/>
   </div>
