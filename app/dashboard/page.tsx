@@ -4,6 +4,8 @@ import { Chart } from '../../components/Charts';
 import { MobileProductsOverview, NavbarDashboard, TableProductsOverview } from '../../components';
 import { Suspense } from 'react';
 
+export const runtime = 'edge';
+
 export default async function Dasboard() {
   
   const data = await getProductsByPage(80,1)

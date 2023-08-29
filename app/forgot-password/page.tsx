@@ -10,6 +10,8 @@ import { ErrorText } from "../../components";
 import Swal from 'sweetalert2';
 import Link from "next/link";
 
+export const runtime = 'edge';
+
 export default function ResetPassword() {
   const [emailSent, setEmailSent] = useState(false);
  

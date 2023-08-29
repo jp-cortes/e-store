@@ -5,7 +5,7 @@ import { getOrdersById } from "../../../../services";
 import { OrderDetails } from "../../../../components";
 import { Suspense } from "react";
 
-
+export const runtime = 'edge';
 
 export default async function SingleOrder({ params: { id } } : { params: { id: string }}) {
   const order = await getOrdersById(id) as OrderDetail;

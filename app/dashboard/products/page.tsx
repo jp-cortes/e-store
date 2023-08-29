@@ -6,6 +6,8 @@ import { ModifyProductsMobile, NavbarDashboard, TableModifyProducts } from '../.
 import { FormCreateProduct } from '../../../components/Forms';
 import { Suspense } from 'react';
 
+export const runtime = 'edge';
+
 export default async function ProductsDashboard() {
   
 const products = await getAllProducts();

@@ -9,7 +9,7 @@ import { DefaultAvatar } from '../../components';
 import * as Dialog from '@radix-ui/react-dialog';
 import Image from 'next/image';
 
-
+export const runtime = 'edge';
 
 export default async function MyAccount() {
  

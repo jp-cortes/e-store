@@ -4,7 +4,7 @@ import { GridHome } from "../components";
 import { Footer } from "../components";
 import { Navbar } from "../components";
 
-
+export const runtime = 'edge';
 
 
 

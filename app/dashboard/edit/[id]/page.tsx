@@ -3,7 +3,7 @@ import { getProductsById } from '../../../../services'
 import { FormUpdateProduct } from '../../../../components/Forms'
 import { NavbarDashboard } from '../../../../components'
 
-
+export const runtime = 'edge';
 
 export default async function EditProduct({ params: { id } } : { params: { id: string }}) {
     const product = await getProductsById(id)

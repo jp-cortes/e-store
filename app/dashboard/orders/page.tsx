@@ -4,7 +4,7 @@ import { NavbarDashboard, TableModifyOrders } from "../../../components"
 import { getOrders } from "../../../services";
 import { CardOrders } from "../../../components/Dahsboard";
 
-
+export const runtime = 'edge';
 
 export default async function Orders() {
   const orders = await getOrders();

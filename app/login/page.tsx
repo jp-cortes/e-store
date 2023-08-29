@@ -11,7 +11,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import loginBanner from '../../public/login_banner.jpg';
 
-
+export const runtime = 'edge';
 
 export default function Login() {
   const { 

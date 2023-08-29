@@ -10,6 +10,7 @@ import Link from "next/link";
 import loginBanner from '../../public/login_banner.jpg';
 import Swal from 'sweetalert2'
 
+export const runtime = 'edge';
 
 export default function SignUp() {
   const router = useRouter();

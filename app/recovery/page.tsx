@@ -10,6 +10,8 @@ import { updateUserPassword } from "../../services";
 import Link from "next/link";
 import Swal from 'sweetalert2';
 
+export const runtime = 'edge';
+
 export default function RecoveryPassword({
   searchParams,
 }: {
@@ -53,13 +55,6 @@ export default function RecoveryPassword({
       text: 'Try again'
     })
    }
-
-
- 
-
-
-  
- 
 
   }
   return (

@@ -4,7 +4,7 @@ import { Card } from "../../components"
 import { getAllProducts } from "../../services"
 
 
-
+export const runtime = 'edge';
 
 
 export default async function Categories() {
