@@ -56,7 +56,7 @@ export default function ResetPassword() {
       >
         E-store
       </Link>
-      <div className="max-w-md w-full space-y-8">
+      <div className="max-w-md w-full space-y-6">
         <h1 className="lg:hidden  mx-auto font-bold text-3xl text-center">
           E-store
         </h1>
