@@ -1,5 +1,5 @@
 'use client'
-import { Navbar } from "../../components"
+import { NavbarUser } from "../../components"
 import { getOrdersByCustomer } from "../../services";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
 import Link from "next/link";
@@ -11,7 +11,7 @@ export default async function MyOrders() {
 
   return (
     <>
-      <Navbar />
+      <NavbarUser />
       <div className="grid text-center justify-center w-auto">
         <div className="lg:w-[800px]">
           <div className="w-[150px] mx-auto relative flex ">

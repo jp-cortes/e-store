@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { UserIcon } from '@heroicons/react/24/outline';
 
 
-export function MenuUserlogedIn() {
+export function MenuUserloggedIn() {
 
 // handle user log out 
 function handleLogout() {

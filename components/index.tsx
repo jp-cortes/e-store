@@ -13,8 +13,9 @@ import { GridHome } from "./GridHome";
 import { OrderDetails } from "./OrderDetails";
 import { Invoice } from "./Invoice";
 import { MenuMobile } from './MenuMobile'
-import { MenuUserlogedIn } from "./MenuUser";
+import { MenuUserloggedIn } from "./MenuUser";
 import { Navbar } from "./Navbar";
+import { NavbarUser } from "./NavbarUser";
 import { RelatedProducts } from "./RelatedProducts";
 import {
   DeleteProduct,
@@ -49,10 +50,11 @@ import {
     MenuDashboard,
     Invoice,
     MenuMobile,
-    MenuUserlogedIn,
+    MenuUserloggedIn,
     MobileProductsOverview,
     ModifyProductsMobile,
     Navbar,
+    NavbarUser,
     NavbarDashboard,
     OrderDetailsHover,
     RelatedProducts,

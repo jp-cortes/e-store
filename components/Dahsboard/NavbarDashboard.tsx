@@ -1,13 +1,11 @@
 'use client'
 import Link from "next/link";
-import Cookie  from 'js-cookie';
 import { MenuDashboard } from "./";
 
 
 
 
 export function NavbarDashboard() {
-  const token = Cookie.get('token');
 
  
 
@@ -22,11 +20,7 @@ export function NavbarDashboard() {
       <ul className='flex item-center gap-3 relative'>
       
         <li>
-          { token ? <MenuDashboard/> :
-          <Link
-          className='bg-green-700 rounded-lg p-2 text-white font-semibold hover:bg-green-400' 
-          href='/login'>Login</Link>
-          }
+          <MenuDashboard/>
         </li>
       </ul>
       </nav>

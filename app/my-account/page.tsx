@@ -1,7 +1,7 @@
 
 'use client'
 
-import { Navbar } from '../../components';
+import { NavbarUser } from '../../components';
 import { getCustomerbyId } from "../../services";
 import { UpdateUserInfo } from '../../components/Forms';
 import { Suspense } from 'react';
@@ -17,7 +17,7 @@ export default async function MyAccount() {
   
   return (
     <>
-      <Navbar />
+      <NavbarUser />
       <Suspense>
         <div className="relative grid grid-col-1 place-content-center ">
           <h1 className="text-2xl font-semibold text-center">Account</h1>

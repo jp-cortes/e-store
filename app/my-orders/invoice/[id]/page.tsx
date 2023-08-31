@@ -1,6 +1,6 @@
 "use client";
 import { Suspense } from "react";
-import { Invoice, Navbar } from "../../../../components";
+import { Invoice, NavbarUser } from "../../../../components";
 import { getOrdersById } from "../../../../services";
 
 export const runtime = 'edge';
@@ -12,7 +12,7 @@ export default async function InvoiceDetails({ params: { id } } : { params: { id
 
   return (
     <>
-      <Navbar/>
+      <NavbarUser/>
       <Suspense>
         <Invoice order={order}/>
       </Suspense>

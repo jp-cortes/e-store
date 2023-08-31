@@ -4,14 +4,12 @@ import { ShoppingCartModal } from "./Cart";
 import { MenuUserloggedIn } from "./MenuUser";
 import { useShoppingCart } from "../store/Cart";
 import { MenuMobile } from "./MenuMobile";
-import Cookie  from 'js-cookie';
 import Link from "next/link";
 
 
 
 
-export function Navbar() {
-  const token = Cookie.get('token');
+export function NavbarUser() {
   const { count: shoppingCartCount } = useShoppingCart();
  
 
@@ -46,11 +44,7 @@ export function Navbar() {
               <ShoppingCartModal/>
         </li>
         <li>
-          { token ? <MenuUserloggedIn/> :
-          <Link
-          className='bg-buttonGreen rounded-lg p-2 text-white font-semibold hover:bg-hoverGreen' 
-          href='/login'>Login</Link>
-          }
+        <MenuUserloggedIn/> 
         </li>
       </ul>
       </nav>

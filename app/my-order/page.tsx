@@ -2,7 +2,7 @@
 
 import { useShoppingCart } from '../../store/Cart';
 import { ChevronLeftIcon } from '@heroicons/react/24/solid';
-import { Navbar } from '../../components';
+import { NavbarUser } from '../../components';
 import { ButtonStripe } from '../../components';
 import { ButtonPayPal } from '../../components';
 import Link from 'next/link'; 
@@ -21,7 +21,7 @@ export default  function MyOrder() {
   
   return (
     <>
-      <Navbar />
+      <NavbarUser />
       <div className="mx-auto z-0">
         <div className="w-full flex-1 px-4 overflow-auto relative">
           <Link href="/my-orders" passHref className="absolute left-0">
