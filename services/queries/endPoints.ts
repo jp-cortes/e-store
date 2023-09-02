@@ -38,7 +38,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     addItem: `${API}/api/${VERSION}/orders/add-item`,
     order: (id: string) => `${API}/api/${VERSION}/orders/${id}`,
     updateOrder: (id: number) => `${API}/api/${VERSION}/orders/${id}`,
-    myOrders: `${API}/api/${VERSION}/profile/my-orders/`
+    myOrders: `${API}/api/${VERSION}/profile/my-orders`
   },
   files:{
     postFiles: `${API}/api/${VERSION}/files/upload`,
