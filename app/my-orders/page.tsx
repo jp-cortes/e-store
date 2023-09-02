@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default async function MyOrders() {
 
-  const allMyOrders = await getOrdersByCustomer();
+  const allMyOrders: ResumeOrder[] = await getOrdersByCustomer();
 
   return (
     <>
