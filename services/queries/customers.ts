@@ -8,7 +8,6 @@ import { UpdateValues } from '../../utils/schemas/customer';
 export async function getCustomerbyId(): Promise<Customer | undefined> {
 
   try {
-    const id = Cookie.get('userId') as string
   const token = Cookie.get('token');
 
   //Set the Authorization header with the token
@@ -17,7 +16,7 @@ export async function getCustomerbyId(): Promise<Customer | undefined> {
       Authorization: `Bearer ${token}`
     };
     
-  const response = await fetch(`${endPoints.users.profile(id)}`, {
+  const response = await fetch(`${endPoints.users.account}`, {
   method: 'GET',
   cache: 'no-cache',
   headers: headers

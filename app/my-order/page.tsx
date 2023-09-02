@@ -15,9 +15,6 @@ export default  function MyOrder() {
   // context 
     const { items, subTotal } = useShoppingCart();
 
-   
-    
-
   
   return (
     <>

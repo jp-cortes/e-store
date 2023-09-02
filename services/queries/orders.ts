@@ -157,28 +157,30 @@ export async function getOrdersById(id: string): Promise<OrderDetail | undefined
   }
 
   
-export async function getOrdersByCustomer() {
-
+export async function getOrdersByCustomer(): Promise<ResumeOrder[] | undefined> {
   
-  const id =  Cookie.get('userId') as string;
-    const token = Cookie.get('token');
+    try {
+      const token = Cookie.get('token');
     
-    if(id && token) {
     //Set the Authorization header with the token
   
     const headers = {
         Authorization: `Bearer ${token}`
       };
       
-  const response = await fetch(`${endPoints.orders.myOrders(id)}`, {
+  const response = await fetch(`${endPoints.orders.myOrders}`, {
     method: 'GET',
     cache: 'no-cache',
     headers: headers
   });
   const data = await response.json();
   // console.log(data, ' all orders')
-  return data;
-}
+    return data;
+
+    } catch (error) {
+      return undefined;  
+    }
+
   
   }
   

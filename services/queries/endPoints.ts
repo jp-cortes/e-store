@@ -20,7 +20,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
   },  
   users: {
     login: `${API}/api/${VERSION}/auth/login`,
-    profile: (id: string) => `${API}/api/${VERSION}/users/${id}`,
+    account: `${API}/api/${VERSION}/users/account`,
     sendRecoveryEmail: `${API}/api/${VERSION}/auth/recovery`,
     resetUserPassword: `${API}/api/${VERSION}/auth/change-password`,
   },
@@ -38,7 +38,7 @@ const VERSION = process.env.NEXT_PUBLIC_API_VERSION;
     addItem: `${API}/api/${VERSION}/orders/add-item`,
     order: (id: string) => `${API}/api/${VERSION}/orders/${id}`,
     updateOrder: (id: number) => `${API}/api/${VERSION}/orders/${id}`,
-    myOrders: (id: string) => `${API}/api/${VERSION}/profile/my-orders/${id}`
+    myOrders: `${API}/api/${VERSION}/profile/my-orders/`
   },
   files:{
     postFiles: `${API}/api/${VERSION}/files/upload`,
