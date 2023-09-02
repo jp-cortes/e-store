@@ -157,13 +157,12 @@ export async function getOrdersById(id: string): Promise<OrderDetail | undefined
   }
 
   
-export async function getOrdersByCustomer() {
+export async function getOrdersByCustomer():Promise<ResumeOrder[] | undefined> {
 
-  
-  
+  try {
     const token = Cookie.get('token');
     
-    if(token) {
+    
     //Set the Authorization header with the token
   
     const headers = {
@@ -178,7 +177,10 @@ export async function getOrdersByCustomer() {
   const data = await response.json();
   // console.log(data, ' all orders')
   return data;
-}
+
+  } catch (error) {
+    return undefined;
+  }
   
   }
   

@@ -7,8 +7,8 @@ import Link from "next/link";
 
 export default async function MyOrders() {
 
-  const allMyOrders: ResumeOrder[] = await getOrdersByCustomer();
-
+  const allMyOrders = await getOrdersByCustomer();
+// console.log(allMyOrders)
   return (
     <>
       <NavbarUser />
