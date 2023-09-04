@@ -42,12 +42,11 @@ export function Invoice({ order }: Props) {
 
   return (
     <>
-    <div className="grid w-full mx-auto border-3  border-gray-700" ref={pdfRef}>
-        <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold">
+    <div className="grid w-full mx-auto border-3  border-gray-700 grid-cols-2 grid-rows-2" ref={pdfRef}>
+        <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold col-start-2 col-end-3 row-start-1 row-end-2">
           E-store
         </h1>
-        <div className="flex flex-wrap justify-center content-center lg:gap-2">
-          <div className="flex flex-col justify-start">
+        <div className="flex flex-col justify-start col-start-1 col-end-2 row-start-1 row-end-2">
             <p className="font-medium capitalize">
               Invoice #: <span className="font-normal">{order.id}</span>
             </p>
@@ -68,6 +67,8 @@ export function Invoice({ order }: Props) {
               {order.customer.name} {order.customer.lastName}
             </p>
           </div>
+        <div className="flex flex-wrap justify-center content-center lg:gap-2 col-start-1 col-end-3 row-start-2 row-end-3">
+          
           <div className="flex flex-col w-full justify-center content-center mt-1 px-8 mx-8">
             <h3 className='font-semibold text-xl'>Items:</h3> <br />
             <div className='flex justify-between'>
