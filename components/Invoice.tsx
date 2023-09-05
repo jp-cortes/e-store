@@ -35,7 +35,7 @@ export function Invoice({ order }: Props) {
           imgWidth * ratio,
           imgHeight * ratio
         );
-        pdf.save("invoice.pdf");
+        pdf.save(`invoice-${order.id}-${order.customer.name}-${order.customer.lastName}.pdf`);
       });
     }
   
@@ -46,7 +46,7 @@ export function Invoice({ order }: Props) {
         <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold col-start-2 col-end-3 row-start-1 row-end-2">
           E-store
         </h1>
-        <div className="flex flex-col justify-start col-start-1 col-end-2 row-start-1 row-end-2">
+        <div className="flex flex-col justify-self-center col-start-1 col-end-2 row-start-1 row-end-2">
             <p className="font-medium capitalize">
               Invoice #: <span className="font-normal">{order.id}</span>
             </p>
@@ -72,22 +72,22 @@ export function Invoice({ order }: Props) {
           <div className="flex flex-col w-full justify-center content-center mt-1 px-8 mx-8">
             <h3 className='font-semibold text-xl'>Items:</h3> <br />
             <div className='flex justify-between'>
-                <p className='font-semibold inline-flex mx-2 w-[25%]'>Item Description</p>
-                <p className='font-semibold inline-flex mx-2 w-[25%]'>Quantity</p>
-                <p className='font-semibold inline-flex mx-2 w-[25%]'>Price</p>
-                <p className='font-semibold inline-flex mx-2 w-[25%]'>Total</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%] text-center'>Item Description</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%] text-center'>Quantity</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%] text-center'>Price</p>
+                <p className='font-semibold inline-flex mx-2 w-[25%] text-center'>Total</p>
             </div>
             {order.items.map((item) => (
               <div key={item.id}>
                 <div className="flex justify-between content-center">
-                  <p className="font-medium capitalize w-[25%] text-start">{item.name}</p>
-                  <p className="font-medium w-[25%] text-start">
+                  <p className="font-medium capitalize w-[25%] text-center">{item.name}</p>
+                  <p className="font-medium w-[25%] text-center">
                       {item.OrderProduct.amount}
                   </p>
-                  <p className="font-medium w-[25%] text-start">
+                  <p className="font-medium w-[25%] text-center">
                       € {item.price}
                   </p>
-                  <p className="font-medium w-[25%] text-start">
+                  <p className="font-medium w-[25%] text-center">
                       € {(Number(item.price) * item.OrderProduct.amount)}
                   </p>
                 </div>
@@ -115,10 +115,10 @@ export function Invoice({ order }: Props) {
         </div>
       <div>
         <button
-          className="w-24  p-1 md:p-2 lg:p-2 bg-buttonGreen hover:bg-hoverGreen text-white font-semibold rounded-md inline-block m-1"
+          className="w-32 p-1 md:p-2 lg:p-2 bg-buttonGreen hover:bg-hoverGreen text-white font-semibold rounded-md inline-block m-1"
           onClick={downloadPdf}
         >
-          Download Pdf
+          Download PDF
         </button>
       </div>
     </>
