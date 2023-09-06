@@ -42,7 +42,7 @@ export function Invoice({ order }: Props) {
 
   return (
     <>
-    <div className="grid w-full mx-auto border-3  border-gray-700 grid-cols-2 grid-rows-2" ref={pdfRef}>
+    <div className="grid w-full mt-10 mx-auto border-3  border-gray-700 grid-cols-2 grid-rows-2" ref={pdfRef}>
         <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold col-start-2 col-end-3 row-start-1 row-end-2">
           E-store
         </h1>
@@ -80,14 +80,14 @@ export function Invoice({ order }: Props) {
             {order.items.map((item) => (
               <div key={item.id}>
                 <div className="flex justify-between content-center">
-                  <p className="font-medium capitalize w-[25%] text-center">{item.name}</p>
-                  <p className="font-medium w-[25%] text-center">
+                  <p className="font-medium capitalize w-[25%] text-start">{item.name}</p>
+                  <p className="font-medium w-[25%] text-start">
                       {item.OrderProduct.amount}
                   </p>
-                  <p className="font-medium w-[25%] text-center">
+                  <p className="font-medium w-[25%] text-start">
                       € {item.price}
                   </p>
-                  <p className="font-medium w-[25%] text-center">
+                  <p className="font-medium w-[25%] text-start">
                       € {(Number(item.price) * item.OrderProduct.amount)}
                   </p>
                 </div>
