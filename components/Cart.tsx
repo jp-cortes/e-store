@@ -130,8 +130,8 @@ export function ShoppingCartModal() {
           <ShoppingBagIcon className="w-6 h-6" />
         </button>
       </Dialog.Trigger>
-      <Dialog.Overlay className="bg-background/80 data-[state=open]:ease-in duration-300 delay-1000 fixed top-0 inset-0 z-20 " />
-      <Dialog.Content className="data-[state=open]:ease-in duration-300 delay-1000 fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px] z-20 ">
+      <Dialog.Overlay className="bg-background/80 data-[state=open]:animate-ease-in duration-300 delay-1000 fixed top-0 inset-0 z-20 " />
+      <Dialog.Content className="data-[state=open]:animate-ease-in duration-300 delay-1000 fixed top-0 right-0 w-auto translate-x-[-50%] translate-y-[-50%] rounded-[6px] z-20">
         <ShoppingCart />
       </Dialog.Content>
     </Dialog.Root>
