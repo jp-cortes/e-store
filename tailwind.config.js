@@ -50,10 +50,8 @@ module.exports = {
           '100%': { opacity: 1, transform: 'translateX(0)' },
         },
         showCart: {
-          '0%': { right: '-360px', top: '0' },
-          '30%': { right: '-260px', top: '0' },
-          '60%': { right: '-160px', top: '0' },
-          '100%': { right: '0', top: '0' }
+          from: { right: '-360px', top: '0' },
+          to: { right: '0', top: '0' },
         },
         hideCart: {
           from: { right: '0', top: '0' },
