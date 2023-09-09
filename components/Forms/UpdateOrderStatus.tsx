@@ -25,7 +25,7 @@ export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
     return(
   <Dialog.Root>
     <Dialog.Trigger asChild>
-      <button className="bg-transparent border-2 border-solid p-1 font-semibold rounded-md border-green-600 text-green-600 transition-colors duration-200   hover:text-white hover:bg-green-600 focus:outline-none">
+      <button className="bg-buttonGreen border-2 border-solid p-1 font-semibold rounded-md border-borderGreen transition-colors duration-200 text-white hover:bg-hoverGreen focus:outline-none">
         Update Status
       </button>
     </Dialog.Trigger>
@@ -57,7 +57,7 @@ export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
         <ErrorText>{errors.orderStatus?.message}</ErrorText>
         <div className="mt-[25px] flex justify-end">
         
-            <button className="bg-green-400 text-white hover:bg-green-500 inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] disabled:opacity-70 disabled:cursor-not-allowed"
+            <button className="bg-buttonGreen text-white hover:bg-hoverGreen inline-flex h-[35px] items-center justify-center rounded-[4px] px-[15px] font-medium leading-none focus:shadow-[0_0_0_2px] disabled:opacity-70 disabled:cursor-not-allowed"
             disabled={isSubmitting}
             type="submit"
             >

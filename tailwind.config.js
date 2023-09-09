@@ -53,10 +53,6 @@ module.exports = {
           from: { right: '-360px', top: '0' },
           to: { right: '0', top: '0' },
         },
-        hideCart: {
-          from: { right: '0', top: '0' },
-          to: { right: '-360px', top: '0' },
-        },
       },
       animation: {
         fadeIn: 'fadeIn .3s ease-in-out',
@@ -66,7 +62,7 @@ module.exports = {
         slideDownAndFade: 'slideDownAndFade 300ms cubic-bezier(0.16, 0, 0.13, 1)',
         slideRightAndFade: 'slideRightAndFade 300ms cubic-bezier(0.16, 0, 0.13, 1)',
         slideLeftAndFade: 'slideLeftAndFade 300ms cubic-bezier(0.16, 0, 0.13, 1)',
-        displayCart: 'showCart .2s ease-in'
+        displayCart: 'showCart .4s ease-in'
       }
     }
   },
