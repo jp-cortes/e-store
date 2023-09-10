@@ -79,7 +79,7 @@ const file: File | string = updatedUser.avatar[0];
             </div>
 
             <div className='my-4 '>
-            <label className="sr-only" htmlFor='lastName'>LastName</label>
+            <label className="sr-only" htmlFor='lastName'>Lastname</label>
             <input {...register('lastName')}
             name='lastName' className='w-40 border-2 border-gray-600 pl-1 py-2 rounded-lg font-light text-black focus:outline-emerald-500 focus:outline-2'
             defaultValue={user.lastName}
@@ -102,14 +102,14 @@ const file: File | string = updatedUser.avatar[0];
          <Dialog.Close asChild>
            <button 
            disabled={isSubmitting}
-           className='w-32 p-2 bg-red-500 mx-4 rounded-md text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
+           className='w-32 p-2 bg-red-500 mx-4 hover: bg-red rounded-md text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
            type='button'
            >Cancel</button>
            </Dialog.Close>
          <button
          disabled={isSubmitting}
           type='submit'
-         className='w-32 p-2 bg-green-400 mx-4 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
+         className='w-32 p-2 bg-buttonGreen hover:bg-hoverGreen text-white mx-4 rounded-md font-semibold disabled:opacity-50 disabled:cursor-not-allowed'
           >Edit</button>
          </div>
         </form>
