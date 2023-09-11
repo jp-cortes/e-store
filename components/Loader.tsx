@@ -1,7 +1,7 @@
 'use client'
 import { BallTriangle } from "react-loader-spinner";
 
-export default function Loading() {
+export default function Loader() {
   return (
     <div className="w-full h-full grid place-content-center">
       <div>
