@@ -1,21 +1,19 @@
 'use client'
 import { BallTriangle } from "react-loader-spinner";
 
-export default function Loader() {
+export function Loader() {
   return (
-    <div className="w-full h-full grid place-content-center">
-      <div>
+    <div className="w-full h-full grid content-center justify-center">
         <BallTriangle
           height={100}
           width={100}
-          radius={9}
+          radius={5}
           color="#00677F"
           ariaLabel="ball-triangle-loading"
           wrapperStyle={{}}
           wrapperClass=""
           visible={true}
         />
-      </div>
     </div>
   );
 }

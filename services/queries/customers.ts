@@ -25,7 +25,7 @@ export async function getCustomerbyId(): Promise<Customer | undefined> {
   const { customer } = await response.json();
   return customer;
   } catch (error) {
-    console.log('did not work')
+    throw new Error('undefined');
   }
 }
 
