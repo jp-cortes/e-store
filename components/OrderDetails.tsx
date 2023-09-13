@@ -102,8 +102,9 @@ export async function OrderDetails({ order, goBackTo }: Props) {
         <div className="flex justify-center flex-initial w-full mt-5">
           <Link passHref href={goBackTo} className="">
             <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
+              {" "}
+            <span className=''>Back</span>
           </Link>
-          <h3>Back</h3>
         </div>
       </div>
       <div></div>

@@ -110,8 +110,8 @@ export function Invoice({ order }: Props) {
       <div className="flex justify-center flex-initial w-full mt-5">
           <Link passHref href={'/my-orders'} className="">
             <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
-          </Link>
-          <h3>Back</h3>
+          </Link>{" "}
+            <span className=''>Back</span>
         </div>
       <div>
         <button
