@@ -49,7 +49,7 @@ export default function ResetPassword() {
 
   }
   return (
-    <div className=" min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative mt-[-68px] min-h-full flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
       <Link
         href="/"
         className="hidden lg:block absolute top-4 left-4 text-2xl text-black font-semibold hover:underline underline-offset-4"
