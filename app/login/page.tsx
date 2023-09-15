@@ -130,7 +130,7 @@ return (
               <div className="text-sm">
                 <Link
                   href="/forgot-password"
-                  className="font-medium text-green-700 hover:text-green-600"
+                  className="font-medium text-buttonGreen hover:text-hoverGreen"
                 >
                   Forgot your password?
                 </Link>
@@ -157,7 +157,7 @@ return (
             <p>Don&apos;t have an account?</p>
             <Link
               href="/sign-up"
-              className=" py-2 px-4  font-medium  text-green-500  hover:text-green-700 hover:underline underline-offset-4"
+              className=" py-2 px-4  font-medium  text-buttonGreen  hover:text-hoverGreen hover:underline underline-offset-4"
             >
               Sign up
             </Link>

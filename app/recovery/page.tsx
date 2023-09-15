@@ -111,7 +111,7 @@ export default function RecoveryPassword({
           </form>
           {
           passwordChanged 
-          && <p className="text-center text-lg font-semibold text-green-700 animate-pulse">
+          && <p className="text-center text-lg font-semibold text-buttonGreen animate-pulse">
             Password updated successfully! Please Login to your account</p>
             }
          

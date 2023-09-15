@@ -10,7 +10,7 @@ export const runtime = 'edge';
 export default async function SingleOrder({ params: { id } } : { params: { id: string }}) {
   const order = await getOrdersById(id) as OrderDetail;
 
-console.log(order, 'order id')
+// console.log(order, 'order id')
   return (
     <>
     <NavbarDashboard/>

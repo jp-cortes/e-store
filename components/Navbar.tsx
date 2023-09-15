@@ -35,7 +35,7 @@ export function Navbar() {
         <li className="relative">
               {
               shoppingCartCount > 0 && 
-              <div className="absolute top-0 right-[-8px] bg-green-800 font-semibold text-white w-5 h-5 rounded-full p-0 flex justify-center items-center">
+              <div className="absolute top-0 right-[-8px] bg-buttonGreen font-semibold text-white w-5 h-5 rounded-full p-0 flex justify-center items-center">
                 {
                 shoppingCartCount > 9 ? 
                 <div className="absolute text-white right-[-2px]">9+</div> : 

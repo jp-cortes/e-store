@@ -18,7 +18,7 @@ const products = await getAllProducts();
       <div className="w-full">
         <div className="lg:flex lg:items-center lg:justify-between mb-8 px-7">
           <div className="flex-1 min-w-0">
-            <h2 className="text-2xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
+            <h2 className="text-xl font-bold leading-7 text-gray-900 sm:text-3xl sm:truncate">
               List of Products
             </h2>
           </div>
