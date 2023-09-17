@@ -17,7 +17,7 @@ export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
       })
 
       async function handleUpdate(data: UpdateOrderValues) {
-      await updateOrderStatus({id: order.id, status: data.orderStatus});
+      await updateOrderStatus({ id: order.id, status: data.orderStatus });
       // location.reload()
       
       }

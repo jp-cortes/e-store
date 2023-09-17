@@ -5,7 +5,9 @@ import { CreateProductValues, UpdateProductValues } from '../../utils/schemas/Pr
 
 export async function getAllProducts(): Promise<Products> {
     const res = await fetch(`${endPoints.products.allProducts}`, 
-    { cache: 'no-cache'}
+    { 
+      cache: 'no-cache',
+    }
     );
     const data = await res.json();
     return  data;
@@ -13,7 +15,9 @@ export async function getAllProducts(): Promise<Products> {
 
 export async function getProductsByPage(limit: number, offset: number): Promise<Products> {
     const res = await fetch(`${endPoints.products.getProducts(limit, offset)}`, 
-    { cache: 'no-cache'}
+    { 
+      cache: 'no-cache',
+    }
     );
     const data = await res.json();
     return  data;

@@ -22,7 +22,7 @@ export async function getOrders(): Promise<OrderDetail[] | undefined> {
       {
         method: 'GET',
         headers: headers,
-        cache: 'no-cache',
+        cache: 'no-cache'
       } 
       );
       const data = await response.json();
