@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { XMarkIcon } from '@heroicons/react/24/solid';
@@ -8,8 +9,10 @@ import { ErrorText } from "../ErrorText";
 import * as Dialog from '@radix-ui/react-dialog';
 import { updateOrderStatus } from "../../services";
 
-export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
-    const { 
+export function UpdateOrderStatus({ order } : { order: OrderDetail}){
+  const [open, setOpen] = useState(false); 
+  
+  const { 
         register,
         handleSubmit,
         formState: { errors, isSubmitting } } = useForm<UpdateOrderValues>({
@@ -18,12 +21,12 @@ export async function UpdateOrderStatus({ order } : { order: OrderDetail}){
 
       async function handleUpdate(data: UpdateOrderValues) {
       await updateOrderStatus({ id: order.id, status: data.orderStatus });
-      // location.reload()
+      setOpen(false);
       
       }
 
     return(
-  <Dialog.Root>
+  <Dialog.Root open={open} onOpenChange={setOpen}>
     <Dialog.Trigger asChild>
       <button className="bg-buttonGreen border-2 border-solid p-1 font-semibold rounded-md border-borderGreen transition-colors duration-200 text-white hover:bg-hoverGreen focus:outline-none">
         Update Status
