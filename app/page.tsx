@@ -15,10 +15,8 @@ export default async function Home() {
       <Suspense>
         <GridHome />
         <Carousel />
-        <Suspense>
-          <Footer />
-        </Suspense>
       </Suspense>
+      <Footer />
     </>
   );
 }
