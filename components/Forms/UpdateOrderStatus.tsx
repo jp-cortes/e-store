@@ -10,6 +10,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { updateOrderStatus } from "../../services";
 
 export function UpdateOrderStatus({ order } : { order: OrderDetail}){
+  //state to close the menu
   const [open, setOpen] = useState(false); 
   
   const { 

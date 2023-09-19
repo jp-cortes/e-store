@@ -2,11 +2,14 @@
 import { Bars3BottomLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
+import { useState } from 'react';
 
 
 type Props = {}
 
 export function MenuMobile({}: Props) {
+  //state to close the  menu
+  const [open, setOpen] = useState(false); 
 
 const categories = [
     {
@@ -49,7 +52,7 @@ const categories = [
 
   return (
     <div className=" flex md:hidden lg:hidden">
-      <DropdownMenu.Root>
+      <DropdownMenu.Root open={open} onOpenChange={setOpen}>
         <DropdownMenu.Trigger className="flex select-none justify-between gap-[2px] rounded-lg p-1 text-[15px] font-medium leading-none outline-none z-10">
           <Bars3BottomLeftIcon className="w-6 h-6" />
         </DropdownMenu.Trigger>
@@ -58,12 +61,16 @@ const categories = [
             <div className="flex flex-col w-full list-none gap-2">
               
                 <DropdownMenu.Item className='focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize'>
-                  <Link href="/">Home</Link>
+                  <Link 
+                  onClick={()=> setOpen(false)}
+                  href="/">Home</Link>
                 </DropdownMenu.Item>
               
             
                 <DropdownMenu.Item  className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
-                  <Link href="/categories">All Products</Link>
+                  <Link 
+                  onClick={()=> setOpen(false)}
+                  href="/categories">All Products</Link>
                 </DropdownMenu.Item>
               
               <DropdownMenu.Sub>
@@ -85,6 +92,7 @@ const categories = [
                           <Link
                             className="w-full hover:bg-purple-100  rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize"
                             href={`/categories/${category.id}-${category.name}`}
+                            onClick={()=> setOpen(false)}
                           >
                             {category.name}
                           </Link>

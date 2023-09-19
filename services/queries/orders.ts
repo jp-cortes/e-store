@@ -21,8 +21,8 @@ export async function getOrders(): Promise<OrderDetail[] | undefined> {
       const response = await fetch(`${endPoints.orders.allOrders}`, 
       {
         method: 'GET',
-        headers: headers,
-        cache: 'no-cache'
+        headers: headers
+        // cache: 'no-cache'
       } 
       );
       const data = await response.json();
