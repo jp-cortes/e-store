@@ -9,9 +9,9 @@ export default function About({}: Props) {
   return (
    <>
    <Navbar/>
-    <div className='grid w-full justify-center'>
+    <div className='grid w-full justify-center text-center'>
         <h1 className='text-2xl font-semibold my-11'>About</h1>
-        <p className='font-medium text-xl'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore vel inventore molestias quisquam vero eum culpa fugit dicta rerum perferendis facilis consequatur possimus, ducimus delectus aperiam nisi, quod veniam ipsa?
+        <p className='font-normal text-base mx-auto'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore vel inventore molestias quisquam vero eum culpa fugit dicta rerum perferendis facilis consequatur possimus, ducimus delectus aperiam nisi, quod veniam ipsa?
         Ratione doloribus cum quas cupiditate error magni animi et illo magnam non veniam, possimus itaque dolores sed modi iure. Odit inventore sint incidunt excepturi error reprehenderit quia rerum dignissimos sapiente!
         In, dolor incidunt eaque aspernatur doloribus accusamus nobis est, eveniet laudantium, error veritatis eos molestias! Molestias eaque accusantium illum alias at impedit maxime obcaecati, perferendis, cupiditate distinctio blanditiis porro voluptates.
         Voluptatum iste distinctio eum quia rem, optio consequatur obcaecati enim doloremque ipsa inventore, dolorum quidem iure voluptatem quae eius itaque ducimus aperiam! Vel, nesciunt a. Magni perferendis ea aut repellat.
