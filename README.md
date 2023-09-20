@@ -15,28 +15,6 @@ The Backend source code can be found at https://github.com/jp-cortes/express-res
 * Order tracking allows users to see order details and the current status of their orders.
 * Admin dashboard for managing products (CRUD operations) and monitoring the store.
 
-# Dependencies
-* @heroicons/react
-* @hookform/resolvers
-* @paypal/react-paypal-js
-* @radix-ui/react-alert-dialog
-* @radix-ui/react-dialog
-* @radix-ui/react-dropdown-menu
-* @radix-ui/react-navigation-menu
-* @radix-ui/react-toast
-* @stripe/stripe-js
-* chart.js
-* js-cookie
-* next
-* react
-* react-chartjs-2
-* react-dom
-* react-hook-form
-* react-loader-spinner
-* stripe
-* typescript
-* zod
-
 # Installation
 To set up the E-Store project locally, follow these steps:
 

@@ -18,7 +18,6 @@ export async function loginUser(email: string, password: string) {
       })
       const data = await response.json();
       const token = data.token;
-      const userId = data.user.id;
       const userRole = data.user.role;
       
       //cookies
