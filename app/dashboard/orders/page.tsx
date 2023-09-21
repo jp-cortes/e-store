@@ -5,7 +5,6 @@ import { getOrders } from "../../../services";
 import { CardOrders } from "../../../components/Dahsboard";
 
 export const runtime = 'edge';
-export const revalidate = 10;
 
 export default async function Orders() {
   const orders = await getOrders();

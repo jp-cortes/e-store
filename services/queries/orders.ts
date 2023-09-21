@@ -21,7 +21,8 @@ export async function getOrders(): Promise<OrderDetail[] | undefined> {
       const response = await fetch(`${endPoints.orders.allOrders}`, 
       {
         method: 'GET',
-        headers: headers
+        headers: headers,
+        next: { revalidate: 5 }
         // cache: 'no-cache'
       } 
       );

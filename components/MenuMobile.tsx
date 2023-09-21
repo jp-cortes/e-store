@@ -72,10 +72,10 @@ const categories = [
                   onClick={()=> setOpen(false)}
                   href="/categories">All Products</Link>
                 </DropdownMenu.Item>
-              
+                
               <DropdownMenu.Sub>
                 <DropdownMenu.SubTrigger>
-                  <div className="flex content-center gap-2 pl-2">
+                  <div className="flex content-center gap-2 p-2">
                     Categories
                     <ChevronRightIcon className="w-4 h-4 mt-2" />
                   </div>
