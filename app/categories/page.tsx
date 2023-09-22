@@ -18,7 +18,7 @@ export default async function Categories() {
       
       <h2 className='text-center my-8 font-semibold text-2xl block md:hidden lg:hidden'>All Products</h2>
       
-      <Suspense>
+      <Suspense >
 
         {products?.map((product: Product) => (
           <Card key={product.id} product={product} isDetailsPage={false}/>
