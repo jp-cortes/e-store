@@ -3,7 +3,7 @@ import { ShoppingCartProvider } from '../store/Cart';
 import { Inter } from 'next/font/google'
 import './globals.css';
 import '@radix-ui/themes/styles.css';
-import { Theme, Flex, Text, Button } from '@radix-ui/themes';
+import { QueryProvider } from './queryProvider';
 
 
 
@@ -21,10 +21,11 @@ const inter = Inter({
 
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
+  
   return (
+    <QueryProvider>
     <html lang="en" className={inter.variable}>
       <body className="bg-lightGreen">
-       <Theme >
      
          <ShoppingCartProvider>
           <Suspense>
@@ -32,8 +33,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           </Suspense>
       
          </ShoppingCartProvider>
-         </Theme>
       </body>
     </html>
+    </QueryProvider>
   );
 }
