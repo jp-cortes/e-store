@@ -45,11 +45,23 @@ console.log(data, 'data')
       
       <Suspense >
 
-        {data?.pages.map((product: Product) => (
-          <Card key={product.id} product={product} isDetailsPage={false}/>
+        {data?.pages.map((page, i) => (
+          <div key={i}>
+            {page.map((product: Product) => (
+              <Card key={product.id} product={product} isDetailsPage={false}/>
+            ))}
+          
+          </div>
           ))}
-        
+      <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+        {isFetchingNextPage
+        ? 'Loading more'
+      : (data?.pages.length ?? 0) < 3
+      ? 'Load more'
+      : 'Nothing more to load'}
+        </button>  
       </Suspense>
+
     </div>
           
   )
