@@ -35,7 +35,7 @@ export default async function Categories() {
 
   // const products = await getAllProducts();
 
-console.log(data, 'data')
+// console.log(data, 'data')
   
   return (
     
