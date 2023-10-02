@@ -12,13 +12,13 @@ export default async function Categories() {
   const products = await getAllProducts();
   
   async function fetchProducts(page: number) {
-     return products.slice((page - 1) * 3, page * 3)
+     return products.slice((page - 1) * 6, page * 6)
   }
   
   // Queries
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery( 
-    ['products'], 
-    async ({ pageParam = 1 }) => {
+  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
+   ['product'], 
+   async ({ pageParam = 1 }) => {
     const response = await fetchProducts(pageParam);
       return response
     },
@@ -27,11 +27,11 @@ export default async function Categories() {
         return pages.length + 1
       },
       initialData: {
-        pages: [products.slice(0, 3)],
+        pages: [products.slice(0, 6)],
         pageParams: [1]
       }
     }
-  )
+)
 
   // const products = await getAllProducts();
 
