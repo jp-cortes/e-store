@@ -11,29 +11,12 @@ export const runtime = 'edge';
 export default async function Categories() {
   const products = await getAllProducts();
   
-  async function fetchProducts(page: number) {
-     return products.slice((page - 1) * 6, page * 6)
-  }
   
   // Queries
-  const { data, fetchNextPage, isFetchingNextPage } = useInfiniteQuery(
-   ['product'], 
-   async ({ pageParam = 1 }) => {
-    const response = await fetchProducts(pageParam);
-      return response
-    },
-    {
-      getNextPageParam: (_, pages) => {
-        return pages.length + 1
-      },
-      initialData: {
-        pages: [products.slice(0, 6)],
-        pageParams: [1]
-      }
-    }
-)
-
-  // const products = await getAllProducts();
+//   const { data, error } = useQuery(
+//   ['product'], 
+//     async () => await getAllProducts(),     
+//  )
 
 // console.log(data, 'data')
   
@@ -45,21 +28,10 @@ export default async function Categories() {
       
       <Suspense >
 
-        {data?.pages.map((page, i) => (
-          <div key={i}>
-            {page.map((product: Product) => (
+        {products.map((product) => (
               <Card key={product.id} product={product} isDetailsPage={false}/>
             ))}
-          
-          </div>
-          ))}
-      <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-        {isFetchingNextPage
-        ? 'Loading more'
-      : (data?.pages.length ?? 0) < 3
-      ? 'Load more'
-      : 'Nothing more to load'}
-        </button>  
+       
       </Suspense>
 
     </div>
