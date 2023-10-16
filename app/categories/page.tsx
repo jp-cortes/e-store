@@ -3,22 +3,38 @@ import { Suspense } from "react";
 import { Card } from "../../components"
 import { getAllProducts } from "../../services"
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { CardSkeleton } from "../../components/Skeletons/CardSkeleton";
 
 
 export const runtime = 'edge';
+const allProducts = getAllProducts();
 
-
-export default async function Categories() {
+async function fetchProducts(page: number) {
   const products = await getAllProducts();
+  return products.slice((page - 1) * 6, page * 6)
+}
+
+export default function Categories() {
+  // const products = await getAllProducts();
   
   
   // Queries
-//   const { data, error } = useQuery(
-//   ['product'], 
-//     async () => await getAllProducts(),     
-//  )
-
-// console.log(data, 'data')
+  const { data, fetchNextPage, isFetchingNextPage, error } = useInfiniteQuery<Products>({
+  queryKey: ['product'], 
+  queryFn: async ({ pageParam = 1 }) => {
+    const response = await fetchProducts(pageParam);
+    return response;
+  },
+  getNextPageParam: (_, pages) => {
+    return pages.length + 1;
+  },
+  // initialData: {
+  //   pages: [allProducts.slice(0, 6)],
+  //   pageParams: [1]
+  // }
+ })
+const  products = data?.pages.flatMap((product) => product)
+console.log(products, 'data')
   
   return (
     
@@ -28,11 +44,18 @@ export default async function Categories() {
       
       <Suspense >
 
-        {products.map((product) => (
+        {products?.map((product) => (
               <Card key={product.id} product={product} isDetailsPage={false}/>
             ))}
        
       </Suspense>
+      <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
+        {isFetchingNextPage
+        ? <CardSkeleton/>
+      : (products?.length ?? 0) > 3
+      ? 'Load More'
+      : 'Nothing to load'}
+      </button>
 
     </div>
           
