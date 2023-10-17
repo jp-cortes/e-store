@@ -1,9 +1,10 @@
 'use client'
-import { Suspense } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { Card } from "../../components"
 import { getAllProducts } from "../../services"
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
 import { CardSkeleton } from "../../components/Skeletons/CardSkeleton";
+import { useIntersection } from "@mantine/hooks";
 
 
 export const runtime = 'edge';
@@ -15,26 +16,29 @@ async function fetchProducts(page: number) {
 }
 
 export default function Categories() {
-  // const products = await getAllProducts();
-  
   
   // Queries
-  const { data, fetchNextPage, isFetchingNextPage, error } = useInfiniteQuery<Products>({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery<Products>({
   queryKey: ['product'], 
   queryFn: async ({ pageParam = 1 }) => {
     const response = await fetchProducts(pageParam);
     return response;
   },
-  getNextPageParam: (_, pages) => {
-    return pages.length + 1;
-  },
-  // initialData: {
-  //   pages: [allProducts.slice(0, 6)],
-  //   pageParams: [1]
-  // }
- })
-const  products = data?.pages.flatMap((product) => product)
-console.log(products, 'data')
+  getNextPageParam: (_, pages) => pages.length + 1,
+  
+ });
+
+ const lastProductRef = useRef<HTMLElement>(null);
+ const { ref, entry } = useIntersection({
+  root: lastProductRef.current,
+  threshold: 1
+ });
+
+ useEffect(() => {
+  if(entry?.isIntersecting) fetchNextPage();
+ }, [entry])
+const  products = data?.pages.flatMap((product) => product);
+
   
   return (
     
@@ -44,18 +48,17 @@ console.log(products, 'data')
       
       <Suspense >
 
-        {products?.map((product) => (
-              <Card key={product.id} product={product} isDetailsPage={false}/>
-            ))}
-       
+        {products?.map((product, i) => {
+          if(i === products.length - 1) 
+          return <div ref={ref}><Card key={product.id} product={product}/></div>
+        
+        return <Card key={product.id} product={product}/>
+        })}
+      {isLoading
+        && <CardSkeleton/>} 
       </Suspense>
-      <button onClick={() => fetchNextPage()} disabled={isFetchingNextPage}>
-        {isFetchingNextPage
-        ? <CardSkeleton/>
-      : (products?.length ?? 0) > 3
-      ? 'Load More'
-      : 'Nothing to load'}
-      </button>
+
+      
 
     </div>
           
