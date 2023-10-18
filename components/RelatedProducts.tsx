@@ -8,7 +8,7 @@ type Props = {
 }
 
 export async function RelatedProducts({ categoryId }: Props) {
-  const dynamicData = await getProductsByCategoryId(`${categoryId}`);
+  const products = await getProductsByCategoryId(`${categoryId}`);
     
 
   return (
@@ -17,8 +17,8 @@ export async function RelatedProducts({ categoryId }: Props) {
 
         <div className='grid lg:grid-cols-4 gap-1 mt-8 mx-3 md:grid-cols-2 grid-cols-1'>
       
-        {dynamicData.map((product: Product) => (
-          <Card key={product.id} product={product} isDetailsPage={true}/>
+        {products.map((product: Product) => (
+          <Card key={product.id} product={product} />
         ))}
 
     </div>

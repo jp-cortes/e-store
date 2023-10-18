@@ -2,13 +2,12 @@
 import { Suspense, useEffect, useRef } from "react";
 import { Card } from "../../components"
 import { getAllProducts } from "../../services"
-import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
+import { useInfiniteQuery } from "@tanstack/react-query";
 import { CardSkeleton } from "../../components/Skeletons/CardSkeleton";
 import { useIntersection } from "@mantine/hooks";
 
 
 export const runtime = 'edge';
-const allProducts = getAllProducts();
 
 async function fetchProducts(page: number) {
   const products = await getAllProducts();
@@ -18,7 +17,7 @@ async function fetchProducts(page: number) {
 export default function Categories() {
   
   // Queries
-  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery<Products>({
+  const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
   queryKey: ['product'], 
   queryFn: async ({ pageParam = 1 }) => {
     const response = await fetchProducts(pageParam);

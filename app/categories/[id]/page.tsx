@@ -23,7 +23,7 @@ export default async function Category({ params: { id } } : { params: { id: stri
       <Suspense>
 
         {products.map((product: Product) => (
-          <Card key={product.id} product={product} isDetailsPage={false}/>
+          <Card key={product.id} product={product} />
           ))}
       </Suspense>
     </div>
