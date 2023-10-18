@@ -1,3 +1,4 @@
+'use client'
 import { useFetch } from "../../hooks/pagination";
 import { getAllProducts } from "../../services";
 import { CardDashboard, DeleteProduct } from "./";
