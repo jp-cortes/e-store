@@ -1,14 +1,16 @@
 'use client'
-import { getProductsByPage } from '../../services';
+import { getAllProducts } from '../../services';
 import { Chart } from '../../components/Charts';
 import { MobileProductsOverview, NavbarDashboard, TableProductsOverview } from '../../components';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
+
+
 export default async function Dasboard() {
   
-  const data = await getProductsByPage(80,1)
+  const data = await getAllProducts()
   const categoryCount = data.map((product) => product.category.name);
  
   const countOcurrences = (array: string[]) => array.reduce((prev: { [x: string]: number; }, current: string | number) => ((prev[current] = ++prev[current] || 1), prev), {});
@@ -34,13 +36,13 @@ export default async function Dasboard() {
         </div>
      <Suspense>
 
-        <TableProductsOverview data={data}/>
+        <TableProductsOverview />
      </Suspense>
 
       </div>
       <Suspense>
 
-      <MobileProductsOverview data={data}/>
+      <MobileProductsOverview />
       </Suspense>
     </>
   );

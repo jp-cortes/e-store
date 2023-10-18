@@ -1,17 +1,15 @@
 'use client'
 
 
-import { getAllProducts } from '../../../services';
 import { ModifyProductsMobile, NavbarDashboard, TableModifyProducts } from '../../../components';
 import { FormCreateProduct } from '../../../components/Forms';
 import { Suspense } from 'react';
 
 export const runtime = 'edge';
 
-export default async function ProductsDashboard() {
+export default  function ProductsDashboard() {
   
-const products = await getAllProducts();
-// console.log(products)
+
   return (
     <>
       <NavbarDashboard />
@@ -31,13 +29,13 @@ const products = await getAllProducts();
               <div className="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
               <Suspense>
 
-                <TableModifyProducts products={products}/>
+                <TableModifyProducts />
               </Suspense>
               </div>
             </div>
           <Suspense>
 
-            <ModifyProductsMobile products={products}/>
+            <ModifyProductsMobile />
           </Suspense>
         </div>
       </div>

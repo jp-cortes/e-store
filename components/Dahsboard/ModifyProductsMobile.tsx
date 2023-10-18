@@ -1,18 +1,26 @@
+import { useFetch } from "../../hooks/pagination";
+import { getAllProducts } from "../../services";
 import { CardDashboard, DeleteProduct } from "./";
 import Link from "next/link";
 
 
-type Props = {
-    products: Products;
+async function fetchProducts(page: number) {
+  const products = await getAllProducts();
+  return products.slice((page - 1) * 9, page * 9)
 }
 
-export function ModifyProductsMobile({ products }: Props) {
+export function ModifyProductsMobile() {
+
+  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], fetchProducts })
+  const  products = data?.pages.flatMap((product) => product);
+
+
   return (
     
     <div className="md:hidden lg:hidden flex flex-col justify-center">
-            {products.map((product) => (
-              <>
-                <CardDashboard key={product.id} product={product} />
+            {products?.map((product, i) => (
+              <div key={product.id}>
+                <CardDashboard  product={product} />
                 <div className="w-[280px] flex justify-between content-center">
                   <Link
                     href={`/dashboard/edit/${product.id}`}
@@ -25,7 +33,8 @@ export function ModifyProductsMobile({ products }: Props) {
                     <DeleteProduct product={product} />
                   </p>
                 </div>
-              </>
+                {i === products.length - 1 && <div ref={ref} />}
+              </div>
             ))}
           </div>
   )

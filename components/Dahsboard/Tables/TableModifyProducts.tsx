@@ -1,12 +1,21 @@
+'use client'
 import { DeleteProduct } from '../..';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getAllProducts } from '../../../services';
+import { useFetch } from '../../../hooks/pagination';
 
-type Props = {
-    products: Products;
+
+async function fetchProducts(page: number) {
+  const products = await getAllProducts();
+  return products.slice((page - 1) * 9, page * 9)
 }
 
-export function TableModifyProducts({ products }: Props) {
+export function TableModifyProducts() {
+
+  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], fetchProducts })
+  const  products = data?.pages.flatMap((product) => product);
+
   return (
     <table className=" hidden md:block lg:block min-w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
@@ -44,7 +53,7 @@ export function TableModifyProducts({ products }: Props) {
                     </tr>
                   </thead>
                   <tbody className="bg-white  divide-y divide-gray-200">
-                    {products?.map((product) => (
+                    {products?.map((product, i) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
@@ -88,6 +97,7 @@ export function TableModifyProducts({ products }: Props) {
                         <td className=" relative px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <DeleteProduct product={product} />
                         </td>
+                        {i === products.length - 1 && <div ref={ref} />}
                       </tr>
                     ))}
                   </tbody>

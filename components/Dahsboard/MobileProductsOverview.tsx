@@ -1,14 +1,25 @@
+'use client'
+import { useFetch } from '../../hooks/pagination';
+import { getAllProducts } from '../../services';
 import { CardDashboard } from './'
 
-type Props = {
-    data: Products
+async function fetchProducts(page: number) {
+  const products = await getAllProducts();
+  return products.slice((page - 1) * 6, page * 6)
 }
 
-export function MobileProductsOverview({ data }: Props) {
+export function MobileProductsOverview() {
+
+  const { data, isLoading, ref } = useFetch({ query: ['all_products'], fetchProducts })
+  const  products = data?.pages.flatMap((product) => product);
+
   return (
     <div className='md:hidden lg:hidden flex flex-wrap justify-around'>
-    {data.map((product) => (
-      <CardDashboard key={product.id} product={product}/>
+    {products?.map((product, i) => (
+      <div key={product.id}>
+      <CardDashboard product={product}/>
+      {i === products.length - 1 && <div ref={ref} />}
+      </div>
     ))}
   </div>
   )

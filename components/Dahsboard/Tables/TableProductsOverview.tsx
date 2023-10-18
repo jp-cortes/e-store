@@ -1,11 +1,20 @@
+'use client'
 import Image from 'next/image';
+import { getAllProducts } from '../../../services';
+import { useFetch } from '../../../hooks/pagination';
 
 
-type Props = {
-    data: Products;
+
+async function fetchProducts(page: number) {
+  const products = await getAllProducts();
+  return products.slice((page - 1) * 9, page * 9)
 }
 
-export function TableProductsOverview({ data }: Props) {
+export function TableProductsOverview() {
+
+  const { data, isLoading, ref } = useFetch({ query: ['all_products'], fetchProducts })
+  const  products = data?.pages.flatMap((product) => product);
+
   return (
     <table className="hidden md:block lg:block min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -37,7 +46,7 @@ export function TableProductsOverview({ data }: Props) {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
-            {data.map((product) => (
+            {products?.map((product, i) => (
               <tr key={`Product-item-${product.id}`}>
                 <td className="w-[25%]  px-6 py-4 whitespace-nowrap">
                   <div className="flex items-center">
@@ -71,6 +80,7 @@ export function TableProductsOverview({ data }: Props) {
                   </span>
                 </td>
                 <td className="w-[25%]  px-6 py-4 whitespace-nowrap text-sm text-gray-500">{`${product.id}`}</td>
+                {i === products.length - 1 && <div ref={ref} />}
               </tr>
             ))}
           </tbody>
