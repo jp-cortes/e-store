@@ -12,7 +12,7 @@ async function fetchProducts(page: number) {
 
 export function TableProductsOverview() {
 
-  const { data, isLoading, ref } = useFetch({ query: ['all_products'], fetchProducts })
+  const { data, isLoading, ref } = useFetch({ query: ['all_products'], queryFunction: fetchProducts })
   const  products = data?.pages.flatMap((product) => product);
 
   return (

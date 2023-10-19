@@ -4,17 +4,24 @@ import { OrderDetailsHover } from "../OrderDetailsHover";
 import { DefaultAvatar } from "../../DefaultAvatar";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { UpdateOrderStatus } from "../../Forms";
+import { getOrders } from "../../../services";
+import { useFetch } from "../../../hooks/pagination";
 
-type Props = {
-  orders: OrderDetail[] | undefined; 
+async function fetchOrders(page: number) {
+  const orders = await getOrders();
+  return orders?.slice((page - 1) * 9, page * 9)
 }
 
-export async function TableModifyOrders({ orders }: Props) {
+export function TableModifyOrders() {
 const currentStatus = {
   onTheWay: "on the way",
   delivered: "delivered",
   canceled: "canceled"
 }
+
+const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], queryFunction: fetchOrders })
+  const  orders = data?.pages.flatMap((order) => order);
+
 
   return (
         <table className="min-w-full divide-y divide-gray-200 hidden lg:block">
@@ -98,7 +105,7 @@ const currentStatus = {
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200 ">
-            {orders?.map((order) => (
+            {orders?.map((order, i) => (
               <tr key={order?.id}>
                 <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
                   <div className="inline-flex items-center gap-x-3">
@@ -161,9 +168,10 @@ const currentStatus = {
                     <OrderDetailsHover order={order}/>
 
                     
-                    <UpdateOrderStatus order={order}/>
+                    <UpdateOrderStatus order={order} refetch={refetch}/>
                   </div>
                 </td>
+                {i === orders.length - 1 && <div ref={ref} />}
               </tr>
             ))}
           </tbody>

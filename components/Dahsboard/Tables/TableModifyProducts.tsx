@@ -13,7 +13,7 @@ async function fetchProducts(page: number) {
 
 export function TableModifyProducts() {
 
-  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], fetchProducts })
+  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
   const  products = data?.pages.flatMap((product) => product);
 
   return (

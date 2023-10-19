@@ -5,12 +5,12 @@ import { CardDashboard } from './'
 
 async function fetchProducts(page: number) {
   const products = await getAllProducts();
-  return products.slice((page - 1) * 6, page * 6)
+  return products.slice((page - 1) * 9, page * 9)
 }
 
 export function MobileProductsOverview() {
 
-  const { data, isLoading, ref } = useFetch({ query: ['all_products'], fetchProducts })
+  const { data, isLoading, ref } = useFetch({ query: ['all_products'], queryFunction: fetchProducts })
   const  products = data?.pages.flatMap((product) => product);
 
   return (

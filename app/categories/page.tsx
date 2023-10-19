@@ -15,27 +15,7 @@ async function fetchProducts(page: number) {
 
 export default function Categories() {
   
-  // Queries
-//   const { data, fetchNextPage, hasNextPage, isLoading } = useInfiniteQuery({
-//   queryKey: ['product'], 
-//   queryFn: async ({ pageParam = 1 }) => {
-//     const response = await fetchProducts(pageParam);
-//     return response;
-//   },
-//   getNextPageParam: (_, pages) => pages.length + 1,
-  
-//  });
-
-//  const lastProductRef = useRef<HTMLElement>(null);
-//  const { ref, entry } = useIntersection({
-//   root: lastProductRef.current,
-//   threshold: 1
-//  });
-
-//  useEffect(() => {
-//   if(entry?.isIntersecting) fetchNextPage();
-//  }, [entry])
-const { data, isLoading, ref } = useFetch({ query: ['products'], fetchProducts })
+const { data, isLoading, ref } = useFetch({ query: ['products'], queryFunction: fetchProducts })
 const  products = data?.pages.flatMap((product) => product);
 
   
@@ -52,12 +32,6 @@ const  products = data?.pages.flatMap((product) => product);
             {i === products.length - 1 && <div ref={ref} />}
           </div>
         ))}
-        {/* {products?.map((product, i) => {
-          if(i === products.length - 1) 
-          return <div ref={ref}><Card key={product.id} product={product}/></div>
-        
-        return <Card key={product.id} product={product}/>
-        })} */}
         {isLoading && <CardSkeleton />}
       </Suspense>
     </div>

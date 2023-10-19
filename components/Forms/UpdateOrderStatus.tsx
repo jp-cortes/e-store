@@ -9,7 +9,7 @@ import { ErrorText } from "../ErrorText";
 import * as Dialog from '@radix-ui/react-dialog';
 import { updateOrderStatus } from "../../services";
 
-export function UpdateOrderStatus({ order } : { order: OrderDetail}){
+export function UpdateOrderStatus({ order, refetch } : { order: OrderDetail, refetch: Function }){
   //state to close the menu
   const [open, setOpen] = useState(false); 
   
@@ -22,8 +22,8 @@ export function UpdateOrderStatus({ order } : { order: OrderDetail}){
 
       async function handleUpdate(data: UpdateOrderValues) {
       await updateOrderStatus({ id: order.id, status: data.orderStatus });
+      refetch()
       setOpen(false);
-      
       }
 
     return(

@@ -1,14 +1,13 @@
 'use client'
 import { Suspense } from "react";
 import { NavbarDashboard, TableModifyOrders } from "../../../components"
-import { getOrders } from "../../../services";
 import { CardOrders } from "../../../components/Dahsboard";
 
 export const runtime = 'edge';
 
-export default async function Orders() {
-  const orders = await getOrders();
-// console.log(orders, 'orders');
+export default function Orders() {
+ 
+
   return (
     <>
     <NavbarDashboard />
@@ -16,11 +15,11 @@ export default async function Orders() {
       <h1 className='text-xl font-semibold'>Orders</h1>
       <div className='overflow-x-auto border-b border-gray-500 sm:rounded-lg mt-10 w-full'>
         <Suspense>
-        <TableModifyOrders orders={orders}/>
+        <TableModifyOrders />
         </Suspense>
       </div>
       <Suspense>
-        <CardOrders orders={orders}/>
+        <CardOrders />
       </Suspense>
     </div>
     </>

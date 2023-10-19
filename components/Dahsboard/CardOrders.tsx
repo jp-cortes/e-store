@@ -1,15 +1,27 @@
+'use client'
 import Image from "next/image"
-import { DefaultAvatar } from "../DefaultAvatar"
 import Link from "next/link";
+import { DefaultAvatar } from "../DefaultAvatar"
+import { getOrders } from "../../services";
+import { useFetch } from "../../hooks/pagination";
 
 type Props = {
     orders: OrderDetail[] | undefined;
 }
 
-export async function CardOrders({ orders }: Props) {
+async function fetchOrders(page: number) {
+  const orders = await getOrders();
+  return orders?.slice((page - 1) * 9, page * 9)
+}
+
+export function CardOrders() {
+
+  const { data, isLoading, ref } = useFetch({ query: ['all_orders'], queryFunction: fetchOrders })
+  const  orders = data?.pages.flatMap((order) => order);
+
   return (
  <div className='lg:hidden flex flex-wrap justify-around'>
- {orders?.map((order) => (
+ {orders?.map((order, i) => (
        <div  key={order.id} className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-white'>
        <div className="flex justify-between content-center">
            <p className="text-xs font-medium text-gray-900 uppercase">
@@ -76,7 +88,7 @@ export async function CardOrders({ orders }: Props) {
        <div className="flex gap-[5px]">
                 <Link href={`/dashboard/orders/${order.id}`} className="text-green-700 m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
       </div>
-    
+      {i === orders.length - 1 && <div ref={ref} />}
    </div>
  ))}
  </div>
