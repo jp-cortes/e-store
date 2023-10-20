@@ -20,7 +20,7 @@ export async function Carousel() {
           <Link
           passHref
             key={category.id}
-            href={`/categories/${category.id}-${category.name}`}
+            href={`/categories/${category.id}/${category.name}`}
             className="relative h-[30vh] w-full flex-none md:w-1/3">
               <Image
               alt={category.name}

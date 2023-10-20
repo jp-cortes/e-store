@@ -20,7 +20,7 @@ const promotions = await getCategoryById('3');
       <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{featured.name}</span>
           
-        <Link href={`/categories/${featured.id}-${featured.name}`} passHref>
+        <Link href={`/categories/${featured.id}/${featured.name}`} passHref>
           <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={featured.image}
@@ -41,7 +41,7 @@ const promotions = await getCategoryById('3');
     className=' cursor-pointer md:col-start-3 md:col-end-4 md:row-start-1 md:row-end-3  rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{newBrands.name}</span>
-            <Link href={`/categories/${newBrands.id}-${newBrands.name}`} passHref>
+            <Link href={`/categories/${newBrands.id}/${newBrands.name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={newBrands.image} 
@@ -62,7 +62,7 @@ const promotions = await getCategoryById('3');
     className=' cursor-pointer md:col-start-3 md:col-end-4 md:row-start-3 md:row-end-5 rounded-lg relative'>
         <figure className="relative mb-2 w-full h-4/5">
             <span className='absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5 capitalize'>{promotions.name}</span>
-            <Link href={`/categories/${promotions.id}-${promotions.name}`} passHref>
+            <Link href={`/categories/${promotions.id}/${promotions.name}`} passHref>
             <Image 
             className='w-full h-full object-cover rounded-lg' 
             src={promotions.image} 

@@ -11,7 +11,6 @@ export function MenuDashboard() {
 function handleLogout() {
 
   Cookie.remove('token');
-  Cookie.remove('userId');
   Cookie.remove('userRole');
 
  location.reload();// then will reload retun the user to the login page

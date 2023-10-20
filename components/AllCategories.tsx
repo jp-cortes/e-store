@@ -20,7 +20,7 @@ async function Categories() {
            >
              <Link 
              className='px-3 py-3 border-transparent border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
-             href={`/categories/${category.id}-${category.name}`}>
+             href={`/categories/${category.id}/${category.name}`}>
                   {category.name}
               </Link>
            </li>
