@@ -5,27 +5,25 @@ import { Suspense } from 'react'
 
 import { useParams } from 'next/navigation';
 import { useFetch } from "../../../../hooks/pagination";
+import { CardSkeleton } from "../../../../components/Skeletons/CardSkeleton";
 
 
 
 export default function Category()  {
   const params = useParams()
 
-  const categoryId = params.id as string//get the id from params
-  const productsCategory = params.name; //get the name from params
+  const categoryId = params.id as string; //get the id from params
+  const productsCategory = params.name as string; //get the name from params
 
   async function fetchProductsByCategory(page: number) {
     const products = await getProductsByCategoryId(categoryId);
     return products.slice((page - 1) * 6, page * 6)
   }
 
-const { data, isLoading, ref } = useFetch({ query: ['products'], queryFunction: fetchProductsByCategory })
+const { data, isLoading, ref } = useFetch({ query: [`category_${productsCategory}`], queryFunction: fetchProductsByCategory })
 const  products = data?.pages.flatMap((product) => product);
 
-// console.log(products, 'products')  
-  // const products = await getProductsByCategoryId(`${productID}`);
 
-  
  return (
   
    <>
@@ -41,6 +39,7 @@ const  products = data?.pages.flatMap((product) => product);
             {i === products.length - 1 && <div ref={ref} />}
           </div>
           ))}
+          {isLoading && <CardSkeleton />}
       </Suspense>
     </div>
    

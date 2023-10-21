@@ -1,20 +1,29 @@
-
+'use client'
 import { Suspense } from 'react';
 import { getCategories } from '../services';
 
 import Link from 'next/link';
+import { useFetch } from '../hooks/pagination';
 
 
+async function fetchProductsByCategory(page: number) {
+  const response = await getCategories();
+  return response;
+}
 
-async function Categories() {
+function Categories() {
 
-  const categories = await getCategories();
+
+const { data, isLoading } = useFetch({ query: ['related_products'], queryFunction: fetchProductsByCategory })
+const  categories = data?.pages.flatMap((product) => product);
+
+
 
   return(
-    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 border-r-2 border-borderGreen'>
+    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 border-r-4 border-borderGreen'>
           <h2 className='font-semibold capitalize text-2xl mr-4'>Categories</h2>
         <ul className='grid justify-center gap-2'>
-        {categories.map((category: Category) => (
+        {categories?.map((category: Category) => (
            <li key={category.id}
            className='mt-4 font-semibold capitalize'
            >
@@ -26,6 +35,7 @@ async function Categories() {
            </li>
           
           ))}
+          {isLoading && <span>Loading...</span>}
         </ul>
         </div>
     );
