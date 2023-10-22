@@ -9,7 +9,7 @@ import Image from "next/image";
 
 
 export default async function Product ({ params: { id } } : { params: { id: string }}) {
-  const productID = id.split("-")[0]; //get the id from params
+  const productID = id[0]; //get the id from params
 
   const product = await getProductsById(productID);
 

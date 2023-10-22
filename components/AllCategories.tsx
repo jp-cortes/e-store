@@ -1,9 +1,9 @@
 'use client'
 import { Suspense } from 'react';
 import { getCategories } from '../services';
-
-import Link from 'next/link';
 import { useFetch } from '../hooks/pagination';
+import { CategoriesSkeleton } from './Skeletons/CategoriesSkeleton'
+import Link from 'next/link';
 
 
 async function fetchProductsByCategory(page: number) {
@@ -14,7 +14,7 @@ async function fetchProductsByCategory(page: number) {
 function Categories() {
 
 
-const { data, isLoading } = useFetch({ query: ['related_products'], queryFunction: fetchProductsByCategory })
+const { data, isLoading } = useFetch({ query: ['all_categories'], queryFunction: fetchProductsByCategory })
 const  categories = data?.pages.flatMap((product) => product);
 
 
@@ -35,7 +35,7 @@ const  categories = data?.pages.flatMap((product) => product);
            </li>
           
           ))}
-          {isLoading && <span>Loading...</span>}
+          {isLoading && <CategoriesSkeleton/>}
         </ul>
         </div>
     );

@@ -19,7 +19,7 @@ export function Card({ product }:Props) {
         <figure className="m-2 w-full h-auto">
          
             
-            <Link passHref href={`/products/${product.id}-${product.name}`}>
+            <Link passHref href={`/products/${product.id}/${product.name}`}>
             <Image
             loading='lazy'
             className='w-auto h-auto object-cover rounded-lg' 
