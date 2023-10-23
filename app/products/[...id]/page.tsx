@@ -9,9 +9,9 @@ import Image from "next/image";
 
 
 export default async function Product ({ params: { id } } : { params: { id: string }}) {
-  const productID = id[0]; //get the id from params
+  const productId = id[0]; //get the id from params
 
-  const product = await getProductsById(productID);
+  const product = await getProductsById(productId);
 
   return (
     <>
@@ -49,7 +49,7 @@ export default async function Product ({ params: { id } } : { params: { id: stri
         </div>
       </div>
       <Suspense>
-        <RelatedProducts categoryId={product.categoryId} />
+        <RelatedProducts categoryId={product.categoryId} productId={productId} />
       </Suspense>
     </>
   );

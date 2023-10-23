@@ -8,13 +8,15 @@ import { useFetch } from "../hooks/pagination";
 
 type Props = {
   categoryId: number;
+  productId: string;
 }
 
-export function RelatedProducts({ categoryId }: Props) {
+export function RelatedProducts({ categoryId, productId }: Props) {
   
   async function fetchProductsByCategory(page: number) {
+    const id = parseInt(productId);
     const response = await getProductsByCategoryId(`${categoryId}`);
-    return response;
+    return response.filter((product) => product.id !== id)
   }
 
 const { data, isLoading } = useFetch({ query: ['related_products'], queryFunction: fetchProductsByCategory })
