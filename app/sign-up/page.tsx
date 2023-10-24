@@ -184,7 +184,7 @@ export default function SignUp() {
             <p>Already have an account?</p>
             <Link
               href="/login"
-              className=" py-2 px-4  font-medium  text-green-500  hover:text-green-700 hover:underline underline-offset-4"
+              className=" py-2 px-4  font-medium  text-buttonGreen  hover:text-hoverGreen hover:underline underline-offset-4"
             >
               Log in
             </Link>

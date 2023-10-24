@@ -10,9 +10,9 @@ module.exports = {
         background: "hsl(var(--background))",
         lightGreen: "#F3FDE8",
         borderGreen: '#C2D8C8',
-        buttonGreen: '#00677F',
-        hoverGreen: '#98C1B2'
-        
+        buttonGreen: '#2F4858',
+        hoverGreen: '#98C1B2',
+        ordersGreen: '#95B3AB'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

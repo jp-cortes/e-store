@@ -35,7 +35,7 @@ export default async function MyOrders() {
               allMyOrders?.map((order) => (
                 <div
                   key={order.id}
-                  className="border-2 rounded-lg mt-2 w-60 px-2 mx-auto max-h-max"
+                  className="border-2 rounded-lg mt-2 w-60 px-2 mx-auto max-h-max bg-ordersGreen"
                 >
                   <p className="font-medium">
                     Paid:{" "}
@@ -48,13 +48,13 @@ export default async function MyOrders() {
                     </span>
                   </p>
                   <Link href={`/my-orders/order/${order.id}`} passHref>
-                    <span className="capitalize font-medium text-blue-400 mx-3 hover:text-red-400 hover:underline">
+                    <span className="capitalize font-medium text-lightGreen mx-3 hover:text-red-400 hover:underline">
                       Details
                     </span>
                   </Link>
                   
                   <Link href={`/my-orders/invoice/${order.id}`} passHref>
-                    <span className="hidden md:block lg:block capitalize font-medium text-blue-400 mx-3 hover:text-red-400 hover:underline">
+                    <span className="hidden md:block lg:block capitalize font-medium text-lightGreen mx-3 hover:text-red-400 hover:underline">
                       Invoice
                     </span>
                   </Link>
