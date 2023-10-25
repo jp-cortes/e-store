@@ -28,7 +28,7 @@ const  categories = data?.pages.flatMap((product) => product);
            className='mt-4 font-semibold capitalize'
            >
              <Link 
-             className='px-3 py-3 border-transparent border-2 w-[100px] rounded-md hover:bg-green-300  transition-colors duration-500'
+             className='px-3 py-3 border-transparent border-2 w-[100px] rounded-md hover:bg-hoverGreen hover:text-lightGreen transition-colors duration-500'
              href={`/categories/${category.id}/${category.name}`}>
                   {category.name}
               </Link>

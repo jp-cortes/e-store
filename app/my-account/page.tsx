@@ -57,7 +57,7 @@ export default async function MyAccount() {
 
           <Dialog.Root>
             <Dialog.Trigger>
-              <button className="mx-auto rounded-md font-semibold textlg bg-gray-500 text-white px-4 py-2">
+              <button className="mx-auto rounded-md font-semibold textlg bg-buttonGreen hover:bg-hoverGreen text-white px-4 py-2">
                 Edit my profile
               </button>
             </Dialog.Trigger>
