@@ -60,14 +60,14 @@ const categories = [
           <DropdownMenu.Content className="absolute top-2 left-[-28px] w-[120px] sm:w-auto z-20 rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] bg-lightGreen">
             <div className="flex flex-col w-full list-none gap-2">
               
-                <DropdownMenu.Item className='focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize'>
+                <DropdownMenu.Item className='focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-hoverGreen hover:text-lightGreen select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize'>
                   <Link 
                   onClick={()=> setOpen(false)}
                   href="/">Home</Link>
                 </DropdownMenu.Item>
               
             
-                <DropdownMenu.Item  className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
+                <DropdownMenu.Item  className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-hoverGreen hover:text-lightGreen select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize">
                   <Link 
                   onClick={()=> setOpen(false)}
                   href="/categories">All Products</Link>
@@ -82,7 +82,7 @@ const categories = [
                 </DropdownMenu.SubTrigger>
                 <DropdownMenu.Portal>
                   <DropdownMenu.SubContent
-                    className="min-w-[150px] bg-lightGreen rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]"
+                    className="min-w-[150px] bg-lightGreen hover:bg-hoverGreen hover:text-lightGreen rounded-md p-[5px] shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] will-change-[opacity,transform]"
                     sideOffset={2}
                     alignOffset={-5}
                   >
@@ -90,7 +90,7 @@ const categories = [
                 
                         <DropdownMenu.Item key={category.id}>
                           <Link
-                            className="w-full hover:bg-purple-100  rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize"
+                            className="w-full hover:bg-hoverGreen hover:text-lightGreen  rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize"
                             href={`/categories/${category.id}-${category.name}`}
                             onClick={()=> setOpen(false)}
                           >

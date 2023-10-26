@@ -28,7 +28,7 @@ function handleLogout() {
               <li>
                 <NavigationMenu.Link asChild>
                   <Link
-                    className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
+                    className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-hoverGreen hover:text-lightGreen select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
                     href="/my-account"
                   >
                       My account
@@ -39,7 +39,7 @@ function handleLogout() {
                 <NavigationMenu.Link asChild>
                   <Link
                     href="/my-orders"
-                    className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-purple-100 select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
+                    className="focus:shadow-[0_0_0_2px] focus:shadow-green-200 hover:bg-hoverGreen hover:text-lightGreen select-none rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block"
                   >
                    
                     My orders
