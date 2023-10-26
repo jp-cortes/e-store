@@ -16,36 +16,36 @@ export function TableProductsOverview() {
   const  products = data?.pages.flatMap((product) => product);
 
   return (
-    <table className="hidden md:block lg:block min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+    <table className="hidden md:block lg:block min-w-full divide-y divide-borderGreen border-2 border-solid border-borderGreen">
+          <thead className="bg-buttonGreen">
             <tr>
               <th
                 scope="col"
-                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-lightGreen uppercase tracking-wider"
               >
                 Name
               </th>
               <th
                 scope="col"
-                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%] px-6 py-3 text-left text-xs font-medium text-lightGreen uppercase tracking-wider"
               >
                 Category
               </th>
               <th
                 scope="col"
-                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-lightGreen uppercase tracking-wider"
               >
                 Price
               </th>
               <th
                 scope="col"
-                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                className="w-[25%]  px-6 py-3 text-left text-xs font-medium text-lightGreen uppercase tracking-wider"
               >
                 Id
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200">
+          <tbody className="bg-lightGreen divide-y divide-lightGreen">
             {products?.map((product, i) => (
               <tr key={`Product-item-${product.id}`}>
                 <td className="w-[25%]  px-6 py-4 whitespace-nowrap">

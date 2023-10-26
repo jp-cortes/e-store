@@ -24,12 +24,12 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
 
 
   return (
-        <table className="min-w-full divide-y divide-gray-200 hidden lg:block">
-          <thead className="bg-gray-50 ">
+        <table className="min-w-full divide-y divide-borderGreen hidden border-2 border-solid border-borderGreen lg:block">
+          <thead className="bg-ordersGreen ">
             <tr>
               <th
                 scope="col"
-                className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 <div className="flex items-center gap-x-3">
                   <button className="flex items-center gap-x-2">
@@ -66,35 +66,35 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 Date
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 Paid
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 Status
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 Customer
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
               >
                 Purchase
               </th>
@@ -104,7 +104,7 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white divide-y divide-gray-200 ">
+          <tbody className="bg-lightGreen divide-y divide-gray-200 ">
             {orders?.map((order, i) => (
               <tr key={order?.id}>
                 <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
