@@ -32,7 +32,7 @@ const promotions = await getCategoryById('3');
 
       </figure>
         <div className="absolute bottom-[120px] right-3 flex items-center justify-center flex-col">
-              <div className="inline-flex bg-purple-200 p-4 text-lg font-semibold text-black rounded-xl ">
+              <div className="inline-flex bg-purple-200 p-4 text-lg font-semibold text-black rounded-xl Capitalize">
                 {featured.name}
               </div>
           </div>
@@ -53,7 +53,7 @@ const promotions = await getCategoryById('3');
 
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
-              <div className="inline-flex bg-yellow-100 p-4 text-lg font-semibold text-black rounded-xl">
+              <div className="inline-flex bg-yellow-100 p-4 text-lg font-semibold text-black rounded-xl capitalize">
               {newBrands.name}
               </div>
         </div>
@@ -75,7 +75,7 @@ const promotions = await getCategoryById('3');
   
         </figure>
         <div className="absolute bottom-10 right-2 flex items-center justify-center flex-col">
-              <div className="inline-flex bg-green-100 p-4 text-lg font-semibold text-black rounded-xl">
+              <div className="inline-flex bg-green-100 p-4 text-lg font-semibold text-black rounded-xl capitalize">
               {promotions.name}
               </div>
         </div>

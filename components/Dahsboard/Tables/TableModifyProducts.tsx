@@ -17,7 +17,7 @@ export function TableModifyProducts() {
   const  products = data?.pages.flatMap((product) => product);
 
   return (
-    <table className=" hidden md:block lg:block min-w-full divide-y divide-borderGreen border-2 border-solid border-borderGreen">
+    <table className=" hidden md:block lg:block min-w-full divide-y divide-borderGreen border-1 border-solid border-borderGreen">
                   <thead className="bg-buttonGreen">
                     <tr>
                       <th
@@ -52,7 +52,7 @@ export function TableModifyProducts() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="bg-lightGreen divide-y divide-lightGreen">
+                  <tbody className="bg-lightGreen divide-y divide-borderGreen">
                     {products?.map((product, i) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">

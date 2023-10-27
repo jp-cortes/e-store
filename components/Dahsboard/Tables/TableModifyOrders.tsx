@@ -24,7 +24,7 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
 
 
   return (
-        <table className="min-w-full divide-y divide-borderGreen hidden border-2 border-solid border-borderGreen lg:block">
+        <table className="min-w-full divide-y divide-borderGreen hidden border-1 border-solid border-borderGreen lg:block">
           <thead className="bg-ordersGreen ">
             <tr>
               <th
@@ -104,7 +104,7 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
               </th>
             </tr>
           </thead>
-          <tbody className="bg-lightGreen divide-y divide-gray-200 ">
+          <tbody className="bg-lightGreen divide-y divide-borderGreen ">
             {orders?.map((order, i) => (
               <tr key={order?.id}>
                 <td className="px-4 py-3.5 text-sm font-medium text-gray-700 whitespace-nowrap">
