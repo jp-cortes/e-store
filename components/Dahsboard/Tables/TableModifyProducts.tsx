@@ -17,7 +17,7 @@ export function TableModifyProducts() {
   const  products = data?.pages.flatMap((product) => product);
 
   return (
-    <table className=" hidden md:block lg:block min-w-full divide-y divide-borderGreen border-1 border-solid border-borderGreen">
+    <table className=" hidden md:block lg:block min-w-full divide-y divide-borderGreen border border-solid border-borderGreen">
                   <thead className="bg-buttonGreen">
                     <tr>
                       <th

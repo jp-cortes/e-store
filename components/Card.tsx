@@ -10,7 +10,7 @@ type Props = {
 export function Card({ product }:Props) {
   
 
-console.log(product, 'product')
+
   return (
    <div
    className='mx-auto mb-5 w-60 rounded-lg border-b-4 hover:border-b-4 hover:border-solid hover:border-buttonGreen transition-colors duration-500 cursor-pointer shadow-[0px_10px_38px_-10px_rgba(22,_23,_24,_0.35),_0px_10px_20px_-15px_rgba(22,_23,_24,_0.2)] bg-white'>

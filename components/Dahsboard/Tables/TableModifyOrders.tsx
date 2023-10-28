@@ -24,12 +24,12 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
 
 
   return (
-        <table className="min-w-full divide-y divide-borderGreen hidden border-1 border-solid border-borderGreen lg:block">
+        <table className="min-w-full divide-y divide-borderGreen hidden border border-solid border-borderGreen lg:block">
           <thead className="bg-ordersGreen ">
             <tr>
               <th
                 scope="col"
-                className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 <div className="flex items-center gap-x-3">
                   <button className="flex items-center gap-x-2">
@@ -66,35 +66,35 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 Date
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 Paid
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 Status
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 Customer
               </th>
 
               <th
                 scope="col"
-                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-lightGreen "
+                className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-900 "
               >
                 Purchase
               </th>

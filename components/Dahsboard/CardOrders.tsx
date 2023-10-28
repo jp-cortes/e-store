@@ -24,34 +24,34 @@ export function CardOrders() {
  {orders?.map((order, i) => (
        <div  key={order.id} className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg border-1 border-solid border-borderGreen bg-ordersGreen'>
        <div className="flex justify-between content-center">
-           <p className="text-xs font-medium text-lightGreen uppercase">
+           <p className="text-xs font-medium text-gray-900 uppercase">
                Invoice:
            </p>
-           <p className="text-sm font-medium text-lightGreen">
+           <p className="text-sm font-medium text-gray-900">
               # {" "} {order.id}
            </p>
        </div>
        <div className="flex justify-between content-center">
-           <p className="text-xs font-medium text-lightGreen uppercase">
+           <p className="text-xs font-medium text-gray-900 uppercase">
                Date:
            </p>
-           <p className="text-sm font-medium text-lightGreen">
+           <p className="text-sm font-medium text-gray-900">
            {order.createdAt.slice(0, 10)}
            </p>
        </div>
        <div className="flex justify-between content-center">
-           <p className="text-xs font-medium text-lightGreen uppercase">
+           <p className="text-xs font-medium text-gray-900 uppercase">
            Status: 
            </p>
-           <p className="text-sm text-lightGreen">
+           <p className="text-sm text-gray-900">
            {order.status}
            </p>
        </div>
        <div className="flex justify-between content-center">
-           <p className="text-xs font-medium text-lightGreen uppercase">
+           <p className="text-xs font-medium text-gray-900 uppercase">
            Paid: 
            </p>
-           <p className="text-sm text-lightGreen">
+           <p className="text-sm text-gray-900">
            {`${order.paid}`}
            </p>
        </div>
@@ -70,7 +70,7 @@ export function CardOrders() {
                        )}
        </div>
        <div className="flex justify-between content-center">
-         <p className='text-xs font-medium text-lightGreen uppercase'>
+         <p className='text-xs font-medium text-gray-900 uppercase'>
              Customer name:
          </p>
            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-lightGreen text-ordersGreen capitalize">
@@ -78,7 +78,7 @@ export function CardOrders() {
            </span>
        </div>
        <div className="flex justify-between content-center">
-         <p className='text-xs font-medium text-lightGreen uppercase'>
+         <p className='text-xs font-medium text-gray-900 uppercase'>
              Customer lastname:
          </p>
            <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-lightGreen text-ordersGreen capitalize">
@@ -86,7 +86,7 @@ export function CardOrders() {
            </span>
        </div>
        <div className="flex gap-[5px]">
-                <Link href={`/dashboard/orders/${order.id}`} className="text-lightGreen hover:buttonGreen m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
+                <Link href={`/dashboard/orders/${order.id}`} className="text-buttonGreen hover:text-lightGreen m-0 text-[15px] font-medium leading-[1.5]">Full details...</Link>
       </div>
       {i === orders.length - 1 && <div ref={ref} />}
    </div>

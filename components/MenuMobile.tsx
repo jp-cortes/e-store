@@ -91,7 +91,7 @@ const categories = [
                         <DropdownMenu.Item key={category.id}>
                           <Link
                             className="w-full hover:bg-hoverGreen hover:text-lightGreen  rounded-[6px] p-2 text-[15px] leading-none no-underline outline-none transition-colors inline-block capitalize"
-                            href={`/categories/${category.id}-${category.name}`}
+                            href={`/categories/${category.id}/${category.name}`}
                             onClick={()=> setOpen(false)}
                           >
                             {category.name}
