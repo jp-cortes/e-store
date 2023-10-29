@@ -6,6 +6,7 @@ import { CheckIcon } from "@heroicons/react/24/outline";
 import { UpdateOrderStatus } from "../../Forms";
 import { getOrders } from "../../../services";
 import { useFetch } from "../../../hooks/pagination";
+import { TableOrdersSkeleton } from "../../Skeletons/TableOrdersSkeleton";
 
 async function fetchOrders(page: number) {
   const orders = await getOrders();
@@ -130,7 +131,7 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
                   <div className={`${order?.status === currentStatus.onTheWay && 'text-yellow-500 bg-yellow-100/60'}
                    ${order?.status === currentStatus.delivered && 'text-green-500 bg-green-100/60'} 
                    ${order?.status === currentStatus.canceled && 'text-red-500 bg-red-100/60'}
-                   inline-flex items-center px-3 py-1 rounded-full gap-x-2`}>
+                   inline-flex items-center px-3 py-1 rounded-full gap-x-2 capitalize`}>
                     
                     <CheckIcon className='w-3 h-3' />
                     
@@ -173,7 +174,8 @@ const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], quer
                 </td>
                 {i === orders.length - 1 && <div ref={ref} />}
               </tr>
-            ))}
+            ))} 
+            {isLoading && <TableOrdersSkeleton />}
           </tbody>
         </table>
       

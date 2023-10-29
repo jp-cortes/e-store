@@ -15,6 +15,11 @@ async function fetchOrders(page: number) {
 }
 
 export function CardOrders() {
+  const currentStatus = {
+    onTheWay: "on the way",
+    delivered: "delivered",
+    canceled: "canceled"
+  }
 
   const { data, isLoading, ref } = useFetch({ query: ['all_orders'], queryFunction: fetchOrders })
   const  orders = data?.pages.flatMap((order) => order);
@@ -43,7 +48,10 @@ export function CardOrders() {
            <p className="text-xs font-medium text-gray-900 uppercase">
            Status: 
            </p>
-           <p className="text-sm text-gray-900">
+           <p className={`${order?.status === currentStatus.onTheWay && 'text-yellow-500 bg-yellow-100/60'}
+                   ${order?.status === currentStatus.delivered && 'text-green-500 bg-green-100/60'} 
+                   ${order?.status === currentStatus.canceled && 'text-red-500 bg-red-100/60'}
+                   inline-flex items-center px-3 py-1 rounded-full gap-x-2 capitalize`}>
            {order.status}
            </p>
        </div>
