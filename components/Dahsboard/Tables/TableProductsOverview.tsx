@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { getAllProducts } from '../../../services';
 import { useFetch } from '../../../hooks/pagination';
+import { TableProductsOverviewSkeleton } from '../../Skeletons/TableProductsOverviewSkeleton';
 
 
 
@@ -83,6 +84,7 @@ export function TableProductsOverview() {
                 {i === products.length - 1 && <div ref={ref} />}
               </tr>
             ))}
+            {isLoading && <TableProductsOverviewSkeleton/>}
           </tbody>
         </table>
   );

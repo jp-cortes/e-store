@@ -4,6 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getAllProducts } from '../../../services';
 import { useFetch } from '../../../hooks/pagination';
+import { TableModifyProductsSkeleton } from '../../Skeletons/TableModifyProductsSkeleton';
 
 
 async function fetchProducts(page: number) {
@@ -100,6 +101,7 @@ export function TableModifyProducts() {
                         {i === products.length - 1 && <div ref={ref} />}
                       </tr>
                     ))}
+                    {isLoading && <TableModifyProductsSkeleton/>}
                   </tbody>
                 </table>
   )

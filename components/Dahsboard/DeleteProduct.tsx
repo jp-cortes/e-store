@@ -11,7 +11,7 @@ type Props = {
  export function DeleteProduct({ product }: Props) {
 
     async function handleDeleteProduct(productId: number) {
-        await deleteProduct(productId);
+        // await deleteProduct(productId);
       }
 
   return (
