@@ -5,13 +5,9 @@ import { getProductsByCategoryId } from "../services";
 import { Card } from "./Card"
 import { CardSkeleton } from "./Skeletons/CardSkeleton";
 import { useFetch } from "../hooks/pagination";
+ 
 
-type Props = {
-  categoryId: number;
-  productId: string;
-}
-
-export function RelatedProducts({ categoryId, productId }: Props) {
+export function RelatedProducts({ categoryId, productId } : { categoryId: number, productId: string }) {
   
   async function fetchProductsByCategory(page: number) {
     const id = parseInt(productId);

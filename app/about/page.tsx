@@ -3,9 +3,8 @@ import { Footer } from "../../components";
 import { Navbar } from "../../components";
 
 
-type Props = {}
 
-export default function About({}: Props) {
+export default function About() {
   return (
     <>
       <Navbar />

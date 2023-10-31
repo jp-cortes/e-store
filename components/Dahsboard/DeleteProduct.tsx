@@ -4,14 +4,13 @@ import { XCircleIcon } from '@heroicons/react/24/outline';
 import { deleteProduct } from '../../services/queries/products';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
-type Props = {
-    product:Product
-}
 
- export function DeleteProduct({ product }: Props) {
+
+ export function DeleteProduct({ product, refetch }: { product: Product, refetch: Function }) {
 
     async function handleDeleteProduct(productId: number) {
-        // await deleteProduct(productId);
+        await deleteProduct(productId);
+        refetch()
       }
 
   return (

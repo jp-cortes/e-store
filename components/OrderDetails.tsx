@@ -5,12 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-type Props = {
-    order: OrderDetail;
-    goBackTo: string;
-}
 
-export async function OrderDetails({ order, goBackTo }: Props) {
+export async function OrderDetails({ order, goBackTo } : { order: OrderDetail, goBackTo: string }) {
   return (
     <>
       <div className="grid justify-center border-3 border-red-700">

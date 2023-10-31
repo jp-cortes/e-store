@@ -1,11 +1,8 @@
 import Image from 'next/image';
 
-type Props = {
-    product: Product;
-}
 
 
-export function CardDashboard({ product }: Props) {
+export function CardDashboard({ product }: { product: Product }) {
   return (
     <div className='w-[300px] p-3 flex flex-col gap-2 mt-4 rounded-lg bg-white'>
           <div className="h-auto w-auto mx-auto mb-4">

@@ -6,13 +6,10 @@ import { ShoppingCartIcon } from '@heroicons/react/24/outline';
 import * as Toast from '@radix-ui/react-toast';
 
 
-type Props = {
-    product: Product;
-    
-  }
 
 
-export function AddToCartButton({ product }: Props) {
+
+export function AddToCartButton({ product }: { product: Product }) {
   // context
   const { addToShoppingCart } = useShoppingCartMutations();
   const [quantity, setQuantity] = useState(1);

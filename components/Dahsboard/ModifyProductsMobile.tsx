@@ -12,7 +12,7 @@ async function fetchProducts(page: number) {
 
 export function ModifyProductsMobile() {
 
-  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
+  const { data, isLoading, ref, refetch } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
   const  products = data?.pages.flatMap((product) => product);
 
 
@@ -31,7 +31,7 @@ export function ModifyProductsMobile() {
                   </Link>
 
                   <p className=" relative text-sm font-medium">
-                    <DeleteProduct product={product} />
+                    <DeleteProduct product={product} refetch={refetch}/>
                   </p>
                 </div>
                 {i === products.length - 1 && <div ref={ref} />}

@@ -4,11 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { DefaultAvatar } from '../';
 
-type Props = {
-    order: Partial<OrderDetail>;
-}
 
-export function OrderDetailsHover({ order }: Props) {
+
+export function OrderDetailsHover({ order }: { order: Partial<OrderDetail> }) {
   return (
     <HoverCard.Root>
     <HoverCard.Trigger asChild>

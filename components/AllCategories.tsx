@@ -6,7 +6,7 @@ import { CategoriesSkeleton } from './Skeletons/CategoriesSkeleton'
 import Link from 'next/link';
 
 
-async function fetchProductsByCategory(page: number) {
+async function fetchProductsByCategory() {
   const response = await getCategories();
   return response;
 }

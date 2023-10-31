@@ -7,12 +7,9 @@ import { addItemsToOrder, createOrder } from '../services';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-type Props = {
-    items: CartItemType[];
-    subTotal: number;
-}
+ 
 
- export async function ButtonPayPal({ items, subTotal }: Props) {
+ export async function ButtonPayPal({ items, subTotal }: { items: CartItemType[], subTotal: number }) {
 
   const router = useRouter();
     

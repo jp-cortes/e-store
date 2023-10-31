@@ -5,11 +5,9 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { useRef } from "react";
 
-type Props = {
-    order: OrderDetail
-}
 
-export function Invoice({ order }: Props) {
+
+export function Invoice({ order }: { order: OrderDetail }) {
 
     const pdfRef = useRef<HTMLDivElement | null>(null);
 

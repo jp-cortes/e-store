@@ -8,11 +8,9 @@ import { ErrorText } from "../ErrorText";
 import { updateProduct } from "../../services/queries/products";
 import Link from "next/link";
 
-type Props = {
-    product: Product;
-}
 
-export function FormUpdateProduct({ product }: Props) {
+
+export function FormUpdateProduct({ product }: { product: Product }) {
     const router = useRouter();
 
     const { 

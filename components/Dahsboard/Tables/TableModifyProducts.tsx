@@ -14,7 +14,7 @@ async function fetchProducts(page: number) {
 
 export function TableModifyProducts() {
 
-  const { data, isLoading, ref } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
+  const { data, isLoading, ref, refetch } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
   const  products = data?.pages.flatMap((product) => product);
 
   return (
@@ -96,7 +96,7 @@ export function TableModifyProducts() {
                           </Link>
                         </td>
                         <td className=" relative px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <DeleteProduct product={product} />
+                          <DeleteProduct product={product} refetch={refetch}/>
                         </td>
                         {i === products.length - 1 && <div ref={ref} />}
                       </tr>

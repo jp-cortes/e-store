@@ -3,11 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {
-  product: Product
-}
 
-export function Card({ product }:Props) {
+
+export function Card({ product }: { product: Product }) {
   
 
 

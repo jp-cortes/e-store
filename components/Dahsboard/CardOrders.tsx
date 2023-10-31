@@ -5,9 +5,6 @@ import { DefaultAvatar } from "../DefaultAvatar"
 import { getOrders } from "../../services";
 import { useFetch } from "../../hooks/pagination";
 
-type Props = {
-    orders: OrderDetail[] | undefined;
-}
 
 async function fetchOrders(page: number) {
   const orders = await getOrders();

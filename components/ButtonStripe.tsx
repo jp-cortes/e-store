@@ -2,11 +2,8 @@ import { getStripe } from '../store/getStripe';
 import { addItemsToOrder, createOrder } from '../services';
 
 
-type Props = {
-    items: CartItemType[]
-}
 
-export function ButtonStripe({ items }: Props) {
+export function ButtonStripe({ items }: { items: CartItemType[] }) {
       //payment with stripe
 async function handleCheckoutStripe() {
 

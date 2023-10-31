@@ -5,9 +5,9 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 
-type Props = {}
 
-export function MenuMobile({}: Props) {
+
+export function MenuMobile() {
   //state to close the  menu
   const [open, setOpen] = useState(false); 
 

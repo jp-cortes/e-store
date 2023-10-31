@@ -1,9 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
-type Props = {}
 
-export function Footer(props: Props) {
+
+export function Footer() {
   const currentYear = new Date().getFullYear();
   const copyrightDate = 2023 + (currentYear > 2023 ? `-${currentYear}` : '');
 
