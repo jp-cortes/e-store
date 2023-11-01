@@ -7,6 +7,7 @@ import { UpdateProductValues, updateProductValuesSchema } from "../../utils/sche
 import { ErrorText } from "../ErrorText";
 import { updateProduct } from "../../services/queries/products";
 import Link from "next/link";
+import Swal from 'sweetalert2';
 
 
 
@@ -52,10 +53,14 @@ export function FormUpdateProduct({ product }: { product: Product }) {
     
         await new Promise((resolve) => setTimeout(resolve,5000));
     
-        location.reload();//reload the page if the product is updated
-        console.log('done');
+        router.back();
       } catch (error) {
-        console.log(error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops... Something went wrong!',
+          text: 'Please try again later',
+          confirmButtonColor: '#EB1D36'
+        })
       }  
        
 

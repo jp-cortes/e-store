@@ -7,10 +7,10 @@ import { ErrorText } from "../ErrorText";
 import { createProduct } from "../../services/queries/products";
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import * as Dialog from '@radix-ui/react-dialog';
+import Swal from 'sweetalert2';
 
 
 export function FormCreateProduct() {
-    
     const { 
       register,
       handleSubmit,
@@ -46,16 +46,22 @@ export function FormCreateProduct() {
                 await new Promise((resolve) => setTimeout(resolve,5000));
             
                 location.reload();//reload the page if the product is updated
+                // refetch();
+                
                 
               } catch (error) {
-                console.log(error);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops... Something went wrong!',
+                  text: 'Please try again later'
+                })
               }
             
     }
         
   
     return (
-      <Dialog.Root>
+      <Dialog.Root >
         <Dialog.Portal>
         <Dialog.Overlay className="bg-background/80 data-[state=open] fixed inset-0  z-10" />
    
