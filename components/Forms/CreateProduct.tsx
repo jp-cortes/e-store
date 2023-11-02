@@ -1,55 +1,72 @@
 'use client'
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CreateProductValues, createProductValuesSchema } from "../../utils/schemas/Products";
 import { ErrorText } from "../ErrorText";
-import { createProduct } from "../../services/queries/products";
+import { createProduct, getAllProducts } from "../../services/queries/products";
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import * as Dialog from '@radix-ui/react-dialog';
 import Swal from 'sweetalert2';
+import { useFetch } from "../../hooks/pagination";
+
+// fetching produducts without render any info
+async function fetchProducts() {
+  const products = await getAllProducts();
+  return products;
+}
 
 
 export function FormCreateProduct() {
+
+  //state to close the menu
+  const [open, setOpen] = useState(false); 
+
+  // hook useFetch use to refetch query 'modify_products'
+  const { refetch } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
+
     const { 
-      register,
+      register, //validating the types
       handleSubmit,
       formState: { errors, isSubmitting } } = useForm<CreateProductValues>({
      resolver: zodResolver(createProductValuesSchema)
-    })
+    });
   
     
     async function handleUpdate(newProduct: CreateProductValues){
       
-            const file: File | string = newProduct.image[0];
-                try {   
+      const file: File | string = newProduct.image[0];
+      try {   
+                  // submitting image to the cloud
                   const data = new FormData();
                   data.append("file", file);
                   data.append("upload_preset", "e_store");
                   if(data !== null) {
                     // if data is not an empty object
-                    // mean if there is a new image will be updated
+                    // meaning if there is a new image will be updated
                     const response = await fetch(`${process.env.NEXT_PUBLIC_CLOUDINARY_URL}`, {
                       method: 'POST',
                       body: data
                     });
-                    
+
+                    // The image is uploaded sucessfully
                     const dataFromCloud = await response.json();
-             
+
+                    // add the image url to the object new product
                   const { url }: { url: string} = dataFromCloud;
                   newProduct.image  =`${url}`;
             
                   
                 } 
-               await createProduct(newProduct)
+               await createProduct(newProduct); //the post request to create the product
             
-                await new Promise((resolve) => setTimeout(resolve,5000));
-            
-                location.reload();//reload the page if the product is updated
-                // refetch();
-                
+                await new Promise((resolve) => setTimeout(resolve,5000)); // this line will disable the buttons per 5 secconds
+                refetch(); // refetch query
+                setOpen(false); // close Dialog
                 
               } catch (error) {
+                // will show an alert if thre is an error
                 Swal.fire({
                   icon: 'error',
                   title: 'Oops... Something went wrong!',
@@ -61,7 +78,7 @@ export function FormCreateProduct() {
         
   
     return (
-      <Dialog.Root >
+      <Dialog.Root open={open} onOpenChange={setOpen}>
         <Dialog.Portal>
         <Dialog.Overlay className="bg-background/80 data-[state=open] fixed inset-0  z-10" />
    

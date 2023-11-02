@@ -22,7 +22,7 @@ export function UpdateOrderStatus({ order, refetch } : { order: OrderDetail, ref
 
       async function handleUpdate(data: UpdateOrderValues) {
       await updateOrderStatus({ id: order.id, status: data.orderStatus });
-      refetch()
+      refetch();
       setOpen(false);
       }
 
