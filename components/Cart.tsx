@@ -17,6 +17,7 @@ export function ShoppingCart() {
 
   //state
   const [quantity, setQuantity] = useState(1);
+
   // hook 
   const router = useRouter();
   
@@ -26,9 +27,9 @@ export function ShoppingCart() {
       setQuantity(quantity);
     };
 
-    //this function checks if the user already login
-
+    //this function checks if the user is login
     function handleValidation() {
+      // if user is log will reritect to /my-order else redirect /login page
       const tokenFromCookies = validateToken( router, '/login', '/my-order');
       return tokenFromCookies;
     }

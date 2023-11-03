@@ -8,7 +8,7 @@ export function ButtonStripe({ items }: { items: CartItemType[] }) {
 async function handleCheckoutStripe() {
 
     const stripe =  await getStripe();
-
+    // POST request to stripe API
     const response = await fetch('/api/stripe', {
       method: 'POST',
       headers : {
@@ -18,11 +18,13 @@ async function handleCheckoutStripe() {
       body: JSON.stringify(items),
     });
 
+    // if error from server stop the function
     if(response.status === 500) return;
-
+     // successfull reponse
     const data = await response.json();
     
    if(data.session){
+    // POst request Creating a Order
     const order = await createOrder({ 
       paid: true,
       status: 'on the way'
@@ -38,6 +40,7 @@ async function handleCheckoutStripe() {
     })
     );
 
+    // redirect to stripe payment
     await stripe?.redirectToCheckout({ sessionId: data.session.id });
 
    }

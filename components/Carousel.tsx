@@ -7,7 +7,8 @@ import Image from 'next/image';
 
 export async function Carousel() {
 
- 
+
+  // fetching cateories
   const categories = await getCategories();
 
 

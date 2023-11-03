@@ -11,7 +11,10 @@ import Link from "next/link";
 
 
 export function Navbar() {
+  // get token from cookies
   const token = Cookie.get('token');
+
+  // context
   const { count: shoppingCartCount } = useShoppingCart();
  
 

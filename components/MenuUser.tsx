@@ -9,7 +9,7 @@ export function MenuUserloggedIn() {
 
 // handle user log out 
 function handleLogout() {
-
+// remove the cookies
   Cookie.remove('token');
   Cookie.remove('userRole');
   

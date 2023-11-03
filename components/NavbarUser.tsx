@@ -10,6 +10,8 @@ import Link from "next/link";
 
 
 export function NavbarUser() {
+
+  // context
   const { count: shoppingCartCount } = useShoppingCart();
  
 

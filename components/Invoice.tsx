@@ -12,6 +12,7 @@ export function Invoice({ order }: { order: OrderDetail }) {
     const pdfRef = useRef<HTMLDivElement | null>(null);
 
     function downloadPdf() {
+      // function to create a pdf from an order
       const input = pdfRef.current as HTMLDivElement;
       html2canvas(input).then((canvas) => {
         const imgData = canvas.toDataURL("image/png");

@@ -59,7 +59,7 @@ export function FormCreateProduct() {
             
                   
                 } 
-               await createProduct(newProduct); //the post request to create the product
+               await createProduct(newProduct); //the POST request to create the product
             
                 await new Promise((resolve) => setTimeout(resolve,5000)); // this line will disable the buttons per 5 secconds
                 refetch(); // refetch query

@@ -10,20 +10,20 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { updateOrderStatus } from "../../services";
 
 export function UpdateOrderStatus({ order, refetch } : { order: OrderDetail, refetch: Function }){
-  //state to close the menu
+  //state to close Dialog
   const [open, setOpen] = useState(false); 
   
   const { 
-        register,
+        register, //validating the types
         handleSubmit,
         formState: { errors, isSubmitting } } = useForm<UpdateOrderValues>({
        resolver: zodResolver(updateOrderValuesSchema)
       })
 
       async function handleUpdate(data: UpdateOrderValues) {
-      await updateOrderStatus({ id: order.id, status: data.orderStatus });
-      refetch();
-      setOpen(false);
+      await updateOrderStatus({ id: order.id, status: data.orderStatus }); // PATCH request
+      refetch(); // refetch the query
+      setOpen(false); // close Dialog
       }
 
     return(

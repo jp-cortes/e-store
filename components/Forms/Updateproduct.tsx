@@ -31,6 +31,7 @@ export function FormUpdateProduct({ product }: { product: Product }) {
     
         const file: File | string = updatedProduct.image[0];
         try {   
+          // submitting image to the cloud
           const data = new FormData();
           data.append("file", file);
           data.append("upload_preset", "e_store");
@@ -41,19 +42,21 @@ export function FormUpdateProduct({ product }: { product: Product }) {
               method: 'POST',
               body: data
             });
-            
+             // The image is uploaded sucessfully
             const dataFromCloud = await response.json();
-     
+
+            // add the image url to the object updatedProduct
           const { url }: { url: string} = dataFromCloud;
           updatedProduct.image  =`${url}`;
     
           
         } 
-       await updateProduct(`${product.id}`, updatedProduct)
+       await updateProduct(`${product.id}`, updatedProduct); // the PATCH rrquest to update the product
     
-        await new Promise((resolve) => setTimeout(resolve,5000));
+        await new Promise((resolve) => setTimeout(resolve,5000)); // this line will disable the buttons per 5 secconds
     
-        router.back();
+        router.back();// go to previous page
+
       } catch (error) {
         Swal.fire({
           icon: 'error',

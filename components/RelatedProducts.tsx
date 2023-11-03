@@ -9,9 +9,12 @@ import { useFetch } from "../hooks/pagination";
 
 export function RelatedProducts({ categoryId, productId } : { categoryId: number, productId: string }) {
   
-  async function fetchProductsByCategory(page: number) {
+  async function fetchProductsByCategory() {
+    // make the params a number
     const id = parseInt(productId);
+    // get product by category id
     const response = await getProductsByCategoryId(`${categoryId}`);
+    // filter the actual product to preven duplicate
     return response.filter((product) => product.id !== id)
   }
 
