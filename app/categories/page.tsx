@@ -9,13 +9,17 @@ import { useFetch } from "../../hooks/pagination";
 export const runtime = 'edge';
 
 async function fetchProducts(page: number) {
+  // Get products
   const products = await getAllProducts();
-  return products.slice((page - 1) * 6, page * 6)
+  // retunr the first 6 products
+  return products.slice((page - 1) * 6, page * 6);
 }
 
 export default function Categories() {
-  
-const { data, isLoading, ref } = useFetch({ query: ['products'], queryFunction: fetchProducts })
+  // hook
+const { data, isLoading, ref } = useFetch({ query: ['products'], queryFunction: fetchProducts });
+// data is return as an array of arrays
+// the flatMap will retun one array of products 
 const  products = data?.pages.flatMap((product) => product);
 
   

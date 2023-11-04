@@ -9,8 +9,10 @@ import { useFetch } from "../../../hooks/pagination";
 import { TableOrdersSkeleton } from "../../Skeletons/TableOrdersSkeleton";
 
 async function fetchOrders(page: number) {
+  // fetch orders
   const orders = await getOrders();
-  return orders?.slice((page - 1) * 9, page * 9)
+  //return the first 9 orders
+  return orders?.slice((page - 1) * 9, page * 9);
 }
 
 export function TableModifyOrders() {
@@ -20,8 +22,11 @@ const currentStatus = {
   canceled: "canceled"
 }
 
+// hook
 const { data, isLoading, ref, refetch } = useFetch({ query: ['all_orders'], queryFunction: fetchOrders })
-  const  orders = data?.pages.flatMap((order) => order);
+// data is return as an array of arrays
+// the flatMap will retun one array of Orders  
+const  orders = data?.pages.flatMap((order: OrderDetail[]) => order);
 
 
   return (

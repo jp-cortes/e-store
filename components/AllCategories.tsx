@@ -1,4 +1,7 @@
 'use client'
+
+ 
+import { usePathname } from 'next/navigation'
 import { Suspense } from 'react';
 import { getCategories } from '../services';
 import { useFetch } from '../hooks/pagination';
@@ -12,23 +15,27 @@ async function fetchProductsByCategory() {
 }
 
 function Categories() {
+  const pathname = usePathname();
 
-
+  // hook
 const { data, isLoading } = useFetch({ query: ['all_categories'], queryFunction: fetchProductsByCategory })
-const  categories = data?.pages.flatMap((product) => product);
+// data is return as an array of arrays
+// the flatMap will retun one array of categories
+const  categories = data?.pages.flatMap((category: Category[]) => category);
 
 
 
   return(
-    <div className='hidden md:flex md:flex-start md:flex-col md:mx-6 border-r-4 border-borderGreen'>
-          <h2 className='font-semibold capitalize text-2xl mr-4'>Categories</h2>
-        <ul className='grid justify-center gap-2'>
-        {categories?.map((category: Category) => (
+    <div className='hidden md:flex md:justify-center  md:flex-col md:mr-6 border-r-4 border-borderGreen'>
+          <h2 className='font-semibold capitalize text-2xl mx-4'>Categories</h2>
+        <ul className=' mt-4 grid justify-center gap-1'>
+        {categories?.map((category) => (
            <li key={category.id}
-           className='mt-4 font-semibold capitalize'
+           className=' font-semibold capitalize'
            >
              <Link 
-             className='px-3 py-3 border-transparent border-2 w-[100px] rounded-md hover:bg-hoverGreen hover:text-lightGreen transition-colors duration-500'
+             className={`${pathname === `/categories/${category.id}/${category.name}` && ' bg-hoverGreen text-lightGreen' } 
+             inline-block p-3 border-transparent border-2 w-full rounded-md hover:bg-hoverGreen hover:text-lightGreen transition-colors duration-500`}
              href={`/categories/${category.id}/${category.name}`}>
                   {category.name}
               </Link>
