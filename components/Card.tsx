@@ -26,9 +26,10 @@ export function Card({ product }: { product: Product }) {
 
             
         </figure>
-        <p className='flex justify-between px-4'>
+        <p className='grid px-4'>
             <span className='text-sm font-semibold capitalize'>{product.name}</span>
-            <span className='text-lg font-medium'>€{product.price}</span>
+            
+            <span className='text-lg font-medium text-right'>€ {product.price}</span>
         </p>
     </div>
   

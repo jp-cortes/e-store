@@ -14,7 +14,7 @@ const promotions = await getCategoryById('3');
 
   return (
     <>
-    <div className=" grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 md:px-4 gap-2 px-2">
+    <div className=" grid grid-cols-1 md:grid-cols-3 md:grid-rows-4 md:px-4 gap-2 px-2 mt-2">
      <div
      className=' cursor-pointer md:col-start-1 md:col-end-3 md:row-start-1 md:row-end-5  rounded-lg relative'>
       <figure className="relative mb-2 w-full h-4/5">
@@ -32,7 +32,7 @@ const promotions = await getCategoryById('3');
 
       </figure>
         <div className="absolute bottom-[120px] right-3 flex items-center justify-center flex-col">
-              <div className="inline-flex bg-purple-200 p-4 text-lg font-semibold text-black rounded-xl Capitalize">
+              <div className="inline-flex bg-purple-200 p-4 text-lg font-semibold text-black rounded-xl capitalize">
                 {featured.name}
               </div>
           </div>
