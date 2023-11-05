@@ -14,6 +14,7 @@ export function Chart({ chartData }: Props) {
   return (
     <>
       <Bar
+      className="capitalize"
         data={chartData}
         options={{
           plugins: {
