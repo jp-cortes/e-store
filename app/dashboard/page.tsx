@@ -29,7 +29,7 @@ export default async function Dasboard() {
   return (
     <>
       <NavbarDashboard />
-      <div className='grid justify-center w-full'>
+      <div className='grid justify-center w-full mt-2'>
         <div className='self-center w-[320px] md:w-[600px] lg:w-full'>
           <Chart chartData={chartData} />
 
