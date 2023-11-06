@@ -3,7 +3,7 @@ import { Suspense } from "react";
 import { Card } from "../../components"
 import { getAllProducts } from "../../services"
 import { CardSkeleton } from "../../components/Skeletons/CardSkeleton";
-import { useFetch } from "../../hooks/pagination";
+import { useFetch } from "../../hooks/infiniteQuery";
 
 
 export const runtime = 'edge';

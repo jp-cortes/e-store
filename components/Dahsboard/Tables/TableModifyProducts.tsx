@@ -3,7 +3,7 @@ import { DeleteProduct } from '../..';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getAllProducts } from '../../../services';
-import { useFetch } from '../../../hooks/pagination';
+import { useFetch } from '../../../hooks/infiniteQuery';
 import { TableModifyProductsSkeleton } from '../../Skeletons/TableModifyProductsSkeleton';
 
 

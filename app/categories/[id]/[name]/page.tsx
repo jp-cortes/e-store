@@ -4,7 +4,7 @@ import { getProductsByCategoryId } from '../../../../services'
 import { Suspense } from 'react'
 
 import { useParams } from 'next/navigation';
-import { useFetch } from "../../../../hooks/pagination";
+import { useFetch } from "../../../../hooks/infiniteQuery";
 import { CardSkeleton } from "../../../../components/Skeletons/CardSkeleton";
 
 

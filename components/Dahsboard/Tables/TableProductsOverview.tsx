@@ -1,7 +1,7 @@
 'use client'
 import Image from 'next/image';
 import { getAllProducts } from '../../../services';
-import { useFetch } from '../../../hooks/pagination';
+import { useFetch } from '../../../hooks/infiniteQuery';
 import { TableProductsOverviewSkeleton } from '../../Skeletons/TableProductsOverviewSkeleton';
 
 

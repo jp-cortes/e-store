@@ -1,11 +1,11 @@
 'use client'
-import { useFetch } from '../../hooks/pagination';
+import { useFetch } from '../../hooks/infiniteQuery';
 import { getAllProducts } from '../../services';
 import { CardDashboard } from './'
 
 async function fetchProducts(page: number) {
   const products = await getAllProducts();
-  return products.slice((page - 1) * 9, page * 9)
+  return products.slice((page - 1) * 9, page * 9);
 }
 
 export function MobileProductsOverview() {

@@ -5,7 +5,7 @@ import { DefaultAvatar } from "../../DefaultAvatar";
 import { CheckIcon } from "@heroicons/react/24/outline";
 import { UpdateOrderStatus } from "../../Forms";
 import { getOrders } from "../../../services";
-import { useFetch } from "../../../hooks/pagination";
+import { useFetch } from "../../../hooks/infiniteQuery";
 import { TableOrdersSkeleton } from "../../Skeletons/TableOrdersSkeleton";
 
 async function fetchOrders(page: number) {

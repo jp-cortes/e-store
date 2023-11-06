@@ -1,5 +1,5 @@
 'use client'
-import { useFetch } from "../../hooks/pagination";
+import { useFetch } from "../../hooks/infiniteQuery";
 import { getAllProducts } from "../../services";
 import { CardDashboard, DeleteProduct } from "./";
 import Link from "next/link";

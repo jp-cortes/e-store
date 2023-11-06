@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link";
 import { DefaultAvatar } from "../DefaultAvatar"
 import { getOrders } from "../../services";
-import { useFetch } from "../../hooks/pagination";
+import { useFetch } from "../../hooks/infiniteQuery";
 
 
 async function fetchOrders(page: number) {

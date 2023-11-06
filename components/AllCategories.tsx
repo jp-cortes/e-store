@@ -4,7 +4,7 @@
 import { usePathname } from 'next/navigation'
 import { Suspense } from 'react';
 import { getCategories } from '../services';
-import { useFetch } from '../hooks/pagination';
+import { useFetch } from '../hooks/infiniteQuery';
 import { CategoriesSkeleton } from './Skeletons/CategoriesSkeleton'
 import Link from 'next/link';
 

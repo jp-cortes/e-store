@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import { getProductsByCategoryId } from "../services";
 import { Card } from "./Card"
 import { CardSkeleton } from "./Skeletons/CardSkeleton";
-import { useFetch } from "../hooks/pagination";
+import { useFetch } from "../hooks/infiniteQuery";
  
 
 export function RelatedProducts({ categoryId, productId } : { categoryId: number, productId: string }) {

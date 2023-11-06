@@ -9,7 +9,7 @@ import { createProduct, getAllProducts } from "../../services/queries/products";
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import * as Dialog from '@radix-ui/react-dialog';
 import Swal from 'sweetalert2';
-import { useFetch } from "../../hooks/pagination";
+import { useFetch } from "../../hooks/infiniteQuery";
 
 // fetching produducts without render any info
 async function fetchProducts() {
