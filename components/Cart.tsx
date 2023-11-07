@@ -18,8 +18,9 @@ export function ShoppingCart() {
   //state
   const [quantity, setQuantity] = useState(1);
 
-  // hook 
+  // hooks 
   const router = useRouter();
+  
   
 //add product to shoppingCart
   function  handleClick(product: Product) {
@@ -120,13 +121,15 @@ export function ShoppingCart() {
       )}
     </div>
   );
-}
+}[]
 
 
 export function ShoppingCartModal() {
+
   return (
     <Dialog.Root>
-      <Dialog.Trigger asChild>
+      <Dialog.Trigger asChild
+      >
         <button className=" inline-flex items-center justify-center rounded-full bg-lightGreen ">
           <ShoppingBagIcon className="w-6 h-6" />
         </button>
