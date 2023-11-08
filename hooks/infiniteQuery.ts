@@ -4,13 +4,13 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { useIntersection } from "@mantine/hooks";
 
 
-export const useFetch = ({
+export function useFetch({
   query,
   queryFunction,
 }: {
   query: string[];
   queryFunction: Function;
-}) => {
+}) {
   // Queries
   const { data, fetchNextPage, hasNextPage, isLoading, refetch } = useInfiniteQuery({
       queryKey: query,

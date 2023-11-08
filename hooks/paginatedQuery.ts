@@ -3,18 +3,18 @@
 import { useQuery } from "@tanstack/react-query";
 
 
-export const usePagination = ({
+export function usePagination({
   query,
-  page,
+  offset,
   paginatedFunction,
 }: {
   query: string[];
-  page: number
+  offset: number;
   paginatedFunction: Function;
-}) => {
+}) {
   // Queries
-  const { data, isLoading, refetch } = useQuery({
-      queryKey: [query, page],
+  const { data, isLoading, refetch, isPreviousData } = useQuery({
+      queryKey: [query, offset],
       queryFn: async () => {
         const response = await paginatedFunction();
         return response;
@@ -26,6 +26,7 @@ export const usePagination = ({
   return {
     data,
     isLoading,
-    refetch
+    refetch,
+    isPreviousData,
   };
 };

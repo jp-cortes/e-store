@@ -1,23 +1,35 @@
 'use client'
 import { DeleteProduct } from '../..';
+import { getProductsByPage } from '../../../services';
+import { TableModifyProductsSkeleton } from '../../Skeletons/TableModifyProductsSkeleton';
+import { usePagination } from '../../../hooks/paginatedQuery';
+import { useState } from 'react';
+import { Pagination } from '../pagination';
 import Image from 'next/image';
 import Link from 'next/link';
-import { getAllProducts } from '../../../services';
-import { useFetch } from '../../../hooks/infiniteQuery';
-import { TableModifyProductsSkeleton } from '../../Skeletons/TableModifyProductsSkeleton';
 
-
-async function fetchProducts(page: number) {
-  const products = await getAllProducts();
-  return products.slice((page - 1) * 9, page * 9)
-}
 
 export function TableModifyProducts() {
 
-  const { data, isLoading, ref, refetch } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
-  const  products = data?.pages.flatMap((product) => product);
+  const [page, setPage] = useState(0); // offset
+  const [limit, setLimit] = useState(9); // limit
 
+  async function fetchProducts() {
+    // fetch product
+      const response = await getProductsByPage(limit, page);
+      return response;
+    }
+
+  const { data, isLoading, refetch, isPreviousData } = usePagination({ 
+    query: ['modify_products'], // query
+    offset: page, // offset
+    paginatedFunction: fetchProducts // fectch products
+  });
+  
+  
   return (
+    <>
+    
     <table className=" hidden md:block lg:block min-w-full divide-y divide-borderGreen border border-solid border-borderGreen">
                   <thead className="bg-buttonGreen">
                     <tr>
@@ -54,7 +66,7 @@ export function TableModifyProducts() {
                     </tr>
                   </thead>
                   <tbody className="bg-lightGreen divide-y divide-borderGreen">
-                    {products?.map((product, i) => (
+                    {data?.map((product: Product) => (
                       <tr key={product.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
@@ -98,12 +110,19 @@ export function TableModifyProducts() {
                         <td className=" relative px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                           <DeleteProduct product={product} refetch={refetch}/>
                         </td>
-                        {i === products.length - 1 && <div ref={ref} />}
                       </tr>
                     ))}
                     {isLoading && <TableModifyProductsSkeleton/>}
                   </tbody>
                 </table>
+                <Pagination 
+                  page={page} 
+                  setPage={setPage} 
+                  data={data} 
+                  isPreviousData={isPreviousData} 
+                  limit={limit} setLimit={setLimit} 
+                  />
+    </>
   )
 }
 
