@@ -12,7 +12,24 @@ export async function POST(req: NextRequest, res: NextResponse) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        body
+        body 
+        // `query { 
+          // categories { 
+          //   id 
+          //   name
+          //   image 
+          // } 
+          // products { 
+          //   id 
+          //   name 
+          //   image 
+          //   description 
+          //   categoryId 
+          //   category { 
+          //     name 
+          //   } 
+          // }`
+        // }
       }),
     });
 
@@ -21,7 +38,7 @@ export async function POST(req: NextRequest, res: NextResponse) {
     }
 
     const data = await response.json();
-    return NextResponse.json({ data })
+    return NextResponse.json({ data: data })
   
   } catch (error) {
     console.error('Error fetching products:', error);
