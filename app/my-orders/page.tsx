@@ -14,7 +14,7 @@ export default async function MyOrders() {
       <NavbarUser />
       <div className="grid text-center justify-center w-auto">
         <div className="lg:w-[800px]">
-          <div className="w-[150px] mx-auto relative flex ">
+          <div className="w-[150px] mx-auto relative flex mb-10 ">
             <h1 className=" text-2xl font-semibold ">My Orders</h1>
             <Link passHref href="/my-order" className="absolute right-0 top-2">
               <ChevronRightIcon className="h-6 w-6 text-black cursor-pointer" />
@@ -54,7 +54,7 @@ export default async function MyOrders() {
                   </Link>
                   
                   <Link href={`/my-orders/invoice/${order.id}`} passHref>
-                    <span className="hidden md:block lg:block capitalize font-medium text-lightGreen mx-3 hover:text-red-400 hover:underline">
+                    <span className="hidden md:block lg:block capitalize font-medium text-lightGreen mx-3 hover:text-blue-400 hover:underline">
                       Invoice
                     </span>
                   </Link>

@@ -107,10 +107,11 @@ export function Invoice({ order }: { order: OrderDetail }) {
        
       </div>
       <div className="flex justify-center flex-initial w-full mt-5">
-          <Link passHref href={'/my-orders'} className="">
+          <Link passHref href={'/my-orders'} className="flex">
             <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
-          </Link>{" "}
+            {" "}
             <span className=''>Back</span>
+          </Link>
         </div>
       <div>
         <button

@@ -9,7 +9,7 @@ import Link from "next/link";
 export async function OrderDetails({ order, goBackTo } : { order: OrderDetail, goBackTo: string }) {
   return (
     <>
-      <div className="grid justify-center border-3 border-red-700">
+      <div className="grid justify-center border-3 border-red-700 mb-10">
         <h1 className="text-2xl ml-8 my-7 justify-self-center font-semibold">
           Order Details
         </h1>
@@ -57,6 +57,7 @@ export async function OrderDetails({ order, goBackTo } : { order: OrderDetail, g
             {order.items.map((item) => (
               <>
                 <div key={item.id}>
+                  <p className="font-medium capitalize">{item.name}</p>
                   <figure className="mr-2">
                     <Image
                       src={item.image}
@@ -65,9 +66,8 @@ export async function OrderDetails({ order, goBackTo } : { order: OrderDetail, g
                       alt={item.name}
                     />
                   </figure>
-                  <p className="font-medium capitalize">{item.name}</p>
                 </div>
-                <div className="flex flex-col justify-between content-center">
+                <div className="flex flex-col justify-between content-center pb-2 border-b-2 border-borderGreen">
                   <p className="font-medium">
                     Price{" "}
                     <span className="capitalize font-normal">
@@ -95,7 +95,7 @@ export async function OrderDetails({ order, goBackTo } : { order: OrderDetail, g
             </p>
           </div>
         </div>
-        <div className="flex justify-center flex-initial w-full mt-5">
+        <div className="flex justify-center flex-initial w-full m-5">
           <Link passHref href={goBackTo} className="flex">
             <ChevronLeftIcon className="h-6 w-6 text-black cursor-pointer" />
               {" "}

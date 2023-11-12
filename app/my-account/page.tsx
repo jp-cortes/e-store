@@ -61,8 +61,8 @@ export default async function MyAccount() {
                 Edit my profile
               </button>
             </Dialog.Trigger>
-            <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0 grid grid-cols-1 place-content-center" />
-            <Dialog.Content className="data-[state=open] w-full  translate-y-[-90%] rounded-[6px] md:col-start-1 md:col-end-2">
+            <Dialog.Overlay className="bg-background/80 data-[state=open] fixed top-0 inset-0 grid grid-cols-1 place-content-center z-20" />
+            <Dialog.Content className="data-[state=open] w-full  translate-y-[-90%] rounded-[6px] md:col-start-1 md:col-end-2 z-20">
               <div className="bg-lightGreen  rounded-xl p-2 md:p-5">
                 <UpdateUserInfo user={user} />
               </div>
