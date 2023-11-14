@@ -3,20 +3,30 @@
 import { getCategories } from '../services';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useFetch } from '../hooks/infiniteQuery';
 
-
-export async function Carousel() {
-
-
-  // fetching cateories
+async function fetchCategories() {
+  // Get categories
   const categories = await getCategories();
+  // retunr the categories
+  return categories;
+}
+
+export function Carousel() {
+ // hook
+ const { data } = useFetch({ query: ['categories'], queryFunction: fetchCategories });
+ // data is return as an array of arrays
+ // the flatMap will retun one array of categories
+ const categories = data?.pages.flatMap((category: Category) => category).slice(3, 9);
+
+  
 
 
   return (
     <>
     <div className="relative w-full overflow-hidden">
       <div className="flex animate-[marquee_60s_linear_infinite]">
-        {categories.slice(3,9).map((category) => (
+        {categories?.map((category) => (
      
           <Link
           passHref
