@@ -13,7 +13,7 @@ async function fetchProducts(page: number) {
 export function ModifyProductsMobile() {
 
   const { data, isLoading, ref, refetch } = useFetch({ query: ['modify_products'], queryFunction: fetchProducts })
-  const  products = data?.pages.flatMap((product) => product);
+  const  products = data?.pages.flatMap((product: Products) => product);
 
 
   return (

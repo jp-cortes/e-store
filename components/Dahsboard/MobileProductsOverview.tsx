@@ -11,7 +11,7 @@ async function fetchProducts(page: number) {
 export function MobileProductsOverview() {
 
   const { data, isLoading, ref } = useFetch({ query: ['all_products'], queryFunction: fetchProducts })
-  const  products = data?.pages.flatMap((product) => product);
+  const  products = data?.pages.flatMap((product: Products) => product);
 
   return (
     <div className='md:hidden lg:hidden flex flex-wrap justify-around'>

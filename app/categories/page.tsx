@@ -20,7 +20,7 @@ export default function Categories() {
 const { data, isLoading, ref } = useFetch({ query: ['products'], queryFunction: fetchProducts });
 // data is return as an array of arrays
 // the flatMap will retun one array of products 
-const  products = data?.pages.flatMap((product) => product);
+const  products = data?.pages.flatMap((product: Products) => product);
 
   
   return (

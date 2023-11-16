@@ -21,7 +21,7 @@ export default function Category()  {
   }
 
 const { data, isLoading, ref } = useFetch({ query: [`category_${productsCategory}`], queryFunction: fetchProductsByCategory })
-const  products = data?.pages.flatMap((product) => product);
+const  products = data?.pages.flatMap((product: Products) => product);
 
 
  return (
@@ -33,7 +33,7 @@ const  products = data?.pages.flatMap((product) => product);
       
       <Suspense>
 
-        {products?.map((product: Product, i) => (
+        {products?.map((product, i) => (
           <div key={product.id}>
             <Card product={product} />
             {i === products.length - 1 && <div ref={ref} />}
