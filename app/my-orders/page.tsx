@@ -54,7 +54,7 @@ export default async function MyOrders() {
                   </Link>
                   
                   <Link href={`/my-orders/invoice/${order.id}`} passHref>
-                    <span className="hidden md:block lg:block capitalize font-medium text-lightGreen mx-3 hover:text-blue-400 hover:underline">
+                    <span className="capitalize font-medium text-lightGreen mx-3 hover:text-blue-400 hover:underline">
                       Invoice
                     </span>
                   </Link>

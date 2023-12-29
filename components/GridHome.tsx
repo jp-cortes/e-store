@@ -10,7 +10,7 @@ import { GridHomeSkeleton } from './Skeletons/GridHomeSkeleton';
 async function fetchCategories() {
   // Get categories
   const categories = await getCategories();
-  // retunr the categories
+  // return the categories
   return categories;
 }
 
@@ -18,7 +18,7 @@ export function GridHome() {
  // hook
  const { data, isLoading } = useFetch({ query: ['categories'], queryFunction: fetchCategories });
  // data is return as an array of arrays
- // the flatMap will retun one array of categories
+ // the flatMap will return one array of categories
  const categories = data?.pages.flatMap((category: Category) => category).slice(0, 3);
 
 const featured = categories?.at(0);
