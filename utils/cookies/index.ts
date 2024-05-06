@@ -1,8 +1,8 @@
 import Cookie  from 'js-cookie';
-import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
+// import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context';
 
 
-export function validateToken(router: AppRouterInstance, route: string, route2: string) {
+export function validateToken(router: any, route: string, route2: string) {
     const token = Cookie.get('token');
   
     if(!token) {
