@@ -3,52 +3,26 @@ import { Bars3BottomLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outli
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import Link from 'next/link';
 import { useState } from 'react';
+import { getCategories } from '../services';
+import { useFetch } from '../hooks/infiniteQuery';
+import { MobileCategoriesSkeleton } from './Skeletons/MobileCategoriesSkeleton';
 
 
+async function fetchProductsByCategory() {
+  const response = await getCategories();
+  return response;
+}
 
 
 export function MenuMobile() {
   //state to close the  menu
   const [open, setOpen] = useState(false); 
 
-const categories = [
-    {
-      id: 1,
-      name: "automotive"
-    },
-    {
-      id: 2,
-      name: "sports"
-    },
-    {
-      id: 3,
-      name: "health"
-    },
-    {
-      id: 4,
-      name: "computers"
-    },
-    {
-      id: 5,
-      name: "games"
-    },
-    {
-      id: 6,
-      name: "furniture"
-    },
-    {
-      id: 7,
-      name: "industrial"
-    },
-    {
-      id: 8,
-      name: "home"
-    },
-    {
-      id: 9,
-      name: "beauty"
-    }
-  ]
+const { data, isLoading } = useFetch({ query: ['all_categories'], queryFunction: fetchProductsByCategory })
+// data is return as an array of arrays
+// the flatMap will return one array of categories
+const  categories = data?.pages.flatMap((category: Category[]) => category);
+
 
   return (
     <div className=" flex md:hidden lg:hidden">
@@ -86,7 +60,7 @@ const categories = [
                     sideOffset={2}
                     alignOffset={-5}
                   >
-                    {categories.map((category) => (
+                    {categories?.map((category) => (
                 
                         <DropdownMenu.Item key={category.id}>
                           <Link
@@ -99,6 +73,7 @@ const categories = [
                         </DropdownMenu.Item>
                      
                     ))}
+                    {isLoading && <MobileCategoriesSkeleton/>}
                   </DropdownMenu.SubContent>
                 </DropdownMenu.Portal>
               </DropdownMenu.Sub>
