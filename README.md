@@ -25,7 +25,7 @@ To set up the E-Store project locally, follow these steps:
 * Navigate to the project's root directory in the terminal.
 * Install the required dependencies by running:
 
-```npm install```
+```pnpm install```
 
 * Set up the PostgreSQL database and update the database connection configurations in the project accordingly.
 Obtain API keys for Stripe and PayPal and integrate them into the application for payment processing.
@@ -33,7 +33,7 @@ Obtain API keys for Stripe and PayPal and integrate them into the application fo
 # Usage
 To run the development server, use the following command:
 
-```npm run dev```
+```pnpm dev```
 
 * Access the application in your web browser by visiting http://localhost:3000.
 
@@ -48,9 +48,6 @@ You might be able to create your own user or you can test the application with t
 * Password: 123456789
 ## Admin:
 * Not yet available
-* Email: demoadmin@mail.com
-* Password: Admin123
-
 # Contributing
 We welcome contributions to E-Store! If you find any bugs or have suggestions for new features, please feel free to open an issue or submit a pull request.
 
