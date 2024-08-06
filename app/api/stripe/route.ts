@@ -48,7 +48,7 @@ const body = await req.json();
           }
       }),
       success_url: `${req.headers.get('origin')}/my-orders`,
-      cancel_url: `${req.headers.get('origin')}/my-order`,
+      cancel_url: `${req.headers.get('origin')}/payment-canceled`,
     });
     return NextResponse.json({ session });
    

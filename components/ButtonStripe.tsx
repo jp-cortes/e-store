@@ -20,13 +20,13 @@ async function handleCheckoutStripe() {
 
     // if error from server stop the function
     if(response.status === 500) return;
-     // successfull reponse
+     // successful response
     const data = await response.json();
     
    if(data.session){
     // POst request Creating a Order
     const order = await createOrder({ 
-      paid: true,
+      paid: false,
       status: 'on the way'
     });
 
